@@ -597,7 +597,7 @@ export function showToast(message, duration = 1500, type = 'info', position = 'b
     error: 'background: var(--toolary-error-color, #dc3545);',
     success: 'background: var(--toolary-success-color, #28a745);',
     warning: 'background: var(--toolary-warning-color, #ffc107); color: var(--toolary-text, #333);',
-    info: 'background: var(--toolary-button-bg, rgba(0,0,0,0.9));'
+    info: 'background: var(--toolary-info-color, #17a2b8);'
   };
 
   const positionStyles = {

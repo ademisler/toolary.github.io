@@ -246,15 +246,12 @@ async function captureFullPage() {
   const segments = [];
   let currentScroll = 0;
   let iterations = 0;
+  let stickyElementsHidden = false;
 
   const lastCaptureAt = { value: Date.now() - MIN_CAPTURE_INTERVAL_MS };
 
-  // Hide sticky/fixed elements before starting capture
-  const hiddenCount = hideStickyElements();
-  if (hiddenCount > 0) {
-    // Wait a bit for the layout to stabilize after hiding elements
-    await wait(100);
-  }
+  // Hide any existing toast notifications before capture
+  document.querySelectorAll('#toolary-toast').forEach(toast => toast.remove());
 
   try {
     while (true) {
@@ -266,8 +263,21 @@ async function captureFullPage() {
         await wait(CAPTURE_DELAY_MS);
       }
 
+      // Hide toasts before EVERY capture to be safe
+      document.querySelectorAll('#toolary-toast').forEach(toast => toast.remove());
+
       const dataUrl = await requestCaptureWithThrottle(lastCaptureAt);
       segments.push({ dataUrl, scrollY: targetScroll });
+
+      // Hide sticky elements AFTER the first capture
+      if (!stickyElementsHidden && segments.length === 1) {
+        const hiddenCount = hideStickyElements();
+        if (hiddenCount > 0) {
+          // Wait for layout to stabilize after hiding elements
+          await wait(100);
+        }
+        stickyElementsHidden = true;
+      }
 
       if (targetScroll >= maxScrollTop) {
         break;

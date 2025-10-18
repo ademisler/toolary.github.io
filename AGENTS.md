@@ -184,34 +184,6 @@ Auto-migrates from old Pickachu keys: `pickachuFavorites`, `pickachuHiddenTools`
 
 Shortcuts work globally (even when popup is closed) via `chrome.commands` API handled in `background.js`.
 
-## Important Features
-
-### Sticky Menu Fix (screenshotPicker.js)
-When capturing full-page screenshots, sticky/fixed elements are temporarily hidden:
-1. `findStickyElements()` – Detects `position: fixed/sticky` elements
-2. `hideStickyElements()` – Sets `visibility: hidden` before capture
-3. `restoreStickyElements()` – Restores original styles after capture
-4. Uses `finally` block to ensure cleanup even on errors
-
-### Virtual Scrolling (ui-components.js)
-`VirtualizedGrid` class renders only visible tools in viewport:
-- **Threshold:** 24 tools (switches to virtual mode above this)
-- **Overscan:** 6 rows (pre-renders for smooth scroll)
-- **RowHeight:** 96px (card height for calculations)
-
-### Search & Filter (popup.js)
-- Real-time search across tool names, tags, keywords
-- Category filtering (all, inspect, capture, enhance, utilities)
-- Hidden tools still searchable but not shown in main grid
-- Pagination: 6 tools per page
-
-### Lazy Loading (toolLoader.js)
-```javascript
-loadToolModule(toolId) // Returns cached or imports module
-activateTool(toolId, deactivate) // Loads + activates
-clearToolModule(toolId) // Clears cache
-```
-
 ## Testing & Quality
 
 ```bash
