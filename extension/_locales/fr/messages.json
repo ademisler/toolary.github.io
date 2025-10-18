@@ -1,6 +1,9 @@
 {
   "extensionName": {
-    "message": "Pickachu – Outil de sélection Web"
+    "message": "Toolary – Outil de sélection Web"
+  },
+  "extensionShortName": {
+    "message": "Toolary"
   },
   "extensionDescription": {
     "message": "Une boîte à outils légère pour collecter les couleurs, éléments, liens, polices, images et textes de n'importe quelle page web."
@@ -120,7 +123,7 @@
     "message": "Raccourcis clavier"
   },
   "shortcutsDescription": {
-    "message": "Utilisez ces raccourcis pour lancer Pickachu plus rapidement."
+    "message": "Utilisez ces raccourcis pour lancer Toolary plus rapidement."
   },
   "shortcutsGlobal": {
     "message": "Global"
@@ -132,7 +135,7 @@
     "message": "Dans le popup"
   },
   "shortcutOpen": {
-    "message": "Ouvrir Pickachu"
+    "message": "Ouvrir Toolary"
   },
   "shortcutToggle": {
     "message": "Afficher/masquer le popup"
@@ -152,59 +155,23 @@
   "shortcutElementMac": {
     "message": "Option+Shift+2"
   },
-  "shortcutLink": {
+  "shortcutScreenshot": {
     "message": "Alt+Shift+3"
   },
-  "shortcutLinkMac": {
-    "message": "Option+Shift+3"
-  },
-  "shortcutFont": {
-    "message": "Alt+Shift+4"
-  },
-  "shortcutFontMac": {
-    "message": "Option+Shift+4"
-  },
-  "shortcutMedia": {
-    "message": "Alt+Shift+5"
-  },
-  "shortcutMediaMac": {
-    "message": "Option+Shift+5"
-  },
-  "shortcutText": {
-    "message": "Alt+Shift+6"
-  },
-  "shortcutTextMac": {
-    "message": "Option+Shift+6"
-  },
-  "shortcutScreenshot": {
-    "message": "Alt+Shift+7"
-  },
   "shortcutScreenshotMac": {
-    "message": "Option+Shift+7"
-  },
-  "shortcutNotes": {
-    "message": "Alt+Shift+8"
-  },
-  "shortcutNotesMac": {
-    "message": "Option+Shift+8"
-  },
-  "shortcutInfo": {
-    "message": "Alt+Shift+9"
-  },
-  "shortcutInfoMac": {
-    "message": "Option+Shift+9"
+    "message": "Option+Shift+3"
   },
   "createdBy": {
     "message": "Adem İsler"
   },
   "creatorRole": {
-    "message": "Créateur de Pickachu"
+    "message": "Créateur de Toolary"
   },
   "buyCoffee": {
     "message": "Offrez-moi un café"
   },
   "cmdTogglePopup": {
-    "message": "Afficher/masquer le popup Pickachu"
+    "message": "Afficher/masquer le popup Toolary"
   },
   "cmdColorPicker": {
     "message": "Activer la pipette"
@@ -212,29 +179,11 @@
   "cmdElementPicker": {
     "message": "Activer le sélecteur d'élément"
   },
-  "cmdLinkPicker": {
-    "message": "Activer le sélecteur de lien"
-  },
-  "cmdFontPicker": {
-    "message": "Activer le sélecteur de police"
-  },
-  "cmdMediaPicker": {
-    "message": "Activer le sélecteur de média"
-  },
-  "cmdTextPicker": {
-    "message": "Activer le sélecteur de texte"
-  },
   "cmdScreenshotPicker": {
     "message": "Activer la capture d'écran"
   },
-  "cmdStickyNotesPicker": {
-    "message": "Activer les notes adhésives"
-  },
-  "cmdSiteInfoPicker": {
-    "message": "Activer l'analyse du site"
-  },
-  "openPickachu": {
-    "message": "Ouvrir Pickachu"
+  "openToolary": {
+    "message": "Ouvrir Toolary"
   },
   "themeAuto": {
     "message": "Auto"
@@ -259,5 +208,101 @@
   },
   "support": {
     "message": "Soutien"
+  },
+  "colorPickerDescription": {
+    "message": "Cliquez sur n'importe quel élément pour choisir sa couleur et obtenir instantanément les valeurs hex, RGB, HSL"
+  },
+  "elementPickerDescription": {
+    "message": "Survolez les éléments pour inspecter la structure HTML, les styles CSS et les sélecteurs"
+  },
+  "linkPickerDescription": {
+    "message": "Trouvez tous les liens de la page, vérifiez leur statut et exportez les liens cassés"
+  },
+  "fontPickerDescription": {
+    "message": "Identifiez les polices utilisées sur la page avec famille, taille, poids et détails de style"
+  },
+  "mediaPickerDescription": {
+    "message": "Téléchargez toutes les images et fichiers multimédias de la page actuelle en un clic"
+  },
+  "textPickerDescription": {
+    "message": "Sélectionnez et copiez le contenu texte de n'importe quel élément ou de la page entière"
+  },
+  "screenshotPickerDescription": {
+    "message": "Capturez des captures d'écran de page complète ou d'éléments spécifiques en haute qualité"
+  },
+  "stickyNotesPickerDescription": {
+    "message": "Ajoutez des notes persistantes à n'importe quelle page web qui restent quand vous revenez"
+  },
+  "siteInfoPickerDescription": {
+    "message": "Analysez la pile technologique du site web, les métriques SEO et les données de performance"
+  },
+  "settings": {
+    "message": "Paramètres"
+  },
+  "preferences": {
+    "message": "Préférences"
+  },
+  "tools": {
+    "message": "Outils"
+  },
+  "about": {
+    "message": "À propos"
+  },
+  "language": {
+    "message": "Langue"
+  },
+  "theme": {
+    "message": "Thème"
+  },
+  "interface": {
+    "message": "Interface"
+  },
+  "visibility": {
+    "message": "Visibilité"
+  },
+  "hideTools": {
+    "message": "Masquez les outils de la grille de lancement tout en les gardant recherchables."
+  },
+  "tunePopup": {
+    "message": "Ajustez le popup pour qu'il corresponde à votre façon de travailler."
+  },
+  "switchLanguage": {
+    "message": "Changez instantanément la langue du popup."
+  },
+  "toggleTheme": {
+    "message": "Basculez entre clair, sombre ou suivez les préférences système."
+  },
+  "reset": {
+    "message": "Réinitialiser"
+  },
+  "save": {
+    "message": "Enregistrer"
+  },
+  "close": {
+    "message": "Fermer"
+  },
+  "english": {
+    "message": "English"
+  },
+  "turkish": {
+    "message": "Türkçe"
+  },
+  "french": {
+    "message": "Français"
+  },
+  "aboutToolary": {
+    "message": "À propos de Toolary"
+  },
+  "aboutDescription": {
+    "message": "Boîte à outils de sélection web unifiée pour la capture et l'inspection instantanées."
+  },
+  "keyboardShortcuts": {
+    "message": "Raccourcis Clavier"
+  },
+  "developer": {
+    "message": "Développeur"
+  },
+  "support": {
+    "message": "Support"
   }
 }

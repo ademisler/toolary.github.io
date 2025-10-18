@@ -11,7 +11,7 @@ import {
   getCssSelector,
   getXPath,
   normalizeUrlForStorage
-} from '../extension/modules/helpers.js';
+} from '../extension/shared/helpers.js';
 
 describe('Helpers Module', () => {
   

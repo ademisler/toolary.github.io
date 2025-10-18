@@ -15,7 +15,7 @@ describe('stickyNotesPicker hydrateNotesFromStorage', () => {
   });
 
   test('reuses hydrated note objects for URLs with query parameters', async () => {
-    const module = await import('../extension/modules/stickyNotesPicker.js');
+    const module = await import('../extension/tools/enhance/stickyNotesPicker.js');
     const { hydrateNotesFromStorage } = module;
 
     const storedNotes = [{

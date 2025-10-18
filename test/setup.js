@@ -62,12 +62,25 @@ global.chrome = {
       get: jest.fn(() => Promise.resolve({})),
       set: jest.fn(() => Promise.resolve())
     },
+    sync: {
+      get: jest.fn(() => Promise.resolve({})),
+      set: jest.fn(() => Promise.resolve())
+    },
     onChanged: {
       addListener: jest.fn()
     }
   },
   i18n: {
     getMessage: jest.fn((key) => key)
+  },
+  tabs: {
+    sendMessage: jest.fn(() => Promise.resolve()),
+    query: jest.fn(() => Promise.resolve([{ id: 1 }]))
+  },
+  downloads: {
+    download: jest.fn((options, callback) => {
+      callback?.(1);
+    })
   }
 };
 

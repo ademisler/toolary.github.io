@@ -1,6 +1,9 @@
 {
   "extensionName": {
-    "message": "Pickachu – Web Seçme Aracı"
+    "message": "Toolary – Web Seçme Aracı"
+  },
+  "extensionShortName": {
+    "message": "Toolary"
   },
   "extensionDescription": {
     "message": "Herhangi bir web sayfasından renk, öğe, bağlantı, yazı tipi, resim ve metin toplamak için hafif bir seçme araç kutusu."
@@ -120,7 +123,7 @@
     "message": "Klavye kısayolları"
   },
   "shortcutsDescription": {
-    "message": "Pickachu'yu bu kısayollarla daha hızlı kullan."
+    "message": "Toolary'yu bu kısayollarla daha hızlı kullan."
   },
   "shortcutsGlobal": {
     "message": "Genel"
@@ -132,7 +135,7 @@
     "message": "Popup içinde"
   },
   "shortcutOpen": {
-    "message": "Pickachu'yu aç"
+    "message": "Toolary'yu aç"
   },
   "shortcutToggle": {
     "message": "Popup'u aç/kapat"
@@ -152,59 +155,23 @@
   "shortcutElementMac": {
     "message": "Option+Shift+2"
   },
-  "shortcutLink": {
+  "shortcutScreenshot": {
     "message": "Alt+Shift+3"
   },
-  "shortcutLinkMac": {
-    "message": "Option+Shift+3"
-  },
-  "shortcutFont": {
-    "message": "Alt+Shift+4"
-  },
-  "shortcutFontMac": {
-    "message": "Option+Shift+4"
-  },
-  "shortcutMedia": {
-    "message": "Alt+Shift+5"
-  },
-  "shortcutMediaMac": {
-    "message": "Option+Shift+5"
-  },
-  "shortcutText": {
-    "message": "Alt+Shift+6"
-  },
-  "shortcutTextMac": {
-    "message": "Option+Shift+6"
-  },
-  "shortcutScreenshot": {
-    "message": "Alt+Shift+7"
-  },
   "shortcutScreenshotMac": {
-    "message": "Option+Shift+7"
-  },
-  "shortcutNotes": {
-    "message": "Alt+Shift+8"
-  },
-  "shortcutNotesMac": {
-    "message": "Option+Shift+8"
-  },
-  "shortcutInfo": {
-    "message": "Alt+Shift+9"
-  },
-  "shortcutInfoMac": {
-    "message": "Option+Shift+9"
+    "message": "Option+Shift+3"
   },
   "createdBy": {
     "message": "Adem İsler"
   },
   "creatorRole": {
-    "message": "Pickachu'nun geliştiricisi"
+    "message": "Toolary'nun geliştiricisi"
   },
   "buyCoffee": {
     "message": "Bana bir kahve ısmarla"
   },
   "cmdTogglePopup": {
-    "message": "Pickachu popup'ını aç/kapat"
+    "message": "Toolary popup'ını aç/kapat"
   },
   "cmdColorPicker": {
     "message": "Renk seçiciyi başlat"
@@ -212,29 +179,11 @@
   "cmdElementPicker": {
     "message": "Öğe seçiciyi başlat"
   },
-  "cmdLinkPicker": {
-    "message": "Bağlantı seçiciyi başlat"
-  },
-  "cmdFontPicker": {
-    "message": "Yazı tipi seçiciyi başlat"
-  },
-  "cmdMediaPicker": {
-    "message": "Medya seçiciyi başlat"
-  },
-  "cmdTextPicker": {
-    "message": "Metin seçiciyi başlat"
-  },
   "cmdScreenshotPicker": {
     "message": "Ekran görüntüsü aracını başlat"
   },
-  "cmdStickyNotesPicker": {
-    "message": "Not aracını başlat"
-  },
-  "cmdSiteInfoPicker": {
-    "message": "Site analizi aracını başlat"
-  },
-  "openPickachu": {
-    "message": "Pickachu'yu Aç"
+  "openToolary": {
+    "message": "Toolary'yu Aç"
   },
   "themeAuto": {
     "message": "Otomatik"
@@ -253,6 +202,102 @@
   },
   "version": {
     "message": "Sürüm 1.1"
+  },
+  "developer": {
+    "message": "Geliştirici"
+  },
+  "support": {
+    "message": "Destek"
+  },
+  "colorPickerDescription": {
+    "message": "Herhangi bir elemente tıklayarak rengini seçin ve hex, RGB, HSL değerlerini anında alın"
+  },
+  "elementPickerDescription": {
+    "message": "Elementlerin üzerine gelerek HTML yapısını, CSS stillerini ve seçicileri inceleyin"
+  },
+  "linkPickerDescription": {
+    "message": "Sayfadaki tüm linkleri bulun, durumlarını kontrol edin ve bozuk linkleri dışa aktarın"
+  },
+  "fontPickerDescription": {
+    "message": "Sayfada kullanılan fontları aile, boyut, kalınlık ve stil detaylarıyla tanımlayın"
+  },
+  "mediaPickerDescription": {
+    "message": "Mevcut sayfadaki tüm resim ve medya dosyalarını tek tıkla indirin"
+  },
+  "textPickerDescription": {
+    "message": "Herhangi bir elementten veya tüm sayfadan metin içeriğini seçin ve kopyalayın"
+  },
+  "screenshotPickerDescription": {
+    "message": "Yüksek kalitede tam sayfa ekran görüntüleri veya belirli elementleri yakalayın"
+  },
+  "stickyNotesPickerDescription": {
+    "message": "Herhangi bir web sayfasına geri döndüğünüzde kalan kalıcı yapışkan notlar ekleyin"
+  },
+  "siteInfoPickerDescription": {
+    "message": "Web sitesi teknoloji yığınını, SEO metriklerini ve performans verilerini analiz edin"
+  },
+  "settings": {
+    "message": "Ayarlar"
+  },
+  "preferences": {
+    "message": "Tercihler"
+  },
+  "tools": {
+    "message": "Araçlar"
+  },
+  "about": {
+    "message": "Hakkında"
+  },
+  "language": {
+    "message": "Dil"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "interface": {
+    "message": "Arayüz"
+  },
+  "visibility": {
+    "message": "Görünürlük"
+  },
+  "hideTools": {
+    "message": "Araçları başlatıcı ızgarasından gizleyin, ancak aranabilir tutun."
+  },
+  "tunePopup": {
+    "message": "Popup'ı çalışma şeklinize uyacak şekilde ayarlayın."
+  },
+  "switchLanguage": {
+    "message": "Popup dilini anında değiştirin."
+  },
+  "toggleTheme": {
+    "message": "Açık, karanlık veya sistem tercihlerini takip etme arasında geçiş yapın."
+  },
+  "reset": {
+    "message": "Sıfırla"
+  },
+  "save": {
+    "message": "Kaydet"
+  },
+  "close": {
+    "message": "Kapat"
+  },
+  "english": {
+    "message": "English"
+  },
+  "turkish": {
+    "message": "Türkçe"
+  },
+  "french": {
+    "message": "Français"
+  },
+  "aboutToolary": {
+    "message": "Toolary Hakkında"
+  },
+  "aboutDescription": {
+    "message": "Anlık yakalama ve inceleme için birleşik web seçici araç takımı."
+  },
+  "keyboardShortcuts": {
+    "message": "Klavye Kısayolları"
   },
   "developer": {
     "message": "Geliştirici"

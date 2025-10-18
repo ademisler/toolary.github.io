@@ -1,6 +1,9 @@
 {
   "extensionName": {
-    "message": "Pickachu – Web Picker Tool"
+    "message": "Toolary – Web Picker Tool"
+  },
+  "extensionShortName": {
+    "message": "Toolary"
   },
   "extensionDescription": {
     "message": "A lightweight picker toolbox to collect colors, elements, links, fonts, images, and text from any webpage."
@@ -120,7 +123,7 @@
     "message": "Keyboard shortcuts"
   },
   "shortcutsDescription": {
-    "message": "Trigger Pickachu faster with these shortcuts."
+    "message": "Trigger Toolary faster with these shortcuts."
   },
   "shortcutsGlobal": {
     "message": "Global"
@@ -132,7 +135,7 @@
     "message": "Inside the popup"
   },
   "shortcutOpen": {
-    "message": "Open Pickachu"
+    "message": "Open Toolary"
   },
   "shortcutToggle": {
     "message": "Toggle popup"
@@ -152,59 +155,23 @@
   "shortcutElementMac": {
     "message": "Option+Shift+2"
   },
-  "shortcutLink": {
+  "shortcutScreenshot": {
     "message": "Alt+Shift+3"
   },
-  "shortcutLinkMac": {
-    "message": "Option+Shift+3"
-  },
-  "shortcutFont": {
-    "message": "Alt+Shift+4"
-  },
-  "shortcutFontMac": {
-    "message": "Option+Shift+4"
-  },
-  "shortcutMedia": {
-    "message": "Alt+Shift+5"
-  },
-  "shortcutMediaMac": {
-    "message": "Option+Shift+5"
-  },
-  "shortcutText": {
-    "message": "Alt+Shift+6"
-  },
-  "shortcutTextMac": {
-    "message": "Option+Shift+6"
-  },
-  "shortcutScreenshot": {
-    "message": "Alt+Shift+7"
-  },
   "shortcutScreenshotMac": {
-    "message": "Option+Shift+7"
-  },
-  "shortcutNotes": {
-    "message": "Alt+Shift+8"
-  },
-  "shortcutNotesMac": {
-    "message": "Option+Shift+8"
-  },
-  "shortcutInfo": {
-    "message": "Alt+Shift+9"
-  },
-  "shortcutInfoMac": {
-    "message": "Option+Shift+9"
+    "message": "Option+Shift+3"
   },
   "createdBy": {
     "message": "Adem İsler"
   },
   "creatorRole": {
-    "message": "Creator of Pickachu"
+    "message": "Creator of Toolary"
   },
   "buyCoffee": {
     "message": "Buy me a coffee"
   },
   "cmdTogglePopup": {
-    "message": "Toggle the Pickachu popup"
+    "message": "Toggle the Toolary popup"
   },
   "cmdColorPicker": {
     "message": "Activate Color Picker"
@@ -212,29 +179,11 @@
   "cmdElementPicker": {
     "message": "Activate Element Picker"
   },
-  "cmdLinkPicker": {
-    "message": "Activate Link Picker"
-  },
-  "cmdFontPicker": {
-    "message": "Activate Font Picker"
-  },
-  "cmdMediaPicker": {
-    "message": "Activate Media Picker"
-  },
-  "cmdTextPicker": {
-    "message": "Activate Text Picker"
-  },
   "cmdScreenshotPicker": {
     "message": "Activate Screenshot Picker"
   },
-  "cmdStickyNotesPicker": {
-    "message": "Activate Sticky Notes"
-  },
-  "cmdSiteInfoPicker": {
-    "message": "Activate Site Info"
-  },
-  "openPickachu": {
-    "message": "Open Pickachu"
+  "openToolary": {
+    "message": "Open Toolary"
   },
   "themeAuto": {
     "message": "Auto"
@@ -253,6 +202,102 @@
   },
   "version": {
     "message": "Version 1.1"
+  },
+  "developer": {
+    "message": "Developer"
+  },
+  "support": {
+    "message": "Support"
+  },
+  "colorPickerDescription": {
+    "message": "Click any element to pick its color and get hex, RGB, HSL values instantly"
+  },
+  "elementPickerDescription": {
+    "message": "Hover over elements to inspect HTML structure, CSS styles, and selectors"
+  },
+  "linkPickerDescription": {
+    "message": "Find all links on the page, check their status, and export broken links"
+  },
+  "fontPickerDescription": {
+    "message": "Identify fonts used on the page with family, size, weight, and style details"
+  },
+  "mediaPickerDescription": {
+    "message": "Download all images and media files from the current page with one click"
+  },
+  "textPickerDescription": {
+    "message": "Select and copy text content from any element or the entire page"
+  },
+  "screenshotPickerDescription": {
+    "message": "Capture full page screenshots or specific elements with high quality"
+  },
+  "stickyNotesPickerDescription": {
+    "message": "Add persistent sticky notes to any webpage that stay when you return"
+  },
+  "siteInfoPickerDescription": {
+    "message": "Analyze website technology stack, SEO metrics, and performance data"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "preferences": {
+    "message": "Preferences"
+  },
+  "tools": {
+    "message": "Tools"
+  },
+  "about": {
+    "message": "About"
+  },
+  "language": {
+    "message": "Language"
+  },
+  "theme": {
+    "message": "Theme"
+  },
+  "interface": {
+    "message": "Interface"
+  },
+  "visibility": {
+    "message": "Visibility"
+  },
+  "hideTools": {
+    "message": "Hide tools from the launcher grid while keeping them searchable."
+  },
+  "tunePopup": {
+    "message": "Tune the popup to match how you work."
+  },
+  "switchLanguage": {
+    "message": "Switch the popup language instantly."
+  },
+  "toggleTheme": {
+    "message": "Toggle between light, dark, or follow system preferences."
+  },
+  "reset": {
+    "message": "Reset"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "close": {
+    "message": "Close"
+  },
+  "english": {
+    "message": "English"
+  },
+  "turkish": {
+    "message": "Türkçe"
+  },
+  "french": {
+    "message": "Français"
+  },
+  "aboutToolary": {
+    "message": "About Toolary"
+  },
+  "aboutDescription": {
+    "message": "Unified web picker toolkit for instant capture and inspection."
+  },
+  "keyboardShortcuts": {
+    "message": "Keyboard Shortcuts"
   },
   "developer": {
     "message": "Developer"

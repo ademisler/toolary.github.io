@@ -1,0 +1,173 @@
+{
+  "categories": {
+    "inspect": {
+      "name": "Inspect",
+      "description": "Analyze on-page elements and styles.",
+      "order": 1
+    },
+    "capture": {
+      "name": "Capture",
+      "description": "Collect and save content from any page.",
+      "order": 2
+    },
+    "enhance": {
+      "name": "Enhance",
+      "description": "Augment the browsing experience.",
+      "order": 3
+    },
+    "utilities": {
+      "name": "Utilities",
+      "description": "General purpose site utilities.",
+      "order": 4
+    }
+  },
+  "tools": [
+    {
+      "id": "color-picker",
+      "name": "Color Picker",
+      "category": "inspect",
+      "module": "inspect/colorPicker.js",
+      "order": 1,
+      "icon": "color",
+      "shortcut": {
+        "default": "Alt+Shift+1",
+        "mac": "Alt+Shift+1"
+      },
+      "i18n": {
+        "label": "color",
+        "title": "colorPicker"
+      },
+      "tags": ["color", "design", "palette"],
+      "keywords": ["hex", "rgb", "hsl", "eyedropper"],
+      "permissions": ["activeTab"]
+    },
+    {
+      "id": "element-picker",
+      "name": "Element Picker",
+      "category": "inspect",
+      "module": "inspect/elementPicker.js",
+      "order": 2,
+      "icon": "element",
+      "shortcut": {
+        "default": "Alt+Shift+2",
+        "mac": "Alt+Shift+2"
+      },
+      "i18n": {
+        "label": "element",
+        "title": "elementPicker"
+      },
+      "tags": ["dom", "css", "xpath"],
+      "keywords": ["selector", "xpath", "html"],
+      "permissions": ["activeTab"]
+    },
+    {
+      "id": "link-picker",
+      "name": "Link Picker",
+      "category": "inspect",
+      "module": "inspect/linkPicker.js",
+      "order": 3,
+      "icon": "link",
+      "i18n": {
+        "label": "link",
+        "title": "linkPicker"
+      },
+      "tags": ["links", "urls", "validation"],
+      "keywords": ["links", "broken links", "urls"],
+      "permissions": ["activeTab"]
+    },
+    {
+      "id": "font-picker",
+      "name": "Font Picker",
+      "category": "inspect",
+      "module": "inspect/fontPicker.js",
+      "order": 4,
+      "icon": "font",
+      "i18n": {
+        "label": "font",
+        "title": "fontPicker"
+      },
+      "tags": ["typography", "design"],
+      "keywords": ["font", "typography", "weights"],
+      "permissions": ["activeTab"]
+    },
+    {
+      "id": "media-picker",
+      "name": "Media Picker",
+      "category": "capture",
+      "module": "capture/mediaPicker.js",
+      "order": 5,
+      "icon": "image",
+      "i18n": {
+        "label": "media",
+        "title": "mediaPicker"
+      },
+      "tags": ["media", "image", "video"],
+      "keywords": ["images", "videos", "download"],
+      "permissions": ["activeTab", "downloads"]
+    },
+    {
+      "id": "text-picker",
+      "name": "Text Picker",
+      "category": "capture",
+      "module": "capture/textPicker.js",
+      "order": 6,
+      "icon": "text",
+      "i18n": {
+        "label": "text",
+        "title": "textPicker"
+      },
+      "tags": ["text", "content"],
+      "keywords": ["copy", "extract", "text"],
+      "permissions": ["activeTab"]
+    },
+    {
+      "id": "screenshot-picker",
+      "name": "Screenshot Picker",
+      "category": "capture",
+      "module": "capture/screenshotPicker.js",
+      "order": 7,
+      "icon": "screenshot",
+      "shortcut": {
+        "default": "Alt+Shift+3",
+        "mac": "Alt+Shift+3"
+      },
+      "i18n": {
+        "label": "screenshot",
+        "title": "screenshotPicker"
+      },
+      "tags": ["screenshot", "capture"],
+      "keywords": ["full page", "capture", "screenshot"],
+      "permissions": ["activeTab"]
+    },
+    {
+      "id": "sticky-notes-picker",
+      "name": "Sticky Notes",
+      "category": "enhance",
+      "module": "enhance/stickyNotesPicker.js",
+      "order": 8,
+      "icon": "notes",
+      "i18n": {
+        "label": "notes",
+        "title": "stickyNotesPicker"
+      },
+      "tags": ["notes", "storage"],
+      "keywords": ["sticky", "notes", "annotate"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "site-info-picker",
+      "name": "Site Info",
+      "category": "utilities",
+      "module": "utilities/siteInfoPicker.js",
+      "order": 9,
+      "icon": "info",
+      "i18n": {
+        "label": "info",
+        "title": "siteInfoPicker"
+      },
+      "tags": ["analysis", "seo"],
+      "keywords": ["tech stack", "seo", "accessibility"],
+      "permissions": ["activeTab"]
+    }
+  ]
+}

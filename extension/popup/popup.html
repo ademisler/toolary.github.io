@@ -3,129 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="extensionName">Pickachu</title>
+  <meta name="description" content="Toolary – unified web picker toolkit for instant capture and inspection.">
+  <meta name="theme-color" content="#1f3c88">
+  <title data-i18n="extensionName">Toolary</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <header class="header">
-    <div class="header-content">
+  <header class="header" role="banner">
+    <div class="header-top">
       <h1 class="logo">
         <span class="logo-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" fill="currentColor"/>
+            <rect x="14" y="3" width="7" height="7" fill="currentColor"/>
+            <rect x="14" y="14" width="7" height="7" fill="currentColor"/>
+            <rect x="3" y="14" width="7" height="7" fill="currentColor"/>
           </svg>
         </span>
-        <span class="logo-text">Pickachu</span>
-        <span class="version-badge" id="version-badge">v1.1</span>
+        <span class="logo-text">Toolary</span>
       </h1>
-      <p class="subtitle" data-i18n="popupSubtitle">Quick web picker tools</p>
+      <button id="settings-btn" class="icon-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="settings-panel" title="Settings">
+        <span class="sr-only">Settings</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.78 1.78 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.78 1.78 0 0 0-1.82-.33 1.78 1.78 0 0 0-1.09 1.64V21a2 2 0 0 1-4 0v-.09A1.78 1.78 0 0 0 9.6 19a1.78 1.78 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.78 1.78 0 0 0 5.4 15a1.78 1.78 0 0 0-1.64-1.09H3.67a2 2 0 0 1 0-4h.09A1.78 1.78 0 0 0 5.4 9a1.78 1.78 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.78 1.78 0 0 0 9.6 5a1.78 1.78 0 0 0 1.09-1.64V3a2 2 0 0 1 4 0v.09A1.78 1.78 0 0 0 14.4 5a1.78 1.78 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.78 1.78 0 0 0 18.6 9a1.78 1.78 0 0 0 1.64 1.09H21a2 2 0 0 1 0 4h-.09A1.78 1.78 0 0 0 19.4 15z"></path>
+        </svg>
+      </button>
     </div>
-    <div class="options">
-      <label for="lang-select" class="sr-only">Language</label>
-      <select id="lang-select" aria-label="Select language">
-        <option value="en">EN</option>
-        <option value="tr">TR</option>
-        <option value="fr">FR</option>
-      </select>
-      <label for="theme-select" class="sr-only">Theme</label>
-      <select id="theme-select" aria-label="Select theme">
-        <option value="system" data-i18n="themeAuto">Auto</option>
-        <option value="light" data-i18n="themeLight">Light</option>
-        <option value="dark" data-i18n="themeDark">Dark</option>
-      </select>
+    <div class="search-bar">
+      <div class="search-bar__input">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input id="tool-search" type="search" placeholder="Search tools..." autocomplete="off" spellcheck="false">
+      </div>
+      <button id="category-menu-btn" class="category-menu-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="category-menu" title="Filter by category">
+        <svg id="category-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+      </button>
+      <div id="category-menu" class="category-menu hidden" hidden>
+      <button type="button" class="category-menu-item" data-category="all">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        <span>All Tools</span>
+      </button>
+      <button type="button" class="category-menu-item" data-category="inspect">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <span>Inspect</span>
+      </button>
+      <button type="button" class="category-menu-item" data-category="capture">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+          <circle cx="12" cy="13" r="3"/>
+        </svg>
+        <span>Capture</span>
+      </button>
+      <button type="button" class="category-menu-item" data-category="enhance">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1-.365-.567L2.5 4.5a.5.5 0 0 1 .567-.365L9.937 5.5A2 2 0 0 0 11.5 6.937l6.135 1.582a.5.5 0 0 1 .365.567L17.5 19.5a.5.5 0 0 1-.567.365L9.937 15.5Z"/>
+          <path d="M12 2v4"/>
+          <path d="M12 18v4"/>
+          <path d="M4.93 4.93l2.83 2.83"/>
+          <path d="M16.24 16.24l2.83 2.83"/>
+          <path d="M2 12h4"/>
+          <path d="M18 12h4"/>
+          <path d="M4.93 19.07l2.83-2.83"/>
+          <path d="M16.24 7.76l2.83-2.83"/>
+        </svg>
+        <span>Enhance</span>
+      </button>
+      <button type="button" class="category-menu-item" data-category="utilities">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+        <span>Utilities</span>
+      </button>
+      </div>
+    </div>
+    </div>
+    <div id="search-feedback" class="search-feedback" aria-live="polite">
+      <div id="search-chips" class="search-chips"></div>
+      <span id="search-result-count" class="search-feedback__count"></span>
     </div>
   </header>
 
-  <main class="main">
-    <nav class="tools-grid" role="navigation" aria-label="Web picker tools">
-      <button id="color-picker" class="tool-btn" title="Color Picker" data-i18n-title="colorPicker" aria-label="Color picker tool">
-        <img class="tool-icon" src="../icons/tools/color.svg" alt="Color picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="color">Color</span>
-      </button>
-      <button id="element-picker" class="tool-btn" title="Element Picker" data-i18n-title="elementPicker" aria-label="Element picker tool">
-        <img class="tool-icon" src="../icons/tools/element.svg" alt="Element picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="element">Element</span>
-      </button>
-      <button id="link-picker" class="tool-btn" title="Link Picker" data-i18n-title="linkPicker" aria-label="Link picker tool">
-        <img class="tool-icon" src="../icons/tools/link.svg" alt="Link picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="link">Link</span>
-      </button>
-      <button id="font-picker" class="tool-btn" title="Font Picker" data-i18n-title="fontPicker" aria-label="Font picker tool">
-        <img class="tool-icon" src="../icons/tools/font.svg" alt="Font picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="font">Font</span>
-      </button>
-      <button id="media-picker" class="tool-btn" title="Media Picker" data-i18n-title="mediaPicker" aria-label="Media picker tool">
-        <img class="tool-icon" src="../icons/tools/image.svg" alt="Media picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="media">Media</span>
-      </button>
-      <button id="text-picker" class="tool-btn" title="Text Picker" data-i18n-title="textPicker" aria-label="Text picker tool">
-        <img class="tool-icon" src="../icons/tools/text.svg" alt="Text picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="text">Text</span>
-      </button>
-      <button id="screenshot-picker" class="tool-btn" title="Screenshot Picker" data-i18n-title="screenshotPicker" aria-label="Screenshot picker tool">
-        <img class="tool-icon" src="../icons/tools/screenshot.svg" alt="Screenshot picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="screenshot">Screenshot</span>
-      </button>
-      <button id="sticky-notes-picker" class="tool-btn" title="Sticky Notes Picker" data-i18n-title="stickyNotesPicker" aria-label="Sticky notes picker tool">
-        <img class="tool-icon" src="../icons/tools/notes.svg" alt="Sticky notes picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="notes">Notes</span>
-      </button>
-      <button id="site-info-picker" class="tool-btn" title="Site Info Picker" data-i18n-title="siteInfoPicker" aria-label="Site info picker tool">
-        <img class="tool-icon" src="../icons/tools/info.svg" alt="Site info picker icon" aria-hidden="true" />
-        <span class="tool-label" data-i18n="info">Info</span>
-      </button>
-    </nav>
+  <main class="main" role="main">
+    <section id="tools-section" class="tool-section">
+      <div class="tools-virtual-container" data-section="all" tabindex="0">
+        <div class="tools-grid" role="grid" aria-label="Web picker tools"></div>
+        <div class="virtual-sentinel" aria-hidden="true"></div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-actions">
-      <button id="favorites-btn" class="footer-btn" aria-label="View favorites">
-        <span class="footer-btn-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-          </svg>
-        </span>
-        <span class="footer-btn-text" data-i18n="favorites">Favorites</span>
-      </button>
-      <button id="shortcuts-btn" class="footer-btn" aria-label="View shortcuts">
-        <span class="footer-btn-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 5h12" />
-            <path d="M6 9h12" />
-            <path d="M10 13h4" />
-            <rect width="20" height="14" x="2" y="5" rx="2" />
-            <path d="M6 17h12" />
-          </svg>
-        </span>
-        <span class="footer-btn-text" data-i18n="shortcuts">Shortcuts</span>
-      </button>
-    </div>
+  <!-- Minimal pagination - only left/right arrows -->
+  <div id="pagination" class="pagination" hidden>
+    <button id="prev-page" class="pagination-btn" type="button" aria-label="Previous page" disabled>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </button>
+    <button id="next-page" class="pagination-btn" type="button" aria-label="Next page" disabled>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
 
-    <div class="footer-meta">
-      <a href="https://ademisler.com/en" target="_blank" rel="noopener noreferrer" class="footer-btn">
-        <span class="footer-btn-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-        </span>
-        <span class="footer-btn-text" data-i18n="developer">Geliştirici</span>
-      </a>
-      <a href="https://buymeacoffee.com/ademisler" target="_blank" rel="noopener noreferrer" class="footer-btn">
-        <span class="footer-btn-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 10h15" />
-            <path d="M5 6h13" />
-            <path d="M6 2h11" />
-            <path d="m6 18-.7 2.1a1 1 0 0 0 .95 1.3h11.5a1 1 0 0 0 .95-1.3L18 18" />
-            <path d="M19 10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3" />
-          </svg>
-        </span>
-        <span class="footer-btn-text" data-i18n="support">Destek</span>
-      </a>
-    </div>
-  </footer>
 
-  <script src="popup.js"></script>
+  <aside id="settings-panel" class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
+    <div class="settings-panel__content">
+      <header class="settings-panel__header">
+        <h2 id="settings-title" data-i18n="settings">Settings</h2>
+        <button id="close-settings" class="icon-btn" type="button">
+          <span class="sr-only" data-i18n="close">Close settings</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </header>
+      <div class="settings-panel__main">
+        <nav class="settings-panel__tabs" role="tablist" aria-label="Settings sections">
+          <button id="settings-tab-preferences" class="settings-tab active" data-tab="preferences" role="tab" aria-selected="true" aria-controls="settings-content-preferences" data-i18n="preferences">Preferences</button>
+          <button id="settings-tab-tools" class="settings-tab" data-tab="tools" role="tab" aria-selected="false" aria-controls="settings-content-tools" data-i18n="tools">Tools</button>
+          <button id="settings-tab-about" class="settings-tab" data-tab="about" role="tab" aria-selected="false" aria-controls="settings-content-about" data-i18n="about">About</button>
+        </nav>
+        <div class="settings-panel__body" role="document">
+          <div id="settings-content-preferences" class="settings-content active" role="tabpanel" aria-labelledby="settings-tab-preferences" aria-hidden="false" tabindex="0">
+            <section class="settings-section">
+              <h3 class="settings-section__title" data-i18n="interface">Interface</h3>
+              <p class="settings-section__description" data-i18n="tunePopup">Tune the popup to match how you work.</p>
+              <div class="settings-grid">
+                <div class="settings-card">
+                  <div class="settings-card__header">
+                    <span class="settings-card__eyebrow" data-i18n="language">Language</span>
+                    <p class="settings-card__text" data-i18n="switchLanguage">Switch the popup language instantly.</p>
+                  </div>
+                  <select id="settings-lang-select" class="settings-select">
+                    <option value="en" data-i18n="english">English</option>
+                    <option value="tr" data-i18n="turkish">Türkçe</option>
+                    <option value="fr" data-i18n="french">Français</option>
+                  </select>
+                </div>
+                <div class="settings-card">
+                  <div class="settings-card__header">
+                    <span class="settings-card__eyebrow" data-i18n="theme">Theme</span>
+                    <p class="settings-card__text" data-i18n="toggleTheme">Toggle between light, dark, or follow system preferences.</p>
+                  </div>
+                  <select id="settings-theme-select" class="settings-select">
+                    <option value="system" data-i18n="themeAuto">Auto</option>
+                    <option value="light" data-i18n="themeLight">Light</option>
+                    <option value="dark" data-i18n="themeDark">Dark</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div id="settings-content-tools" class="settings-content" role="tabpanel" aria-labelledby="settings-tab-tools" aria-hidden="true" tabindex="-1">
+            <section class="settings-section">
+              <h3 class="settings-section__title" data-i18n="visibility">Visibility</h3>
+              <p class="settings-section__description" data-i18n="hideTools">Hide tools from the launcher grid while keeping them searchable.</p>
+              <div id="settings-tool-list" class="settings-tool-list" role="group" aria-label="Tool toggles"></div>
+            </section>
+          </div>
+          <div id="settings-content-about" class="settings-content" role="tabpanel" aria-labelledby="settings-tab-about" aria-hidden="true" tabindex="-1">
+            <section class="settings-section">
+              <h3 class="settings-section__title" data-i18n="aboutToolary">About Toolary</h3>
+              <p class="settings-section__description" data-i18n="aboutDescription">Unified web picker toolkit for instant capture and inspection.</p>
+              <div class="settings-card settings-card--list">
+                <button id="settings-shortcuts-btn" class="settings-link" type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 5h12" />
+                    <path d="M6 9h12" />
+                    <path d="M10 13h4" />
+                    <rect width="20" height="14" x="2" y="5" rx="2" />
+                    <path d="M6 17h12" />
+                  </svg>
+                  <span data-i18n="keyboardShortcuts">Keyboard Shortcuts</span>
+                </button>
+                <a href="https://ademisler.com/en" target="_blank" rel="noopener noreferrer" class="settings-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  <span data-i18n="developer">Developer</span>
+                </a>
+                <a href="https://buymeacoffee.com/ademisler" target="_blank" rel="noopener noreferrer" class="settings-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 10h15" />
+                    <path d="M5 6h13" />
+                    <path d="M6 2h11" />
+                    <path d="M6 18-.7 2.1a1 1 0 0 0 .95 1.3h11.5a1 1 0 0 0 .95-1.3L18 18" />
+                    <path d="M19 10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3" />
+                  </svg>
+                  <span data-i18n="support">Support</span>
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <footer class="settings-panel__footer">
+        <button id="settings-reset" class="link-btn" type="button" data-i18n="reset">Reset</button>
+        <button id="settings-save" class="primary-btn" type="button" data-i18n="save">Save</button>
+      </footer>
+    </div>
+  </aside>
+
+  <div id="popup-toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script type="module" src="popup.js"></script>
 </body>
 </html>

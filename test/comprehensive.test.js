@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
-describe('Pickachu Extension - Comprehensive Tests', () => {
+describe('Toolary Extension - Comprehensive Tests', () => {
   
   describe('File Structure', () => {
     test('all required files exist', () => {
@@ -14,7 +14,13 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
         'extension/popup/popup.html',
         'extension/popup/popup.js',
         'extension/popup/popup.css',
-        'extension/modules/helpers.js'
+        'extension/shared/helpers.js',
+        'extension/shared/icons.js',
+        'extension/core/toolRegistry.js',
+        'extension/core/toolLoader.js',
+        'extension/core/messageRouter.js',
+        'extension/core/constants.js',
+        'extension/config/tools-manifest.json'
       ];
 
       requiredFiles.forEach(file => {
@@ -25,19 +31,19 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
 
     test('all picker modules exist', () => {
       const modules = [
-        'colorPicker.js',
-        'elementPicker.js',
-        'screenshotPicker.js',
-        'textPicker.js',
-        'linkPicker.js',
-        'fontPicker.js',
-        'mediaPicker.js',
-        'siteInfoPicker.js',
-        'stickyNotesPicker.js'
+        'inspect/colorPicker.js',
+        'inspect/elementPicker.js',
+        'capture/screenshotPicker.js',
+        'capture/textPicker.js',
+        'inspect/linkPicker.js',
+        'inspect/fontPicker.js',
+        'capture/mediaPicker.js',
+        'utilities/siteInfoPicker.js',
+        'enhance/stickyNotesPicker.js'
       ];
 
-      modules.forEach(module => {
-        const fullPath = path.join(process.cwd(), 'extension/modules', module);
+      modules.forEach(modulePath => {
+        const fullPath = path.join(process.cwd(), 'extension/tools', modulePath);
         expect(fs.existsSync(fullPath)).toBe(true);
       });
     });
@@ -109,8 +115,9 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
       const content = fs.readFileSync(backgroundPath, 'utf8');
       
       // Basic syntax checks
-      expect(content).toMatch(/chrome\.runtime\.onMessage\.addListener/);
-      expect(content).toMatch(/chrome\.tabs\.query/);
+      expect(content).toMatch(/addMessageListener/);
+      expect(content).toMatch(/chrome\.commands\.onCommand/);
+      expect(content).toMatch(/sendTabMessage/);
       expect(content).toMatch(/chrome\.scripting\.executeScript/);
     });
 
@@ -119,13 +126,13 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
       const content = fs.readFileSync(contentPath, 'utf8');
       
       // Basic syntax checks
-      expect(content).toMatch(/chrome\.runtime\.onMessage\.addListener/);
-      expect(content).toMatch(/loadModule/);
+      expect(content).toMatch(/addMessageListener/);
+      expect(content).toMatch(/loadToolModule/);
       expect(content).toMatch(/resetActiveModule/);
     });
 
     test('helpers.js has valid syntax', () => {
-      const helpersPath = path.join(process.cwd(), 'extension/modules/helpers.js');
+      const helpersPath = path.join(process.cwd(), 'extension/shared/helpers.js');
       const content = fs.readFileSync(helpersPath, 'utf8');
       
       // Check for required exports
@@ -140,33 +147,33 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
 
     test('all picker modules have valid syntax', () => {
       const modules = [
-        'colorPicker.js',
-        'elementPicker.js',
-        'screenshotPicker.js',
-        'textPicker.js',
-        'linkPicker.js',
-        'fontPicker.js',
-        'mediaPicker.js',
-        'siteInfoPicker.js',
-        'stickyNotesPicker.js'
+        'inspect/colorPicker.js',
+        'inspect/elementPicker.js',
+        'capture/screenshotPicker.js',
+        'capture/textPicker.js',
+        'inspect/linkPicker.js',
+        'inspect/fontPicker.js',
+        'capture/mediaPicker.js',
+        'utilities/siteInfoPicker.js',
+        'enhance/stickyNotesPicker.js'
       ];
 
       modules.forEach(module => {
-        const modulePath = path.join(process.cwd(), 'extension/modules', module);
+        const modulePath = path.join(process.cwd(), 'extension/tools', module);
         const content = fs.readFileSync(modulePath, 'utf8');
         
         // Each module should expose an activate function (async allowed)
         expect(content).toMatch(/export\s+(async\s+)?function activate/);
         
         // Each module should import helper utilities (supporting multiline imports)
-        expect(content).toMatch(/import[\s\S]*from '\.\/helpers\.js'/);
+        expect(content).toMatch(/import[\s\S]*from '\.\.\/\.\.\/shared\/helpers\.js'/);
       });
     });
   });
 
   describe('Module Dependencies', () => {
     test('all imports are properly defined', () => {
-      const helpersPath = path.join(process.cwd(), 'extension/modules/helpers.js');
+      const helpersPath = path.join(process.cwd(), 'extension/shared/helpers.js');
       const helpersContent = fs.readFileSync(helpersPath, 'utf8');
       
       // Get all exports from helpers
@@ -178,23 +185,23 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
       
       // Check each module's imports
       const modules = [
-        'colorPicker.js',
-        'elementPicker.js',
-        'screenshotPicker.js',
-        'textPicker.js',
-        'linkPicker.js',
-        'fontPicker.js',
-        'mediaPicker.js',
-        'siteInfoPicker.js',
-        'stickyNotesPicker.js'
+        'inspect/colorPicker.js',
+        'inspect/elementPicker.js',
+        'capture/screenshotPicker.js',
+        'capture/textPicker.js',
+        'inspect/linkPicker.js',
+        'inspect/fontPicker.js',
+        'capture/mediaPicker.js',
+        'utilities/siteInfoPicker.js',
+        'enhance/stickyNotesPicker.js'
       ];
 
       modules.forEach(module => {
-        const modulePath = path.join(process.cwd(), 'extension/modules', module);
+        const modulePath = path.join(process.cwd(), 'extension/tools', module);
         const content = fs.readFileSync(modulePath, 'utf8');
         
         // Extract imports from helpers
-        const importMatch = content.match(/import \{([^}]+)\} from '\.\/helpers\.js'/);
+        const importMatch = content.match(/import \{([^}]+)\} from '\.\.\/\.\.\/shared\/helpers\.js'/);
         if (importMatch) {
           const imports = importMatch[1].split(',').map(imp => imp.trim());
           
@@ -213,7 +220,7 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
         'extension/manifest.json',
         'extension/background.js',
         'extension/content/content.js',
-        'extension/modules/helpers.js'
+        'extension/shared/helpers.js'
       ];
 
       importantFiles.forEach(file => {
@@ -225,19 +232,19 @@ describe('Pickachu Extension - Comprehensive Tests', () => {
 
     test('modules have reasonable sizes', () => {
       const modules = [
-        'colorPicker.js',
-        'elementPicker.js',
-        'screenshotPicker.js',
-        'textPicker.js',
-        'linkPicker.js',
-        'fontPicker.js',
-        'mediaPicker.js',
-        'siteInfoPicker.js',
-        'stickyNotesPicker.js'
+        'inspect/colorPicker.js',
+        'inspect/elementPicker.js',
+        'capture/screenshotPicker.js',
+        'capture/textPicker.js',
+        'inspect/linkPicker.js',
+        'inspect/fontPicker.js',
+        'capture/mediaPicker.js',
+        'utilities/siteInfoPicker.js',
+        'enhance/stickyNotesPicker.js'
       ];
 
       modules.forEach(module => {
-        const modulePath = path.join(process.cwd(), 'extension/modules', module);
+        const modulePath = path.join(process.cwd(), 'extension/tools', module);
         const stats = fs.statSync(modulePath);
         
         // Each module should be at least 1KB and not more than 100KB

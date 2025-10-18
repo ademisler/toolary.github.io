@@ -1,13 +1,13 @@
 // Test file for all picker modules
-import { activate as activateColorPicker } from '../extension/modules/colorPicker.js';
-import { activate as activateElementPicker } from '../extension/modules/elementPicker.js';
-import { activate as activateScreenshotPicker } from '../extension/modules/screenshotPicker.js';
-import { activate as activateTextPicker } from '../extension/modules/textPicker.js';
-import { activate as activateLinkPicker } from '../extension/modules/linkPicker.js';
-import { activate as activateFontPicker } from '../extension/modules/fontPicker.js';
-import { activate as activateMediaPicker } from '../extension/modules/mediaPicker.js';
-import { activate as activateSiteInfoPicker } from '../extension/modules/siteInfoPicker.js';
-import { activate as activateStickyNotesPicker } from '../extension/modules/stickyNotesPicker.js';
+import { activate as activateColorPicker } from '../extension/tools/inspect/colorPicker.js';
+import { activate as activateElementPicker } from '../extension/tools/inspect/elementPicker.js';
+import { activate as activateScreenshotPicker } from '../extension/tools/capture/screenshotPicker.js';
+import { activate as activateTextPicker } from '../extension/tools/capture/textPicker.js';
+import { activate as activateLinkPicker } from '../extension/tools/inspect/linkPicker.js';
+import { activate as activateFontPicker } from '../extension/tools/inspect/fontPicker.js';
+import { activate as activateMediaPicker } from '../extension/tools/capture/mediaPicker.js';
+import { activate as activateSiteInfoPicker } from '../extension/tools/utilities/siteInfoPicker.js';
+import { activate as activateStickyNotesPicker } from '../extension/tools/enhance/stickyNotesPicker.js';
 
 describe('Picker Modules', () => {
   

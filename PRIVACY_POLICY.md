@@ -1,65 +1,46 @@
-# Privacy Policy for Pickachu Extension
+# Toolary Privacy Policy
 
-**Last updated: September 27, 2025**
+_Effective date: Toolary v2.0.0_
 
-## Overview
-
-Pickachu is a web development tool extension that helps users extract and analyze content from web pages. This privacy policy explains how we handle your data.
+Toolary is built with a privacy-first mindset. The extension operates entirely within your browser and never sends page data, notes, or usage information to external servers.
 
 ## Data Collection
 
-**We do NOT collect, store, or transmit any personal data.**
+| Data Type | Stored? | Location | Purpose |
+|-----------|---------|----------|---------|
+| Favorites & hidden tools | Yes | `chrome.storage.sync` | Synchronise your popup preferences across Chrome profiles |
+| Recent tools | Yes | `chrome.storage.local` | Show the last five tools you activated |
+| Sticky notes | Yes | `chrome.storage.sync` (per-site keys) | Persist your notes across sessions/devices |
+| Page content, colors, fonts, links | No (in-memory only) | N/A | Processed on demand, never persisted or transmitted |
+| Diagnostic telemetry | No | N/A | Toolary does not send analytics or crash reports |
 
-## What We Don't Do
+### Sticky Notes
+Notes are stored under keys prefixed with `toolaryStickyNotes_`. Legacy Pickachu keys (`stickyNotes_`) are migrated in place. You can remove notes via the sticky notes manager or by clearing the associated keys in Chrome storage.
 
-- ❌ We don't collect personal information
-- ❌ We don't track your browsing history
-- ❌ We don't store data on external servers
-- ❌ We don't share data with third parties
-- ❌ We don't use analytics or tracking cookies
+## Permissions Explained
 
-## What We Do
+- **`activeTab` / `tabs` / `scripting`** – Required to inject the content script when you activate a tool.  
+- **`downloads`** – Needed so Screenshot/Media tools can save files locally.  
+- **`storage` / `clipboardWrite`** – Used for favorites, notes, settings, and clipboard operations.
 
-- ✅ All processing happens locally on your device
-- ✅ Data is only stored locally in your browser
-- ✅ No external network requests for data collection
-- ✅ Open source code for transparency
+Toolary requests only the permissions needed for the current feature set. Future tool additions will revisit permission requirements during review.
 
-## Local Storage
+## Third Parties
 
-The extension may store the following data locally in your browser:
+Toolary does **not** rely on external services, trackers, or CDNs. All code ships with the extension bundle and runs locally.
 
-- **Sticky Notes**: Notes you create are stored locally in Chrome's storage
-- **Settings**: Your language and theme preferences
-- **History**: Recently used tools (stored locally only)
+## User Controls
 
-This data never leaves your device and is not transmitted to any external servers.
-
-## Permissions
-
-The extension requires the following permissions:
-
-- **activeTab**: To access the current tab for content analysis
-- **scripting**: To inject content scripts for tool functionality
-- **clipboardWrite**: To copy extracted content to your clipboard
-- **storage**: To save your preferences and notes locally
-- **tabs**: To get tab information for screenshots
-- **downloads**: To download extracted media files
-
-## Third-Party Services
-
-This extension does not use any third-party services or APIs for data collection.
+- Manage favorites, hidden tools, and notes directly inside the popup UI.
+- Clear Toolary data via Chrome’s extension storage management (`chrome://settings/siteData` → search “toolary”).
+- Remove the extension at any time to delete all associated storage.
 
 ## Updates
 
-This privacy policy may be updated from time to time. Any changes will be posted on this page.
+Updates are delivered through the Chrome Web Store. Each release is accompanied by changelog entries outlining new features or fixes.
 
 ## Contact
 
-If you have any questions about this privacy policy, please contact the developer.
+For privacy-related questions or issues please open an issue on the GitHub repository or reach out via https://ademisler.com.
 
----
-
-**Extension Name**: Pickachu  
-**Version**: 1.1.0  
-**Developer**: Adem Isler
+Toolary may revise this policy for future releases. The version number at the top of this document indicates the latest update.

@@ -1,7 +1,7 @@
 {
-  "name": "pickachu",
-  "version": "1.1.0",
-  "description": "Pickachu is a lightweight toolbox for grabbing colors, elements, links, fonts, images, and text from any webpage.",
+  "name": "toolary",
+  "version": "2.0.0",
+  "description": "Toolary unifies inspection, capture, notes, and site info tools with a searchable popup, favorites, and recent history.",
   "main": "index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
@@ -20,6 +20,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ademisler/pickachu.git"
+    "url": "https://github.com/fulexo/toolary.git"
   }
 }

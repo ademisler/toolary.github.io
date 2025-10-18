@@ -1,23 +1,33 @@
-// background.js
-// Content script injection cache
+import * as messageRouter from './core/messageRouter.js';
+import * as toolRegistry from './core/toolRegistry.js';
+
 const injectedTabs = new Set();
 
 async function ensureContentScriptInjected(tabId) {
   if (injectedTabs.has(tabId)) {
     return true;
   }
-  
+
   try {
     await chrome.scripting.executeScript({
-      target: { tabId: tabId },
+      target: { tabId },
       files: ['content/content.js']
     });
     injectedTabs.add(tabId);
     return true;
   } catch (error) {
-    console.error('Failed to inject content script:', error);
+    console.error('Toolary: failed to inject content script', error);
     return false;
   }
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function getActiveTab() {
+  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+  return tabs[0] || null;
 }
 
 async function dispatchToolToActiveTab(toolId) {
@@ -25,10 +35,13 @@ async function dispatchToolToActiveTab(toolId) {
     throw new Error('Missing tool identifier');
   }
 
-  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-  const tab = tabs[0];
+  const tool = await toolRegistry.getToolById(toolId);
+  if (!tool) {
+    throw new Error(`Unknown tool id: ${toolId}`);
+  }
 
-  if (!tab) {
+  const tab = await getActiveTab();
+  if (!tab?.id) {
     throw new Error('No active tab found');
   }
 
@@ -37,111 +50,63 @@ async function dispatchToolToActiveTab(toolId) {
     throw new Error('Unable to inject content script');
   }
 
-  await new Promise(resolve => setTimeout(resolve, 80));
-
-  await chrome.tabs.sendMessage(tab.id, {
-    type: 'ACTIVATE_TOOL_ON_PAGE',
-    tool: toolId
-  });
-
+  await delay(80);
+  await messageRouter.sendTabMessage(tab.id, messageRouter.MESSAGE_TYPES.ACTIVATE_TOOL_ON_PAGE, { toolId });
   return true;
 }
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'ACTIVATE_TOOL') {
-    (async () => {
-      try {
-        await dispatchToolToActiveTab(request.tool);
-        sendResponse({ success: true });
-      } catch (error) {
-        console.error('Error in ACTIVATE_TOOL:', error);
-        sendResponse({ success: false, error: error.message });
-      }
-    })();
-    return true;
+async function requestPageDimensions() {
+  const tab = await getActiveTab();
+  if (!tab?.id) {
+    throw new Error('No active tab found');
   }
 
-  if (request.type === 'CAPTURE_VISIBLE_TAB') {
-    (async () => {
-      try {
-        const dataUrl = await chrome.tabs.captureVisibleTab({ format: 'png', quality: 100 });
-        if (chrome.runtime.lastError) {
-          throw new Error(chrome.runtime.lastError.message);
-        }
-        if (!dataUrl) {
-          throw new Error('No image data received.');
-        }
-        sendResponse({ success: true, dataUrl });
-      } catch (error) {
-        console.error('Error capturing visible tab:', error);
-        sendResponse({ success: false, error: error.message });
-      }
-    })();
-    return true;
+  const injected = await ensureContentScriptInjected(tab.id);
+  if (!injected) {
+    throw new Error('Unable to inject content script');
   }
 
-  if (request.type === 'DOWNLOAD_MEDIA') {
-    try {
-      const { url, filename } = request;
-      if (!url) {
-        sendResponse({ success: false, error: 'Missing media URL.' });
-        return true;
-      }
+  const dimensions = await messageRouter.sendTabMessage(tab.id, messageRouter.MESSAGE_TYPES.GET_PAGE_DIMENSIONS, {});
+  return { success: true, dimensions };
+}
 
-      chrome.downloads.download({ url, filename }, (downloadId) => {
-        if (chrome.runtime.lastError) {
-          console.error('Download failed:', chrome.runtime.lastError);
-          sendResponse({ success: false, error: chrome.runtime.lastError.message });
-          return;
-        }
-        sendResponse({ success: true, downloadId });
-      });
-    } catch (error) {
-      console.error('Failed to initiate download:', error);
-      sendResponse({ success: false, error: error.message });
+const { addMessageListener, MESSAGE_TYPES } = messageRouter;
+
+addMessageListener({
+  [MESSAGE_TYPES.ACTIVATE_TOOL]: async (payload) => {
+    const toolId = payload?.toolId || payload?.tool;
+    if (!toolId) {
+      throw new Error('Missing tool id');
     }
-    return true;
-  }
+    await dispatchToolToActiveTab(toolId);
+    return { success: true };
+  },
+  [MESSAGE_TYPES.CAPTURE_VISIBLE_TAB]: async () => {
+    const dataUrl = await chrome.tabs.captureVisibleTab({ format: 'png', quality: 100 });
+    if (chrome.runtime.lastError) {
+      throw new Error(chrome.runtime.lastError.message);
+    }
+    if (!dataUrl) {
+      throw new Error('No image data received.');
+    }
+    return { success: true, dataUrl };
+  },
+  [MESSAGE_TYPES.DOWNLOAD_MEDIA]: ({ url, filename }) => new Promise((resolve) => {
+    if (!url) {
+      resolve({ success: false, error: 'Missing media URL.' });
+      return;
+    }
 
-  if (request.type === 'GET_PAGE_DIMENSIONS') {
-    (async () => {
-      try {
-        const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-        const tab = tabs[0];
-
-        if (!tab) {
-          console.error('No active tab found');
-          sendResponse({ success: false, error: 'No active tab found' });
-          return;
-        }
-
-        const results = await chrome.scripting.executeScript({
-          target: { tabId: tab.id },
-          func: () => {
-            const rect = document.documentElement.getBoundingClientRect();
-            return {
-              width: rect.width,
-              height: rect.height,
-              scrollWidth: document.documentElement.scrollWidth,
-              scrollHeight: document.documentElement.scrollHeight,
-              innerWidth: window.innerWidth,
-              innerHeight: window.innerHeight
-            };
-          }
-        });
-
-        if (results && results[0] && results[0].result) {
-          sendResponse({ success: true, dimensions: results[0].result });
-        } else {
-          throw new Error('Failed to get page dimensions');
-        }
-      } catch (error) {
-        console.error('Error getting page dimensions:', error);
-        sendResponse({ success: false, error: error.message || 'Unknown error occurred' });
+    chrome.downloads.download({ url, filename }, (downloadId) => {
+      if (chrome.runtime.lastError) {
+        console.error('Toolary: download failed', chrome.runtime.lastError);
+        resolve({ success: false, error: chrome.runtime.lastError.message });
+        return;
       }
-    })();
-    return true;
-  }
+      resolve({ success: true, downloadId });
+    });
+  }),
+  [MESSAGE_TYPES.GET_PAGE_DIMENSIONS]: () => requestPageDimensions()
 });
 
 const COMMAND_TOOL_MAP = {
@@ -155,47 +120,32 @@ chrome.commands.onCommand.addListener(async (command) => {
     try {
       await dispatchToolToActiveTab(COMMAND_TOOL_MAP[command]);
     } catch (error) {
-      console.error(`Failed to run command ${command}:`, error);
+      console.error(`Toolary: failed to run command ${command}`, error);
     }
     return;
   }
 
   if (command === 'open-popup' || command === 'toggle-popup') {
     try {
-      // Try to open popup first
       await chrome.action.openPopup();
     } catch (error) {
-      // If popup fails (common on macOS), fallback to tab-based approach
-      console.log('Popup failed, trying alternative approach:', error);
-      
+      console.log('Toolary: popup open failed, falling back to in-page overlay', error);
       try {
-        // Get the current active tab
-        const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-        const tab = tabs[0];
-        
-        if (tab) {
-          // Ensure content script is injected
+        const tab = await getActiveTab();
+        if (tab?.id) {
           const injected = await ensureContentScriptInjected(tab.id);
           if (injected) {
-            // Send message to show popup in content script
-            setTimeout(() => {
-              chrome.tabs.sendMessage(tab.id, {
-                type: 'SHOW_PICKACHU_POPUP'
-              }).catch(error => {
-                console.error('Failed to show popup via content script:', error);
-              });
-            }, 100);
+            await delay(100);
+            await messageRouter.sendTabMessage(tab.id, messageRouter.MESSAGE_TYPES.SHOW_POPUP, {});
           }
         }
       } catch (fallbackError) {
-        console.error('Fallback popup method also failed:', fallbackError);
+        console.error('Toolary: fallback popup method failed', fallbackError);
       }
     }
-    return;
   }
 });
 
-// Clean up cache when tab is closed
 chrome.tabs.onRemoved.addListener((tabId) => {
   injectedTabs.delete(tabId);
 });

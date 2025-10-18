@@ -1,166 +1,98 @@
-# Pickachu – Web Development Toolkit
+# Toolary – Web Productivity Toolkit
 
-Pickachu is a powerful, free and open-source Chrome extension that provides 9 essential web development tools in one unified toolbox. Extract, analyze, and capture content from any webpage with professional-grade precision.
+Toolary bundles nine essential inspection, capture, and utility tools into a single Chrome extension. Version 2.0.0 introduces a scalable popup with search, categories, favorites, recent history, and tool visibility settings – all while keeping data on-device.
 
-**Version 1.1.0**
+## Features
 
-## 🚀 Core Tools
+| Category | Tool | Shortcut | Highlights |
+|----------|------|----------|------------|
+| Inspect  | Color Picker | Alt + Shift + 1 | Eyedropper with RGB/HSL, copy to clipboard |
+| Inspect  | Element Picker | Alt + Shift + 2 | CSS/XPath paths, overlay inspector |
+| Inspect  | Link Picker | Popup | Link extraction & validation |
+| Inspect  | Font Picker | Popup | Typography snapshot (family, weights, CSS) |
+| Capture  | Media Picker | Popup | Image/video discovery & download |
+| Capture  | Text Picker | Popup | Copy-protected text extraction |
+| Capture  | Screenshot Picker | Alt + Shift + 3 | Full-page stitching with download |
+| Enhance  | Sticky Notes | Popup | Persistent notes per site (syncable) |
+| Utilities| Site Info | Popup | Tech stack, performance, accessibility hints |
 
-- **🎨 Color Picker** - Extract colors using the EyeDropper API with RGB/HSL conversion
-- **🅰️ Font Inspector** - Analyze typography: family, size, weight, color, and CSS properties  
-- **🖼️ Media Extractor** - Preview, download, and analyze images and videos
-- **🔗 Link Analyzer** - Extract and categorize all page links with URL validation
-- **📝 Text Selector** - Copy text content from any element (including protected pages)
-- **🧱 Element Inspector** - Deep HTML analysis with CSS selectors and XPath generation
-- **📸 Screenshot Tool** - Capture full-page screenshots with automatic stitching
-- **📌 Sticky Notes** - Add persistent notes to any webpage (site-specific storage)
-- **🔍 Site Analyzer** - Comprehensive website analysis: tech stack, performance, SEO, accessibility
+Additional highlights:
+- **Search & Filters** – Find tools instantly by name, tags, or keywords.
+- **Favorites & Recents** – Pin frequently used tools; revisit the last five actions.
+- **Per-tool Visibility** – Hide tools from the main grid while keeping them searchable.
+- **Local-first Privacy** – No external services, no telemetry, no remote storage.
+- **Multi-language** – English, French, Turkish with locale auto-detect.
+- **Accessibility** – Keyboard-first navigation (Tab/Shift+Tab, arrow keys, `/` for search), ARIA-labelled sections, toast notifications.
+- **Keyboard workflow** – Global shortcuts cover the popup toggle plus color, element, and screenshot pickers; everything else launches instantly from the popup search.
 
-## ✨ Key Features
+## Getting Started
 
-- **Professional Interface** - Clean, intuitive design with dark/light mode support
-- **Keyboard Shortcuts** - Quick access with customizable hotkeys (Ctrl+Shift+1-9)
-- **Multi-Language UI** - English, Français, Türkçe localization
-- **Smart Notifications** - Real-time feedback with clipboard integration
-- **Privacy First** - Zero data collection, local processing only
-- **Developer Friendly** - Open source with comprehensive documentation
-- **No Limits** - All features free, no premium restrictions or ads
+### Install from source
 
-## Installation
-1. Clone this repository.
-2. Open `chrome://extensions` in your browser and enable **Developer mode**.
-3. Click **Load unpacked** and choose the `extension` folder.
+1. Clone the repository and install dev dependencies (optional for lint/tests):
+   ```bash
+   git clone https://github.com/fulexo/toolary.git
+   cd toolary
+   npm install
+   ```
+2. Load the unpacked extension:
+   - Open `chrome://extensions`
+   - Enable **Developer mode**
+   - Click **Load unpacked** and select the `extension/` folder
+3. Pin Toolary, open the popup, and start exploring.
 
-The popup provides buttons to activate each tool. Data from the page is copied to your
-clipboard and displayed in a short notification.
+### Developer commands
 
-## ⌨️ Keyboard Shortcuts
+| Command | Description |
+|---------|-------------|
+| `npm run lint` | ESLint across all extension JavaScript |
+| `npm test` | Jest unit tests (jsdom) |
+| `zip -r dist/toolary-v2.0.0.zip extension -x "node_modules/*"` | Package for Chrome Web Store |
 
-Pickachu provides keyboard shortcuts for quick access to tools:
+## Architecture Overview
 
-| Action | Shortcut |
-| ------ | -------- |
-| Toggle popup | `Ctrl+Shift+P` / `Cmd+Shift+P` (macOS) |
-| Color Picker | `Alt+Shift+1` / `Option+Shift+1` (macOS) |
-| Element Picker | `Alt+Shift+2` / `Option+Shift+2` (macOS) |
-| Screenshot Tool | `Alt+Shift+3` / `Option+Shift+3` (macOS) |
+- **Manifest v3** service worker (`background.js`) coordinates privileged APIs and keyboard commands.
+- **Lazy-loading content script** (`content/content.js`) imports tool modules on demand, manages tool lifecycles, and hydrates sticky notes.
+- **Popup** (`popup/popup.js`) consumes a manifest-driven registry for search/filtering, persists preferences in `chrome.storage.sync`, and renders with virtualized grids via shared UI components.
+- **Core modules** (`extension/core/`) ensure all surfaces share the same tool metadata, loader, and message pipeline.
 
-*Note: Additional tool shortcuts can be added through Chrome's extension keyboard shortcuts settings.*
+Tool metadata lives in `extension/config/tools-manifest.json` and every tool module exports matching metadata (`metadata { id, name, ... }`) alongside `activate`/`deactivate`.
 
-## 📁 Repository Structure
-```
-extension/
-├── background.js           # Service worker
-├── manifest.json           # Chrome extension manifest
-├── content/                # Content script and styling
-│   ├── content.js
-│   └── content.css
-├── popup/                  # Popup interface
-│   ├── popup.html
-│   ├── popup.css
-│   └── popup.js
-├── modules/                # Tool modules
-│   ├── colorPicker.js
-│   ├── elementPicker.js
-│   ├── fontPicker.js
-│   ├── linkPicker.js
-│   ├── mediaPicker.js
-│   ├── screenshotPicker.js
-│   ├── stickyNotesPicker.js
-│   ├── siteInfoPicker.js
-│   ├── textPicker.js
-│   ├── helpers.js
-│   └── icons.js
-├── icons/                  # Extension icons
-│   ├── icon16.png
-│   ├── icon48.png
-│   ├── icon128.png
-│   └── tools/              # Tool icons
-└── _locales/               # Internationalization
-    ├── en/messages.json
-    ├── fr/messages.json
-    └── tr/messages.json
-```
+## Building for Release
 
-## 📦 Packaging
+1. Run automated checks:
+   ```bash
+   npm run lint
+   npm test
+   ```
+2. Package the extension:
+   ```bash
+   mkdir -p dist
+   zip -r dist/toolary-v2.0.0.zip extension -x "node_modules/*" "*.map"
+   ```
+3. Smoke test the zipped build by loading it in Chrome.
+4. Capture updated screenshots of the popup (light/dark themes) for the Chrome Web Store.
+5. Publish the archive and update store listing text/metadata.
 
-### For Chrome Web Store
-Create a zip archive ready for Chrome Web Store submission:
-```bash
-cd extension
-zip -r ../pickachu-v1.1-chrome-store.zip .
-```
+## Migration Notes (Pickachu → Toolary)
 
-### For Development
-Install dependencies and run tests:
-```bash
-npm install
-npm test
-npm run lint
-```
+- **No user action required** – The extension reads legacy sticky-note keys (`stickyNotes_`) and migrates them to the new prefix automatically.
+- **Favorites & history** – Stored under new keys (`toolaryFavorites`, `toolaryRecentTools`) in sync/local storage. Legacy Pickachu keys migrate on first run so existing stars and recents carry over automatically.
+- **Branding** – Manifest name, icons, descriptions, and README were updated to Toolary; shortcuts now focus on color, element, and screenshot pickers while other tools launch from the popup.
+Refer to `docs/MIGRATION.md` for a detailed checklist.
 
-## 🛠️ Development
+## Privacy
 
-### Prerequisites
-- Node.js 16+ 
-- Chrome browser for testing
+Toolary never transmits page data, tool usage, or notes to external services. All processing happens locally in the browser. See `PRIVACY_POLICY.md` for full details.
 
-### Setup
-```bash
-# Clone the repository
-git clone https://github.com/ademisler/pickachu.git
-cd pickachu
+## Contributing
 
-# Install dependencies
-npm install
+1. Fork & branch from `main`
+2. Update or add tool metadata (`tools-manifest.json`, locales, icons)
+3. Include automated tests where possible
+4. Run `npm run lint && npm test`
+5. Submit a PR with a description of changes, manual test notes, and updated documentation where relevant
 
-# Run tests
-npm test
+## License
 
-# Run linting
-npm run lint
-
-# Fix linting issues
-npm run lint:fix
-```
-
-### Testing
-The project includes comprehensive unit tests for all modules:
-- Color picker functionality
-- Element inspection
-- Font analysis
-- Link extraction
-- Media handling
-- Screenshot capture
-- Sticky notes persistence
-- Site information analysis
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
-
-## 🔐 Privacy & Security
-
-- **No data collection** - Pickachu does not collect, store, or transmit any user data
-- **Local processing only** - All operations happen within your browser
-- **No external servers** - No data is sent to external services
-- **Open source** - Full transparency with publicly available source code
-
-For detailed information, see our [Privacy Policy](PRIVACY_POLICY.md).
-
-## 👨‍💻 Credits
-
-Created by [Adem İsler](https://ademisler.com/). 
-
-If you find this project useful, consider [buying me a coffee](https://buymeacoffee.com/ademisler) ☕
-
-## 🌟 Support
-
-- ⭐ Star this repository if you like it
-- 🐛 Report bugs via [GitHub Issues](https://github.com/ademisler/pickachu/issues)
-- 💡 Suggest new features via [GitHub Discussions](https://github.com/ademisler/pickachu/discussions)
-- 📧 Contact: [ademisler.com](https://ademisler.com/)
+MIT © Adem İsler and contributors.

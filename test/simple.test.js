@@ -1,5 +1,5 @@
 // Simple test to verify extension functionality
-describe('Pickachu Extension', () => {
+describe('Toolary Extension', () => {
   
   test('should have all required modules', () => {
     const modules = [

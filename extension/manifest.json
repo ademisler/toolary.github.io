@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "version": "1.1",
+  "short_name": "__MSG_extensionShortName__",
+  "version": "2.0.0",
   "description": "__MSG_extensionDescription__",
   "permissions": [
     "activeTab",
@@ -12,7 +13,8 @@
     "downloads"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
     "default_popup": "popup/popup.html",
@@ -47,8 +49,14 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "modules/*.js",
+        "core/*.js",
+        "shared/*.js",
+        "tools/*.js",
+        "tools/*/*.js",
+        "config/*.json",
         "content/*.css",
+        "icons/*.svg",
+        "icons/tools/*.svg",
         "_locales/*/messages.json"
       ],
       "matches": [
