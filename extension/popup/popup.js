@@ -88,12 +88,16 @@ function resolveStoredList(data, primaryKey, legacyKeys = []) {
   return { list: [], migratedFrom: null };
 }
 
+// Reserved for future use
+// eslint-disable-next-line no-unused-vars
 function formatCategoryLabel(category) {
   if (!category) return '';
   if (CATEGORY_LABELS[category]) return CATEGORY_LABELS[category];
   return `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
 }
 
+// Reserved for future use
+// eslint-disable-next-line no-unused-vars
 function parseSearchQuery(raw = '') {
   if (typeof raw !== 'string') {
     return { text: '', tokens: [] };
@@ -143,11 +147,15 @@ function parseSearchQuery(raw = '') {
   };
 }
 
+// Reserved for future use
+// eslint-disable-next-line no-unused-vars
 function buildSearchInputValue(text = '', tokens = []) {
   const tokenStrings = tokens.map((token) => `${token.type}:${token.value}`);
   return [text.trim(), ...tokenStrings].filter(Boolean).join(' ').trim();
 }
 
+// Reserved for future use
+// eslint-disable-next-line no-unused-vars
 function resolveActiveCategory() {
   const categoryToken = (state.searchTokens || []).find((token) => token.type === 'category' && VALID_CATEGORIES.has(token.value));
   if (categoryToken) {
@@ -156,6 +164,8 @@ function resolveActiveCategory() {
   return VALID_CATEGORIES.has(state.activeCategory) ? state.activeCategory : 'all';
 }
 
+// Reserved for future use
+// eslint-disable-next-line no-unused-vars
 function matchesTokenFilters(tool, tokens = []) {
   if (!Array.isArray(tokens) || tokens.length === 0) {
     return true;
@@ -795,7 +805,7 @@ function handleCategoryMenuKeydown(event) {
     }
     case 'Enter':
     case ' ': {
-      if (document.activeElement instanceof HTMLElement) {
+      if (document.activeElement && typeof document.activeElement.click === 'function') {
         event.preventDefault();
         document.activeElement.click();
       }

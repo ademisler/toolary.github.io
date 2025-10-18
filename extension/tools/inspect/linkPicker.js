@@ -5,10 +5,6 @@ export const metadata = {
   name: 'Link Picker',
   category: 'inspect',
   icon: 'link',
-  shortcut: {
-    default: 'Alt+Shift+3',
-    mac: 'Alt+Shift+3'
-  },
   permissions: ['activeTab'],
   tags: ['links', 'urls', 'validation'],
   keywords: ['links', 'broken links', 'urls', 'anchors']

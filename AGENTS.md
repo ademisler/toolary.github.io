@@ -1,125 +1,288 @@
-# AGENTS.md – Toolary Internal Blueprint
+# AGENTS.md – Toolary AI Developer Guide
 
 ## Project Overview
 
-- **Name**: Toolary – Web Productivity Toolkit  
-- **Type**: Chrome Extension (Manifest V3)  
-- **Purpose**: Unified interface for 9 web inspection, capture, and utility tools with room to scale past 50  
-- **Tech Stack**: Vanilla JavaScript (ES6+), Chrome Extension APIs, Jest for testing  
-- **Current Version**: 2.0.0  
+**Toolary** is a Chrome extension (Manifest V3) providing 9+ web productivity tools with architecture to scale to 50+ tools.
 
-## High-Level Architecture
+- **Version:** 2.0.0
+- **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
+- **Languages:** English, Turkish, French (i18n via `_locales/`)
+- **Test Coverage:** 98.3% (56 tests passing)
 
-- **Popup UI** – Searchable, filterable launcher with favorites, recents, and per-tool visibility controls.  
-- **Content Script** – Lazily loads tool modules, manages lifecycle, and provides on-page overlays.  
-- **Background Service Worker** – Dispatches activation messages, handles privileged APIs (downloads, screenshots), and tracks keyboard shortcuts.  
-- **Core Modules** – Shared registry/loader/constants/message router powering all surfaces.  
-- **Shared Utilities** – Helpers, icon factory, and popup UI components.  
+## Architecture
 
-### Key Directories
+```
+User clicks tool → popup.js sends message → background.js injects content.js 
+→ content.js lazy loads tool module → tool activates → cleanup on deactivate
+```
+
+**Key Principles:**
+- **Lazy loading:** Tools load only when activated (via `toolLoader.js`)
+- **Single source of truth:** `config/tools-manifest.json` defines all tool metadata
+- **Module caching:** Loaded tools stay in memory until tab closes
+- **Background service worker:** Handles screenshots, downloads, global shortcuts
+
+## Directory Structure
 
 ```
 extension/
-├── manifest.json                 # Chrome extension configuration
-├── background.js                 # Service worker
-├── content/
-│   ├── content.js                # Runtime orchestrator & sticky-note hydration
-│   └── content.css               # On-page styles (overlays, modals)
+├── manifest.json              # Extension config, permissions, commands
+├── background.js              # Service worker: tool activation, shortcuts, API calls
 ├── popup/
-│   ├── popup.html                # Popup shell (search, tabs, settings)
-│   ├── popup.css                 # Scalable layout & virtual list styling
-│   └── popup.js                  # Search/filter/favorites logic, storage sync
+│   ├── popup.html            # UI: search, categories, tool grid
+│   ├── popup.css             # Styling with CSS custom properties
+│   └── popup.js              # Search/filter logic, pagination, storage sync
+├── content/
+│   ├── content.js            # Tool orchestrator, message router
+│   └── content.css           # On-page overlays, modals, tooltips
 ├── core/
-│   ├── constants.js              # Message types, categories, shortcut map
-│   ├── messageRouter.js          # Abstraction over runtime/tabs messaging
-│   ├── toolLoader.js             # Lazy importer with metadata backfill/cache
-│   └── toolRegistry.js           # Manifest-driven tool catalogue
+│   ├── constants.js          # Message types, categories, shortcut map
+│   ├── messageRouter.js      # chrome.runtime/tabs.sendMessage abstraction
+│   ├── toolLoader.js         # Lazy import() with cache
+│   └── toolRegistry.js       # Loads tools-manifest.json, provides getters
 ├── shared/
-│   ├── helpers.js                # Cross-tool helpers (storage, modals, errors)
-│   ├── icons.js                  # SVG icon registry + rendering helpers
-│   └── ui-components.js          # Popup cards, toasts, virtualized grid
+│   ├── helpers.js            # Storage, modals, error handling, i18n
+│   ├── icons.js              # SVG icon registry
+│   └── ui-components.js      # Tool cards, virtual grid, toasts
 ├── tools/
-│   ├── inspect/                  # colorPicker, elementPicker, fontPicker, linkPicker
-│   ├── capture/                  # mediaPicker, textPicker, screenshotPicker
-│   ├── enhance/                  # stickyNotesPicker
-│   └── utilities/                # siteInfoPicker
+│   ├── inspect/              # colorPicker, elementPicker, fontPicker, linkPicker
+│   ├── capture/              # mediaPicker, textPicker, screenshotPicker
+│   ├── enhance/              # stickyNotesPicker
+│   └── utilities/            # siteInfoPicker
 ├── config/
-│   └── tools-manifest.json       # Authoritative tool metadata & ordering
-├── icons/                        # Extension + tool icons (PNG + SVG)
-└── _locales/                     # i18n (en, fr, tr)
+│   └── tools-manifest.json   # Tool metadata (id, name, category, icon, tags, etc.)
+├── icons/                    # PNG icons + SVG tool icons
+└── _locales/                 # en/fr/tr messages.json
 ```
 
-## Tool Module Contract
+## Adding a New Tool
 
-Every tool exports metadata plus activation hooks:
+### 1. Create tool module in `tools/<category>/<toolName>.js`
 
-```js
+```javascript
+import { showError, handleError } from '../../shared/helpers.js';
+
 export const metadata = {
-  id: 'color-picker',
-  name: 'Color Picker',
-  category: 'inspect',
-  icon: 'color',
-  shortcut: { default: 'Alt+Shift+1' },
+  id: 'my-tool',
+  name: 'My Tool',
+  category: 'utilities',
+  icon: 'info',
+  shortcut: { default: 'Alt+Shift+9', mac: 'Alt+Shift+9' }, // optional
   permissions: ['activeTab'],
-  tags: ['color', 'design'],
-  keywords: ['hex', 'rgb', 'eyedropper']
+  tags: ['utility', 'helper'],
+  keywords: ['search', 'terms']
 };
 
-export function activate(deactivate) { /* init */ }
-export function deactivate() { /* teardown */ }
+export async function activate(deactivate) {
+  try {
+    // Tool logic here
+    console.log('Tool activated');
+    
+    // Call deactivate when done:
+    // deactivate();
+  } catch (error) {
+    handleError(error, 'my-tool.activate');
+    showError('Failed to activate tool');
+    deactivate();
+  }
+}
+
+export function deactivate() {
+  // Cleanup: remove listeners, overlays, etc.
+  console.log('Tool deactivated');
+}
 ```
 
-The loader backfills metadata from `tools-manifest.json` when absent, guaranteeing registry parity.
+### 2. Add to `config/tools-manifest.json`
 
-## Data & Storage
+```json
+{
+  "id": "my-tool",
+  "name": "My Tool",
+  "category": "utilities",
+  "module": "utilities/myTool.js",
+  "order": 10,
+  "icon": "info",
+  "i18n": {
+    "label": "myTool",
+    "title": "myToolTitle"
+  },
+  "tags": ["utility", "helper"],
+  "keywords": ["search", "terms"],
+  "permissions": ["activeTab"]
+}
+```
 
-- **chrome.storage.sync**
-  - `toolaryFavorites` – starred tools (auto-migrated from legacy Pickachu keys)  
-  - `toolaryHiddenTools` – hidden from main grid (still searchable, legacy keys migrated on demand)
-- **chrome.storage.local**
-  - `toolaryRecentTools` – last five activations (Pickachu recents migrated automatically)  
-  - Sticky-note content keyed per site (`toolaryStickyNotes_*`) with migration from legacy prefixes
+### 3. Add icon to `extension/icons/tools/my-tool.svg` (optional)
 
-## Commands & Shortcuts
+### 4. Add i18n strings to `_locales/*/messages.json`
 
-| Command | Shortcut (Win/Linux) | Shortcut (macOS) | Tool |
-|---------|----------------------|------------------|------|
-| Toggle Popup | Ctrl+Shift+P | Cmd+Shift+P | Popup |
-| Activate Color Picker | Alt+Shift+1 | Alt+Shift+1 | Inspect |
-| Activate Element Picker | Alt+Shift+2 | Alt+Shift+2 | Inspect |
-| Activate Screenshot Picker | Alt+Shift+3 | Alt+Shift+3 | Capture |
-| Fast Search | `/` | `/` | Popup focus |
+```json
+{
+  "myTool": { "message": "My Tool" },
+  "myToolTitle": { "message": "My Tool Title" }
+}
+```
 
-- All other tools remain available via the popup UI (click or search) without global shortcuts.
+### 5. Add keyboard shortcut to `manifest.json` (optional)
 
-## Testing & Quality Gates
+```json
+{
+  "commands": {
+    "activate-my-tool": {
+      "suggested_key": { "default": "Alt+Shift+9" },
+      "description": "__MSG_cmdMyTool__"
+    }
+  }
+}
+```
 
-- **Automated**: `npm run lint`, `npm test` (Jest + jsdom). 98.3% test coverage across core modules (56 tests passing).  
-- **Manual**: All 9 tools validated on representative pages; popup accessibility audited (keyboard, ARIA).  
-- **Performance Guardrails**: Popup open <100 ms, search update <50 ms on reference hardware (cold load + cached).  
+And update `background.js`:
 
-## Release Checklist
+```javascript
+const COMMAND_TOOL_MAP = {
+  'activate-my-tool': 'my-tool',
+  // ...
+};
+```
 
-1. `npm run lint && npm test`  
-2. Manually verify tools across required websites/themes/languages.  
-3. Update `CHANGELOG.md`, bump `package.json` version.  
-4. Package: `zip -r toolary-vX.Y.Z.zip extension/` (ensure `node_modules/` excluded).  
-5. Smoke test packaged build in Chrome.  
-6. Publish assets (screenshots / store description), create tag `vX.Y.Z`.  
+### 6. Write tests in `test/modules.test.js`
 
-## Maintenance Notes
+```javascript
+import { activate as activateMyTool } from '../extension/tools/utilities/myTool.js';
 
-- Keep `tools-manifest.json` as the single source of truth for tool metadata.  
-- When adding tools, include localized strings (`_locales/*`), metadata, tests, and icon assets.  
-- Popup virtual grid thresholds assume ~110px card height—adjust rowHeight if layout changes.  
-- Sticky notes support legacy keys; remove migration after v2.1 when safe.  
+describe('My Tool', () => {
+  test('should activate', () => {
+    const mockDeactivate = jest.fn();
+    expect(() => activateMyTool(mockDeactivate)).not.toThrow();
+  });
+});
+```
 
-## Useful Commands
+## Storage Structure
+
+### chrome.storage.sync (cross-device)
+- `toolaryFavorites`: Array of tool IDs
+- `toolaryHiddenTools`: Array of hidden tool IDs
+
+### chrome.storage.local (device-specific)
+- `toolaryRecentTools`: Array of last 5 used tool IDs
+- `toolaryStickyNotes_<domain>`: Per-site sticky notes data
+
+### Legacy migration
+Auto-migrates from old Pickachu keys: `pickachuFavorites`, `pickachuHiddenTools`, `pickachuRecentTools`
+
+## Keyboard Shortcuts
+
+| Shortcut | Tool | Scope |
+|----------|------|-------|
+| `Ctrl+Shift+P` (Win) / `Cmd+Shift+P` (Mac) | Toggle popup | Global |
+| `Alt+Shift+1` | Color Picker | Global |
+| `Alt+Shift+2` | Element Picker | Global |
+| `Alt+Shift+3` | Screenshot Picker | Global |
+| `/` | Focus search in popup | Popup only |
+
+Shortcuts work globally (even when popup is closed) via `chrome.commands` API handled in `background.js`.
+
+## Important Features
+
+### Sticky Menu Fix (screenshotPicker.js)
+When capturing full-page screenshots, sticky/fixed elements are temporarily hidden:
+1. `findStickyElements()` – Detects `position: fixed/sticky` elements
+2. `hideStickyElements()` – Sets `visibility: hidden` before capture
+3. `restoreStickyElements()` – Restores original styles after capture
+4. Uses `finally` block to ensure cleanup even on errors
+
+### Virtual Scrolling (ui-components.js)
+`VirtualizedGrid` class renders only visible tools in viewport:
+- **Threshold:** 24 tools (switches to virtual mode above this)
+- **Overscan:** 6 rows (pre-renders for smooth scroll)
+- **RowHeight:** 96px (card height for calculations)
+
+### Search & Filter (popup.js)
+- Real-time search across tool names, tags, keywords
+- Category filtering (all, inspect, capture, enhance, utilities)
+- Hidden tools still searchable but not shown in main grid
+- Pagination: 6 tools per page
+
+### Lazy Loading (toolLoader.js)
+```javascript
+loadToolModule(toolId) // Returns cached or imports module
+activateTool(toolId, deactivate) // Loads + activates
+clearToolModule(toolId) // Clears cache
+```
+
+## Testing & Quality
 
 ```bash
-npm run lint           # ESLint across extension code
-npm test               # Jest suite (jsdom)
-zip -r dist/toolary.zip extension -x \"*.DS_Store\" # Package for Chrome Web Store
+npm test          # Run Jest tests (56 tests, 98.3% coverage)
+npm run lint      # ESLint check (must pass)
 ```
 
-Document last updated for Toolary v2.0.0.
+**Test files:**
+- `test/core.test.js` – Core modules (registry, loader, router)
+- `test/modules.test.js` – All tool activation
+- `test/comprehensive.test.js` – Integration tests
+- `test/helpers.test.js` – Utility functions
+
+**Manual testing checklist:**
+- All tools activate without errors
+- Keyboard shortcuts work globally
+- Search/filter performs well
+- Storage persists across sessions
+- i18n works in all languages
+- Dark/light themes apply correctly
+
+## Common Tasks
+
+### Update version
+1. Edit `manifest.json` → `version`
+2. Edit `package.json` → `version`
+3. Run `npm test && npm run lint`
+
+### Add new category
+1. Edit `core/constants.js` → `TOOL_CATEGORIES`
+2. Edit `popup/popup.html` → Add category button
+3. Edit `_locales/*/messages.json` → Add category name
+4. Add icon in category menu SVG
+
+### Debug tool not loading
+1. Check `config/tools-manifest.json` → module path correct?
+2. Check tool file exports `metadata`, `activate`, `deactivate`
+3. Open DevTools → Console for errors
+4. Verify `chrome.runtime.getURL('tools/...')` resolves
+
+### Performance profiling
+```javascript
+// In popup.js
+console.time('popup-open');
+// ... initialization code
+console.timeEnd('popup-open'); // Should be <100ms
+```
+
+## File Size Limits
+
+- `tools-manifest.json`: ~173 lines (9 tools) → keep under 1000 lines
+- `popup.js`: 1293 lines → consider splitting if >2000 lines
+- Total extension: 544KB → target <2MB for fast installation
+
+## Code Style
+
+- **ES6 modules:** Use `import/export`, no CommonJS
+- **Async/await:** Prefer over `.then()` chains
+- **Error handling:** Always wrap in try/catch, use `handleError()`
+- **No external deps:** Keep vanilla JS (except tests)
+- **Comments:** JSDoc for public APIs only
+- **Naming:** camelCase for variables, PascalCase for classes
+
+## Deployment
+
+1. `npm run lint && npm test` (must pass)
+2. Test manually in Chrome: Load unpacked from `extension/`
+3. Package: `zip -r toolary-vX.Y.Z.zip extension/ -x "*.DS_Store"`
+4. Upload to Chrome Web Store Developer Dashboard
+5. Tag release: `git tag vX.Y.Z && git push --tags`
+
+---
+
+**Last updated:** 2025-10-18 for Toolary v2.0.0

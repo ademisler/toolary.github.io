@@ -6,8 +6,8 @@ export const metadata = {
   category: 'capture',
   icon: 'screenshot',
   shortcut: {
-    default: 'Alt+Shift+7',
-    mac: 'Alt+Shift+7'
+    default: 'Alt+Shift+3',
+    mac: 'Alt+Shift+3'
   },
   permissions: ['activeTab'],
   tags: ['screenshot', 'capture'],
@@ -19,6 +19,9 @@ const MIN_CAPTURE_INTERVAL_MS = 650;
 const MAX_CAPTURE_RETRIES = 3;
 const MAX_SEGMENTS = 60;
 let isCapturing = false;
+
+// Store original styles of sticky/fixed elements
+let stickyElementsState = [];
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -82,6 +85,69 @@ function getPageMetrics() {
   const viewportWidth = window.innerWidth || doc?.clientWidth || 0;
 
   return { totalHeight, totalWidth, viewportHeight, viewportWidth };
+}
+
+function findStickyElements() {
+  const allElements = document.querySelectorAll('*');
+  const stickyElements = [];
+
+  allElements.forEach((element) => {
+    const computedStyle = window.getComputedStyle(element);
+    const position = computedStyle.position;
+
+    // Check for fixed or sticky positioned elements
+    if (position === 'fixed' || position === 'sticky') {
+      stickyElements.push(element);
+    }
+  });
+
+  return stickyElements;
+}
+
+function hideStickyElements() {
+  const stickyElements = findStickyElements();
+  stickyElementsState = [];
+
+  stickyElements.forEach((element) => {
+    // Store original styles
+    const originalVisibility = element.style.visibility;
+    const originalDisplay = element.style.display;
+    const originalOpacity = element.style.opacity;
+
+    stickyElementsState.push({
+      element,
+      visibility: originalVisibility,
+      display: originalDisplay,
+      opacity: originalOpacity
+    });
+
+    // Hide the element by setting visibility to hidden
+    // This preserves layout unlike display: none
+    element.style.setProperty('visibility', 'hidden', 'important');
+  });
+
+  return stickyElementsState.length;
+}
+
+function restoreStickyElements() {
+  stickyElementsState.forEach(({ element, visibility, display, opacity }) => {
+    // Restore original styles
+    if (visibility) {
+      element.style.visibility = visibility;
+    } else {
+      element.style.removeProperty('visibility');
+    }
+
+    if (display) {
+      element.style.display = display;
+    }
+
+    if (opacity) {
+      element.style.opacity = opacity;
+    }
+  });
+
+  stickyElementsState = [];
 }
 
 function requestCapture() {
@@ -183,6 +249,13 @@ async function captureFullPage() {
 
   const lastCaptureAt = { value: Date.now() - MIN_CAPTURE_INTERVAL_MS };
 
+  // Hide sticky/fixed elements before starting capture
+  const hiddenCount = hideStickyElements();
+  if (hiddenCount > 0) {
+    // Wait a bit for the layout to stabilize after hiding elements
+    await wait(100);
+  }
+
   try {
     while (true) {
       const targetScroll = Math.min(currentScroll, maxScrollTop);
@@ -208,7 +281,9 @@ async function captureFullPage() {
       }
     }
   } finally {
+    // Always restore sticky elements and scroll position
     window.scrollTo(originalScrollX, originalScrollY);
+    restoreStickyElements();
   }
 
   await stitchCaptures(segments, totalHeight, devicePixelRatio);
