@@ -1,0 +1,263 @@
+{
+  "extensionName": {
+    "message": "Pickachu – Outil de sélection Web"
+  },
+  "extensionDescription": {
+    "message": "Une boîte à outils légère pour collecter les couleurs, éléments, liens, polices, images et textes de n'importe quelle page web."
+  },
+  "popupSubtitle": {
+    "message": "Outils de capture rapides"
+  },
+  "color": {
+    "message": "Couleur"
+  },
+  "element": {
+    "message": "Élément"
+  },
+  "link": {
+    "message": "Lien"
+  },
+  "font": {
+    "message": "Police"
+  },
+  "media": {
+    "message": "Média"
+  },
+  "text": {
+    "message": "Texte"
+  },
+  "close": {
+    "message": "Fermer"
+  },
+  "copy": {
+    "message": "Copier"
+  },
+  "export": {
+    "message": "Exporter"
+  },
+  "history": {
+    "message": "Historique"
+  },
+  "favorites": {
+    "message": "Favoris"
+  },
+  "favorite": {
+    "message": "Favori"
+  },
+  "unfavorite": {
+    "message": "Retirer"
+  },
+  "colorPicker": {
+    "message": "Pipette"
+  },
+  "elementPicker": {
+    "message": "Sélecteur d'élément"
+  },
+  "linkPicker": {
+    "message": "Sélecteur de lien"
+  },
+  "fontPicker": {
+    "message": "Sélecteur de police"
+  },
+  "mediaPicker": {
+    "message": "Sélecteur de média"
+  },
+  "textPicker": {
+    "message": "Sélecteur de texte"
+  },
+  "screenshot": {
+    "message": "Capture d'écran"
+  },
+  "notes": {
+    "message": "Notes"
+  },
+  "info": {
+    "message": "Info"
+  },
+  "screenshotPicker": {
+    "message": "Capture d'écran"
+  },
+  "stickyNotesPicker": {
+    "message": "Notes adhésives"
+  },
+  "siteInfoPicker": {
+    "message": "Analyse du site"
+  },
+  "colorCopied": {
+    "message": "Couleur copiée"
+  },
+  "elementInfo": {
+    "message": "Infos élément"
+  },
+  "links": {
+    "message": "Liens"
+  },
+  "fontInfo": {
+    "message": "Infos police"
+  },
+  "images": {
+    "message": "Images"
+  },
+  "textTitle": {
+    "message": "Texte"
+  },
+  "openShortcut": {
+    "message": "Ctrl+Shift+9"
+  },
+  "openShortcutMac": {
+    "message": "Cmd+Shift+9"
+  },
+  "toggleShortcut": {
+    "message": "Ctrl+Shift+P"
+  },
+  "toggleShortcutMac": {
+    "message": "Cmd+Shift+P"
+  },
+  "shortcuts": {
+    "message": "Raccourcis"
+  },
+  "shortcutsTitle": {
+    "message": "Raccourcis clavier"
+  },
+  "shortcutsDescription": {
+    "message": "Utilisez ces raccourcis pour lancer Pickachu plus rapidement."
+  },
+  "shortcutsGlobal": {
+    "message": "Global"
+  },
+  "shortcutsTools": {
+    "message": "Outils (global)"
+  },
+  "shortcutsPopup": {
+    "message": "Dans le popup"
+  },
+  "shortcutOpen": {
+    "message": "Ouvrir Pickachu"
+  },
+  "shortcutToggle": {
+    "message": "Afficher/masquer le popup"
+  },
+  "shortcutClose": {
+    "message": "Fermer le popup"
+  },
+  "shortcutColor": {
+    "message": "Alt+Shift+1"
+  },
+  "shortcutColorMac": {
+    "message": "Option+Shift+1"
+  },
+  "shortcutElement": {
+    "message": "Alt+Shift+2"
+  },
+  "shortcutElementMac": {
+    "message": "Option+Shift+2"
+  },
+  "shortcutLink": {
+    "message": "Alt+Shift+3"
+  },
+  "shortcutLinkMac": {
+    "message": "Option+Shift+3"
+  },
+  "shortcutFont": {
+    "message": "Alt+Shift+4"
+  },
+  "shortcutFontMac": {
+    "message": "Option+Shift+4"
+  },
+  "shortcutMedia": {
+    "message": "Alt+Shift+5"
+  },
+  "shortcutMediaMac": {
+    "message": "Option+Shift+5"
+  },
+  "shortcutText": {
+    "message": "Alt+Shift+6"
+  },
+  "shortcutTextMac": {
+    "message": "Option+Shift+6"
+  },
+  "shortcutScreenshot": {
+    "message": "Alt+Shift+7"
+  },
+  "shortcutScreenshotMac": {
+    "message": "Option+Shift+7"
+  },
+  "shortcutNotes": {
+    "message": "Alt+Shift+8"
+  },
+  "shortcutNotesMac": {
+    "message": "Option+Shift+8"
+  },
+  "shortcutInfo": {
+    "message": "Alt+Shift+9"
+  },
+  "shortcutInfoMac": {
+    "message": "Option+Shift+9"
+  },
+  "createdBy": {
+    "message": "Adem İsler"
+  },
+  "creatorRole": {
+    "message": "Créateur de Pickachu"
+  },
+  "buyCoffee": {
+    "message": "Offrez-moi un café"
+  },
+  "cmdTogglePopup": {
+    "message": "Afficher/masquer le popup Pickachu"
+  },
+  "cmdColorPicker": {
+    "message": "Activer la pipette"
+  },
+  "cmdElementPicker": {
+    "message": "Activer le sélecteur d'élément"
+  },
+  "cmdLinkPicker": {
+    "message": "Activer le sélecteur de lien"
+  },
+  "cmdFontPicker": {
+    "message": "Activer le sélecteur de police"
+  },
+  "cmdMediaPicker": {
+    "message": "Activer le sélecteur de média"
+  },
+  "cmdTextPicker": {
+    "message": "Activer le sélecteur de texte"
+  },
+  "cmdScreenshotPicker": {
+    "message": "Activer la capture d'écran"
+  },
+  "cmdStickyNotesPicker": {
+    "message": "Activer les notes adhésives"
+  },
+  "cmdSiteInfoPicker": {
+    "message": "Activer l'analyse du site"
+  },
+  "openPickachu": {
+    "message": "Ouvrir Pickachu"
+  },
+  "themeAuto": {
+    "message": "Auto"
+  },
+  "themeLight": {
+    "message": "Clair"
+  },
+  "themeDark": {
+    "message": "Sombre"
+  },
+  "eyeDropperNotSupported": {
+    "message": "API EyeDropper non prise en charge"
+  },
+  "exportPrompt": {
+    "message": "txt/json/csv"
+  },
+  "version": {
+    "message": "Version 1.1"
+  },
+  "developer": {
+    "message": "Développeur"
+  },
+  "support": {
+    "message": "Soutien"
+  }
+}
