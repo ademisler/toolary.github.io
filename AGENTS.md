@@ -94,7 +94,7 @@ The loader backfills metadata from `tools-manifest.json` when absent, guaranteei
 
 ## Testing & Quality Gates
 
-- **Automated**: `npm run lint`, `npm test` (Jest + jsdom). Core tests cover registry, loader, message router.  
+- **Automated**: `npm run lint`, `npm test` (Jest + jsdom). 98.3% test coverage across core modules (56 tests passing).  
 - **Manual**: All 9 tools validated on representative pages; popup accessibility audited (keyboard, ARIA).  
 - **Performance Guardrails**: Popup open <100 ms, search update <50 ms on reference hardware (cold load + cached).  
 

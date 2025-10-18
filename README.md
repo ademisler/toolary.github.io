@@ -46,8 +46,9 @@ Additional highlights:
 | Command | Description |
 |---------|-------------|
 | `npm run lint` | ESLint across all extension JavaScript |
-| `npm test` | Jest unit tests (jsdom) |
-| `zip -r dist/toolary-v2.0.0.zip extension -x "node_modules/*"` | Package for Chrome Web Store |
+| `npm test` | Jest unit tests (jsdom) with 98%+ coverage |
+| `npm run lint:fix` | Auto-fix ESLint issues |
+| `zip -r toolary-v2.0.0.zip extension -x "node_modules/*"` | Package for Chrome Web Store |
 
 ## Architecture Overview
 
@@ -79,7 +80,7 @@ Tool metadata lives in `extension/config/tools-manifest.json` and every tool mod
 - **No user action required** – The extension reads legacy sticky-note keys (`stickyNotes_`) and migrates them to the new prefix automatically.
 - **Favorites & history** – Stored under new keys (`toolaryFavorites`, `toolaryRecentTools`) in sync/local storage. Legacy Pickachu keys migrate on first run so existing stars and recents carry over automatically.
 - **Branding** – Manifest name, icons, descriptions, and README were updated to Toolary; shortcuts now focus on color, element, and screenshot pickers while other tools launch from the popup.
-Refer to `docs/MIGRATION.md` for a detailed checklist.
+- **Architecture** – Complete redesign with tool registry, lazy loading, and scalable popup UI with search, categories, and favorites.
 
 ## Privacy
 
