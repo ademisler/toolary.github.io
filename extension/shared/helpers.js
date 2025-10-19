@@ -1333,6 +1333,50 @@ export async function showModal(title, content, icon = '', type = '') {
     } else {
       body.appendChild(createSafeTextarea(content));
     }
+  } else if (type === 'color-palette') {
+    // Special handling for color palette with visual swatches
+    const paletteContainer = document.createElement('div');
+    paletteContainer.style.cssText = 'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;';
+    
+    // Parse the content to extract color information
+    const colorMatches = content.match(/#[0-9a-fA-F]{6}/g) || [];
+    const uniqueColors = [...new Set(colorMatches)].slice(0, 12);
+    
+    if (uniqueColors.length > 0) {
+      const colorsTitle = document.createElement('h3');
+      colorsTitle.textContent = `Extracted Colors (${uniqueColors.length})`;
+      colorsTitle.style.cssText = 'margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: var(--toolary-text, #333);';
+      paletteContainer.appendChild(colorsTitle);
+      
+      const colorsGrid = document.createElement('div');
+      colorsGrid.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-bottom: 20px;';
+      
+      uniqueColors.forEach((color) => {
+        const colorCard = document.createElement('div');
+        colorCard.style.cssText = 'display: flex; flex-direction: column; align-items: center; padding: 8px; border: 1px solid var(--toolary-border, #ddd); border-radius: 8px; background: var(--toolary-bg, #fff);';
+        
+        const colorSwatch = document.createElement('div');
+        colorSwatch.style.cssText = `width: 40px; height: 40px; background-color: ${color}; border-radius: 6px; border: 1px solid var(--toolary-border, #ddd); margin-bottom: 6px;`;
+        
+        const colorCode = document.createElement('div');
+        colorCode.textContent = color;
+        colorCode.style.cssText = 'font-size: 11px; font-family: monospace; color: var(--toolary-text, #333); text-align: center;';
+        
+        colorCard.appendChild(colorSwatch);
+        colorCard.appendChild(colorCode);
+        colorsGrid.appendChild(colorCard);
+      });
+      
+      paletteContainer.appendChild(colorsGrid);
+    }
+    
+    // Add the text content below the color swatches
+    const textContent = document.createElement('div');
+    textContent.style.cssText = 'margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--toolary-border, #ddd);';
+    textContent.appendChild(createSafeTextarea(content));
+    paletteContainer.appendChild(textContent);
+    
+    body.appendChild(paletteContainer);
   } else if (type === 'image' && content.includes('http')) {
     const urlMatch = content.match(/https?:\/\/[^\s]+/);
     if (urlMatch) {

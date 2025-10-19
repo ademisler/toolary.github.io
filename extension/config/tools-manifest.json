@@ -35,7 +35,8 @@
       },
       "i18n": {
         "label": "color",
-        "title": "colorPicker"
+        "title": "colorPicker",
+        "description": "colorPickerDescription"
       },
       "tags": ["color", "design", "palette"],
       "keywords": ["hex", "rgb", "hsl", "eyedropper"],
@@ -54,7 +55,8 @@
       },
       "i18n": {
         "label": "element",
-        "title": "elementPicker"
+        "title": "elementPicker",
+        "description": "elementPickerDescription"
       },
       "tags": ["dom", "css", "xpath"],
       "keywords": ["selector", "xpath", "html"],
@@ -69,7 +71,8 @@
       "icon": "link",
       "i18n": {
         "label": "link",
-        "title": "linkPicker"
+        "title": "linkPicker",
+        "description": "linkPickerDescription"
       },
       "tags": ["links", "urls", "validation"],
       "keywords": ["links", "broken links", "urls"],
@@ -84,7 +87,8 @@
       "icon": "font",
       "i18n": {
         "label": "font",
-        "title": "fontPicker"
+        "title": "fontPicker",
+        "description": "fontPickerDescription"
       },
       "tags": ["typography", "design"],
       "keywords": ["font", "typography", "weights"],
@@ -99,7 +103,8 @@
       "icon": "image",
       "i18n": {
         "label": "media",
-        "title": "mediaPicker"
+        "title": "mediaPicker",
+        "description": "mediaPickerDescription"
       },
       "tags": ["media", "image", "video"],
       "keywords": ["images", "videos", "download"],
@@ -114,7 +119,8 @@
       "icon": "text",
       "i18n": {
         "label": "text",
-        "title": "textPicker"
+        "title": "textPicker",
+        "description": "textPickerDescription"
       },
       "tags": ["text", "content"],
       "keywords": ["copy", "extract", "text"],
@@ -133,11 +139,28 @@
       },
       "i18n": {
         "label": "screenshot",
-        "title": "screenshotPicker"
+        "title": "screenshotPicker",
+        "description": "screenshotPickerDescription"
       },
       "tags": ["screenshot", "capture"],
       "keywords": ["full page", "capture", "screenshot"],
       "permissions": ["activeTab"]
+    },
+    {
+      "id": "pdf-generator",
+      "name": "PDF Generator",
+      "category": "capture",
+      "module": "capture/pdfGenerator.js",
+      "order": 8,
+      "icon": "pdf",
+      "i18n": {
+        "label": "pdf",
+        "title": "pdfGenerator",
+        "description": "pdfGeneratorDescription"
+      },
+      "tags": ["pdf", "capture", "export", "print", "document"],
+      "keywords": ["pdf", "export", "save", "print", "document", "download"],
+      "permissions": ["activeTab", "downloads"]
     },
     {
       "id": "sticky-notes-picker",
@@ -148,7 +171,8 @@
       "icon": "notes",
       "i18n": {
         "label": "notes",
-        "title": "stickyNotesPicker"
+        "title": "stickyNotesPicker",
+        "description": "stickyNotesPickerDescription"
       },
       "tags": ["notes", "storage"],
       "keywords": ["sticky", "notes", "annotate"],
@@ -163,10 +187,27 @@
       "icon": "info",
       "i18n": {
         "label": "info",
-        "title": "siteInfoPicker"
+        "title": "siteInfoPicker",
+        "description": "siteInfoPickerDescription"
       },
       "tags": ["analysis", "seo"],
       "keywords": ["tech stack", "seo", "accessibility"],
+      "permissions": ["activeTab"]
+    },
+    {
+      "id": "color-palette-generator",
+      "name": "Color Palette Generator",
+      "category": "utilities",
+      "module": "utilities/colorPaletteGenerator.js",
+      "order": 10,
+      "icon": "palette",
+      "i18n": {
+        "label": "colorPalette",
+        "title": "colorPaletteGenerator",
+        "description": "colorPaletteGeneratorDescription"
+      },
+      "tags": ["color", "design", "palette", "harmony"],
+      "keywords": ["color scheme", "palette", "harmony", "contrast", "accessibility", "wcag"],
       "permissions": ["activeTab"]
     }
   ]

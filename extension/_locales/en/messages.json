@@ -210,31 +210,31 @@
     "message": "Support"
   },
   "colorPickerDescription": {
-    "message": "Click any element to pick its color and get hex, RGB, HSL values instantly"
+    "message": "Click elements to get colors"
   },
   "elementPickerDescription": {
-    "message": "Hover over elements to inspect HTML structure, CSS styles, and selectors"
+    "message": "Inspect HTML and CSS structure"
   },
   "linkPickerDescription": {
-    "message": "Find all links on the page, check their status, and export broken links"
+    "message": "Find all page links"
   },
   "fontPickerDescription": {
-    "message": "Identify fonts used on the page with family, size, weight, and style details"
+    "message": "Identify fonts with family details"
   },
   "mediaPickerDescription": {
-    "message": "Download all images and media files from the current page with one click"
+    "message": "Download images and media files"
   },
   "textPickerDescription": {
-    "message": "Select and copy text content from any element or the entire page"
+    "message": "Select and copy text content"
   },
   "screenshotPickerDescription": {
-    "message": "Capture full page screenshots or specific elements with high quality"
+    "message": "Capture full page screenshots"
   },
   "stickyNotesPickerDescription": {
-    "message": "Add persistent sticky notes to any webpage that stay when you return"
+    "message": "Add sticky notes to webpages"
   },
   "siteInfoPickerDescription": {
-    "message": "Analyze website technology stack, SEO metrics, and performance data"
+    "message": "Analyze website technology data"
   },
   "settings": {
     "message": "Settings"
@@ -304,5 +304,35 @@
   },
   "support": {
     "message": "Support"
+  },
+  "colorPalette": {
+    "message": "Color Palette"
+  },
+  "colorPaletteGenerator": {
+    "message": "Color Palette Generator"
+  },
+  "colorPaletteGeneratorDescription": {
+    "message": "Extract page colors and generate harmonic palettes with accessibility scores"
+  },
+  "inspect": {
+    "message": "Inspect"
+  },
+  "capture": {
+    "message": "Capture"
+  },
+  "enhance": {
+    "message": "Enhance"
+  },
+  "utilities": {
+    "message": "Utilities"
+  },
+  "pdf": {
+    "message": "PDF"
+  },
+  "pdfGenerator": {
+    "message": "PDF Generator"
+  },
+  "pdfGeneratorDescription": {
+    "message": "Convert current page to PDF and download instantly"
   }
 }

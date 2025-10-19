@@ -210,31 +210,31 @@
     "message": "Soutien"
   },
   "colorPickerDescription": {
-    "message": "Cliquez sur n'importe quel élément pour choisir sa couleur et obtenir instantanément les valeurs hex, RGB, HSL"
+    "message": "Cliquez sur les éléments pour obtenir les couleurs"
   },
   "elementPickerDescription": {
-    "message": "Survolez les éléments pour inspecter la structure HTML, les styles CSS et les sélecteurs"
+    "message": "Inspectez la structure HTML et CSS"
   },
   "linkPickerDescription": {
-    "message": "Trouvez tous les liens de la page, vérifiez leur statut et exportez les liens cassés"
+    "message": "Trouvez tous les liens de la page"
   },
   "fontPickerDescription": {
-    "message": "Identifiez les polices utilisées sur la page avec famille, taille, poids et détails de style"
+    "message": "Identifiez les polices avec famille et taille"
   },
   "mediaPickerDescription": {
-    "message": "Téléchargez toutes les images et fichiers multimédias de la page actuelle en un clic"
+    "message": "Téléchargez images et fichiers multimédias"
   },
   "textPickerDescription": {
-    "message": "Sélectionnez et copiez le contenu texte de n'importe quel élément ou de la page entière"
+    "message": "Sélectionnez et copiez le contenu texte"
   },
   "screenshotPickerDescription": {
-    "message": "Capturez des captures d'écran de page complète ou d'éléments spécifiques en haute qualité"
+    "message": "Capturez des captures d'écran de page"
   },
   "stickyNotesPickerDescription": {
-    "message": "Ajoutez des notes persistantes à n'importe quelle page web qui restent quand vous revenez"
+    "message": "Ajoutez des notes aux pages web"
   },
   "siteInfoPickerDescription": {
-    "message": "Analysez la pile technologique du site web, les métriques SEO et les données de performance"
+    "message": "Analysez les données technologiques du site"
   },
   "settings": {
     "message": "Paramètres"
@@ -304,5 +304,35 @@
   },
   "support": {
     "message": "Support"
+  },
+  "colorPalette": {
+    "message": "Palette de Couleurs"
+  },
+  "colorPaletteGenerator": {
+    "message": "Générateur de Palette"
+  },
+  "colorPaletteGeneratorDescription": {
+    "message": "Extraire les couleurs de la page et générer des palettes harmoniques avec scores d'accessibilité"
+  },
+  "inspect": {
+    "message": "Inspecter"
+  },
+  "capture": {
+    "message": "Capturer"
+  },
+  "enhance": {
+    "message": "Améliorer"
+  },
+  "utilities": {
+    "message": "Utilitaires"
+  },
+  "pdf": {
+    "message": "PDF"
+  },
+  "pdfGenerator": {
+    "message": "Générateur PDF"
+  },
+  "pdfGeneratorDescription": {
+    "message": "Convertir la page actuelle en PDF et télécharger instantanément"
   }
 }

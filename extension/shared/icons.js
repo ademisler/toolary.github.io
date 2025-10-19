@@ -72,8 +72,21 @@ const ICON_DEFINITIONS = {
   note: {
     title: 'Sticky note',
     elements: [
-      { tag: 'path', attrs: { d: 'M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z' } },
-      { tag: 'path', attrs: { d: 'M15 3v4a2 2 0 0 0 2 2h4' } }
+      { tag: 'path', attrs: { d: 'M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z' } },
+      { tag: 'path', attrs: { d: 'M15 3v5h5' } },
+      { tag: 'path', attrs: { d: 'M8 12h8' } },
+      { tag: 'path', attrs: { d: 'M8 16h6' } },
+      { tag: 'path', attrs: { d: 'M8 20h4' } }
+    ]
+  },
+  notes: {
+    title: 'Sticky notes',
+    elements: [
+      { tag: 'path', attrs: { d: 'M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z' } },
+      { tag: 'path', attrs: { d: 'M15 3v5h5' } },
+      { tag: 'path', attrs: { d: 'M8 12h8' } },
+      { tag: 'path', attrs: { d: 'M8 16h6' } },
+      { tag: 'path', attrs: { d: 'M8 20h4' } }
     ]
   },
   developer: {
@@ -104,6 +117,15 @@ const ICON_DEFINITIONS = {
       { tag: 'path', attrs: { d: 'M12 2v13' } },
       { tag: 'path', attrs: { d: 'm16 6-4-4-4 4' } },
       { tag: 'path', attrs: { d: 'M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8' } }
+    ]
+  },
+  pdf: {
+    title: 'PDF',
+    elements: [
+      { tag: 'path', attrs: { d: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' } },
+      { tag: 'polyline', attrs: { points: '14,2 14,8 20,8' } },
+      { tag: 'path', attrs: { d: 'M9 13h6' } },
+      { tag: 'path', attrs: { d: 'M9 17h6' } }
     ]
   },
   favorite: {
@@ -162,6 +184,16 @@ const ICON_DEFINITIONS = {
     elements: [
       { tag: 'path', attrs: { d: 'M5 12h14' } },
       { tag: 'path', attrs: { d: 'M12 5v14' } }
+    ]
+  },
+  palette: {
+    title: 'Color Palette',
+    elements: [
+      { tag: 'circle', attrs: { cx: 13.5, cy: 6.5, r: 0.5, fill: 'currentColor' } },
+      { tag: 'circle', attrs: { cx: 17.5, cy: 10.5, r: 0.5, fill: 'currentColor' } },
+      { tag: 'circle', attrs: { cx: 8.5, cy: 7.5, r: 0.5, fill: 'currentColor' } },
+      { tag: 'circle', attrs: { cx: 6.5, cy: 12.5, r: 0.5, fill: 'currentColor' } },
+      { tag: 'path', attrs: { d: 'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z' } }
     ]
   }
 };

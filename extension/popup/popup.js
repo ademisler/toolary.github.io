@@ -26,14 +26,15 @@ const iconsPromise = import(chrome.runtime.getURL('shared/icons.js')).catch((err
   throw error;
 });
 
-const CATEGORY_LABELS = Object.freeze({
-  inspect: 'Inspect',
-  capture: 'Capture',
-  enhance: 'Enhance',
-  utilities: 'Utilities'
+// Category labels will be localized dynamically
+const CATEGORY_KEYS = Object.freeze({
+  inspect: 'inspect',
+  capture: 'capture', 
+  enhance: 'enhance',
+  utilities: 'utilities'
 });
 
-const VALID_CATEGORIES = new Set(['all', ...Object.keys(CATEGORY_LABELS)]);
+const VALID_CATEGORIES = new Set(['all', ...Object.keys(CATEGORY_KEYS)]);
 
 const state = {
   isInitialized: false,
@@ -92,7 +93,6 @@ function resolveStoredList(data, primaryKey, legacyKeys = []) {
 // eslint-disable-next-line no-unused-vars
 function formatCategoryLabel(category) {
   if (!category) return '';
-  if (CATEGORY_LABELS[category]) return CATEGORY_LABELS[category];
   return `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
 }
 
@@ -272,6 +272,68 @@ function applyLang(map) {
   document.querySelectorAll('[data-i18n-title]').forEach(el => {
     el.title = map[el.dataset.i18nTitle]?.message || el.title;
   });
+  
+  // Update category labels in menu
+  document.querySelectorAll('.category-menu-item span').forEach(el => {
+    const category = el.parentElement.dataset.category;
+    if (category && category !== 'all') {
+      const categoryKey = CATEGORY_KEYS[category];
+      if (categoryKey) {
+        el.textContent = map[categoryKey]?.message || el.textContent;
+      }
+    }
+  });
+  
+  // Update tool names and descriptions in cards
+  document.querySelectorAll('.tool-card__title').forEach(el => {
+    const toolCard = el.closest('.tool-card');
+    if (toolCard) {
+      const toolId = toolCard.dataset.toolId;
+      const tool = state.toolMap.get(toolId);
+      if (tool) {
+        const nameKey = tool.i18n?.label || tool.i18n?.title || tool.id;
+        const localizedName = map[nameKey]?.message || tool.name;
+        el.textContent = localizedName;
+        
+        // Update description too
+        const descriptionEl = toolCard.querySelector('.tool-card__description');
+        if (descriptionEl) {
+          const descriptionKey = tool.i18n?.description || `${tool.id.replace(/-/g, '')}Description`;
+          const localizedDescription = map[descriptionKey]?.message || tool.description || '';
+          descriptionEl.textContent = localizedDescription;
+        }
+      }
+    }
+  });
+  
+  // Update tool names in settings
+  document.querySelectorAll('.settings-tool-item__name').forEach(el => {
+    const toolItem = el.closest('.settings-tool-item');
+    if (toolItem) {
+      const toolId = toolItem.dataset.toolId;
+      const tool = state.toolMap.get(toolId);
+      if (tool) {
+        const nameKey = tool.i18n?.label || tool.i18n?.title || tool.id;
+        const localizedName = map[nameKey]?.message || tool.name;
+        el.textContent = localizedName;
+      }
+    }
+  });
+  
+  // Update category labels in settings
+  document.querySelectorAll('.settings-tool-item__category').forEach(el => {
+    const toolItem = el.closest('.settings-tool-item');
+    if (toolItem) {
+      const toolId = toolItem.dataset.toolId;
+      const tool = state.toolMap.get(toolId);
+      if (tool) {
+        const categoryKey = CATEGORY_KEYS[tool.category];
+        if (categoryKey) {
+          el.textContent = map[categoryKey]?.message || el.textContent;
+        }
+      }
+    }
+  });
 }
 
 function getEffectiveTheme(theme) {
@@ -433,13 +495,17 @@ function createToolCardElement(tool) {
   
   const title = document.createElement('div');
   title.className = 'tool-card__title';
-  title.textContent = tool.name;
+  
+  // Get localized name from i18n
+  const nameKey = tool.i18n?.label || tool.i18n?.title || tool.id;
+  const localizedName = state.langMap[nameKey]?.message || tool.name;
+  title.textContent = localizedName;
   
   const description = document.createElement('div');
   description.className = 'tool-card__description';
   
   // Get description from localization
-  const descriptionKey = `${tool.id.replace(/-/g, '')}Description`;
+  const descriptionKey = tool.i18n?.description || `${tool.id.replace(/-/g, '')}Description`;
   const localizedDescription = state.langMap[descriptionKey]?.message || tool.description || '';
   description.textContent = localizedDescription;
   
@@ -949,11 +1015,19 @@ function renderSettingsList() {
     label.className = 'settings-tool-item__label';
     const name = document.createElement('span');
     name.className = 'settings-tool-item__name';
-    name.textContent = tool.name;
+    
+    // Get localized name from i18n
+    const nameKey = tool.i18n?.label || tool.i18n?.title || tool.id;
+    const localizedName = state.langMap[nameKey]?.message || tool.name;
+    name.textContent = localizedName;
 
     const category = document.createElement('span');
     category.className = 'settings-tool-item__category';
-    category.textContent = CATEGORY_LABELS[tool.category] || tool.category;
+    
+    // Get localized category name
+    const categoryKey = CATEGORY_KEYS[tool.category];
+    const localizedCategory = state.langMap[categoryKey]?.message || tool.category;
+    category.textContent = localizedCategory;
 
     label.append(name, category);
 

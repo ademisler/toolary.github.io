@@ -551,6 +551,7 @@ body {
   text-align: center;
   justify-content: flex-start;
   min-height: 0;
+  margin-top: -8px;
 }
 
 .tool-card__title {
@@ -1427,6 +1428,10 @@ body {
     height: 90px;
   }
   
+  .tool-card__content {
+    margin-top: -6px;
+  }
+  
   .tool-card-placeholder {
     height: 90px;
   }
@@ -1453,6 +1458,10 @@ body {
   .tool-card {
     padding: 10px 6px 6px 6px;
     height: 80px;
+  }
+  
+  .tool-card__content {
+    margin-top: -4px;
   }
   
   .tool-card-placeholder {

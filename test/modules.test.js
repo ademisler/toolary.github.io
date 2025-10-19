@@ -8,6 +8,8 @@ import { activate as activateFontPicker } from '../extension/tools/inspect/fontP
 import { activate as activateMediaPicker } from '../extension/tools/capture/mediaPicker.js';
 import { activate as activateSiteInfoPicker } from '../extension/tools/utilities/siteInfoPicker.js';
 import { activate as activateStickyNotesPicker } from '../extension/tools/enhance/stickyNotesPicker.js';
+import { activate as activateColorPaletteGenerator, metadata as colorPaletteMetadata } from '../extension/tools/utilities/colorPaletteGenerator.js';
+import { activate as activatePdfGenerator, metadata as pdfGeneratorMetadata } from '../extension/tools/capture/pdfGenerator.js';
 
 describe('Picker Modules', () => {
   
@@ -98,6 +100,38 @@ describe('Picker Modules', () => {
       
       // Should not throw errors
       expect(() => activateStickyNotesPicker(mockDeactivate)).not.toThrow();
+    });
+  });
+
+  describe('Color Palette Generator', () => {
+    test('should activate color palette generator', () => {
+      const mockDeactivate = jest.fn();
+      activateColorPaletteGenerator(mockDeactivate);
+      
+      // Should not throw errors
+      expect(() => activateColorPaletteGenerator(mockDeactivate)).not.toThrow();
+    });
+    
+    test('should export metadata', () => {
+      expect(colorPaletteMetadata).toBeDefined();
+      expect(colorPaletteMetadata.id).toBe('color-palette-generator');
+      expect(colorPaletteMetadata.category).toBe('utilities');
+    });
+  });
+
+  describe('PDF Generator', () => {
+    test('should activate pdf generator', () => {
+      const mockDeactivate = jest.fn();
+      activatePdfGenerator(mockDeactivate);
+      
+      // Should not throw errors
+      expect(() => activatePdfGenerator(mockDeactivate)).not.toThrow();
+    });
+    
+    test('should export metadata', () => {
+      expect(pdfGeneratorMetadata).toBeDefined();
+      expect(pdfGeneratorMetadata.id).toBe('pdf-generator');
+      expect(pdfGeneratorMetadata.category).toBe('capture');
     });
   });
 

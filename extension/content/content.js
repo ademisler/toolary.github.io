@@ -268,6 +268,36 @@ if (window.toolaryContentScriptLoaded) {
           return true;
         }
         throw new Error('Favorites helper unavailable');
+      },
+      [MESSAGE_TYPES.TRIGGER_PRINT]: () => {
+        // Hide all toolary overlays and notifications before printing
+        const toolaryElements = document.querySelectorAll('[id*="toolary"], [class*="toolary"]');
+        const hiddenElements = [];
+        
+        toolaryElements.forEach(element => {
+          if (element.style.display !== 'none') {
+            hiddenElements.push({
+              element,
+              originalDisplay: element.style.display
+            });
+            element.style.display = 'none';
+          }
+        });
+
+        // No instruction overlay - direct print for clean PDF
+
+        // Trigger print dialog
+        window.print();
+
+        // Clean up after print dialog closes
+        setTimeout(() => {
+          // Restore hidden toolary elements
+          hiddenElements.forEach(({ element, originalDisplay }) => {
+            element.style.display = originalDisplay;
+          });
+        }, 1000);
+        
+        return { success: true, method: 'window.print' };
       }
     });
   }).catch(error => {

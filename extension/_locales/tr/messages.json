@@ -210,31 +210,31 @@
     "message": "Destek"
   },
   "colorPickerDescription": {
-    "message": "Herhangi bir elemente tıklayarak rengini seçin ve hex, RGB, HSL değerlerini anında alın"
+    "message": "Elementlere tıklayarak renk alın"
   },
   "elementPickerDescription": {
-    "message": "Elementlerin üzerine gelerek HTML yapısını, CSS stillerini ve seçicileri inceleyin"
+    "message": "HTML ve CSS yapısını inceleyin"
   },
   "linkPickerDescription": {
-    "message": "Sayfadaki tüm linkleri bulun, durumlarını kontrol edin ve bozuk linkleri dışa aktarın"
+    "message": "Sayfadaki linkleri bulun"
   },
   "fontPickerDescription": {
-    "message": "Sayfada kullanılan fontları aile, boyut, kalınlık ve stil detaylarıyla tanımlayın"
+    "message": "Fontları aile ve boyut detaylarıyla tanımlayın"
   },
   "mediaPickerDescription": {
-    "message": "Mevcut sayfadaki tüm resim ve medya dosyalarını tek tıkla indirin"
+    "message": "Resim ve medya dosyalarını indirin"
   },
   "textPickerDescription": {
-    "message": "Herhangi bir elementten veya tüm sayfadan metin içeriğini seçin ve kopyalayın"
+    "message": "Metin içeriğini seçin ve kopyalayın"
   },
   "screenshotPickerDescription": {
-    "message": "Yüksek kalitede tam sayfa ekran görüntüleri veya belirli elementleri yakalayın"
+    "message": "Tam sayfa ekran görüntüleri alın"
   },
   "stickyNotesPickerDescription": {
-    "message": "Herhangi bir web sayfasına geri döndüğünüzde kalan kalıcı yapışkan notlar ekleyin"
+    "message": "Web sayfalarına yapışkan notlar ekleyin"
   },
   "siteInfoPickerDescription": {
-    "message": "Web sitesi teknoloji yığınını, SEO metriklerini ve performans verilerini analiz edin"
+    "message": "Web sitesi teknoloji verilerini analiz edin"
   },
   "settings": {
     "message": "Ayarlar"
@@ -304,5 +304,35 @@
   },
   "support": {
     "message": "Destek"
+  },
+  "colorPalette": {
+    "message": "Renk Paleti"
+  },
+  "colorPaletteGenerator": {
+    "message": "Renk Paleti Oluşturucu"
+  },
+  "colorPaletteGeneratorDescription": {
+    "message": "Sayfa renklerini çıkar ve erişilebilirlik skorları ile uyumlu paletler oluştur"
+  },
+  "inspect": {
+    "message": "İncele"
+  },
+  "capture": {
+    "message": "Yakala"
+  },
+  "enhance": {
+    "message": "Geliştir"
+  },
+  "utilities": {
+    "message": "Araçlar"
+  },
+  "pdf": {
+    "message": "PDF"
+  },
+  "pdfGenerator": {
+    "message": "PDF Oluşturucu"
+  },
+  "pdfGeneratorDescription": {
+    "message": "Mevcut sayfayı PDF'e çevir ve anında indir"
   }
 }
