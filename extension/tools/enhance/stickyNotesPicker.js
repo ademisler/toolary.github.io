@@ -80,16 +80,19 @@ export function activate(deactivate) {
         // No notes for this site, show manager anyway so user can create new notes
         showNotesManager();
         // Show a helpful message
-        showSuccess('No existing notes found for this page. You can create new notes by clicking on the page.');
+        const successMessage = chrome.i18n ? chrome.i18n.getMessage('noExistingNotesFound') : 'No existing notes found for this page. You can create new notes by clicking on the page.';
+        showSuccess(successMessage);
       }
     }).catch(error => {
       handleError(error, 'stickyNotesPicker activation loadNotes');
-      showError('Failed to load existing notes. Please try again.');
+      const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToLoadExistingNotes') : 'Failed to load existing notes. Please try again.';
+      showError(errorMessage);
       deactivate();
     });
   } catch (error) {
     handleError(error, 'stickyNotesPicker activation');
-    showError('Failed to activate sticky notes. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateStickyNotes') : 'Failed to activate sticky notes. Please try again.';
+    showError(errorMessage);
     deactivate();
   }
 }
@@ -155,7 +158,8 @@ function createStickyNote(x, y, color = NOTE_COLORS[0].value) {
     return note;
   } catch (error) {
     handleError(error, 'createStickyNote');
-    showError('Failed to create sticky note. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToCreateStickyNote') : 'Failed to create sticky note. Please try again.';
+    showError(errorMessage);
     return null;
   }
 }
@@ -785,11 +789,13 @@ function showNotesManager() {
       document.querySelectorAll('.toolary-sticky-note').forEach(el => el.remove());
       notes = [];
       noteCounter = 0;
-      showSuccess('All sticky notes removed');
+      const successMessage = chrome.i18n ? chrome.i18n.getMessage('allStickyNotesRemoved') : 'All sticky notes removed';
+      showSuccess(successMessage);
       await refreshManagerList();
     } catch (error) {
       handleError(error, 'clear all notes');
-      showError('Failed to clear notes. Please try again.');
+      const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToClearNotes') : 'Failed to clear notes. Please try again.';
+      showError(errorMessage);
     }
   });
 
@@ -850,10 +856,12 @@ async function saveNotes() {
     await safeExecute(async () =>
       await chrome.storage.local.set({ [siteKey]: normalizedNotes }), 'save notes to storage');
 
-    showSuccess('Notes saved successfully!');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('notesSavedSuccessfully') : 'Notes saved successfully!';
+    showSuccess(successMessage);
   } catch (error) {
     handleError(error, 'saveNotes');
-    showError('Failed to save notes');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToSaveNotes') : 'Failed to save notes';
+    showError(errorMessage);
   }
 }
 
@@ -964,10 +972,12 @@ function exportNotes() {
     
     safeExecute(() => URL.revokeObjectURL(url), 'revoke object URL');
     
-    showSuccess('Notes exported successfully!');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('notesExportedSuccessfully') : 'Notes exported successfully!';
+    showSuccess(successMessage);
   } catch (error) {
     handleError(error, 'exportNotes');
-    showError('Failed to export notes');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToExportNotes') : 'Failed to export notes';
+    showError(errorMessage);
   }
 }
 */
@@ -1020,13 +1030,16 @@ function importNotes() {
                 await saveNotes();
                 await loadExistingNotesForCurrentSite();
                 await refreshNotesManagerListIfPresent();
-                showSuccess('Notes imported successfully!');
+                const successMessage = chrome.i18n ? chrome.i18n.getMessage('notesImportedSuccessfully') : 'Notes imported successfully!';
+                showSuccess(successMessage);
               } else {
-                showError('Invalid notes file format');
+                const errorMessage = chrome.i18n ? chrome.i18n.getMessage('invalidNotesFileFormat') : 'Invalid notes file format';
+                showError(errorMessage);
               }
             } catch (error) {
               handleError(error, 'import notes file reader load');
-              showError('Failed to parse notes file');
+              const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToParseNotesFile') : 'Failed to parse notes file';
+              showError(errorMessage);
             }
           });
           cleanupFunctions.push(readerCleanup);
@@ -1035,7 +1048,8 @@ function importNotes() {
         }
       } catch (error) {
         handleError(error, 'import notes input change');
-        showError('Failed to process selected file');
+        const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToProcessSelectedFile') : 'Failed to process selected file';
+        showError(errorMessage);
       }
     });
     cleanupFunctions.push(cleanup);
@@ -1043,7 +1057,8 @@ function importNotes() {
     input.click();
   } catch (error) {
     handleError(error, 'importNotes');
-    showError('Failed to import notes');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToImportNotes') : 'Failed to import notes';
+    showError(errorMessage);
   }
 }
 */
@@ -1070,12 +1085,14 @@ function deleteNote(noteId) {
       if (noteIndex !== -1) {
         notes.splice(noteIndex, 1);
         saveNotes();
-        showSuccess('Note deleted successfully');
+        const successMessage = chrome.i18n ? chrome.i18n.getMessage('noteDeletedSuccessfully') : 'Note deleted successfully';
+        showSuccess(successMessage);
       }
     }
   } catch (error) {
     handleError(error, 'deleteNote');
-    showError('Failed to delete note');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToDeleteNote') : 'Failed to delete note';
+    showError(errorMessage);
   }
 }
 */
@@ -1105,7 +1122,8 @@ function focusNoteById(noteId) {
     }
   } catch (error) {
     handleError(error, 'focusNoteById');
-    showError('Failed to focus note');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToFocusNote') : 'Failed to focus note';
+    showError(errorMessage);
   }
 }
 */
@@ -1304,7 +1322,8 @@ function deleteAllNotes() {
     });
 
     if (currentSiteNotes.length === 0) {
-      showSuccess('No notes to delete for this site.');
+      const successMessage = chrome.i18n ? chrome.i18n.getMessage('noNotesToDeleteForSite') : 'No notes to delete for this site.';
+      showSuccess(successMessage);
       return;
     }
 
@@ -1324,10 +1343,12 @@ function deleteAllNotes() {
     // Save changes
     saveNotes();
 
-    showSuccess(`Deleted ${currentSiteNotes.length} notes successfully!`);
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('deletedNotesSuccessfully', [currentSiteNotes.length]) : `Deleted ${currentSiteNotes.length} notes successfully!`;
+    showSuccess(successMessage);
   } catch (error) {
     handleError(error, 'deleteAllNotes');
-    showError('Failed to delete all notes. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToDeleteAllNotes') : 'Failed to delete all notes. Please try again.';
+    showError(errorMessage);
   }
 }
 */
@@ -1385,10 +1406,12 @@ async function deleteIndividualNote(noteId) {
       }
     }
 
-    showSuccess('Note deleted successfully!');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('noteDeletedSuccessfullyExclamation') : 'Note deleted successfully!';
+    showSuccess(successMessage);
   } catch (error) {
     handleError(error, 'deleteIndividualNote');
-    showError('Failed to delete note. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToDeleteNoteExclamation') : 'Failed to delete note. Please try again.';
+    showError(errorMessage);
   }
 }
 

@@ -48,6 +48,10 @@ const state = {
   searchTokens: [],
   activeCategory: 'all',
   langMap: {},
+  // AI settings state
+  aiKeys: [],
+  aiModel: 'auto',
+  aiLanguage: 'auto',
   loading: true,
   currentPage: 1,
   toolsPerPage: 6
@@ -272,6 +276,12 @@ function applyLang(map) {
   document.querySelectorAll('[data-i18n-title]').forEach(el => {
     el.title = map[el.dataset.i18nTitle]?.message || el.title;
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = map[el.dataset.i18nPlaceholder]?.message || el.placeholder;
+  });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+    el.setAttribute('aria-label', map[el.dataset.i18nAriaLabel]?.message || el.getAttribute('aria-label'));
+  });
   
   // Update category labels in menu
   document.querySelectorAll('.category-menu-item span').forEach(el => {
@@ -411,15 +421,24 @@ function cacheElements() {
     // Settings tabs
     settingsTabPreferences: document.getElementById('settings-tab-preferences'),
     settingsTabTools: document.getElementById('settings-tab-tools'),
+    settingsTabAI: document.getElementById('settings-tab-ai'),
     settingsTabAbout: document.getElementById('settings-tab-about'),
     settingsContentPreferences: document.getElementById('settings-content-preferences'),
     settingsContentTools: document.getElementById('settings-content-tools'),
+    settingsContentAI: document.getElementById('settings-content-ai'),
     settingsContentAbout: document.getElementById('settings-content-about'),
     settingsLangSelect: document.getElementById('settings-lang-select'),
     settingsThemeSelect: document.getElementById('settings-theme-select'),
+    // AI settings elements
+    settingsAIModelSelect: document.getElementById('settings-ai-model-select'),
+    settingsAILanguageSelect: document.getElementById('settings-ai-language-select'),
+    addAIKeyBtn: document.getElementById('add-ai-key-btn'),
+    aiKeysContainer: document.getElementById('ai-keys-container'),
     pagination: document.getElementById('pagination'),
     prevPage: document.getElementById('prev-page'),
-    nextPage: document.getElementById('next-page')
+    nextPage: document.getElementById('next-page'),
+    currentPageEl: document.getElementById('current-page'),
+    totalPagesEl: document.getElementById('total-pages')
   });
 
   elements.paginationDots = document.querySelector('.pagination-dots');
@@ -435,14 +454,20 @@ function createToolCardElement(tool) {
   icon.className = 'tool-card__icon';
   
   // Try to use icon definitions directly first, then fallback to SVG files
-  if (icons.createIconElement) {
+  if (icons.createIconElement && icons.getIconDefinition) {
     try {
-       const iconSvg = icons.createIconElement(tool.icon, { size: 32, decorative: true });
-      if (iconSvg) {
-        console.log(`Using icon definition for ${tool.name}`);
+      // Check if icon definition exists (not the default circle)
+      const iconDef = icons.getIconDefinition(tool.icon);
+      const defaultDef = icons.getIconDefinition('nonexistent');
+      const isDefaultIcon = iconDef.title === defaultDef.title && iconDef.elements.length === defaultDef.elements.length;
+      
+      if (!isDefaultIcon) {
+        const iconSvg = icons.createIconElement(tool.icon, { size: 32, decorative: true });
+        console.log(`Using icon definition for ${tool.name} (${tool.icon})`);
         icon.appendChild(iconSvg);
       } else {
-        throw new Error('Icon definition not found');
+        console.log(`Icon definition not found for ${tool.name} (${tool.icon}), using SVG file`);
+        throw new Error('Icon definition not found, using SVG file');
       }
     } catch (error) {
       console.log(`Icon definition failed for ${tool.name}, trying SVG file:`, error);
@@ -549,6 +574,9 @@ async function loadPreferences() {
   const usageData = localData[USAGE_STORAGE_KEY] || {};
   state.toolUsage = new Map(Object.entries(usageData));
 
+  // Load AI settings
+  await loadAISettings();
+
   if (migrationTasks.length > 0) {
     Promise.allSettled(migrationTasks).catch((error) => {
       console.warn('Toolary popup: storage migration warnings', error);
@@ -624,6 +652,7 @@ function applyFilters() {
     return matchesSearch(tool, term);
   });
 
+
   // Sort by usage count (most used first)
   filtered.sort((a, b) => {
     const usageA = state.toolUsage.get(a.id) || 0;
@@ -649,6 +678,7 @@ function renderMainToolsGrid() {
   const startIndex = (state.currentPage - 1) * state.toolsPerPage;
   const endIndex = startIndex + state.toolsPerPage;
   const pageTools = state.filteredTools.slice(startIndex, endIndex);
+  
   
   elements.toolsGrid.innerHTML = '';
   
@@ -684,6 +714,14 @@ function updatePagination() {
   }
   if (elements.nextPage) {
     elements.nextPage.disabled = state.currentPage >= totalPages;
+  }
+  
+  // Update page number display
+  if (elements.currentPageEl) {
+    elements.currentPageEl.textContent = state.currentPage;
+  }
+  if (elements.totalPagesEl) {
+    elements.totalPagesEl.textContent = totalPages;
   }
   
   // Update pagination dots (if they exist)
@@ -975,7 +1013,7 @@ function handleKeyboardNavigation(event) {
 
 function switchSettingsTab(tabName) {
   // Validate tab name
-  const validTabs = ['preferences', 'tools', 'about'];
+  const validTabs = ['preferences', 'tools', 'ai', 'about'];
   if (!validTabs.includes(tabName)) {
     console.warn(`Invalid tab name: ${tabName}`);
     return;
@@ -1152,7 +1190,6 @@ function showShortcutsModal(map = state.langMap) {
   body.appendChild(description);
 
   const shortcutsList = [
-    { label: map?.shortcutOpen?.message || map?.openToolary?.message || 'Open Toolary', key: 'Ctrl+Shift+9' },
     { label: map?.shortcutToggle?.message || 'Toggle popup', key: 'Ctrl+Shift+P' },
     { label: map?.shortcutClose?.message || 'Close popup', key: 'Esc' }
   ];
@@ -1264,6 +1301,7 @@ async function loadToolMetadata() {
   state.toolMap = new Map(state.toolMetadata.map(tool => [tool.id, tool]));
   setLoadingState(false);
   
+  
   // Apply filters first to set up state.filteredTools
   applyFilters();
   renderSettingsList();
@@ -1296,6 +1334,7 @@ function attachEventListeners() {
   // Settings tab event listeners
   elements.settingsTabPreferences?.addEventListener('click', () => switchSettingsTab('preferences'));
   elements.settingsTabTools?.addEventListener('click', () => switchSettingsTab('tools'));
+  elements.settingsTabAI?.addEventListener('click', () => switchSettingsTab('ai'));
   elements.settingsTabAbout?.addEventListener('click', () => switchSettingsTab('about'));
 
   // Settings language and theme change handlers
@@ -1319,12 +1358,55 @@ function attachEventListeners() {
     applyTheme(normalized);
   });
 
+  // AI settings event listeners
+  elements.settingsAIModelSelect?.addEventListener('change', async (event) => {
+    state.aiModel = event.target.value;
+    await chrome.storage.local.set({ toolaryAIModel: state.aiModel });
+  });
+
+  elements.settingsAILanguageSelect?.addEventListener('change', async (event) => {
+    state.aiLanguage = event.target.value;
+    await chrome.storage.local.set({ toolaryAILanguage: state.aiLanguage });
+  });
+
+  elements.addAIKeyBtn?.addEventListener('click', addAIKey);
+
+  // AI Keys event delegation for dynamic elements
+  elements.aiKeysContainer?.addEventListener('click', (event) => {
+    const target = event.target.closest('button');
+    if (!target) return;
+
+    const index = parseInt(target.dataset.index);
+    if (isNaN(index)) return;
+
+    if (target.classList.contains('ai-key-toggle-visibility')) {
+      toggleKeyVisibility(index);
+    } else if (target.classList.contains('ai-key-save-btn')) {
+      saveAIKey(index);
+    } else if (target.classList.contains('ai-key-remove-btn')) {
+      removeAIKey(index);
+    } else if (target.classList.contains('ai-key-test-btn')) {
+      testAIKey(index);
+    }
+  });
+
+  elements.aiKeysContainer?.addEventListener('input', (event) => {
+    if (event.target.classList.contains('ai-key-input')) {
+      const index = parseInt(event.target.dataset.index);
+      if (!isNaN(index)) {
+        updateAIKey(index, event.target.value);
+      }
+    }
+  });
+
   elements.settingsBtn?.addEventListener('click', openSettingsPanel);
   elements.settingsClose?.addEventListener('click', () => closeSettingsPanel({ save: false }));
   elements.settingsReset?.addEventListener('click', resetSettings);
-  elements.settingsSave?.addEventListener('click', () => {
+  elements.settingsSave?.addEventListener('click', async () => {
+    await saveAISettings();
     closeSettingsPanel({ save: true });
-    ui.showToast('Tool visibility updated', 'success');
+    const message = state.langMap.settingsUpdated?.message || 'Settings updated';
+    ui.showToast(message, 'success');
   });
   elements.settingsPanel?.addEventListener('click', (event) => {
     if (event.target === elements.settingsPanel) {
@@ -1335,6 +1417,30 @@ function attachEventListeners() {
   // Pagination event listeners
   elements.prevPage?.addEventListener('click', prevPage);
   elements.nextPage?.addEventListener('click', nextPage);
+
+  // Mouse wheel navigation for pagination
+  const toolsContainer = document.querySelector('.tools-virtual-container');
+  if (toolsContainer) {
+    let wheelTimeout;
+    toolsContainer.addEventListener('wheel', (event) => {
+      // Only handle wheel events when pagination is visible
+      if (elements.pagination && !elements.pagination.hidden) {
+        event.preventDefault();
+        
+        // Debounce wheel events to prevent rapid page changes
+        clearTimeout(wheelTimeout);
+        wheelTimeout = setTimeout(() => {
+          if (event.deltaY > 0) {
+            // Wheel down = next page (right)
+            nextPage();
+          } else if (event.deltaY < 0) {
+            // Wheel up = previous page (left)
+            prevPage();
+          }
+        }, 50); // 50ms debounce
+      }
+    }, { passive: false });
+  }
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
@@ -1354,6 +1460,232 @@ function attachEventListeners() {
 
   document.addEventListener('keydown', handleKeyboardNavigation);
 }
+
+// AI Settings Functions
+async function loadAISettings() {
+  try {
+    const { toolaryAIKeys, toolaryAIModel, toolaryAILanguage } = await chrome.storage.local.get([
+      'toolaryAIKeys', 
+      'toolaryAIModel',
+      'toolaryAILanguage'
+    ]);
+    
+    state.aiKeys = toolaryAIKeys || [];
+    state.aiModel = toolaryAIModel || 'auto';
+    state.aiLanguage = toolaryAILanguage || 'auto';
+    
+    renderAIKeys();
+    if (elements.settingsAIModelSelect) {
+      elements.settingsAIModelSelect.value = state.aiModel;
+    }
+    if (elements.settingsAILanguageSelect) {
+      elements.settingsAILanguageSelect.value = state.aiLanguage;
+    }
+  } catch (error) {
+    console.error('Failed to load AI settings:', error);
+  }
+}
+
+function renderAIKeys() {
+  if (!elements.aiKeysContainer) return;
+  
+  if (state.aiKeys.length === 0) {
+    elements.aiKeysContainer.innerHTML = `
+      <div class="ai-key-empty-state">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <div>${state.langMap.noApiKeys?.message || 'No API keys added yet'}</div>
+      </div>
+    `;
+    return;
+  }
+  
+  elements.aiKeysContainer.innerHTML = state.aiKeys.map((key, index) => `
+    <div class="ai-key-item" data-key-index="${index}">
+      <div class="ai-key-input-container">
+        <input type="${key.visible ? 'text' : 'password'}" 
+               class="ai-key-input" 
+               value="${key.value || ''}" 
+               data-index="${index}"
+               placeholder="${state.langMap.apiKeyPlaceholder?.message || 'Enter Gemini API key'}">
+        <button class="ai-key-toggle-visibility" 
+                data-index="${index}" 
+                title="${key.visible ? (state.langMap.hideApiKey?.message || 'Hide API key') : (state.langMap.showApiKey?.message || 'Show API key')}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            ${key.visible ? 
+              '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>' :
+              '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>'
+            }
+          </svg>
+        </button>
+      </div>
+      <div class="ai-key-actions">
+        <div class="ai-key-actions-left">
+          <button class="ai-key-test-btn" 
+                  data-index="${index}"
+                  title="${state.langMap.testApiKey?.message || 'Test API key'}"
+                  ${!key.value ? 'disabled' : ''}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 2v4"></path>
+              <path d="M16 2v4"></path>
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <path d="M9 9h6"></path>
+              <path d="M9 13h6"></path>
+              <path d="M9 17h4"></path>
+            </svg>
+            Test
+          </button>
+          <button class="ai-key-save-btn" 
+                  data-index="${index}"
+                  title="${state.langMap.saveApiKey?.message || 'Save API key'}"
+                  style="display: ${key.value && key.value !== key.savedValue ? 'flex' : 'none'}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17,21 17,13 7,13 7,21"></polyline>
+              <polyline points="7,3 7,8 15,8"></polyline>
+            </svg>
+            Save
+          </button>
+        </div>
+        <div class="ai-key-actions-right">
+          <span class="ai-key-status ${key.status || 'active'}">${getStatusText(key.status || 'active')}</span>
+          <button class="ai-key-remove-btn" 
+                  data-index="${index}" 
+                  title="${state.langMap.removeApiKeyTooltip?.message || 'Remove API key'}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18"></path>
+              <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+              <path d="M10 11v6"></path>
+              <path d="M14 11v6"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function getStatusText(status) {
+  const statusMap = {
+    'active': 'Active',
+    'error': 'Error',
+    'rate_limited': 'Rate Limited',
+    'unknown': 'Unknown'
+  };
+  return statusMap[status] || 'Unknown';
+}
+
+function addAIKey() {
+  state.aiKeys.push({ value: '', status: 'active', visible: false, savedValue: '' });
+  renderAIKeys();
+  
+  // Focus the new input
+  setTimeout(() => {
+    const newInput = elements.aiKeysContainer.querySelector(`input[data-index="${state.aiKeys.length - 1}"]`);
+    if (newInput) {
+      newInput.focus();
+    }
+  }, 100);
+}
+
+function updateAIKey(index, value) {
+  if (state.aiKeys[index]) {
+    state.aiKeys[index].value = value;
+    renderAIKeys(); // Re-render to update save button visibility
+  }
+}
+
+function saveAIKey(index) {
+  if (state.aiKeys[index]) {
+    state.aiKeys[index].savedValue = state.aiKeys[index].value;
+    state.aiKeys[index].status = 'active';
+    saveAISettings();
+    renderAIKeys();
+    const message = state.langMap.apiKeySaved?.message || 'API key saved';
+    ui.showToast(message, 'success');
+  }
+}
+
+function toggleKeyVisibility(index) {
+  if (state.aiKeys[index]) {
+    state.aiKeys[index].visible = !state.aiKeys[index].visible;
+    renderAIKeys();
+  }
+}
+
+async function testAIKey(index) {
+  if (!state.aiKeys[index] || !state.aiKeys[index].value) {
+    const message = state.langMap.enterApiKeyFirst?.message || 'Please enter an API key first';
+    ui.showToast(message, 'error');
+    return;
+  }
+
+  const testBtn = elements.aiKeysContainer.querySelector(`button[data-index="${index}"].ai-key-test-btn`);
+  if (testBtn) {
+    testBtn.disabled = true;
+    testBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M12 6v6l4 2"></path>
+      </svg>
+      Testing...
+    `;
+  }
+
+  try {
+    // Import aiManager dynamically to avoid circular imports
+    const { aiManager } = await import('../core/aiManager.js');
+    
+    // Test the API key
+    const testKey = state.aiKeys[index].value;
+    const result = await aiManager.testAPIKey(testKey);
+    
+    if (result.valid) {
+      state.aiKeys[index].status = 'active';
+      const message = state.langMap.apiKeyValid?.message || 'API key is valid!';
+      ui.showToast(message, 'success');
+    } else {
+      state.aiKeys[index].status = 'error';
+      const errorMsg = result.error || 'Unknown error';
+      const failedMsg = state.langMap.apiKeyTestFailed?.message || 'API key test failed';
+      ui.showToast(`${failedMsg}: ${errorMsg}`, 'error');
+    }
+  } catch (error) {
+    state.aiKeys[index].status = 'error';
+    const testFailedMsg = state.langMap.apiKeyTestFailed?.message || 'API key test failed';
+    ui.showToast(`${testFailedMsg}: ${error.message}`, 'error');
+  } finally {
+    renderAIKeys();
+  }
+}
+
+function removeAIKey(index) {
+  if (state.aiKeys.length > 0) {
+    state.aiKeys.splice(index, 1);
+    renderAIKeys();
+    saveAISettings();
+  }
+}
+
+async function saveAISettings() {
+  try {
+    await chrome.storage.local.set({
+      toolaryAIKeys: state.aiKeys,
+      toolaryAIModel: state.aiModel,
+      toolaryAILanguage: state.aiLanguage
+    });
+  } catch (error) {
+    console.error('Failed to save AI settings:', error);
+  }
+}
+
+// Make functions globally available for inline event handlers
+window.updateAIKey = updateAIKey;
+window.removeAIKey = removeAIKey;
+window.toggleKeyVisibility = toggleKeyVisibility;
 
 document.addEventListener('DOMContentLoaded', async () => {
   if (state.isInitialized) return;

@@ -546,7 +546,8 @@ function showMediaModal(info) {
         copyAltBtn.appendChild(Object.assign(document.createElement('span'), { textContent: 'Copy' }));
         copyAltBtn.addEventListener('click', async () => {
           await copyText(altUrl);
-          showSuccess('Alternate media URL copied.');
+          const successMessage = chrome.i18n ? chrome.i18n.getMessage('alternateMediaUrlCopied') : 'Alternate media URL copied.';
+          showSuccess(successMessage);
         });
 
         const downloadAltBtn = document.createElement('button');
@@ -632,13 +633,15 @@ function showMediaModal(info) {
     copyBtn.addEventListener('click', async () => {
       if (!info.url) return;
       await copyText(info.url);
-      showSuccess('Media URL copied to clipboard!');
+      const successMessage = chrome.i18n ? chrome.i18n.getMessage('mediaUrlCopiedToClipboard') : 'Media URL copied to clipboard!';
+      showSuccess(successMessage);
     });
 
     downloadBtn.addEventListener('click', () => downloadMedia(info));
   } catch (error) {
     handleError(error, 'mediaPicker.modal');
-    showError('Failed to show media details.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToShowMediaDetails') : 'Failed to show media details.';
+    showError(errorMessage);
   }
 }
 
@@ -682,12 +685,14 @@ function downloadMedia(info, overrideUrl = null) {
   const targetUrl = overrideUrl || info.url;
 
   if (!targetUrl) {
-    showError('Media URL unavailable.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('mediaUrlUnavailable') : 'Media URL unavailable.';
+    showError(errorMessage);
     return;
   }
 
   if (targetUrl.startsWith('blob:')) {
-    showError('This media uses a blob URL and cannot be downloaded directly.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('blobUrlCannotDownload') : 'This media uses a blob URL and cannot be downloaded directly.';
+    showError(errorMessage);
     return;
   }
 
@@ -707,16 +712,19 @@ function downloadMedia(info, overrideUrl = null) {
   }, (response) => {
     if (chrome.runtime.lastError) {
       handleError(chrome.runtime.lastError, 'mediaPicker.download');
-      showError(chrome.runtime.lastError.message || 'Failed to download media.');
+      const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToDownloadMedia') : 'Failed to download media.';
+      showError(chrome.runtime.lastError.message || errorMessage);
       return;
     }
 
     if (!response?.success) {
-      showError(response?.error || 'Failed to download media.');
+      const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToDownloadMedia') : 'Failed to download media.';
+      showError(response?.error || errorMessage);
       return;
     }
 
-    showSuccess('Download started.');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('downloadStarted') : 'Download started.';
+    showSuccess(successMessage);
   });
 }
 
@@ -725,14 +733,17 @@ function handleSelection(media) {
   const info = tag === 'video' ? collectVideoInfo(media) : collectImageInfo(media);
 
   if (info.fallbackApplied) {
-    showInfo('Stream uses a blob URL — using alternate source for copy & download.', 3200);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('blobUrlUsingAlternateSource') : 'Stream uses a blob URL — using alternate source for copy & download.';
+    showInfo(infoMessage, 3200);
   }
 
   if (info.url) {
     safeExecute(() => copyText(info.url), 'copy media url');
-    showSuccess('Media URL copied to clipboard!');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('mediaUrlCopiedToClipboard') : 'Media URL copied to clipboard!';
+    showSuccess(successMessage);
   } else {
-    showInfo('Media details available. Review the modal for download options.', 3000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('mediaDetailsAvailable') : 'Media details available. Review the modal for download options.';
+    showInfo(infoMessage, 3000);
   }
   showMediaModal(info);
   deactivateCb();
@@ -749,7 +760,8 @@ function onClick(event) {
     handleSelection(media);
   } catch (error) {
     handleError(error, 'mediaPicker.click');
-    showError('Failed to inspect media.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToInspectMedia') : 'Failed to inspect media.';
+    showError(errorMessage);
   }
 }
 
@@ -797,10 +809,12 @@ export function activate(deactivate) {
 
     cleanupFunctions.push(cleanupMove, cleanupClick, cleanupKeydown);
 
-    showInfo('Hover over images or videos • Click to inspect • Enter to select • Esc to cancel', 2500);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('hoverToInspectMedia') : 'Hover over images or videos • Click to inspect • Enter to select • Esc to cancel';
+    showInfo(infoMessage, 2500);
   } catch (error) {
     handleError(error, 'mediaPicker.activate');
-    showError('Failed to activate media picker.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateMediaPicker') : 'Failed to activate media picker.';
+    showError(errorMessage);
     deactivate();
   }
 }

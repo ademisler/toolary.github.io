@@ -195,13 +195,430 @@
     "message": "Sombre"
   },
   "eyeDropperNotSupported": {
-    "message": "API EyeDropper non prise en charge"
+    "message": "API EyeDropper non prise en charge dans ce navigateur. Veuillez utiliser Chrome 95+ ou essayer un autre outil."
+  },
+  "clickToPickColor": {
+    "message": "Cliquez n'importe où pour choisir une couleur..."
+  },
+  "colorCopiedToClipboard": {
+    "message": "Couleur {color} copiée dans le presse-papiers !"
+  },
+  "colorPickingCancelled": {
+    "message": "Sélection de couleur annulée"
+  },
+  "failedToProcessColor": {
+    "message": "Échec du traitement de la couleur. Veuillez réessayer."
+  },
+  "failedToActivateColorPicker": {
+    "message": "Échec de l'activation du sélecteur de couleur. Veuillez réessayer."
+  },
+  "elementSelectedAndCopied": {
+    "message": "Élément {tagName} sélectionné et copié !"
+  },
+  "failedToExtractElementInfo": {
+    "message": "Échec de l'extraction des informations d'élément. Veuillez réessayer."
+  },
+  "hoverToInspectElements": {
+    "message": "Survolez les éléments pour les inspecter • Cliquez pour sélectionner • Utilisez les flèches pour naviguer"
+  },
+  "failedToActivateElementPicker": {
+    "message": "Échec de l'activation du sélecteur d'élément. Veuillez réessayer."
+  },
+  "screenshotDownloadFailed": {
+    "message": "Capture d'écran réussie mais téléchargement échoué."
+  },
+  "screenshotCaptureInProgress": {
+    "message": "Capture d'écran déjà en cours. Veuillez patienter…"
+  },
+  "failedToCaptureScreenshot": {
+    "message": "Échec de la capture d'écran."
+  },
+  "textCopiedToClipboard": {
+    "message": "Texte copié dans le presse-papiers ! ({wordCount} mots)"
+  },
+  "failedToAnalyzeText": {
+    "message": "Échec de l'analyse du texte. Veuillez réessayer."
+  },
+  "hoverToAnalyzeText": {
+    "message": "Survolez les éléments de texte pour analyser • Cliquez pour sélectionner • Entrée pour sélectionner • Échap pour annuler"
+  },
+  "failedToActivateTextPicker": {
+    "message": "Échec de l'activation du sélecteur de texte. Veuillez réessayer."
+  },
+  "dragToSelectLinks": {
+    "message": "Glissez pour sélectionner les liens • Relâchez pour extraire • Ctrl/Cmd+A pour tous les liens • Échap pour annuler"
+  },
+  "failedToStartLinkSelection": {
+    "message": "Échec du démarrage de la sélection de liens. Veuillez réessayer."
+  },
+  "linksExtractedFromSource": {
+    "message": "{linkCount} liens extraits de {sourceLabel} !"
+  },
+  "failedToExtractLinks": {
+    "message": "Échec de l'extraction des liens. Veuillez réessayer."
+  },
+  "failedToActivateLinkPicker": {
+    "message": "Échec de l'activation du sélecteur de liens. Veuillez réessayer."
+  },
+  "fontInfoCopiedToClipboard": {
+    "message": "Informations de police copiées dans le presse-papiers !"
+  },
+  "failedToExtractFontInfo": {
+    "message": "Échec de l'extraction des informations de police. Veuillez réessayer."
+  },
+  "hoverToInspectFonts": {
+    "message": "Survolez les éléments de texte pour inspecter les polices • Cliquez pour sélectionner • Entrée pour sélectionner • Échap pour annuler"
+  },
+  "failedToActivateFontPicker": {
+    "message": "Échec de l'activation du sélecteur de police. Veuillez réessayer."
+  },
+  "alternateMediaUrlCopied": {
+    "message": "URL média alternative copiée."
+  },
+  "mediaUrlCopiedToClipboard": {
+    "message": "URL média copiée dans le presse-papiers !"
+  },
+  "failedToShowMediaDetails": {
+    "message": "Échec de l'affichage des détails média."
+  },
+  "mediaUrlUnavailable": {
+    "message": "URL média indisponible."
+  },
+  "blobUrlCannotDownload": {
+    "message": "Ce média utilise une URL blob et ne peut pas être téléchargé directement."
+  },
+  "failedToDownloadMedia": {
+    "message": "Échec du téléchargement du média."
+  },
+  "downloadStarted": {
+    "message": "Téléchargement démarré."
+  },
+  "blobUrlUsingAlternateSource": {
+    "message": "Le flux utilise une URL blob — source alternative utilisée pour la copie et le téléchargement."
+  },
+  "mediaDetailsAvailable": {
+    "message": "Détails média disponibles. Consultez la modale pour les options de téléchargement."
+  },
+  "failedToInspectMedia": {
+    "message": "Échec de l'inspection du média."
+  },
+  "hoverToInspectMedia": {
+    "message": "Survolez les images ou vidéos • Cliquez pour inspecter • Entrée pour sélectionner • Échap pour annuler"
+  },
+  "failedToActivateMediaPicker": {
+    "message": "Échec de l'activation du sélecteur de média."
+  },
+  "analyzingWebsite": {
+    "message": "Analyse du site web en cours..."
+  },
+  "siteAnalysisCompleted": {
+    "message": "Analyse du site terminée !"
+  },
+  "failedToGenerateSiteReport": {
+    "message": "Échec de la génération du rapport de site. Veuillez réessayer."
+  },
+  "failedToActivateSiteInfoTool": {
+    "message": "Échec de l'activation de l'outil d'information de site. Veuillez réessayer."
+  },
+  "siteAnalysisCompletedInfo": {
+    "message": "Analyse du site terminée"
+  },
+  "noExistingNotesFound": {
+    "message": "Aucune note existante trouvée pour cette page. Vous pouvez créer de nouvelles notes en cliquant sur la page."
+  },
+  "failedToLoadExistingNotes": {
+    "message": "Échec du chargement des notes existantes. Veuillez réessayer."
+  },
+  "failedToActivateStickyNotes": {
+    "message": "Échec de l'activation des notes autocollantes. Veuillez réessayer."
+  },
+  "failedToCreateStickyNote": {
+    "message": "Échec de la création de la note autocollante. Veuillez réessayer."
+  },
+  "allStickyNotesRemoved": {
+    "message": "Toutes les notes autocollantes supprimées"
+  },
+  "failedToClearNotes": {
+    "message": "Échec de la suppression des notes. Veuillez réessayer."
+  },
+  "notesSavedSuccessfully": {
+    "message": "Notes enregistrées avec succès !"
+  },
+  "failedToSaveNotes": {
+    "message": "Échec de l'enregistrement des notes"
+  },
+  "notesExportedSuccessfully": {
+    "message": "Notes exportées avec succès !"
+  },
+  "failedToExportNotes": {
+    "message": "Échec de l'exportation des notes"
+  },
+  "notesImportedSuccessfully": {
+    "message": "Notes importées avec succès !"
+  },
+  "invalidNotesFileFormat": {
+    "message": "Format de fichier de notes invalide"
+  },
+  "failedToParseNotesFile": {
+    "message": "Échec de l'analyse du fichier de notes"
+  },
+  "failedToProcessSelectedFile": {
+    "message": "Échec du traitement du fichier sélectionné"
+  },
+  "failedToImportNotes": {
+    "message": "Échec de l'importation des notes"
+  },
+  "noteDeletedSuccessfully": {
+    "message": "Note supprimée avec succès"
+  },
+  "failedToDeleteNote": {
+    "message": "Échec de la suppression de la note"
+  },
+  "failedToFocusNote": {
+    "message": "Échec du focus sur la note"
+  },
+  "noNotesToDeleteForSite": {
+    "message": "Aucune note à supprimer pour ce site."
+  },
+  "deletedNotesSuccessfully": {
+    "message": "{count} notes supprimées avec succès !"
+  },
+  "failedToDeleteAllNotes": {
+    "message": "Échec de la suppression de toutes les notes. Veuillez réessayer."
+  },
+  "noteDeletedSuccessfullyExclamation": {
+    "message": "Note supprimée avec succès !"
+  },
+  "failedToDeleteNoteExclamation": {
+    "message": "Échec de la suppression de la note. Veuillez réessayer."
+  },
+  "cssCopiedToClipboard": {
+    "message": "CSS copié dans le presse-papiers !"
+  },
+  "jsonCopiedToClipboard": {
+    "message": "JSON copié dans le presse-papiers !"
+  },
+  "analyzingPageColors": {
+    "message": "Analyse des couleurs de la page en cours..."
+  },
+  "noColorsFoundOnPage": {
+    "message": "Aucune couleur trouvée sur cette page. Essayez une page avec plus de contenu visuel."
+  },
+  "colorAnalysisCompleted": {
+    "message": "Analyse des couleurs terminée !"
+  },
+  "failedToAnalyzePageColors": {
+    "message": "Échec de l'analyse des couleurs de la page. Veuillez réessayer."
+  },
+  "failedToGeneratePDF": {
+    "message": "Échec de la génération du PDF : {error}"
+  },
+  "failedToActivatePDFGenerator": {
+    "message": "Échec de l'activation du générateur PDF : {error}"
+  },
+  "textHighlighterActivated": {
+    "message": "Surligneur de texte activé ! Sélectionnez du texte pour le surligner."
+  },
+  "failedToLoadExistingHighlights": {
+    "message": "Échec du chargement des surlignages existants. Veuillez réessayer."
+  },
+  "failedToActivateTextHighlighter": {
+    "message": "Échec de l'activation du surligneur de texte. Veuillez réessayer."
+  },
+  "failedToGenerateQRCode": {
+    "message": "Échec de la génération du code QR"
+  },
+  "failedToActivateQRCodeGenerator": {
+    "message": "Échec de l'activation du générateur de code QR"
+  },
+  "failedToLoadBookmarks": {
+    "message": "Échec du chargement des signets"
+  },
+  "failedToSaveBookmarks": {
+    "message": "Échec de l'enregistrement des signets"
+  },
+  "urlAlreadyBookmarked": {
+    "message": "Cette URL est déjà en signet"
+  },
+  "videoRecorderWindowClosed": {
+    "message": "Fenêtre de l'enregistreur vidéo fermée."
+  },
+  "recordingControlsNotReachable": {
+    "message": "Les contrôles d'enregistrement ne sont pas accessibles. Veuillez réessayer."
+  },
+  "recordingStarted": {
+    "message": "Enregistrement démarré. Gardez la fenêtre de contrôle ouverte pendant l'enregistrement."
+  },
+  "recordingAlreadyInProgress": {
+    "message": "Un enregistrement est déjà en cours."
+  },
+  "recordingSavedDownloadStarted": {
+    "message": "Enregistrement sauvegardé. Le téléchargement a démarré."
+  },
+  "videoRecorderError": {
+    "message": "L'enregistreur vidéo a rencontré une erreur."
+  },
+  "videoRecorderNotSupported": {
+    "message": "L'enregistreur vidéo n'est pas pris en charge dans ce contexte."
+  },
+  "videoRecorderWindowAlreadyOpen": {
+    "message": "La fenêtre de l'enregistreur vidéo est déjà ouverte."
+  },
+  "popupBlockedAllowPopups": {
+    "message": "Popup bloqué. Autorisez les popups pour Toolary pour utiliser l'enregistreur vidéo."
+  },
+  "recordingControlsOpened": {
+    "message": "Contrôles d'enregistrement ouverts dans une nouvelle fenêtre. Gardez-la ouverte pendant l'enregistrement."
+  },
+  "failedToOpenVideoRecorder": {
+    "message": "Échec de l'ouverture de l'enregistreur vidéo."
+  },
+  "noReadableContentFound": {
+    "message": "Aucun contenu lisible trouvé sur cette page"
+  },
+  "unableToCleanContent": {
+    "message": "Impossible de nettoyer le contenu pour la lecture"
+  },
+  "readingModeActivated": {
+    "message": "Mode lecture activé"
+  },
+  "failedToActivateReadingMode": {
+    "message": "Échec de l'activation du mode lecture"
+  },
+  "exitReadingMode": {
+    "message": "Quitter le mode lecture"
+  },
+  "decreaseFontSize": {
+    "message": "Diminuer la taille de police"
+  },
+  "increaseFontSize": {
+    "message": "Augmenter la taille de police"
+  },
+  "toggleTheme": {
+    "message": "Basculer le thème"
+  },
+  "showToolbar": {
+    "message": "Afficher la barre d'outils"
+  },
+  "hideToolbar": {
+    "message": "Masquer la barre d'outils"
+  },
+  "searchTools": {
+    "message": "Rechercher des outils..."
+  },
+  "filterByCategory": {
+    "message": "Filtrer par catégorie"
+  },
+  "webPickerTools": {
+    "message": "Outils de sélection web"
+  },
+  "previousPage": {
+    "message": "Page précédente"
+  },
+  "nextPage": {
+    "message": "Page suivante"
+  },
+  "settingsSections": {
+    "message": "Sections des paramètres"
+  },
+  "toolToggles": {
+    "message": "Basculements d'outils"
+  },
+  "bookmarkAddedSuccessfully": {
+    "message": "Signet ajouté avec succès !"
+  },
+  "failedToAddBookmark": {
+    "message": "Échec de l'ajout du signet"
+  },
+  "bookmarkNotFound": {
+    "message": "Signet introuvable"
+  },
+  "bookmarkUpdated": {
+    "message": "Signet mis à jour !"
+  },
+  "failedToUpdateBookmark": {
+    "message": "Échec de la mise à jour du signet"
+  },
+  "bookmarkDeleted": {
+    "message": "Signet supprimé !"
+  },
+  "failedToDeleteBookmark": {
+    "message": "Échec de la suppression du signet"
+  },
+  "failedToUpdateFavoriteStatus": {
+    "message": "Échec de la mise à jour du statut favori"
+  },
+  "bookmarksExportedSuccessfully": {
+    "message": "Signets exportés avec succès !"
+  },
+  "failedToExportBookmarks": {
+    "message": "Échec de l'exportation des signets"
+  },
+  "importedBookmarks": {
+    "message": "{count} signets importés{skipped}"
+  },
+  "failedToImportBookmarks": {
+    "message": "Échec de l'importation des signets. Veuillez vérifier le format du fichier."
+  },
+  "failedToOpenAddBookmarkDialog": {
+    "message": "Échec de l'ouverture de la boîte de dialogue d'ajout de signet"
+  },
+  "bookmarkManagerActivated": {
+    "message": "Gestionnaire de signets activé. Cliquez sur l'icône de signet pour gérer vos signets !"
+  },
+  "failedToActivateBookmarkManager": {
+    "message": "Échec de l'activation du gestionnaire de signets"
+  },
+  "qrCodeGenerated": {
+    "message": "Code QR généré"
+  },
+  "noQrCodeAvailableToDownload": {
+    "message": "Aucun code QR disponible pour le téléchargement"
+  },
+  "qrCodeDownloaded": {
+    "message": "Code QR téléchargé"
+  },
+  "failedToDownloadQrCode": {
+    "message": "Échec du téléchargement du code QR"
+  },
+  "nothingToCopy": {
+    "message": "Rien à copier"
+  },
+  "textCopiedToClipboard": {
+    "message": "Texte copié dans le presse-papiers"
+  },
+  "failedToCopyText": {
+    "message": "Échec de la copie du texte"
+  },
+  "failedToLoadQrCodeLibrary": {
+    "message": "Échec du chargement de la bibliothèque de codes QR"
+  },
+  "pdfGeneratedAndDownloadedSuccessfully": {
+    "message": "PDF généré et téléchargé avec succès !"
+  },
+  "highlightRemoved": {
+    "message": "Surlignage supprimé"
+  },
+  "failedToRemoveHighlight": {
+    "message": "Échec de la suppression du surlignage"
+  },
+  "failedToHighlightText": {
+    "message": "Échec du surlignage du texte"
+  },
+  "noValidLinksDetected": {
+    "message": "Aucun lien valide détecté."
+  },
+  "noTextContentFoundInElement": {
+    "message": "Aucun contenu texte trouvé dans cet élément."
+  },
+  "allTools": {
+    "message": "Tous les Outils"
   },
   "exportPrompt": {
     "message": "txt/json/csv"
   },
   "version": {
-    "message": "Version 1.1"
+    "message": "Version 1.0.0"
   },
   "developer": {
     "message": "Développeur"
@@ -346,5 +763,194 @@
   },
   "cmdTextHighlighter": {
     "message": "Activer le surligneur de texte"
+  },
+  "readingMode": {
+    "message": "Mode Lecture"
+  },
+  "readingModeTitle": {
+    "message": "Lecture Sans Distraction"
+  },
+  "readingModeDescription": {
+    "message": "Contenu de page épuré pour une lecture concentrée"
+  },
+  "cmdReadingMode": {
+    "message": "Activer le Mode Lecture"
+  },
+  "qrcode": {
+    "message": "Code QR"
+  },
+  "qrCodeGenerator": {
+    "message": "Générateur de Code QR"
+  },
+  "qrCodeGeneratorDescription": {
+    "message": "Générer des codes QR personnalisables pour la page actuelle"
+  },
+  "bookmarkManager": {
+    "message": "Gestionnaire de Favoris"
+  },
+  "bookmarkManagerTitle": {
+    "message": "Gestionnaire de Favoris"
+  },
+  "bookmarkManagerDescription": {
+    "message": "Sauvegarder et organiser les favoris avec des dossiers, étiquettes et recherche puissante"
+  },
+  "addBookmark": {
+    "message": "Ajouter un Favori"
+  },
+  "editBookmark": {
+    "message": "Modifier le Favori"
+  },
+  "deleteBookmark": {
+    "message": "Supprimer le Favori"
+  },
+  "bookmarkAdded": {
+    "message": "Favori ajouté avec succès !"
+  },
+  "bookmarkUpdated": {
+    "message": "Favori mis à jour !"
+  },
+  "bookmarkDeleted": {
+    "message": "Favori supprimé !"
+  },
+  "searchBookmarks": {
+    "message": "Rechercher dans les favoris..."
+  },
+  "noBookmarks": {
+    "message": "Aucun favori pour le moment. Cliquez sur + pour ajouter votre premier favori !"
+  },
+  "bookmarkTitle": {
+    "message": "Titre"
+  },
+  "bookmarkUrl": {
+    "message": "URL"
+  },
+  "bookmarkFolder": {
+    "message": "Dossier"
+  },
+  "bookmarkTags": {
+    "message": "Étiquettes"
+  },
+  "bookmarkNotes": {
+    "message": "Notes"
+  },
+  "importBookmarks": {
+    "message": "Importer"
+  },
+  "exportBookmarks": {
+    "message": "Exporter"
+  },
+  "allBookmarks": {
+    "message": "Tous les Favoris"
+  },
+  "favoriteBookmarks": {
+    "message": "Favoris"
+  },
+  "videoRecorder": {
+    "message": "Enregistreur Vidéo"
+  },
+  "videoRecorderTitle": {
+    "message": "Enregistrer Vidéo d'Écran"
+  },
+  "videoRecorderDescription": {
+    "message": "Enregistrez l'activité de votre écran avec support audio et exportez en plusieurs formats"
+  },
+  "darkModeToggle": {
+    "message": "Mode Sombre"
+  },
+  "darkModeToggleTitle": {
+    "message": "Basculer le Mode Sombre"
+  },
+  "darkModeToggleDescription": {
+    "message": "Appliquer le mode sombre à n'importe quel site web"
+  },
+  "darkModeEnabled": {
+    "message": "Mode sombre activé"
+  },
+  "darkModeDisabled": {
+    "message": "Mode sombre désactivé"
+  },
+  "failedToActivateDarkModeToggle": {
+    "message": "Impossible d'activer le commutateur de mode sombre"
+  },
+  "aiSettings": {
+    "message": "IA"
+  },
+  "aiSettingsDescription": {
+    "message": "Configurez les clés API Gemini et les préférences de modèle"
+  },
+  "aiModel": {
+    "message": "Modèle IA"
+  },
+  "aiModelDescription": {
+    "message": "Choisissez le niveau d'intelligence du modèle"
+  },
+  "aiModelAuto": {
+    "message": "Auto (L'outil décide)"
+  },
+  "aiModelSmart": {
+    "message": "Intelligent (Gemini 2.5 Flash)"
+  },
+  "aiModelLite": {
+    "message": "Léger (Gemini 2.5 Flash-Lite)"
+  },
+  "aiKeys": {
+    "message": "Clés API"
+  },
+  "aiKeysDescription": {
+    "message": "Ajoutez plusieurs clés API Gemini pour l'équilibrage de charge"
+  },
+  "addApiKey": {
+    "message": "Ajouter une clé API"
+  },
+  "removeApiKey": {
+    "message": "Supprimer"
+  },
+  "apiKeyPlaceholder": {
+    "message": "Entrez la clé API Gemini"
+  },
+  "aiLanguage": {
+    "message": "Langue de Réponse"
+  },
+  "aiLanguageDescription": {
+    "message": "Choisissez la langue pour les réponses IA"
+  },
+  "aiLanguageAuto": {
+    "message": "Auto (Langue du Navigateur)"
+  },
+  "noApiKeys": {
+    "message": "Aucune clé API ajoutée"
+  },
+  "showApiKey": {
+    "message": "Afficher la clé API"
+  },
+  "hideApiKey": {
+    "message": "Masquer la clé API"
+  },
+  "removeApiKeyTooltip": {
+    "message": "Supprimer la clé API"
+  },
+  "testApiKey": {
+    "message": "Tester la clé API"
+  },
+  "saveApiKey": {
+    "message": "Sauvegarder la clé API"
+  },
+  "apiKeySaved": {
+    "message": "Clé API sauvegardée"
+  },
+  "apiKeyValid": {
+    "message": "La clé API est valide !"
+  },
+  "apiKeyTestFailed": {
+    "message": "Test de la clé API échoué"
+  },
+  "enterApiKeyFirst": {
+    "message": "Veuillez d'abord entrer une clé API"
+  },
+  "settingsUpdated": {
+    "message": "Paramètres mis à jour"
+  },
+  "noApiKeys": {
+    "message": "Aucune clé API ajoutée pour le moment"
   }
 }

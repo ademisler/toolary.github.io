@@ -41,7 +41,8 @@ export const MESSAGE_TYPES = Object.freeze({
   SHOW_POPUP: 'SHOW_TOOLARY_POPUP',
   SHOW_FAVORITES: 'SHOW_FAVORITES',
   PDF_GENERATE: 'PDF_GENERATE',
-  TRIGGER_PRINT: 'TRIGGER_PRINT'
+  TRIGGER_PRINT: 'TRIGGER_PRINT',
+  VIDEO_RECORDER_GET_CONTEXT: 'VIDEO_RECORDER_GET_CONTEXT'
 });
 
 export const TOOL_SHORTCUT_MAP = Object.freeze({
@@ -51,3 +52,36 @@ export const TOOL_SHORTCUT_MAP = Object.freeze({
 });
 
 export const TOOL_ICON_FALLBACK = 'tool';
+
+export const AI_CONFIG = Object.freeze({
+  STORAGE_KEYS: {
+    API_KEYS: 'toolaryAIKeys',
+    MODEL_PREFERENCE: 'toolaryAIModel',
+    LANGUAGE_PREFERENCE: 'toolaryAILanguage'
+  },
+  MODELS: {
+    SMART: 'gemini-2.5-flash',
+    LITE: 'gemini-2.5-flash-lite'
+  },
+  MODEL_SELECTION: {
+    AUTO: 'auto',
+    SMART: 'smart',
+    LITE: 'lite'
+  },
+  LANGUAGES: {
+    AUTO: 'auto',
+    ENGLISH: 'en',
+    TURKISH: 'tr',
+    FRENCH: 'fr',
+    SPANISH: 'es',
+    GERMAN: 'de',
+    ITALIAN: 'it',
+    PORTUGUESE: 'pt',
+    RUSSIAN: 'ru',
+    CHINESE: 'zh',
+    JAPANESE: 'ja',
+    KOREAN: 'ko',
+    ARABIC: 'ar'
+  },
+  API_BASE_URL: 'https://generativelanguage.googleapis.com/v1beta'
+});

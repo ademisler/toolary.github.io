@@ -195,13 +195,430 @@
     "message": "Dark"
   },
   "eyeDropperNotSupported": {
-    "message": "EyeDropper API not supported"
+    "message": "EyeDropper API not supported in this browser. Please use Chrome 95+ or try a different tool."
+  },
+  "clickToPickColor": {
+    "message": "Click anywhere to pick a color..."
+  },
+  "colorCopiedToClipboard": {
+    "message": "Color {color} copied to clipboard!"
+  },
+  "colorPickingCancelled": {
+    "message": "Color picking cancelled"
+  },
+  "failedToProcessColor": {
+    "message": "Failed to process color. Please try again."
+  },
+  "failedToActivateColorPicker": {
+    "message": "Failed to activate color picker. Please try again."
+  },
+  "elementSelectedAndCopied": {
+    "message": "Element {tagName} selected and copied!"
+  },
+  "failedToExtractElementInfo": {
+    "message": "Failed to extract element information. Please try again."
+  },
+  "hoverToInspectElements": {
+    "message": "Hover over elements to inspect • Click to select • Use arrow keys to navigate"
+  },
+  "failedToActivateElementPicker": {
+    "message": "Failed to activate element picker. Please try again."
+  },
+  "screenshotDownloadFailed": {
+    "message": "Screenshot captured but download failed."
+  },
+  "screenshotCaptureInProgress": {
+    "message": "Screenshot capture already in progress. Please wait…"
+  },
+  "failedToCaptureScreenshot": {
+    "message": "Failed to capture screenshot."
+  },
+  "textCopiedToClipboard": {
+    "message": "Text copied to clipboard! ({wordCount} words)"
+  },
+  "failedToAnalyzeText": {
+    "message": "Failed to analyze text. Please try again."
+  },
+  "hoverToAnalyzeText": {
+    "message": "Hover over text elements to analyze • Click to select • Enter to select • Esc to cancel"
+  },
+  "failedToActivateTextPicker": {
+    "message": "Failed to activate text picker. Please try again."
+  },
+  "dragToSelectLinks": {
+    "message": "Drag to select links • Release to extract • Ctrl/Cmd+A for all links • Esc to cancel"
+  },
+  "failedToStartLinkSelection": {
+    "message": "Failed to start link selection. Please try again."
+  },
+  "linksExtractedFromSource": {
+    "message": "{linkCount} links extracted from {sourceLabel}!"
+  },
+  "failedToExtractLinks": {
+    "message": "Failed to extract links. Please try again."
+  },
+  "failedToActivateLinkPicker": {
+    "message": "Failed to activate link picker. Please try again."
+  },
+  "fontInfoCopiedToClipboard": {
+    "message": "Font info copied to clipboard!"
+  },
+  "failedToExtractFontInfo": {
+    "message": "Failed to extract font information. Please try again."
+  },
+  "hoverToInspectFonts": {
+    "message": "Hover over text elements to inspect fonts • Click to select • Enter to select • Esc to cancel"
+  },
+  "failedToActivateFontPicker": {
+    "message": "Failed to activate font picker. Please try again."
+  },
+  "alternateMediaUrlCopied": {
+    "message": "Alternate media URL copied."
+  },
+  "mediaUrlCopiedToClipboard": {
+    "message": "Media URL copied to clipboard!"
+  },
+  "failedToShowMediaDetails": {
+    "message": "Failed to show media details."
+  },
+  "mediaUrlUnavailable": {
+    "message": "Media URL unavailable."
+  },
+  "blobUrlCannotDownload": {
+    "message": "This media uses a blob URL and cannot be downloaded directly."
+  },
+  "failedToDownloadMedia": {
+    "message": "Failed to download media."
+  },
+  "downloadStarted": {
+    "message": "Download started."
+  },
+  "blobUrlUsingAlternateSource": {
+    "message": "Stream uses a blob URL — using alternate source for copy & download."
+  },
+  "mediaDetailsAvailable": {
+    "message": "Media details available. Review the modal for download options."
+  },
+  "failedToInspectMedia": {
+    "message": "Failed to inspect media."
+  },
+  "hoverToInspectMedia": {
+    "message": "Hover over images or videos • Click to inspect • Enter to select • Esc to cancel"
+  },
+  "failedToActivateMediaPicker": {
+    "message": "Failed to activate media picker."
+  },
+  "analyzingWebsite": {
+    "message": "Analyzing website..."
+  },
+  "siteAnalysisCompleted": {
+    "message": "Site analysis completed!"
+  },
+  "failedToGenerateSiteReport": {
+    "message": "Failed to generate site report. Please try again."
+  },
+  "failedToActivateSiteInfoTool": {
+    "message": "Failed to activate site info tool. Please try again."
+  },
+  "siteAnalysisCompletedInfo": {
+    "message": "Site analysis completed"
+  },
+  "noExistingNotesFound": {
+    "message": "No existing notes found for this page. You can create new notes by clicking on the page."
+  },
+  "failedToLoadExistingNotes": {
+    "message": "Failed to load existing notes. Please try again."
+  },
+  "failedToActivateStickyNotes": {
+    "message": "Failed to activate sticky notes. Please try again."
+  },
+  "failedToCreateStickyNote": {
+    "message": "Failed to create sticky note. Please try again."
+  },
+  "allStickyNotesRemoved": {
+    "message": "All sticky notes removed"
+  },
+  "failedToClearNotes": {
+    "message": "Failed to clear notes. Please try again."
+  },
+  "notesSavedSuccessfully": {
+    "message": "Notes saved successfully!"
+  },
+  "failedToSaveNotes": {
+    "message": "Failed to save notes"
+  },
+  "notesExportedSuccessfully": {
+    "message": "Notes exported successfully!"
+  },
+  "failedToExportNotes": {
+    "message": "Failed to export notes"
+  },
+  "notesImportedSuccessfully": {
+    "message": "Notes imported successfully!"
+  },
+  "invalidNotesFileFormat": {
+    "message": "Invalid notes file format"
+  },
+  "failedToParseNotesFile": {
+    "message": "Failed to parse notes file"
+  },
+  "failedToProcessSelectedFile": {
+    "message": "Failed to process selected file"
+  },
+  "failedToImportNotes": {
+    "message": "Failed to import notes"
+  },
+  "noteDeletedSuccessfully": {
+    "message": "Note deleted successfully"
+  },
+  "failedToDeleteNote": {
+    "message": "Failed to delete note"
+  },
+  "failedToFocusNote": {
+    "message": "Failed to focus note"
+  },
+  "noNotesToDeleteForSite": {
+    "message": "No notes to delete for this site."
+  },
+  "deletedNotesSuccessfully": {
+    "message": "Deleted {count} notes successfully!"
+  },
+  "failedToDeleteAllNotes": {
+    "message": "Failed to delete all notes. Please try again."
+  },
+  "noteDeletedSuccessfullyExclamation": {
+    "message": "Note deleted successfully!"
+  },
+  "failedToDeleteNoteExclamation": {
+    "message": "Failed to delete note. Please try again."
+  },
+  "cssCopiedToClipboard": {
+    "message": "CSS copied to clipboard!"
+  },
+  "jsonCopiedToClipboard": {
+    "message": "JSON copied to clipboard!"
+  },
+  "analyzingPageColors": {
+    "message": "Analyzing page colors..."
+  },
+  "noColorsFoundOnPage": {
+    "message": "No colors found on this page. Try a page with more visual content."
+  },
+  "colorAnalysisCompleted": {
+    "message": "Color analysis completed!"
+  },
+  "failedToAnalyzePageColors": {
+    "message": "Failed to analyze page colors. Please try again."
+  },
+  "failedToGeneratePDF": {
+    "message": "Failed to generate PDF: {error}"
+  },
+  "failedToActivatePDFGenerator": {
+    "message": "Failed to activate PDF Generator: {error}"
+  },
+  "textHighlighterActivated": {
+    "message": "Text highlighter activated! Select text to highlight."
+  },
+  "failedToLoadExistingHighlights": {
+    "message": "Failed to load existing highlights. Please try again."
+  },
+  "failedToActivateTextHighlighter": {
+    "message": "Failed to activate text highlighter. Please try again."
+  },
+  "failedToGenerateQRCode": {
+    "message": "Failed to generate QR code"
+  },
+  "failedToActivateQRCodeGenerator": {
+    "message": "Failed to activate QR code generator"
+  },
+  "failedToLoadBookmarks": {
+    "message": "Failed to load bookmarks"
+  },
+  "failedToSaveBookmarks": {
+    "message": "Failed to save bookmarks"
+  },
+  "urlAlreadyBookmarked": {
+    "message": "This URL is already bookmarked"
+  },
+  "videoRecorderWindowClosed": {
+    "message": "Video recorder window closed."
+  },
+  "recordingControlsNotReachable": {
+    "message": "Recording controls are not reachable. Please try again."
+  },
+  "recordingStarted": {
+    "message": "Recording started. Keep the control window open while recording."
+  },
+  "recordingAlreadyInProgress": {
+    "message": "Recording already in progress."
+  },
+  "recordingSavedDownloadStarted": {
+    "message": "Recording saved. Download has started."
+  },
+  "videoRecorderError": {
+    "message": "Video recorder encountered an error."
+  },
+  "videoRecorderNotSupported": {
+    "message": "Video recorder is not supported in this context."
+  },
+  "videoRecorderWindowAlreadyOpen": {
+    "message": "Video recorder window is already open."
+  },
+  "popupBlockedAllowPopups": {
+    "message": "Popup blocked. Allow popups for Toolary to use the video recorder."
+  },
+  "recordingControlsOpened": {
+    "message": "Recording controls opened in a new window. Keep it open while recording."
+  },
+  "failedToOpenVideoRecorder": {
+    "message": "Failed to open video recorder."
+  },
+  "noReadableContentFound": {
+    "message": "No readable content found on this page"
+  },
+  "unableToCleanContent": {
+    "message": "Unable to clean content for reading"
+  },
+  "readingModeActivated": {
+    "message": "Reading Mode activated"
+  },
+  "failedToActivateReadingMode": {
+    "message": "Failed to activate Reading Mode"
+  },
+  "exitReadingMode": {
+    "message": "Exit Reading Mode"
+  },
+  "decreaseFontSize": {
+    "message": "Decrease font size"
+  },
+  "increaseFontSize": {
+    "message": "Increase font size"
+  },
+  "toggleTheme": {
+    "message": "Toggle theme"
+  },
+  "showToolbar": {
+    "message": "Show toolbar"
+  },
+  "hideToolbar": {
+    "message": "Hide toolbar"
+  },
+  "searchTools": {
+    "message": "Search tools..."
+  },
+  "filterByCategory": {
+    "message": "Filter by category"
+  },
+  "webPickerTools": {
+    "message": "Web picker tools"
+  },
+  "previousPage": {
+    "message": "Previous page"
+  },
+  "nextPage": {
+    "message": "Next page"
+  },
+  "settingsSections": {
+    "message": "Settings sections"
+  },
+  "toolToggles": {
+    "message": "Tool toggles"
+  },
+  "bookmarkAddedSuccessfully": {
+    "message": "Bookmark added successfully!"
+  },
+  "failedToAddBookmark": {
+    "message": "Failed to add bookmark"
+  },
+  "bookmarkNotFound": {
+    "message": "Bookmark not found"
+  },
+  "bookmarkUpdated": {
+    "message": "Bookmark updated!"
+  },
+  "failedToUpdateBookmark": {
+    "message": "Failed to update bookmark"
+  },
+  "bookmarkDeleted": {
+    "message": "Bookmark deleted!"
+  },
+  "failedToDeleteBookmark": {
+    "message": "Failed to delete bookmark"
+  },
+  "failedToUpdateFavoriteStatus": {
+    "message": "Failed to update favorite status"
+  },
+  "bookmarksExportedSuccessfully": {
+    "message": "Bookmarks exported successfully!"
+  },
+  "failedToExportBookmarks": {
+    "message": "Failed to export bookmarks"
+  },
+  "importedBookmarks": {
+    "message": "Imported {count} bookmarks{skipped}"
+  },
+  "failedToImportBookmarks": {
+    "message": "Failed to import bookmarks. Please check the file format."
+  },
+  "failedToOpenAddBookmarkDialog": {
+    "message": "Failed to open add bookmark dialog"
+  },
+  "bookmarkManagerActivated": {
+    "message": "Bookmark Manager activated. Click the bookmark icon to manage your bookmarks!"
+  },
+  "failedToActivateBookmarkManager": {
+    "message": "Failed to activate Bookmark Manager"
+  },
+  "qrCodeGenerated": {
+    "message": "QR code generated"
+  },
+  "noQrCodeAvailableToDownload": {
+    "message": "No QR code available to download"
+  },
+  "qrCodeDownloaded": {
+    "message": "QR code downloaded"
+  },
+  "failedToDownloadQrCode": {
+    "message": "Failed to download QR code"
+  },
+  "nothingToCopy": {
+    "message": "Nothing to copy"
+  },
+  "textCopiedToClipboard": {
+    "message": "Text copied to clipboard"
+  },
+  "failedToCopyText": {
+    "message": "Failed to copy text"
+  },
+  "failedToLoadQrCodeLibrary": {
+    "message": "Failed to load QR code library"
+  },
+  "pdfGeneratedAndDownloadedSuccessfully": {
+    "message": "PDF generated and downloaded successfully!"
+  },
+  "highlightRemoved": {
+    "message": "Highlight removed"
+  },
+  "failedToRemoveHighlight": {
+    "message": "Failed to remove highlight"
+  },
+  "failedToHighlightText": {
+    "message": "Failed to highlight text"
+  },
+  "noValidLinksDetected": {
+    "message": "No valid links were detected."
+  },
+  "noTextContentFoundInElement": {
+    "message": "No text content found in this element."
+  },
+  "allTools": {
+    "message": "All Tools"
   },
   "exportPrompt": {
     "message": "txt/json/csv"
   },
   "version": {
-    "message": "Version 1.1"
+    "message": "Version 1.0.0"
   },
   "developer": {
     "message": "Developer"
@@ -346,5 +763,194 @@
   },
   "cmdTextHighlighter": {
     "message": "Activate Text Highlighter"
+  },
+  "readingMode": {
+    "message": "Reading Mode"
+  },
+  "readingModeTitle": {
+    "message": "Distraction-Free Reading"
+  },
+  "readingModeDescription": {
+    "message": "Clean page content for focused reading"
+  },
+  "cmdReadingMode": {
+    "message": "Activate Reading Mode"
+  },
+  "qrcode": {
+    "message": "QR Code"
+  },
+  "qrCodeGenerator": {
+    "message": "QR Code Generator"
+  },
+  "qrCodeGeneratorDescription": {
+    "message": "Generate customizable QR codes for the current page"
+  },
+  "bookmarkManager": {
+    "message": "Bookmark Manager"
+  },
+  "bookmarkManagerTitle": {
+    "message": "Bookmark Manager"
+  },
+  "bookmarkManagerDescription": {
+    "message": "Save and organize bookmarks with folders, tags, and powerful search"
+  },
+  "addBookmark": {
+    "message": "Add Bookmark"
+  },
+  "editBookmark": {
+    "message": "Edit Bookmark"
+  },
+  "deleteBookmark": {
+    "message": "Delete Bookmark"
+  },
+  "bookmarkAdded": {
+    "message": "Bookmark added successfully!"
+  },
+  "bookmarkUpdated": {
+    "message": "Bookmark updated!"
+  },
+  "bookmarkDeleted": {
+    "message": "Bookmark deleted!"
+  },
+  "searchBookmarks": {
+    "message": "Search bookmarks..."
+  },
+  "noBookmarks": {
+    "message": "No bookmarks yet. Click + to add your first bookmark!"
+  },
+  "bookmarkTitle": {
+    "message": "Title"
+  },
+  "bookmarkUrl": {
+    "message": "URL"
+  },
+  "bookmarkFolder": {
+    "message": "Folder"
+  },
+  "bookmarkTags": {
+    "message": "Tags"
+  },
+  "bookmarkNotes": {
+    "message": "Notes"
+  },
+  "importBookmarks": {
+    "message": "Import"
+  },
+  "exportBookmarks": {
+    "message": "Export"
+  },
+  "allBookmarks": {
+    "message": "All Bookmarks"
+  },
+  "favoriteBookmarks": {
+    "message": "Favorites"
+  },
+  "videoRecorder": {
+    "message": "Video Recorder"
+  },
+  "videoRecorderTitle": {
+    "message": "Record Screen Video"
+  },
+  "videoRecorderDescription": {
+    "message": "Record your screen activity with audio support and export in multiple formats"
+  },
+  "darkModeToggle": {
+    "message": "Dark Mode"
+  },
+  "darkModeToggleTitle": {
+    "message": "Toggle Dark Mode"
+  },
+  "darkModeToggleDescription": {
+    "message": "Apply dark mode to any website"
+  },
+  "darkModeEnabled": {
+    "message": "Dark mode enabled"
+  },
+  "darkModeDisabled": {
+    "message": "Dark mode disabled"
+  },
+  "failedToActivateDarkModeToggle": {
+    "message": "Failed to activate dark mode toggle"
+  },
+  "aiSettings": {
+    "message": "AI"
+  },
+  "aiSettingsDescription": {
+    "message": "Configure Gemini API keys and model preferences"
+  },
+  "aiModel": {
+    "message": "AI Model"
+  },
+  "aiModelDescription": {
+    "message": "Choose model intelligence level"
+  },
+  "aiModelAuto": {
+    "message": "Auto (Tool decides)"
+  },
+  "aiModelSmart": {
+    "message": "Smart (Gemini 2.5 Flash)"
+  },
+  "aiModelLite": {
+    "message": "Lite (Gemini 2.5 Flash-Lite)"
+  },
+  "aiKeys": {
+    "message": "API Keys"
+  },
+  "aiKeysDescription": {
+    "message": "Add multiple Gemini API keys for load balancing"
+  },
+  "addApiKey": {
+    "message": "Add API Key"
+  },
+  "removeApiKey": {
+    "message": "Remove"
+  },
+  "apiKeyPlaceholder": {
+    "message": "Enter Gemini API key"
+  },
+  "aiLanguage": {
+    "message": "Response Language"
+  },
+  "aiLanguageDescription": {
+    "message": "Choose language for AI responses"
+  },
+  "aiLanguageAuto": {
+    "message": "Auto (Browser Language)"
+  },
+  "noApiKeys": {
+    "message": "No API keys added yet"
+  },
+  "showApiKey": {
+    "message": "Show API key"
+  },
+  "hideApiKey": {
+    "message": "Hide API key"
+  },
+  "removeApiKeyTooltip": {
+    "message": "Remove API key"
+  },
+  "testApiKey": {
+    "message": "Test API key"
+  },
+  "saveApiKey": {
+    "message": "Save API key"
+  },
+  "apiKeySaved": {
+    "message": "API key saved"
+  },
+  "apiKeyValid": {
+    "message": "API key is valid!"
+  },
+  "apiKeyTestFailed": {
+    "message": "API key test failed"
+  },
+  "enterApiKeyFirst": {
+    "message": "Please enter an API key first"
+  },
+  "settingsUpdated": {
+    "message": "Settings updated"
+  },
+  "noApiKeys": {
+    "message": "No API keys added yet"
   }
 }

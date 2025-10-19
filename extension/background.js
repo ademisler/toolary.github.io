@@ -199,13 +199,30 @@ addMessageListener({
       return { success: false, error: error.message };
     }
   },
-  [MESSAGE_TYPES.GET_PAGE_DIMENSIONS]: () => requestPageDimensions()
+  [MESSAGE_TYPES.GET_PAGE_DIMENSIONS]: () => requestPageDimensions(),
+  [MESSAGE_TYPES.VIDEO_RECORDER_GET_CONTEXT]: async () => {
+    try {
+      const tab = await getActiveTab();
+      if (!tab?.id) {
+        throw new Error('No active tab available for recording.');
+      }
+
+      return {
+        success: true,
+        tabId: tab.id,
+        windowId: tab.windowId
+      };
+    } catch (error) {
+      console.error('Toolary: failed to resolve active tab for recorder', error);
+      return { success: false, error: error.message };
+    }
+  }
 });
 
 const COMMAND_TOOL_MAP = {
   'activate-color-picker': 'color-picker',
-  'activate-element-picker': 'element-picker',
   'activate-screenshot-picker': 'screenshot-picker',
+  'activate-reading-mode': 'reading-mode',
   'activate-text-highlighter': 'text-highlighter'
 };
 

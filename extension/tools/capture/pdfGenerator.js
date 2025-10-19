@@ -96,13 +96,15 @@ async function generatePDF() {
       // No UI messages for window.print - direct print for clean PDF
       console.log('PDF Generator: Print dialog opened');
     } else {
-      showSuccess('PDF generated and downloaded successfully!');
+      const message = chrome.i18n ? chrome.i18n.getMessage('pdfGeneratedAndDownloadedSuccessfully') : 'PDF generated and downloaded successfully!';
+      showSuccess(message);
     }
     
   } catch (error) {
     console.error('PDF Generator error details:', error);
     handleError(error, 'pdfGenerator.generatePDF');
-    showError('Failed to generate PDF: ' + (error.message || error.toString()));
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToGeneratePDF', [error.message || error.toString()]) : 'Failed to generate PDF: ' + (error.message || error.toString());
+    showError(errorMessage);
   } finally {
     hideProgress();
     isCapturing = false;
@@ -133,7 +135,8 @@ export async function activate(deactivate) {
   } catch (error) {
     console.error('PDF Generator activation error details:', error);
     handleError(error, 'pdfGenerator.activate');
-    showError('Failed to activate PDF Generator: ' + (error.message || error.toString()));
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivatePDFGenerator', [error.message || error.toString()]) : 'Failed to activate PDF Generator: ' + (error.message || error.toString());
+    showError(errorMessage);
     deactivate();
   }
 }

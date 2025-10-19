@@ -52,7 +52,8 @@ function onClick(e) {
     const text = el.textContent.trim();
     
     if (!text) {
-      showWarning('No text content found in this element.');
+      const message = chrome.i18n ? chrome.i18n.getMessage('noTextContentFoundInElement') : 'No text content found in this element.';
+      showWarning(message);
       return;
     }
     
@@ -144,7 +145,8 @@ function onClick(e) {
     // Copy primary format (plain text)
     copyText(text);
     
-    showSuccess(`Text copied to clipboard! (${textAnalysis.wordCount} words)`);
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('textCopiedToClipboard', [textAnalysis.wordCount]) : `Text copied to clipboard! (${textAnalysis.wordCount} words)`;
+    showSuccess(successMessage);
     
     const title = chrome.i18n ? chrome.i18n.getMessage('textTitle') : 'Text Analysis';
     const content = `Text:\n${text}\n\nStatistics:\n- Words: ${textAnalysis.wordCount}\n- Characters: ${textAnalysis.characterCount}\n- Sentences: ${textAnalysis.statistics.sentences}`;
@@ -154,7 +156,8 @@ function onClick(e) {
     
   } catch (error) {
     handleError(error, 'textPicker');
-    showError('Failed to analyze text. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToAnalyzeText') : 'Failed to analyze text. Please try again.';
+    showError(errorMessage);
   }
 }
 
@@ -264,11 +267,13 @@ export function activate(deactivate) {
     
     cleanupFunctions.push(cleanupMove, cleanupClick, cleanupKeydown);
     
-    showInfo('Hover over text elements to analyze • Click to select • Enter to select • Esc to cancel', 3000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('hoverToAnalyzeText') : 'Hover over text elements to analyze • Click to select • Enter to select • Esc to cancel';
+    showInfo(infoMessage, 3000);
     
   } catch (error) {
     handleError(error, 'textPicker activation');
-    showError('Failed to activate text picker. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateTextPicker') : 'Failed to activate text picker. Please try again.';
+    showError(errorMessage);
     deactivate();
   }
 }

@@ -498,7 +498,8 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   cssButton.addEventListener('click', () => {
     const css = generateCSSVariables(colors, harmonies);
     navigator.clipboard.writeText(css).then(() => {
-      showSuccess('CSS copied to clipboard!');
+      const successMessage = chrome.i18n ? chrome.i18n.getMessage('cssCopiedToClipboard') : 'CSS copied to clipboard!';
+      showSuccess(successMessage);
     });
   });
   
@@ -509,7 +510,8 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   jsonButton.addEventListener('click', () => {
     const json = generateJSON(colors, harmonies, accessibility);
     navigator.clipboard.writeText(json).then(() => {
-      showSuccess('JSON copied to clipboard!');
+      const successMessage = chrome.i18n ? chrome.i18n.getMessage('jsonCopiedToClipboard') : 'JSON copied to clipboard!';
+      showSuccess(successMessage);
     });
   });
   
@@ -523,13 +525,15 @@ function generateHTMLContent(colors, harmonies, accessibility) {
 
 export async function activate(deactivate) {
   try {
-    showInfo('Analyzing page colors...', 2000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('analyzingPageColors') : 'Analyzing page colors...';
+    showInfo(infoMessage, 2000);
     
     // Extract colors from page
     const extractedColors = safeExecute(() => extractPageColors(), 'extractPageColors') || [];
     
     if (extractedColors.length === 0) {
-      showError('No colors found on this page. Try a page with more visual content.');
+      const errorMessage = chrome.i18n ? chrome.i18n.getMessage('noColorsFoundOnPage') : 'No colors found on this page. Try a page with more visual content.';
+      showError(errorMessage);
       deactivate();
       return;
     }
@@ -551,7 +555,8 @@ export async function activate(deactivate) {
     // Generate report
     const reportText = safeExecute(() => generateReportText(representativeColors, harmonies, accessibility), 'generateReportText') || '';
     
-    showSuccess('Color analysis completed!');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('colorAnalysisCompleted') : 'Color analysis completed!';
+    showSuccess(successMessage);
     
     // Show modal with results (type 'color-palette' will show color swatches)
     showModal('Color Palette Analysis', reportText, 'palette', 'color-palette');
@@ -567,7 +572,8 @@ export async function activate(deactivate) {
     
   } catch (error) {
     handleError(error, 'colorPaletteGenerator activation');
-    showError('Failed to analyze page colors. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToAnalyzePageColors') : 'Failed to analyze page colors. Please try again.';
+    showError(errorMessage);
   } finally {
     deactivate();
   }

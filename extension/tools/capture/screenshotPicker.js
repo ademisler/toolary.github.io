@@ -57,7 +57,8 @@ function downloadScreenshot(dataUrl, filename) {
     link.remove();
   } catch (error) {
     handleError(error, 'downloadScreenshot');
-    showError('Screenshot captured but download failed.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('screenshotDownloadFailed') : 'Screenshot captured but download failed.';
+    showError(errorMessage);
   }
 }
 
@@ -301,7 +302,8 @@ async function captureFullPage() {
 
 export async function activate(deactivate) {
   if (isCapturing) {
-    showError('Screenshot capture already in progress. Please wait…');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('screenshotCaptureInProgress') : 'Screenshot capture already in progress. Please wait…';
+    showError(errorMessage);
     deactivate();
     return;
   }
@@ -312,7 +314,8 @@ export async function activate(deactivate) {
     await captureFullPage();
   } catch (error) {
     handleError(error, 'screenshotPicker.capture');
-    showError(error.message || 'Failed to capture screenshot.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToCaptureScreenshot') : 'Failed to capture screenshot.';
+    showError(error.message || errorMessage);
   } finally {
     isCapturing = false;
     deactivate();

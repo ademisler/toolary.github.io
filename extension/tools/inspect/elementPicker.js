@@ -145,7 +145,8 @@ function onClick(e) {
     const text = JSON.stringify(info, null, 2);
     copyText(text);
     
-    showSuccess(`Element ${el.tagName.toLowerCase()} selected and copied!`);
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('elementSelectedAndCopied', [el.tagName.toLowerCase()]) : `Element ${el.tagName.toLowerCase()} selected and copied!`;
+    showSuccess(successMessage);
     
     const title = chrome.i18n ? chrome.i18n.getMessage('elementInfo') : 'Element Information';
     showModal(title, text, 'element', 'element');
@@ -153,7 +154,8 @@ function onClick(e) {
     
   } catch (error) {
     handleError(error, 'elementPicker');
-    showError('Failed to extract element information. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToExtractElementInfo') : 'Failed to extract element information. Please try again.';
+    showError(errorMessage);
   }
 }
 
@@ -258,11 +260,13 @@ export function activate(deactivate) {
     
     cleanupFunctions.push(cleanupMove, cleanupClick, cleanupKeydown);
     
-    showInfo('Hover over elements to inspect • Click to select • Use arrow keys to navigate', 3000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('hoverToInspectElements') : 'Hover over elements to inspect • Click to select • Use arrow keys to navigate';
+    showInfo(infoMessage, 3000);
     
   } catch (error) {
     handleError(error, 'elementPicker activation');
-    showError('Failed to activate element picker. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateElementPicker') : 'Failed to activate element picker. Please try again.';
+    showError(errorMessage);
     deactivate();
   }
 }

@@ -63,7 +63,8 @@ function onClick(e) {
 font-size: ${cs.fontSize};`;
 
     copyText(cssSnippet);
-    showSuccess('Font info copied to clipboard!');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('fontInfoCopiedToClipboard') : 'Font info copied to clipboard!';
+    showSuccess(successMessage);
 
     const title = sanitizeInput(primaryFamily);
     const bodyContent = `Font: ${primaryFamily}\nSize: ${cs.fontSize}`;
@@ -73,7 +74,8 @@ font-size: ${cs.fontSize};`;
     
   } catch (error) {
     handleError(error, 'fontPicker');
-    showError('Failed to extract font information. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToExtractFontInfo') : 'Failed to extract font information. Please try again.';
+    showError(errorMessage);
   }
 }
 
@@ -126,11 +128,13 @@ export function activate(deactivate) {
     
     cleanupFunctions.push(cleanupMove, cleanupClick, cleanupKeydown);
     
-    showInfo('Hover over text elements to inspect fonts • Click to select • Enter to select • Esc to cancel', 3000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('hoverToInspectFonts') : 'Hover over text elements to inspect fonts • Click to select • Enter to select • Esc to cancel';
+    showInfo(infoMessage, 3000);
     
   } catch (error) {
     handleError(error, 'fontPicker activation');
-    showError('Failed to activate font picker. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateFontPicker') : 'Failed to activate font picker. Please try again.';
+    showError(errorMessage);
     deactivate();
   }
 }

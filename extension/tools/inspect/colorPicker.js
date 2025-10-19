@@ -150,12 +150,14 @@ function hideCursorOverlay() {
 export function activate(deactivate) {
   try {
     if (!window.EyeDropper) {
-      showError('EyeDropper API not supported in this browser. Please use Chrome 95+ or try a different tool.');
+      const message = chrome.i18n ? chrome.i18n.getMessage('eyeDropperNotSupported') : 'EyeDropper API not supported in this browser. Please use Chrome 95+ or try a different tool.';
+      showError(message);
       deactivate();
       return;
     }
     
-    showInfo('Click anywhere to pick a color...', 2000);
+    const clickMessage = chrome.i18n ? chrome.i18n.getMessage('clickToPickColor') : 'Click anywhere to pick a color...';
+    showInfo(clickMessage, 2000);
 
     previousCursor = document.body.style.cursor;
     document.body.style.cursor = 'crosshair';
@@ -196,7 +198,8 @@ export function activate(deactivate) {
         await copyText(color);
         
         // Show success message
-        showSuccess(`Color ${color} copied to clipboard!`);
+        const successMessage = chrome.i18n ? chrome.i18n.getMessage('colorCopiedToClipboard', [color]) : `Color ${color} copied to clipboard!`;
+        showSuccess(successMessage);
         
         // Show modal with all formats
         const title = chrome.i18n ? chrome.i18n.getMessage('colorCopied') : 'Color Picked';
@@ -210,9 +213,11 @@ export function activate(deactivate) {
       } catch (error) {
         handleError(error, 'colorPicker handleClick');
         if (error.name === 'AbortError') {
-          showInfo('Color picking cancelled');
+          const cancelMessage = chrome.i18n ? chrome.i18n.getMessage('colorPickingCancelled') : 'Color picking cancelled';
+          showInfo(cancelMessage);
         } else {
-          showError('Failed to process color. Please try again.');
+          const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToProcessColor') : 'Failed to process color. Please try again.';
+          showError(errorMessage);
         }
         deactivate();
       }
@@ -224,7 +229,8 @@ export function activate(deactivate) {
 
   } catch (error) {
     handleError(error, 'colorPicker activation');
-    showError('Failed to activate color picker. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateColorPicker') : 'Failed to activate color picker. Please try again.';
+    showError(errorMessage);
     deactivate();
   }
 }

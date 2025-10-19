@@ -711,7 +711,8 @@ function analyzeSiteStructure() {
 // Generate comprehensive site report with enhanced error handling
 async function generateSiteReport() {
   try {
-    showInfo('Analyzing website...', 2000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('analyzingWebsite') : 'Analyzing website...';
+    showInfo(infoMessage, 2000);
     
     const url = safeExecute(() => new URL(window.location.href), 'create URL') || new URL('https://example.com');
     const technologies = safeExecute(() => detectTechnologies(), 'detect technologies') || [];
@@ -829,12 +830,14 @@ Title: ${report.basic?.title || 'Unknown'}
 Some data could not be processed. Please try again.`;
     }
     
-    showSuccess('Site analysis completed!');
+    const successMessage = chrome.i18n ? chrome.i18n.getMessage('siteAnalysisCompleted') : 'Site analysis completed!';
+    showSuccess(successMessage);
     showModal('Site Analysis Report', reportText, 'site', 'site-info');
     
   } catch (error) {
     handleError(error, 'generateSiteReport');
-    showError('Failed to generate site report. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToGenerateSiteReport') : 'Failed to generate site report. Please try again.';
+    showError(errorMessage);
   }
 }
 
@@ -920,7 +923,8 @@ export async function activate(deactivate) {
     await generateSiteReport();
   } catch (error) {
     handleError(error, 'siteInfoPicker activation');
-    showError('Failed to activate site info tool. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateSiteInfoTool') : 'Failed to activate site info tool. Please try again.';
+    showError(errorMessage);
   } finally {
     try {
       if (typeof deactivate === 'function') {
@@ -935,7 +939,8 @@ export async function activate(deactivate) {
 export function deactivate() {
   try {
     // Site info tool doesn't need cleanup
-    showInfo('Site analysis completed');
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('siteAnalysisCompletedInfo') : 'Site analysis completed';
+    showInfo(infoMessage);
   } catch (error) {
     handleError(error, 'siteInfoPicker deactivation');
   }

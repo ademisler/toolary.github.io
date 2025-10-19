@@ -61,6 +61,33 @@ const ICON_DEFINITIONS = {
       { tag: 'path', attrs: { d: 'M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z' } }
     ]
   },
+  video: {
+    title: 'Video',
+    elements: [
+      { tag: 'rect', attrs: { x: 2.5, y: 6.5, width: 13, height: 11, rx: 2, ry: 2 } },
+      { tag: 'path', attrs: { d: 'M15.5 10.25 21.5 7.5v8l-6-2.75Z' } }
+    ]
+  },
+  sun: {
+    title: 'Sun',
+    elements: [
+      { tag: 'circle', attrs: { cx: 12, cy: 12, r: 4 } },
+      { tag: 'path', attrs: { d: 'M12 2v2' } },
+      { tag: 'path', attrs: { d: 'M12 20v2' } },
+      { tag: 'path', attrs: { d: 'M4.93 4.93l1.41 1.41' } },
+      { tag: 'path', attrs: { d: 'M17.66 17.66l1.41 1.41' } },
+      { tag: 'path', attrs: { d: 'M2 12h2' } },
+      { tag: 'path', attrs: { d: 'M20 12h2' } },
+      { tag: 'path', attrs: { d: 'M6.34 17.66l-1.41 1.41' } },
+      { tag: 'path', attrs: { d: 'M19.07 4.93l-1.41 1.41' } }
+    ]
+  },
+  moon: {
+    title: 'Moon',
+    elements: [
+      { tag: 'path', attrs: { d: 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z' } }
+    ]
+  },
   site: {
     title: 'Site information',
     elements: [
@@ -195,6 +222,111 @@ const ICON_DEFINITIONS = {
       { tag: 'circle', attrs: { cx: 6.5, cy: 12.5, r: 0.5, fill: 'currentColor' } },
       { tag: 'path', attrs: { d: 'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z' } }
     ]
+  },
+  highlighter: {
+    title: 'Highlighter',
+    elements: [
+      { tag: 'path', attrs: { d: 'M9 11 4 3' } },
+      { tag: 'path', attrs: { d: 'M14 9 20 3' } },
+      { tag: 'path', attrs: { d: 'M20 3v4l-6 6' } },
+      { tag: 'path', attrs: { d: 'M4 3h4l6 6' } },
+      { tag: 'path', attrs: { d: 'M9 11l5 5-8 6V11Z' } }
+    ]
+  },
+  'book-open': {
+    title: 'Reading Mode',
+    elements: [
+      { tag: 'path', attrs: { d: 'M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z' } },
+      { tag: 'path', attrs: { d: 'M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z' } }
+    ]
+  },
+  qrcode: {
+    title: 'QR Code',
+    elements: [
+      { tag: 'rect', attrs: { x: 3, y: 3, width: 18, height: 18, rx: 2 } },
+      { tag: 'rect', attrs: { x: 5, y: 5, width: 4, height: 4 } },
+      { tag: 'rect', attrs: { x: 15, y: 5, width: 4, height: 4 } },
+      { tag: 'rect', attrs: { x: 5, y: 15, width: 4, height: 4 } },
+      { tag: 'line', attrs: { x1: 11, y1: 5, x2: 11, y2: 9 } },
+      { tag: 'line', attrs: { x1: 11, y1: 11, x2: 11, y2: 13 } },
+      { tag: 'line', attrs: { x1: 11, y1: 15, x2: 11, y2: 19 } },
+      { tag: 'line', attrs: { x1: 15, y1: 11, x2: 19, y2: 11 } },
+      { tag: 'line', attrs: { x1: 15, y1: 15, x2: 19, y2: 15 } }
+    ]
+  },
+  bookmark: {
+    title: 'Bookmark',
+    elements: [
+      { tag: 'path', attrs: { d: 'M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z' } }
+    ]
+  },
+  list: {
+    title: 'List',
+    elements: [
+      { tag: 'line', attrs: { x1: 8, y1: 6, x2: 21, y2: 6 } },
+      { tag: 'line', attrs: { x1: 8, y1: 12, x2: 21, y2: 12 } },
+      { tag: 'line', attrs: { x1: 8, y1: 18, x2: 21, y2: 18 } },
+      { tag: 'line', attrs: { x1: 3, y1: 6, x2: 3.01, y2: 6 } },
+      { tag: 'line', attrs: { x1: 3, y1: 12, x2: 3.01, y2: 12 } },
+      { tag: 'line', attrs: { x1: 3, y1: 18, x2: 3.01, y2: 18 } }
+    ]
+  },
+  folder: {
+    title: 'Folder',
+    elements: [
+      { tag: 'path', attrs: { d: 'M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z' } }
+    ]
+  },
+  tag: {
+    title: 'Tag',
+    elements: [
+      { tag: 'path', attrs: { d: 'M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z' } },
+      { tag: 'line', attrs: { x1: 7, y1: 7, x2: 7.01, y2: 7 } }
+    ]
+  },
+  edit: {
+    title: 'Edit',
+    elements: [
+      { tag: 'path', attrs: { d: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7' } },
+      { tag: 'path', attrs: { d: 'M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z' } }
+    ]
+  },
+  upload: {
+    title: 'Upload',
+    elements: [
+      { tag: 'path', attrs: { d: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' } },
+      { tag: 'polyline', attrs: { points: '7,10 12,5 17,10' } },
+      { tag: 'line', attrs: { x1: 12, y1: 5, x2: 12, y2: 15 } }
+    ]
+  },
+  'file-text': {
+    title: 'File Text',
+    elements: [
+      { tag: 'path', attrs: { d: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' } },
+      { tag: 'polyline', attrs: { points: '14,2 14,8 20,8' } },
+      { tag: 'line', attrs: { x1: 16, y1: 13, x2: 8, y2: 13 } },
+      { tag: 'line', attrs: { x1: 16, y1: 17, x2: 8, y2: 17 } },
+      { tag: 'polyline', attrs: { points: '10,9 9,9 8,9' } }
+    ]
+  },
+  play: {
+    title: 'Play',
+    elements: [
+      { tag: 'polygon', attrs: { points: '5,3 19,12 5,21' } }
+    ]
+  },
+  wrench: {
+    title: 'Wrench',
+    elements: [
+      { tag: 'path', attrs: { d: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' } }
+    ]
+  },
+  book: {
+    title: 'Book',
+    elements: [
+      { tag: 'path', attrs: { d: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20' } },
+      { tag: 'path', attrs: { d: 'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z' } }
+    ]
   }
 };
 
@@ -249,6 +381,10 @@ export function createIconElement(name, options = {}) {
   const svg = buildSvg(definition, options);
   svg.classList.add('toolary-icon');
   return svg;
+}
+
+export function renderIcon(name, options = {}) {
+  return createIconElement(name, options);
 }
 
 export function getIconSvg(name, options = {}) {

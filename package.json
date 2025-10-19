@@ -1,7 +1,7 @@
 {
   "name": "toolary",
-  "version": "2.0.0",
-  "description": "Toolary - A comprehensive Chrome extension with 9 web productivity tools including color picker, element inspector, screenshot capture, sticky notes, and more. Features searchable popup, favorites, and recent history.",
+  "version": "1.0.0",
+  "description": "Toolary - A comprehensive Chrome extension with 16 web productivity tools including color picker, element inspector, screenshot capture, sticky notes, AI integration, and more. Features searchable popup, favorites, and recent history.",
   "main": "index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand",

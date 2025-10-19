@@ -49,11 +49,13 @@ function onMouseDown(e) {
     
     cleanupFunctions.push(cleanupMove, cleanupUp);
     
-    showInfo('Drag to select links • Release to extract • Ctrl/Cmd+A for all links • Esc to cancel', 2000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('dragToSelectLinks') : 'Drag to select links • Release to extract • Ctrl/Cmd+A for all links • Esc to cancel';
+    showInfo(infoMessage, 2000);
     
   } catch (error) {
     handleError(error, 'onMouseDown');
-    showError('Failed to start link selection. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToStartLinkSelection') : 'Failed to start link selection. Please try again.';
+    showError(errorMessage);
   }
 }
 
@@ -289,7 +291,8 @@ async function analyzeLinks(links, sourceLabel = 'selected area') {
   );
 
   if (!uniqueLinks.length) {
-    showWarning('No valid links were detected.');
+    const message = chrome.i18n ? chrome.i18n.getMessage('noValidLinksDetected') : 'No valid links were detected.';
+    showWarning(message);
     deactivateCb();
     return false;
   }
@@ -297,7 +300,8 @@ async function analyzeLinks(links, sourceLabel = 'selected area') {
   const urlsList = uniqueLinks.map(link => link.url).join('\n');
   copyText(urlsList);
 
-  showSuccess(`${uniqueLinks.length} links extracted from ${sourceLabel}!`);
+  const successMessage = chrome.i18n ? chrome.i18n.getMessage('linksExtractedFromSource', [uniqueLinks.length, sourceLabel]) : `${uniqueLinks.length} links extracted from ${sourceLabel}!`;
+  showSuccess(successMessage);
 
   const title = `${uniqueLinks.length} ${uniqueLinks.length === 1 ? 'Link' : 'Links'}`;
   showModal(title, urlsList, 'link', 'links');
@@ -330,7 +334,8 @@ async function onUp() {
 
   } catch (error) {
     handleError(error, 'linkPicker onUp');
-    showError('Failed to extract links. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToExtractLinks') : 'Failed to extract links. Please try again.';
+    showError(errorMessage);
     deactivateCb();
   }
 }
@@ -376,11 +381,13 @@ export function activate(deactivate) {
     
     cleanupFunctions.push(cleanupMouseDown, cleanupKeydown);
     
-    showInfo('Drag to select links • Release to extract • Ctrl/Cmd+A for all links • Esc to cancel', 3000);
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('dragToSelectLinks') : 'Drag to select links • Release to extract • Ctrl/Cmd+A for all links • Esc to cancel';
+    showInfo(infoMessage, 3000);
     
   } catch (error) {
     handleError(error, 'linkPicker activation');
-    showError('Failed to activate link picker. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateLinkPicker') : 'Failed to activate link picker. Please try again.';
+    showError(errorMessage);
     deactivate();
   }
 }

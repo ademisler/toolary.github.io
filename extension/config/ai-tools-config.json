@@ -1,0 +1,14 @@
+{
+  "toolModelRequirements": {
+    "ai-text-summarizer": "lite",
+    "ai-code-explainer": "smart"
+  },
+  "modelEndpoints": {
+    "smart": "gemini-2.5-flash",
+    "lite": "gemini-2.5-flash-lite"
+  },
+  "rateLimits": {
+    "requestsPerMinute": 60,
+    "cooldownPeriod": 60000
+  }
+}

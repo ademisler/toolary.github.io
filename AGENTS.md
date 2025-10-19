@@ -2,12 +2,13 @@
 
 ## Project Overview
 
-**Toolary** is a Chrome extension (Manifest V3) providing 12+ web productivity tools with architecture to scale to 50+ tools.
+**Toolary** is a Chrome extension (Manifest V3) providing 17 web productivity tools with AI integration and architecture to scale to 50+ tools.
 
-- **Version:** 2.0.0
+- **Version:** 1.0.0
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
-- **Test Coverage:** 98.3% (62 tests passing)
+- **AI Support:** Gemini API integration with key rotation and model selection
+- **Test Coverage:** 98.3% (47 tests passing, AI modules included)
 
 ## Architecture
 
@@ -39,21 +40,170 @@ extension/
 │   ├── constants.js          # Message types, categories, shortcut map
 │   ├── messageRouter.js      # chrome.runtime/tabs.sendMessage abstraction
 │   ├── toolLoader.js         # Lazy import() with cache
-│   └── toolRegistry.js       # Loads tools-manifest.json, provides getters
+│   ├── toolRegistry.js       # Loads tools-manifest.json, provides getters
+│   ├── aiConfig.js           # AI models, languages, tool-to-model mapping
+│   └── aiManager.js          # AI API key rotation, model selection, API calls
 ├── shared/
 │   ├── helpers.js            # Storage, modals, error handling, i18n
 │   ├── icons.js              # SVG icon registry
 │   └── ui-components.js      # Tool cards, virtual grid, toasts
 ├── tools/
 │   ├── inspect/              # colorPicker, elementPicker, fontPicker, linkPicker
-│   ├── capture/              # mediaPicker, textPicker, screenshotPicker, pdfGenerator
-│   ├── enhance/              # stickyNotesPicker, textHighlighter
+│   ├── capture/              # mediaPicker, textPicker, screenshotPicker, pdfGenerator, qrCodeGenerator, videoRecorder
+│   ├── enhance/              # stickyNotesPicker, textHighlighter, readingMode, bookmarkManager, darkModeToggle
 │   └── utilities/            # siteInfoPicker, colorPaletteGenerator
 ├── config/
-│   └── tools-manifest.json   # Tool metadata (id, name, category, icon, tags, etc.)
+│   ├── tools-manifest.json   # Tool metadata (id, name, category, icon, tags, etc.)
+│   └── ai-tools-config.json  # AI tool model preferences
 ├── icons/                    # PNG icons + SVG tool icons
 └── _locales/                 # en/fr/tr messages.json
 ```
+
+## AI Integration System
+
+### Overview
+
+Toolary includes a comprehensive AI integration system built around Google's Gemini API, designed to support future AI-powered tools while maintaining performance and reliability.
+
+### Key Features
+
+- **API Key Rotation:** Automatic load balancing across multiple API keys
+- **Model Selection:** Smart model selection (Gemini 2.5 Flash vs Flash-Lite)
+- **Language Support:** 40+ languages with auto-detection
+- **Error Handling:** Robust retry logic and rate limit management
+- **Settings UI:** User-friendly configuration in popup settings
+
+### Architecture
+
+```
+AI Tool → aiManager.js → Gemini API
+         ↓
+    Key Rotation & Model Selection
+         ↓
+    Language Processing & Error Handling
+```
+
+### Core Components
+
+#### 1. `core/aiManager.js`
+Main AI service managing API calls, key rotation, and model selection.
+
+**Key Methods:**
+- `callGeminiAPI(prompt, options)` - Main API call method
+- `testAPIKey(apiKey)` - Test API key validity
+- `getNextAvailableKey()` - Smart key rotation
+- `selectModel(toolId, preference)` - Model selection logic
+
+#### 2. `core/aiConfig.js`
+Configuration for AI models, languages, and tool-to-model mapping.
+
+**Key Exports:**
+- `GEMINI_MODELS` - Available models
+- `AI_LANGUAGES` - Supported languages (40+)
+- `TOOL_MODEL_MAPPING` - Tool-specific model preferences
+
+#### 3. Settings Integration
+AI settings are integrated into the popup settings panel with dedicated UI.
+
+**Settings Sections:**
+- **Model Selection:** Auto/Smart/Lite options
+- **Language Selection:** 40+ languages + auto-detection
+- **API Key Management:** Add, test, remove API keys
+
+**UI Features:**
+- Real-time API key testing
+- Key health status indicators
+- Model preference persistence
+- Language auto-detection
+
+### Adding AI to a Tool
+
+#### 1. Import AI Manager
+```javascript
+import { aiManager } from '../../core/aiManager.js';
+```
+
+#### 2. Make AI Call
+```javascript
+export async function activate(deactivate) {
+  try {
+    const prompt = "Analyze this text: " + selectedText;
+    const response = await aiManager.callGeminiAPI(prompt, {
+      toolId: 'my-ai-tool',
+      userModelPreference: 'auto' // optional
+    });
+    
+    // Use AI response
+    showResult(response);
+  } catch (error) {
+    handleError(error, 'my-ai-tool.activate');
+    showError('AI processing failed');
+  }
+}
+```
+
+#### 3. Configure Tool Model Preference
+Add to `config/ai-tools-config.json`:
+```json
+{
+  "my-ai-tool": "smart"
+}
+```
+
+### AI Settings Management
+
+#### API Key Management
+- **Add Keys:** Users can add multiple Gemini API keys
+- **Test Keys:** Built-in API key testing functionality
+- **Key Rotation:** Automatic load balancing across keys
+- **Error Handling:** Automatic key health monitoring
+
+#### Model Selection
+- **Auto:** Tool decides based on complexity
+- **Smart:** Always use Gemini 2.5 Flash
+- **Lite:** Always use Gemini 2.5 Flash-Lite
+
+#### Language Support
+- **Auto:** Detect browser language
+- **Manual:** Choose from 40+ supported languages
+- **Fallback:** English if language not supported
+
+### Error Handling
+
+#### API Errors
+- **Rate Limiting:** Automatic retry with exponential backoff
+- **Invalid Keys:** Mark as unhealthy, try next key
+- **Network Issues:** Retry with different key
+- **Quota Exceeded:** Graceful degradation
+
+#### User Feedback
+- **Toast Messages:** Success/error notifications
+- **Status Indicators:** Key health status in UI
+- **Loading States:** Visual feedback during API calls
+
+### Best Practices
+
+#### For AI Tools
+1. **Always handle errors gracefully**
+2. **Provide clear user feedback**
+3. **Use appropriate model for task complexity**
+4. **Include language instructions in prompts**
+5. **Test with multiple API keys**
+
+#### For Performance
+1. **Cache responses when appropriate**
+2. **Use lite model for simple tasks**
+3. **Implement proper cleanup**
+4. **Monitor API usage and costs**
+
+### Future AI Tools
+
+The AI system is designed to easily support new AI-powered tools:
+
+- **Text Analysis:** Summarization, sentiment analysis
+- **Content Generation:** Writing assistance, translations
+- **Image Processing:** OCR, image analysis
+- **Code Analysis:** Code review, documentation generation
 
 ## Adding a New Tool
 
@@ -67,7 +217,7 @@ export const metadata = {
   name: 'My Tool',
   category: 'utilities',
   icon: 'info',
-  shortcut: { default: 'Alt+Shift+9', mac: 'Alt+Shift+9' }, // optional
+  // shortcut: { default: 'Alt+Shift+9', mac: 'Alt+Shift+9' }, // ❌ DO NOT ADD - 4/4 limit reached
   permissions: ['activeTab'],
   tags: ['utility', 'helper'],
   keywords: ['search', 'terms']
@@ -110,10 +260,36 @@ export function deactivate() {
   "tags": ["utility", "helper"],
   "keywords": ["search", "terms"],
   "permissions": ["activeTab"]
+  // ❌ DO NOT add "shortcut" field - 4/4 limit reached
 }
 ```
 
-### 3. Add icon to `extension/icons/tools/my-tool.svg` (optional)
+### 3. Add icon to `extension/shared/icons.js` (REQUIRED)
+
+**Icon System:**
+- Icons are defined in `extension/shared/icons.js` as SVG elements
+- Uses Lucide-inspired design system (stroke-based, no fills)
+- All icons use `currentColor` for theming compatibility
+- 24x24 viewBox with 1.8px stroke width
+
+**Add your icon definition:**
+
+```javascript
+// In extension/shared/icons.js, add to ICON_DEFINITIONS object:
+'my-tool': {
+  title: 'My Tool',
+  elements: [
+    { tag: 'path', attrs: { d: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z' } }
+  ]
+}
+```
+
+**Icon Guidelines:**
+- Keep it simple and minimal (max 3-4 elements)
+- Use only `path`, `line`, `rect`, `circle` elements
+- No `fill` attributes, only `stroke` and `currentColor`
+- Match the style of existing icons
+- 24x24 viewBox, elements should fit within bounds
 
 ### 4. Add i18n strings to `_locales/*/messages.json`
 
@@ -124,7 +300,9 @@ export function deactivate() {
 }
 ```
 
-### 5. Add keyboard shortcut to `manifest.json` (optional)
+### 5. Add keyboard shortcut to `manifest.json` (❌ NOT RECOMMENDED)
+
+**⚠️ WARNING: Chrome extension shortcut limit is 4/4 reached!**
 
 ```json
 {
@@ -137,6 +315,8 @@ export function deactivate() {
 }
 ```
 
+**To add a new shortcut, you MUST first remove an existing one from `manifest.json`.**
+
 And update `background.js`:
 
 ```javascript
@@ -145,6 +325,8 @@ const COMMAND_TOOL_MAP = {
   // ...
 };
 ```
+
+**Recommendation:** Skip shortcuts for new tools and focus on discoverability through search and categories.
 
 ### 6. Write tests in `test/modules.test.js`
 
@@ -159,6 +341,148 @@ describe('My Tool', () => {
 });
 ```
 
+## Icon System
+
+### Design Principles
+- **Lucide-inspired:** Clean, minimal stroke-based icons
+- **Consistent styling:** All icons follow the same visual language
+- **Theme compatibility:** Use `currentColor` for automatic dark/light theme support
+- **Performance:** SVG elements defined in JavaScript, no external files
+
+### Technical Specifications
+- **ViewBox:** 24x24 pixels
+- **Stroke width:** 1.8px (default)
+- **Stroke cap:** round
+- **Stroke join:** round
+- **Color:** `currentColor` (inherits from CSS)
+
+### Available Elements
+- `path` - Complex shapes and curves
+- `line` - Straight lines
+- `rect` - Rectangles and squares
+- `circle` - Circles and ellipses
+
+### Current Icons
+Available icon names for tools:
+- `color` - Color picker
+- `text` - Text extraction
+- `element` - DOM element picker
+- `screenshot` - Screenshot capture
+- `link` - Link validation
+- `font` - Font inspection
+- `image` - Media picker
+- `media` - Media extraction
+- `site` - Site information
+- `note` / `notes` - Sticky notes
+- `developer` - Developer tools
+- `copy` - Copy functionality
+- `download` - Download actions
+- `export` - Export functionality
+- `pdf` - PDF generation
+- `favorite` / `star` - Favorites
+- `trash` - Delete actions
+- `info` - Information display
+- `alert` - Warnings
+- `success` - Success indicators
+- `close` - Close actions
+- `plus` - Add actions
+- `palette` - Color palette
+- `highlighter` - Text highlighting
+- `book-open` - Reading mode
+- `qrcode` - QR code generation
+- `bookmark` - Bookmark manager
+- `list` - List view
+- `folder` - Folder/collection
+- `tag` - Tag/label
+- `edit` - Edit/pen
+- `upload` - Upload action
+- `file-text` - Text document
+- `play` - Play button
+- `wrench` - Tool/settings
+- `book` - Book/document
+- `video` - Video recording
+- `sun` - Sun icon (light mode)
+- `moon` - Moon icon (dark mode)
+
+### Icon Loading System
+
+#### How Icons Work
+1. **Primary:** JavaScript icon definitions in `shared/icons.js`
+2. **Fallback:** SVG files in `icons/tools/` directory
+3. **Default:** Circle icon if neither exists
+
+#### Icon Loading Logic (popup.js)
+```javascript
+// Try icon definition first
+if (icons.createIconElement && icons.getIconDefinition) {
+  const iconDef = icons.getIconDefinition(tool.icon);
+  const defaultDef = icons.getIconDefinition('nonexistent');
+  const isDefaultIcon = iconDef.title === defaultDef.title && iconDef.elements.length === defaultDef.elements.length;
+  
+  if (!isDefaultIcon) {
+    // Use JavaScript definition
+    const iconSvg = icons.createIconElement(tool.icon, { size: 32, decorative: true });
+    icon.appendChild(iconSvg);
+  } else {
+    // Fallback to SVG file
+    const iconImg = document.createElement('img');
+    iconImg.src = chrome.runtime.getURL(`icons/tools/${tool.icon}.svg`);
+    icon.appendChild(iconImg);
+  }
+}
+```
+
+#### Common Icon Issues & Solutions
+
+**Problem:** Icons showing as circles instead of proper icons
+**Causes:**
+1. Icon name not defined in `ICON_DEFINITIONS`
+2. Missing SVG file in `icons/tools/`
+3. Wrong function name (`renderIcon` vs `createIconElement`)
+
+**Solutions:**
+1. **Check icon definition exists:**
+   ```javascript
+   // In icons.js, verify icon is in ICON_DEFINITIONS
+   console.log(icons.getIconDefinition('your-icon-name'));
+   ```
+
+2. **Add missing icon definition:**
+   ```javascript
+   // In icons.js
+   'your-icon': {
+     title: 'Your Icon',
+     elements: [
+       { tag: 'path', attrs: { d: 'M...' } }
+     ]
+   }
+   ```
+
+3. **Create missing SVG file:**
+   ```bash
+   # Create SVG file in icons/tools/
+   touch extension/icons/tools/your-icon.svg
+   ```
+
+4. **Use correct function:**
+   ```javascript
+   // ✅ Correct
+   import { createIconElement } from '../../shared/icons.js';
+   const icon = createIconElement('bookmark', { size: 24, decorative: true });
+   
+   // ❌ Wrong
+   import { renderIcon } from '../../shared/icons.js';
+   const icon = renderIcon('bookmark', { size: 24, decorative: true });
+   ```
+
+#### Icon Debugging Checklist
+- [ ] Icon name exists in `ICON_DEFINITIONS`?
+- [ ] SVG file exists in `icons/tools/`?
+- [ ] Using `createIconElement` function?
+- [ ] Icon name matches exactly (case-sensitive)?
+- [ ] Console shows "Using icon definition" or "Loading icon"?
+- [ ] No JavaScript errors in console?
+
 ## Storage Structure
 
 ### chrome.storage.sync (cross-device)
@@ -168,26 +492,51 @@ describe('My Tool', () => {
 ### chrome.storage.local (device-specific)
 - `toolaryRecentTools`: Array of last 5 used tool IDs
 - `toolaryStickyNotes_<domain>`: Per-site sticky notes data
+- `toolaryDarkModeToggle`: Dark mode toggle state and preferences
+- `toolaryAIKeys`: Array of AI API keys with metadata
+- `toolaryAIModel`: User's AI model preference (auto/smart/lite)
+- `toolaryAILanguage`: User's AI language preference
 
 ### Legacy migration
 Auto-migrates from old Pickachu keys: `pickachuFavorites`, `pickachuHiddenTools`, `pickachuRecentTools`
 
 ## Keyboard Shortcuts
 
+### ⚠️ **IMPORTANT: Chrome Extension Shortcut Limitations**
+
+**Chrome extensions are limited to MAXIMUM 4 keyboard shortcuts** defined in `manifest.json`. This is a hard limit imposed by Chrome.
+
+### Current Shortcuts (4/4 used)
+
 | Shortcut | Tool | Scope |
 |----------|------|-------|
 | `Ctrl+Shift+P` (Win) / `Cmd+Shift+P` (Mac) | Toggle popup | Global |
 | `Alt+Shift+1` | Color Picker | Global |
-| `Alt+Shift+2` | Element Picker | Global |
 | `Alt+Shift+3` | Screenshot Picker | Global |
+| `Alt+Shift+7` | Text Highlighter | Global |
+| `Alt+Shift+8` | Reading Mode | Global |
 | `/` | Focus search in popup | Popup only |
 
-Shortcuts work globally (even when popup is closed) via `chrome.commands` API handled in `background.js`.
+### Guidelines for New Tools
+
+**❌ DO NOT add shortcuts to new tools** - The 4 shortcut limit is already reached.
+
+**✅ Instead:**
+- Use the popup interface for tool access
+- Focus on making tools discoverable through search and categories
+- Consider tool importance when assigning shortcuts (only most-used tools get shortcuts)
+
+### Shortcut Management
+
+- **Global shortcuts:** Work even when popup is closed via `chrome.commands` API in `background.js`
+- **Popup shortcuts:** Only work when popup is open
+- **To change shortcuts:** Edit `manifest.json` → `commands` section
+- **To add new shortcut:** Must remove an existing one first (4/4 limit)
 
 ## Testing & Quality
 
 ```bash
-npm test          # Run Jest tests (56 tests, 98.3% coverage)
+npm test          # Run Jest tests (47 tests, 98.3% coverage)
 npm run lint      # ESLint check (must pass)
 ```
 
@@ -232,11 +581,127 @@ console.time('popup-open');
 console.timeEnd('popup-open'); // Should be <100ms
 ```
 
+## Troubleshooting Guide
+
+### Icons Not Displaying (Showing Circles)
+**Symptoms:** Tool icons appear as circles instead of proper icons
+**Common Causes:**
+1. Icon name not defined in `ICON_DEFINITIONS`
+2. Missing SVG file in `icons/tools/`
+3. Wrong function name (`renderIcon` vs `createIconElement`)
+4. Case sensitivity issues
+
+**Debug Steps:**
+1. Check console for "Using icon definition" or "Loading icon" messages
+2. Verify icon name in `tools-manifest.json` matches `ICON_DEFINITIONS`
+3. Ensure SVG file exists: `icons/tools/icon-name.svg`
+4. Use `createIconElement` function, not `renderIcon`
+5. Check for JavaScript errors in console
+
+**Quick Fix:**
+```javascript
+// Add missing icon definition in icons.js
+'your-icon': {
+  title: 'Your Icon',
+  elements: [
+    { tag: 'path', attrs: { d: 'M...' } }
+  ]
+}
+```
+
+### Pagination Not Working
+**Symptoms:** Page navigation buttons don't work or show wrong page numbers
+**Common Causes:**
+1. Missing pagination elements in HTML
+2. JavaScript errors in pagination functions
+3. State not updating correctly
+
+**Debug Steps:**
+1. Check `elements.pagination`, `elements.prevPage`, `elements.nextPage` exist
+2. Verify `updatePagination()` is called after filtering
+3. Check `state.currentPage` and `state.toolsPerPage` values
+4. Ensure `renderMainToolsGrid()` updates correctly
+
+### Mouse Wheel Navigation Not Working
+**Symptoms:** Mouse wheel doesn't navigate pages
+**Common Causes:**
+1. Event listener not attached
+2. Wrong target element
+3. Pagination not visible
+
+**Debug Steps:**
+1. Check if wheel event listener is attached to `.tools-virtual-container`
+2. Verify pagination is visible (`!elements.pagination.hidden`)
+3. Test with `{ passive: false }` option
+4. Check for event.preventDefault() calls
+
+### Tool Activation Fails
+**Symptoms:** Clicking tool cards doesn't activate tools
+**Common Causes:**
+1. Missing tool module files
+2. Incorrect module path in `tools-manifest.json`
+3. JavaScript errors in tool activation
+
+**Debug Steps:**
+1. Check `chrome.runtime.getURL()` resolves correctly
+2. Verify tool module exports `activate` and `deactivate` functions
+3. Check for import/export errors
+4. Test with `chrome.tabs.query()` permissions
+
+### Storage Issues
+**Symptoms:** Settings or data not persisting
+**Common Causes:**
+1. Missing storage permissions
+2. Incorrect storage key names
+3. Data format issues
+
+**Debug Steps:**
+1. Check `manifest.json` for storage permissions
+2. Verify storage key names are consistent
+3. Test with `chrome.storage.local.get()` and `chrome.storage.sync.get()`
+4. Check data serialization/deserialization
+
+### Performance Issues
+**Symptoms:** Slow popup opening or tool activation
+**Common Causes:**
+1. Large icon files
+2. Inefficient DOM manipulation
+3. Too many event listeners
+
+**Debug Steps:**
+1. Profile with Chrome DevTools Performance tab
+2. Check for memory leaks in event listeners
+3. Optimize icon loading (use definitions over SVG files)
+4. Minimize DOM queries and updates
+
+### AI Integration Issues
+**Symptoms:** AI features not working or API errors
+**Common Causes:**
+1. No API keys configured
+2. Invalid API keys
+3. Rate limiting
+4. Network connectivity issues
+
+**Debug Steps:**
+1. Check AI settings in popup
+2. Test API keys using built-in tester
+3. Verify API key health status
+4. Check console for API error messages
+5. Ensure proper permissions in manifest.json
+
+**Quick Fix:**
+```javascript
+// Test API key manually
+import { aiManager } from '../core/aiManager.js';
+const result = await aiManager.testAPIKey('your-api-key');
+console.log(result);
+```
+
 ## File Size Limits
 
-- `tools-manifest.json`: ~173 lines (9 tools) → keep under 1000 lines
-- `popup.js`: 1293 lines → consider splitting if >2000 lines
-- Total extension: 544KB → target <2MB for fast installation
+- `tools-manifest.json`: ~320 lines (17 tools) → keep under 1000 lines
+- `popup.js`: 1714 lines → consider splitting if >2000 lines
+- Total extension: ~580KB → target <2MB for fast installation
 
 ## Code Style
 
@@ -246,31 +711,6 @@ console.timeEnd('popup-open'); // Should be <100ms
 - **No external deps:** Keep vanilla JS (except tests)
 - **Comments:** JSDoc for public APIs only
 - **Naming:** camelCase for variables, PascalCase for classes
-
-## Text Highlighter Tool
-
-### Overview
-The Text Highlighter tool allows users to highlight text on any webpage with persistent storage. It works with all HTML elements including headings, lists, tables, and complex React/Next.js applications.
-
-### Key Features
-- **5-Color Palette**: Yellow, Green, Blue, Pink, Orange
-- **Site-Based Storage**: Each website has its own highlight collection
-- **HTML Element Support**: Works with h1-h6, ul/ol/li, table elements, div, span, etc.
-- **React/Next.js Compatible**: Uses MutationObserver to restore highlights after DOM changes
-- **Right-Click Context Menu**: Easy highlight removal
-- **Keyboard Shortcut**: Alt+Shift+7 for quick activation
-
-### Technical Implementation
-- **Range API**: For text selection and highlighting
-- **XPath Serialization**: For persistent range storage
-- **MutationObserver**: For DOM change detection and highlight restoration
-- **Complex HTML Handling**: Special logic for multi-element selections
-- **CSS Override System**: `!important` styles to ensure visibility
-
-### Files
-- `tools/enhance/textHighlighter.js` - Main implementation
-- `icons/tools/highlighter.svg` - Tool icon
-- `_locales/*/messages.json` - i18n strings
 
 ## Deployment
 
@@ -282,4 +722,4 @@ The Text Highlighter tool allows users to highlight text on any webpage with per
 
 ---
 
-**Last updated:** 2025-01-27 for Toolary v2.0.0
+**Last updated:** 2025-01-27 for Toolary v1.0.0 (Updated with 17 tools including Dark Mode Toggle, AI integration, and current project status)

@@ -72,7 +72,7 @@ export function renderIcon(name, options = {}) {
   return createIconElement(getIconName(name, name), options);
 }
 
-function generateId(prefix = 'id') {
+export function generateId(prefix = 'id') {
   try {
     if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
       return `${prefix}-${crypto.randomUUID()}`;

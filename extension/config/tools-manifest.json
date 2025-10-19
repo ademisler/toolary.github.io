@@ -49,10 +49,6 @@
       "module": "inspect/elementPicker.js",
       "order": 2,
       "icon": "element",
-      "shortcut": {
-        "default": "Alt+Shift+2",
-        "mac": "Alt+Shift+2"
-      },
       "i18n": {
         "label": "element",
         "title": "elementPicker",
@@ -163,11 +159,27 @@
       "permissions": ["activeTab", "downloads"]
     },
     {
+      "id": "qr-code-generator",
+      "name": "QR Code Generator",
+      "category": "capture",
+      "module": "capture/qrCodeGenerator.js",
+      "order": 9,
+      "icon": "qrcode",
+      "i18n": {
+        "label": "qrcode",
+        "title": "qrCodeGenerator",
+        "description": "qrCodeGeneratorDescription"
+      },
+      "tags": ["qr", "qrcode", "share", "mobile"],
+      "keywords": ["qr code", "qrcode", "barcode", "share", "mobile", "scan"],
+      "permissions": ["activeTab"]
+    },
+    {
       "id": "sticky-notes-picker",
       "name": "Sticky Notes",
       "category": "enhance",
       "module": "enhance/stickyNotesPicker.js",
-      "order": 8,
+      "order": 10,
       "icon": "notes",
       "i18n": {
         "label": "notes",
@@ -179,11 +191,31 @@
       "permissions": ["activeTab", "storage"]
     },
     {
+      "id": "reading-mode",
+      "name": "Reading Mode",
+      "category": "enhance",
+      "module": "enhance/readingMode.js",
+      "order": 11,
+      "icon": "book-open",
+      "shortcut": {
+        "default": "Alt+Shift+8",
+        "mac": "Alt+Shift+8"
+      },
+      "i18n": {
+        "label": "readingMode",
+        "title": "readingModeTitle",
+        "description": "readingModeDescription"
+      },
+      "tags": ["reading", "focus", "clean"],
+      "keywords": ["reader", "article", "focus", "distraction-free"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
       "id": "text-highlighter",
       "name": "Text Highlighter",
       "category": "enhance",
       "module": "enhance/textHighlighter.js",
-      "order": 9,
+      "order": 12,
       "icon": "highlighter",
       "shortcut": {
         "default": "Alt+Shift+7",
@@ -203,7 +235,7 @@
       "name": "Site Info",
       "category": "utilities",
       "module": "utilities/siteInfoPicker.js",
-      "order": 10,
+      "order": 13,
       "icon": "info",
       "i18n": {
         "label": "info",
@@ -219,7 +251,7 @@
       "name": "Color Palette Generator",
       "category": "utilities",
       "module": "utilities/colorPaletteGenerator.js",
-      "order": 11,
+      "order": 14,
       "icon": "palette",
       "i18n": {
         "label": "colorPalette",
@@ -229,6 +261,54 @@
       "tags": ["color", "design", "palette", "harmony"],
       "keywords": ["color scheme", "palette", "harmony", "contrast", "accessibility", "wcag"],
       "permissions": ["activeTab"]
+    },
+    {
+      "id": "bookmark-manager",
+      "name": "Bookmark Manager",
+      "category": "enhance",
+      "module": "enhance/bookmarkManager.js",
+      "order": 15,
+      "icon": "bookmark",
+      "i18n": {
+        "label": "bookmarkManager",
+        "title": "bookmarkManagerTitle",
+        "description": "bookmarkManagerDescription"
+      },
+      "tags": ["bookmarks", "organize", "save", "productivity"],
+      "keywords": ["bookmark", "save", "organize", "folder", "tag", "search"],
+      "permissions": ["activeTab", "storage", "tabs"]
+    },
+    {
+      "id": "video-recorder",
+      "name": "Video Recorder",
+      "category": "capture",
+      "module": "capture/videoRecorder.js",
+      "order": 16,
+      "icon": "video",
+      "i18n": {
+        "label": "videoRecorder",
+        "title": "videoRecorderTitle",
+        "description": "videoRecorderDescription"
+      },
+      "tags": ["video", "recording", "screen", "capture"],
+      "keywords": ["record", "video", "screen", "webm", "mp4", "capture"],
+      "permissions": ["activeTab", "tabCapture", "storage"]
+    },
+    {
+      "id": "dark-mode-toggle",
+      "name": "Dark Mode Toggle",
+      "category": "enhance",
+      "module": "enhance/darkModeToggle.js",
+      "order": 17,
+      "icon": "moon",
+      "i18n": {
+        "label": "darkModeToggle",
+        "title": "darkModeToggleTitle",
+        "description": "darkModeToggleDescription"
+      },
+      "tags": ["dark", "theme", "mode", "night"],
+      "keywords": ["dark mode", "night mode", "theme", "contrast"],
+      "permissions": ["activeTab", "storage"]
     }
   ]
 }

@@ -376,10 +376,12 @@ function removeHighlight(highlightId) {
       saveHighlights();
     }
     
-    showSuccess('Highlight removed');
+    const message = chrome.i18n ? chrome.i18n.getMessage('highlightRemoved') : 'Highlight removed';
+    showSuccess(message);
   } catch (error) {
     handleError(error, 'removeHighlight');
-    showError('Failed to remove highlight');
+    const message = chrome.i18n ? chrome.i18n.getMessage('failedToRemoveHighlight') : 'Failed to remove highlight';
+    showError(message);
   }
 }
 
@@ -435,7 +437,8 @@ function showColorPalette(selection) {
       if (highlight) {
         showSuccess(`Text highlighted with ${color.name}`);
       } else {
-        showError('Failed to highlight text');
+        const message = chrome.i18n ? chrome.i18n.getMessage('failedToHighlightText') : 'Failed to highlight text';
+        showError(message);
       }
       colorPaletteOverlay.remove();
       colorPaletteOverlay = null;
@@ -762,16 +765,19 @@ export function activate(deactivate) {
       
       cleanupFunctions.push(cleanupMouseUp, cleanupContextMenu);
       
-      showSuccess('Text highlighter activated! Select text to highlight.');
+      const successMessage = chrome.i18n ? chrome.i18n.getMessage('textHighlighterActivated') : 'Text highlighter activated! Select text to highlight.';
+      showSuccess(successMessage);
     }).catch(error => {
       handleError(error, 'textHighlighter activation loadHighlights');
-      showError('Failed to load existing highlights. Please try again.');
+      const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToLoadExistingHighlights') : 'Failed to load existing highlights. Please try again.';
+      showError(errorMessage);
       deactivate();
     });
     
   } catch (error) {
     handleError(error, 'textHighlighter activation');
-    showError('Failed to activate text highlighter. Please try again.');
+    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateTextHighlighter') : 'Failed to activate text highlighter. Please try again.';
+    showError(errorMessage);
     deactivate();
   }
 }

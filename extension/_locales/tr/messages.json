@@ -195,13 +195,430 @@
     "message": "Karanlık"
   },
   "eyeDropperNotSupported": {
-    "message": "EyeDropper API desteklenmiyor"
+    "message": "Bu tarayıcıda EyeDropper API desteklenmiyor. Lütfen Chrome 95+ kullanın veya farklı bir araç deneyin."
+  },
+  "clickToPickColor": {
+    "message": "Renk seçmek için herhangi bir yere tıklayın..."
+  },
+  "colorCopiedToClipboard": {
+    "message": "Renk {color} panoya kopyalandı!"
+  },
+  "colorPickingCancelled": {
+    "message": "Renk seçimi iptal edildi"
+  },
+  "failedToProcessColor": {
+    "message": "Renk işlenemedi. Lütfen tekrar deneyin."
+  },
+  "failedToActivateColorPicker": {
+    "message": "Renk seçici etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "elementSelectedAndCopied": {
+    "message": "Element {tagName} seçildi ve kopyalandı!"
+  },
+  "failedToExtractElementInfo": {
+    "message": "Element bilgileri çıkarılamadı. Lütfen tekrar deneyin."
+  },
+  "hoverToInspectElements": {
+    "message": "Elementleri incelemek için üzerine gelin • Seçmek için tıklayın • Gezinmek için ok tuşlarını kullanın"
+  },
+  "failedToActivateElementPicker": {
+    "message": "Element seçici etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "screenshotDownloadFailed": {
+    "message": "Ekran görüntüsü alındı ancak indirme başarısız."
+  },
+  "screenshotCaptureInProgress": {
+    "message": "Ekran görüntüsü alma işlemi devam ediyor. Lütfen bekleyin…"
+  },
+  "failedToCaptureScreenshot": {
+    "message": "Ekran görüntüsü alınamadı."
+  },
+  "textCopiedToClipboard": {
+    "message": "Metin panoya kopyalandı! ({wordCount} kelime)"
+  },
+  "failedToAnalyzeText": {
+    "message": "Metin analiz edilemedi. Lütfen tekrar deneyin."
+  },
+  "hoverToAnalyzeText": {
+    "message": "Metin elementlerini analiz etmek için üzerine gelin • Seçmek için tıklayın • Seçmek için Enter • İptal için Esc"
+  },
+  "failedToActivateTextPicker": {
+    "message": "Metin seçici etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "dragToSelectLinks": {
+    "message": "Linkleri seçmek için sürükleyin • Çıkarmak için bırakın • Tüm linkler için Ctrl/Cmd+A • İptal için Esc"
+  },
+  "failedToStartLinkSelection": {
+    "message": "Link seçimi başlatılamadı. Lütfen tekrar deneyin."
+  },
+  "linksExtractedFromSource": {
+    "message": "{sourceLabel} kaynağından {linkCount} link çıkarıldı!"
+  },
+  "failedToExtractLinks": {
+    "message": "Linkler çıkarılamadı. Lütfen tekrar deneyin."
+  },
+  "failedToActivateLinkPicker": {
+    "message": "Link seçici etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "fontInfoCopiedToClipboard": {
+    "message": "Font bilgisi panoya kopyalandı!"
+  },
+  "failedToExtractFontInfo": {
+    "message": "Font bilgileri çıkarılamadı. Lütfen tekrar deneyin."
+  },
+  "hoverToInspectFonts": {
+    "message": "Fontları incelemek için metin elementlerinin üzerine gelin • Seçmek için tıklayın • Seçmek için Enter • İptal için Esc"
+  },
+  "failedToActivateFontPicker": {
+    "message": "Font seçici etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "alternateMediaUrlCopied": {
+    "message": "Alternatif medya URL'si kopyalandı."
+  },
+  "mediaUrlCopiedToClipboard": {
+    "message": "Medya URL'si panoya kopyalandı!"
+  },
+  "failedToShowMediaDetails": {
+    "message": "Medya detayları gösterilemedi."
+  },
+  "mediaUrlUnavailable": {
+    "message": "Medya URL'si mevcut değil."
+  },
+  "blobUrlCannotDownload": {
+    "message": "Bu medya blob URL kullanıyor ve doğrudan indirilemez."
+  },
+  "failedToDownloadMedia": {
+    "message": "Medya indirilemedi."
+  },
+  "downloadStarted": {
+    "message": "İndirme başlatıldı."
+  },
+  "blobUrlUsingAlternateSource": {
+    "message": "Akış blob URL kullanıyor — kopyalama ve indirme için alternatif kaynak kullanılıyor."
+  },
+  "mediaDetailsAvailable": {
+    "message": "Medya detayları mevcut. İndirme seçenekleri için modalı inceleyin."
+  },
+  "failedToInspectMedia": {
+    "message": "Medya incelenemedi."
+  },
+  "hoverToInspectMedia": {
+    "message": "Resim veya videoları incelemek için üzerine gelin • İncelemek için tıklayın • Seçmek için Enter • İptal için Esc"
+  },
+  "failedToActivateMediaPicker": {
+    "message": "Medya seçici etkinleştirilemedi."
+  },
+  "analyzingWebsite": {
+    "message": "Web sitesi analiz ediliyor..."
+  },
+  "siteAnalysisCompleted": {
+    "message": "Site analizi tamamlandı!"
+  },
+  "failedToGenerateSiteReport": {
+    "message": "Site raporu oluşturulamadı. Lütfen tekrar deneyin."
+  },
+  "failedToActivateSiteInfoTool": {
+    "message": "Site bilgi aracı etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "siteAnalysisCompletedInfo": {
+    "message": "Site analizi tamamlandı"
+  },
+  "noExistingNotesFound": {
+    "message": "Bu sayfa için mevcut not bulunamadı. Sayfaya tıklayarak yeni notlar oluşturabilirsiniz."
+  },
+  "failedToLoadExistingNotes": {
+    "message": "Mevcut notlar yüklenemedi. Lütfen tekrar deneyin."
+  },
+  "failedToActivateStickyNotes": {
+    "message": "Yapışkan notlar etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "failedToCreateStickyNote": {
+    "message": "Yapışkan not oluşturulamadı. Lütfen tekrar deneyin."
+  },
+  "allStickyNotesRemoved": {
+    "message": "Tüm yapışkan notlar kaldırıldı"
+  },
+  "failedToClearNotes": {
+    "message": "Notlar temizlenemedi. Lütfen tekrar deneyin."
+  },
+  "notesSavedSuccessfully": {
+    "message": "Notlar başarıyla kaydedildi!"
+  },
+  "failedToSaveNotes": {
+    "message": "Notlar kaydedilemedi"
+  },
+  "notesExportedSuccessfully": {
+    "message": "Notlar başarıyla dışa aktarıldı!"
+  },
+  "failedToExportNotes": {
+    "message": "Notlar dışa aktarılamadı"
+  },
+  "notesImportedSuccessfully": {
+    "message": "Notlar başarıyla içe aktarıldı!"
+  },
+  "invalidNotesFileFormat": {
+    "message": "Geçersiz not dosyası formatı"
+  },
+  "failedToParseNotesFile": {
+    "message": "Not dosyası ayrıştırılamadı"
+  },
+  "failedToProcessSelectedFile": {
+    "message": "Seçilen dosya işlenemedi"
+  },
+  "failedToImportNotes": {
+    "message": "Notlar içe aktarılamadı"
+  },
+  "noteDeletedSuccessfully": {
+    "message": "Not başarıyla silindi"
+  },
+  "failedToDeleteNote": {
+    "message": "Not silinemedi"
+  },
+  "failedToFocusNote": {
+    "message": "Not odaklanamadı"
+  },
+  "noNotesToDeleteForSite": {
+    "message": "Bu site için silinecek not yok."
+  },
+  "deletedNotesSuccessfully": {
+    "message": "{count} not başarıyla silindi!"
+  },
+  "failedToDeleteAllNotes": {
+    "message": "Tüm notlar silinemedi. Lütfen tekrar deneyin."
+  },
+  "noteDeletedSuccessfullyExclamation": {
+    "message": "Not başarıyla silindi!"
+  },
+  "failedToDeleteNoteExclamation": {
+    "message": "Not silinemedi. Lütfen tekrar deneyin."
+  },
+  "cssCopiedToClipboard": {
+    "message": "CSS panoya kopyalandı!"
+  },
+  "jsonCopiedToClipboard": {
+    "message": "JSON panoya kopyalandı!"
+  },
+  "analyzingPageColors": {
+    "message": "Sayfa renkleri analiz ediliyor..."
+  },
+  "noColorsFoundOnPage": {
+    "message": "Bu sayfada renk bulunamadı. Daha fazla görsel içerik olan bir sayfa deneyin."
+  },
+  "colorAnalysisCompleted": {
+    "message": "Renk analizi tamamlandı!"
+  },
+  "failedToAnalyzePageColors": {
+    "message": "Sayfa renkleri analiz edilemedi. Lütfen tekrar deneyin."
+  },
+  "failedToGeneratePDF": {
+    "message": "PDF oluşturulamadı: {error}"
+  },
+  "failedToActivatePDFGenerator": {
+    "message": "PDF Oluşturucu etkinleştirilemedi: {error}"
+  },
+  "textHighlighterActivated": {
+    "message": "Metin vurgulayıcı etkinleştirildi! Vurgulamak için metin seçin."
+  },
+  "failedToLoadExistingHighlights": {
+    "message": "Mevcut vurgular yüklenemedi. Lütfen tekrar deneyin."
+  },
+  "failedToActivateTextHighlighter": {
+    "message": "Metin vurgulayıcı etkinleştirilemedi. Lütfen tekrar deneyin."
+  },
+  "failedToGenerateQRCode": {
+    "message": "QR kod oluşturulamadı"
+  },
+  "failedToActivateQRCodeGenerator": {
+    "message": "QR kod oluşturucu etkinleştirilemedi"
+  },
+  "failedToLoadBookmarks": {
+    "message": "Yer imleri yüklenemedi"
+  },
+  "failedToSaveBookmarks": {
+    "message": "Yer imleri kaydedilemedi"
+  },
+  "urlAlreadyBookmarked": {
+    "message": "Bu URL zaten yer imlerinde"
+  },
+  "videoRecorderWindowClosed": {
+    "message": "Video kaydedici penceresi kapatıldı."
+  },
+  "recordingControlsNotReachable": {
+    "message": "Kayıt kontrolleri erişilebilir değil. Lütfen tekrar deneyin."
+  },
+  "recordingStarted": {
+    "message": "Kayıt başlatıldı. Kayıt sırasında kontrol penceresini açık tutun."
+  },
+  "recordingAlreadyInProgress": {
+    "message": "Kayıt zaten devam ediyor."
+  },
+  "recordingSavedDownloadStarted": {
+    "message": "Kayıt kaydedildi. İndirme başlatıldı."
+  },
+  "videoRecorderError": {
+    "message": "Video kaydedici bir hata ile karşılaştı."
+  },
+  "videoRecorderNotSupported": {
+    "message": "Video kaydedici bu bağlamda desteklenmiyor."
+  },
+  "videoRecorderWindowAlreadyOpen": {
+    "message": "Video kaydedici penceresi zaten açık."
+  },
+  "popupBlockedAllowPopups": {
+    "message": "Popup engellendi. Video kaydediciyi kullanmak için Toolary için popup'lara izin verin."
+  },
+  "recordingControlsOpened": {
+    "message": "Kayıt kontrolleri yeni bir pencerede açıldı. Kayıt sırasında açık tutun."
+  },
+  "failedToOpenVideoRecorder": {
+    "message": "Video kaydedici açılamadı."
+  },
+  "noReadableContentFound": {
+    "message": "Bu sayfada okunabilir içerik bulunamadı"
+  },
+  "unableToCleanContent": {
+    "message": "Okuma için içerik temizlenemedi"
+  },
+  "readingModeActivated": {
+    "message": "Okuma Modu etkinleştirildi"
+  },
+  "failedToActivateReadingMode": {
+    "message": "Okuma Modu etkinleştirilemedi"
+  },
+  "exitReadingMode": {
+    "message": "Okuma Modundan Çık"
+  },
+  "decreaseFontSize": {
+    "message": "Font boyutunu küçült"
+  },
+  "increaseFontSize": {
+    "message": "Font boyutunu büyüt"
+  },
+  "toggleTheme": {
+    "message": "Tema değiştir"
+  },
+  "showToolbar": {
+    "message": "Araç çubuğunu göster"
+  },
+  "hideToolbar": {
+    "message": "Araç çubuğunu gizle"
+  },
+  "searchTools": {
+    "message": "Araçları ara..."
+  },
+  "filterByCategory": {
+    "message": "Kategoriye göre filtrele"
+  },
+  "webPickerTools": {
+    "message": "Web seçici araçları"
+  },
+  "previousPage": {
+    "message": "Önceki sayfa"
+  },
+  "nextPage": {
+    "message": "Sonraki sayfa"
+  },
+  "settingsSections": {
+    "message": "Ayar bölümleri"
+  },
+  "toolToggles": {
+    "message": "Araç geçişleri"
+  },
+  "bookmarkAddedSuccessfully": {
+    "message": "Yer imi başarıyla eklendi!"
+  },
+  "failedToAddBookmark": {
+    "message": "Yer imi eklenemedi"
+  },
+  "bookmarkNotFound": {
+    "message": "Yer imi bulunamadı"
+  },
+  "bookmarkUpdated": {
+    "message": "Yer imi güncellendi!"
+  },
+  "failedToUpdateBookmark": {
+    "message": "Yer imi güncellenemedi"
+  },
+  "bookmarkDeleted": {
+    "message": "Yer imi silindi!"
+  },
+  "failedToDeleteBookmark": {
+    "message": "Yer imi silinemedi"
+  },
+  "failedToUpdateFavoriteStatus": {
+    "message": "Favori durumu güncellenemedi"
+  },
+  "bookmarksExportedSuccessfully": {
+    "message": "Yer imleri başarıyla dışa aktarıldı!"
+  },
+  "failedToExportBookmarks": {
+    "message": "Yer imleri dışa aktarılamadı"
+  },
+  "importedBookmarks": {
+    "message": "{count} yer imi içe aktarıldı{skipped}"
+  },
+  "failedToImportBookmarks": {
+    "message": "Yer imleri içe aktarılamadı. Lütfen dosya formatını kontrol edin."
+  },
+  "failedToOpenAddBookmarkDialog": {
+    "message": "Yer imi ekleme dialogu açılamadı"
+  },
+  "bookmarkManagerActivated": {
+    "message": "Yer İmi Yöneticisi etkinleştirildi. Yer imlerinizi yönetmek için yer imi simgesine tıklayın!"
+  },
+  "failedToActivateBookmarkManager": {
+    "message": "Yer İmi Yöneticisi etkinleştirilemedi"
+  },
+  "qrCodeGenerated": {
+    "message": "QR kod oluşturuldu"
+  },
+  "noQrCodeAvailableToDownload": {
+    "message": "İndirilecek QR kod mevcut değil"
+  },
+  "qrCodeDownloaded": {
+    "message": "QR kod indirildi"
+  },
+  "failedToDownloadQrCode": {
+    "message": "QR kod indirilemedi"
+  },
+  "nothingToCopy": {
+    "message": "Kopyalanacak bir şey yok"
+  },
+  "textCopiedToClipboard": {
+    "message": "Metin panoya kopyalandı"
+  },
+  "failedToCopyText": {
+    "message": "Metin kopyalanamadı"
+  },
+  "failedToLoadQrCodeLibrary": {
+    "message": "QR kod kütüphanesi yüklenemedi"
+  },
+  "pdfGeneratedAndDownloadedSuccessfully": {
+    "message": "PDF başarıyla oluşturuldu ve indirildi!"
+  },
+  "highlightRemoved": {
+    "message": "Vurgu kaldırıldı"
+  },
+  "failedToRemoveHighlight": {
+    "message": "Vurgu kaldırılamadı"
+  },
+  "failedToHighlightText": {
+    "message": "Metin vurgulanamadı"
+  },
+  "noValidLinksDetected": {
+    "message": "Geçerli bağlantı tespit edilmedi."
+  },
+  "noTextContentFoundInElement": {
+    "message": "Bu öğede metin içeriği bulunamadı."
+  },
+  "allTools": {
+    "message": "Tüm Araçlar"
   },
   "exportPrompt": {
     "message": "txt/json/csv"
   },
   "version": {
-    "message": "Sürüm 1.1"
+    "message": "Sürüm 1.0.0"
   },
   "developer": {
     "message": "Geliştirici"
@@ -346,5 +763,194 @@
   },
   "cmdTextHighlighter": {
     "message": "Metin İşaretleyiciyi Etkinleştir"
+  },
+  "readingMode": {
+    "message": "Okuma Modu"
+  },
+  "readingModeTitle": {
+    "message": "Dikkat Dağıtmayan Okuma"
+  },
+  "readingModeDescription": {
+    "message": "Odaklanmış okuma için temiz sayfa içeriği"
+  },
+  "cmdReadingMode": {
+    "message": "Okuma Modunu Etkinleştir"
+  },
+  "qrcode": {
+    "message": "QR Kod"
+  },
+  "qrCodeGenerator": {
+    "message": "QR Kod Oluşturucu"
+  },
+  "qrCodeGeneratorDescription": {
+    "message": "Mevcut sayfa için özelleştirilebilir QR kod oluştur"
+  },
+  "bookmarkManager": {
+    "message": "Yer İmi Yöneticisi"
+  },
+  "bookmarkManagerTitle": {
+    "message": "Yer İmi Yöneticisi"
+  },
+  "bookmarkManagerDescription": {
+    "message": "Klasörler, etiketler ve güçlü arama ile yer imlerini kaydet ve düzenle"
+  },
+  "addBookmark": {
+    "message": "Yer İmi Ekle"
+  },
+  "editBookmark": {
+    "message": "Yer İmini Düzenle"
+  },
+  "deleteBookmark": {
+    "message": "Yer İmini Sil"
+  },
+  "bookmarkAdded": {
+    "message": "Yer imi başarıyla eklendi!"
+  },
+  "bookmarkUpdated": {
+    "message": "Yer imi güncellendi!"
+  },
+  "bookmarkDeleted": {
+    "message": "Yer imi silindi!"
+  },
+  "searchBookmarks": {
+    "message": "Yer imlerinde ara..."
+  },
+  "noBookmarks": {
+    "message": "Henüz yer imi yok. İlk yer iminizi eklemek için + butonuna tıklayın!"
+  },
+  "bookmarkTitle": {
+    "message": "Başlık"
+  },
+  "bookmarkUrl": {
+    "message": "URL"
+  },
+  "bookmarkFolder": {
+    "message": "Klasör"
+  },
+  "bookmarkTags": {
+    "message": "Etiketler"
+  },
+  "bookmarkNotes": {
+    "message": "Notlar"
+  },
+  "importBookmarks": {
+    "message": "İçe Aktar"
+  },
+  "exportBookmarks": {
+    "message": "Dışa Aktar"
+  },
+  "allBookmarks": {
+    "message": "Tüm Yer İmleri"
+  },
+  "favoriteBookmarks": {
+    "message": "Favoriler"
+  },
+  "videoRecorder": {
+    "message": "Video Kaydedici"
+  },
+  "videoRecorderTitle": {
+    "message": "Ekran Video Kaydı"
+  },
+  "videoRecorderDescription": {
+    "message": "Ses desteği ile ekran aktivitenizi kaydedin ve çoklu formatlarda dışa aktarın"
+  },
+  "darkModeToggle": {
+    "message": "Karanlık Mod"
+  },
+  "darkModeToggleTitle": {
+    "message": "Karanlık Modu Değiştir"
+  },
+  "darkModeToggleDescription": {
+    "message": "Herhangi bir web sitesine karanlık mod uygula"
+  },
+  "darkModeEnabled": {
+    "message": "Karanlık mod etkinleştirildi"
+  },
+  "darkModeDisabled": {
+    "message": "Karanlık mod devre dışı bırakıldı"
+  },
+  "failedToActivateDarkModeToggle": {
+    "message": "Karanlık mod değiştirici etkinleştirilemedi"
+  },
+  "aiSettings": {
+    "message": "AI"
+  },
+  "aiSettingsDescription": {
+    "message": "Gemini API anahtarlarını ve model tercihlerini yapılandırın"
+  },
+  "aiModel": {
+    "message": "AI Modeli"
+  },
+  "aiModelDescription": {
+    "message": "Model zeka seviyesini seçin"
+  },
+  "aiModelAuto": {
+    "message": "Otomatik (Araç karar verir)"
+  },
+  "aiModelSmart": {
+    "message": "Akıllı (Gemini 2.5 Flash)"
+  },
+  "aiModelLite": {
+    "message": "Hafif (Gemini 2.5 Flash-Lite)"
+  },
+  "aiKeys": {
+    "message": "API Anahtarları"
+  },
+  "aiKeysDescription": {
+    "message": "Yük dengeleme için birden fazla Gemini API anahtarı ekleyin"
+  },
+  "addApiKey": {
+    "message": "API Anahtarı Ekle"
+  },
+  "removeApiKey": {
+    "message": "Kaldır"
+  },
+  "apiKeyPlaceholder": {
+    "message": "Gemini API anahtarını girin"
+  },
+  "aiLanguage": {
+    "message": "Yanıt Dili"
+  },
+  "aiLanguageDescription": {
+    "message": "AI yanıtları için dil seçin"
+  },
+  "aiLanguageAuto": {
+    "message": "Otomatik (Tarayıcı Dili)"
+  },
+  "noApiKeys": {
+    "message": "Henüz API anahtarı eklenmedi"
+  },
+  "showApiKey": {
+    "message": "API anahtarını göster"
+  },
+  "hideApiKey": {
+    "message": "API anahtarını gizle"
+  },
+  "removeApiKeyTooltip": {
+    "message": "API anahtarını kaldır"
+  },
+  "testApiKey": {
+    "message": "API anahtarını test et"
+  },
+  "saveApiKey": {
+    "message": "API anahtarını kaydet"
+  },
+  "apiKeySaved": {
+    "message": "API anahtarı kaydedildi"
+  },
+  "apiKeyValid": {
+    "message": "API anahtarı geçerli!"
+  },
+  "apiKeyTestFailed": {
+    "message": "API anahtarı testi başarısız"
+  },
+  "enterApiKeyFirst": {
+    "message": "Lütfen önce bir API anahtarı girin"
+  },
+  "settingsUpdated": {
+    "message": "Ayarlar güncellendi"
+  },
+  "noApiKeys": {
+    "message": "Henüz API anahtarı eklenmedi"
   }
 }

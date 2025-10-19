@@ -442,6 +442,296 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
+
+/* QR Code Generator specific styles */
+.qr-modal-wide {
+  max-width: 900px !important;
+  width: 90vw;
+  max-height: 85vh;
+}
+
+.qr-modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px;
+  height: calc(85vh - 80px);
+  overflow: hidden;
+}
+
+.qr-preview-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+
+.toolary-qr-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  max-height: 400px;
+  background: var(--toolary-code-bg, #f8f9fa);
+  border-radius: var(--toolary-border-radius, 12px);
+  border: 2px dashed var(--toolary-border, #e1e5e9);
+  padding: 24px;
+  position: relative;
+  transition: var(--toolary-transition, all 0.3s ease);
+}
+
+.toolary-qr-preview:hover {
+  border-color: var(--toolary-primary-color, #448aff);
+  background: var(--toolary-highlight-bg, rgba(68, 138, 255, 0.05));
+}
+
+.qr-controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.qr-controls-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.qr-controls-section::-webkit-scrollbar-track {
+  background: var(--toolary-code-bg, #f8f9fa);
+  border-radius: 3px;
+}
+
+.qr-controls-section::-webkit-scrollbar-thumb {
+  background: var(--toolary-border, #e1e5e9);
+  border-radius: 3px;
+}
+
+.qr-controls-section::-webkit-scrollbar-thumb:hover {
+  background: var(--toolary-secondary-text, #666);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .qr-modal-wide {
+    max-width: 95vw !important;
+    width: 95vw;
+    max-height: 90vh;
+  }
+  
+  .qr-modal-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    height: auto;
+    max-height: calc(90vh - 80px);
+  }
+  
+  .qr-preview-section {
+    min-height: 250px;
+  }
+  
+  .toolary-qr-preview {
+    min-height: 200px;
+    max-height: 250px;
+  }
+  
+  .qr-controls-section {
+    max-height: 300px;
+  }
+}
+
+.qr-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--toolary-border, #e1e5e9);
+  border-top: 3px solid var(--toolary-primary-color, #448aff);
+  border-radius: 50%;
+  animation: qr-spin 1s linear infinite;
+}
+
+@keyframes qr-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.qr-form-section {
+  background: var(--toolary-bg, #fff);
+  border: 1px solid var(--toolary-border, #e1e5e9);
+  border-radius: var(--toolary-border-radius, 12px);
+  padding: 20px;
+}
+
+.qr-textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.qr-quick-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.qr-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--toolary-border-radius-small, 8px);
+  transition: var(--toolary-transition, all 0.2s ease);
+}
+
+.qr-quick-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.qr-settings-section {
+  background: var(--toolary-bg, #fff);
+  border: 1px solid var(--toolary-border, #e1e5e9);
+  border-radius: var(--toolary-border-radius, 12px);
+  padding: 20px;
+}
+
+.settings-title {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--toolary-text, #333);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-title::before {
+  content: '⚙️';
+  font-size: 16px;
+}
+
+.settings-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.color-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--toolary-code-bg, #f8f9fa);
+  border: 1px solid var(--toolary-border, #e1e5e9);
+  border-radius: var(--toolary-border-radius-small, 8px);
+  transition: var(--toolary-transition, all 0.2s ease);
+}
+
+.color-input-wrapper:hover {
+  border-color: var(--toolary-primary-color, #448aff);
+  background: var(--toolary-highlight-bg, rgba(68, 138, 255, 0.05));
+}
+
+.toolary-color-input {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: var(--toolary-border-radius-small, 8px);
+  cursor: pointer;
+  transition: var(--toolary-transition, all 0.2s ease);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toolary-color-input:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-value {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+  font-size: 12px;
+  color: var(--toolary-text, #333);
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.qr-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 8px;
+  border-top: 1px solid var(--toolary-border, #e1e5e9);
+}
+
+.qr-action-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--toolary-border-radius, 12px);
+  transition: var(--toolary-transition, all 0.2s ease);
+  min-width: 140px;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-action-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.qr-action-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.qr-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Modal header improvements */
+.modal-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--toolary-text, #333);
+}
+
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--toolary-button-bg, #f8f9fa);
+  border: 1px solid var(--toolary-border, #e1e5e9);
+  color: var(--toolary-secondary-text, #666);
+  transition: var(--toolary-transition, all 0.2s ease);
+}
+
+.modal-close:hover {
+  background: var(--toolary-error-color, #dc3545);
+  color: white;
+  border-color: var(--toolary-error-color, #dc3545);
+  transform: scale(1.05);
+}
 #toolary-modal-buttons {
   margin-top: 20px;
   text-align: right;
@@ -527,3 +817,197 @@
   word-wrap: break-word;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
+
+/* Video Recorder Styles */
+.toolary-video-countdown {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 120px;
+  color: white;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.toolary-video-control-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--toolary-bg, #fff);
+  border: 2px solid var(--toolary-border, #ddd);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  z-index: 999999;
+  cursor: move;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-width: 200px;
+  pointer-events: auto;
+}
+
+.toolary-click-indicator {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 123, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: toolary-click-ripple 0.6s ease-out;
+  z-index: 999998;
+}
+
+@keyframes toolary-click-ripple {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Dark Mode Toggle Styles - Native browser API approach */
+
+
+/* Dark mode toggle button should NOT be affected by dark mode */
+.toolary-dark-mode-active .toolary-darkmode-toggle {
+  filter: none !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #000000 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15) !important;
+}
+
+.toolary-dark-mode-active .toolary-darkmode-toggle.active {
+  background: rgba(0, 0, 0, 0.9) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 12px rgba(255,255,255,0.1) !important;
+}
+
+.toolary-dark-mode-active .toolary-darkmode-toggle:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+}
+
+.toolary-dark-mode-active .toolary-darkmode-toggle.active:hover {
+  box-shadow: 0 4px 20px rgba(255,255,255,0.15) !important;
+}
+
+.toolary-dark-mode-active .toolary-darkmode-toggle svg {
+  filter: none !important;
+}
+
+.toolary-darkmode-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+  cursor: pointer;
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-size: 20px;
+}
+
+.toolary-darkmode-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.toolary-darkmode-toggle.active {
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  box-shadow: 0 2px 12px rgba(255,255,255,0.1);
+}
+
+.toolary-darkmode-toggle.active:hover {
+  box-shadow: 0 4px 20px rgba(255,255,255,0.15);
+}
+
+.toolary-darkmode-toggle svg {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.toolary-darkmode-toggle.animating svg {
+  animation: sunsetTransition 0.8s ease-in-out;
+}
+
+@keyframes sunsetTransition {
+  0% { 
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(45deg) scale(0.8);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: rotate(90deg) scale(0.6);
+    opacity: 0.4;
+  }
+  75% {
+    transform: rotate(135deg) scale(0.8);
+    opacity: 0.7;
+  }
+  100% { 
+    transform: rotate(180deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes colorShift {
+  0% { color: #000000; }
+  50% { color: #666666; }
+  100% { color: #ffffff; }
+}
+
+.toolary-darkmode-toggle.color-shift {
+  animation: colorShift 0.8s ease-in-out;
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  .toolary-darkmode-toggle {
+    background: rgba(255, 255, 255, 1);
+    border: 2px solid #000;
+  }
+  
+  .toolary-darkmode-toggle.active {
+    background: rgba(0, 0, 0, 1);
+    border: 2px solid #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .toolary-darkmode-toggle {
+    transition: none;
+  }
+  
+  .toolary-darkmode-toggle svg {
+    transition: none;
+  }
+  
+  .toolary-darkmode-toggle.animating svg {
+    animation: none;
+  }
+  
+  .toolary-darkmode-toggle.color-shift {
+    animation: none;
+  }
+}
+
+/* Remove all element-specific color overrides */
+/* The browser and site's own CSS will handle colors */
