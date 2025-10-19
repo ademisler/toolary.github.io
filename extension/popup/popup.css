@@ -676,6 +676,42 @@ body {
   z-index: 2;
 }
 
+.tool-card__rank-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  background: var(--toolary-button-bg);
+  border: 1px solid var(--toolary-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: var(--toolary-shadow);
+  animation: badgeAppear 0.2s ease-out;
+  color: var(--toolary-accent);
+}
+
+.tool-card__rank-badge:hover {
+  background: var(--toolary-button-hover);
+  border-color: var(--toolary-accent);
+  transform: scale(1.05);
+  transition: var(--toolary-transition);
+}
+
+@keyframes badgeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 .tool-card.is-hidden {
   opacity: 0.55;
