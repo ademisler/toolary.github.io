@@ -205,7 +205,8 @@ addMessageListener({
 const COMMAND_TOOL_MAP = {
   'activate-color-picker': 'color-picker',
   'activate-element-picker': 'element-picker',
-  'activate-screenshot-picker': 'screenshot-picker'
+  'activate-screenshot-picker': 'screenshot-picker',
+  'activate-text-highlighter': 'text-highlighter'
 };
 
 chrome.commands.onCommand.addListener(async (command) => {
@@ -218,7 +219,7 @@ chrome.commands.onCommand.addListener(async (command) => {
     return;
   }
 
-  if (command === 'open-popup' || command === 'toggle-popup') {
+  if (command === 'open-popup') {
     try {
       await chrome.action.openPopup();
     } catch (error) {

@@ -334,5 +334,17 @@
   },
   "pdfGeneratorDescription": {
     "message": "Mevcut sayfayı PDF'e çevir ve anında indir"
+  },
+  "highlighter": {
+    "message": "İşaretleyici"
+  },
+  "textHighlighter": {
+    "message": "Metin İşaretleyici"
+  },
+  "textHighlighterDescription": {
+    "message": "Metni renklerle işaretle ve işaretlemeleri site bazında kaydet"
+  },
+  "cmdTextHighlighter": {
+    "message": "Metin İşaretleyiciyi Etkinleştir"
   }
 }

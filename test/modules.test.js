@@ -10,6 +10,7 @@ import { activate as activateSiteInfoPicker } from '../extension/tools/utilities
 import { activate as activateStickyNotesPicker } from '../extension/tools/enhance/stickyNotesPicker.js';
 import { activate as activateColorPaletteGenerator, metadata as colorPaletteMetadata } from '../extension/tools/utilities/colorPaletteGenerator.js';
 import { activate as activatePdfGenerator, metadata as pdfGeneratorMetadata } from '../extension/tools/capture/pdfGenerator.js';
+import { activate as activateTextHighlighter, metadata as textHighlighterMetadata } from '../extension/tools/enhance/textHighlighter.js';
 
 describe('Picker Modules', () => {
   
@@ -132,6 +133,22 @@ describe('Picker Modules', () => {
       expect(pdfGeneratorMetadata).toBeDefined();
       expect(pdfGeneratorMetadata.id).toBe('pdf-generator');
       expect(pdfGeneratorMetadata.category).toBe('capture');
+    });
+  });
+
+  describe('Text Highlighter', () => {
+    test('should activate text highlighter', () => {
+      const mockDeactivate = jest.fn();
+      activateTextHighlighter(mockDeactivate);
+      
+      // Should not throw errors
+      expect(() => activateTextHighlighter(mockDeactivate)).not.toThrow();
+    });
+    
+    test('should export metadata', () => {
+      expect(textHighlighterMetadata).toBeDefined();
+      expect(textHighlighterMetadata.id).toBe('text-highlighter');
+      expect(textHighlighterMetadata.category).toBe('enhance');
     });
   });
 

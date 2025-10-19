@@ -334,5 +334,17 @@
   },
   "pdfGeneratorDescription": {
     "message": "Convertir la page actuelle en PDF et télécharger instantanément"
+  },
+  "highlighter": {
+    "message": "Surligneur"
+  },
+  "textHighlighter": {
+    "message": "Surligneur de texte"
+  },
+  "textHighlighterDescription": {
+    "message": "Surligner du texte avec des couleurs et sauvegarder les surlignages par site"
+  },
+  "cmdTextHighlighter": {
+    "message": "Activer le surligneur de texte"
   }
 }

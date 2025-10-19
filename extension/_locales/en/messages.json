@@ -334,5 +334,17 @@
   },
   "pdfGeneratorDescription": {
     "message": "Convert current page to PDF and download instantly"
+  },
+  "highlighter": {
+    "message": "Highlighter"
+  },
+  "textHighlighter": {
+    "message": "Text Highlighter"
+  },
+  "textHighlighterDescription": {
+    "message": "Highlight text with colors and save highlights per site"
+  },
+  "cmdTextHighlighter": {
+    "message": "Activate Text Highlighter"
   }
 }

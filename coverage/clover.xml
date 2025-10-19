@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1760838857784" clover="3.2.0">
-  <project timestamp="1760838857785" name="All files">
+<coverage generated="1760840259873" clover="3.2.0">
+  <project timestamp="1760840259873" name="All files">
     <metrics statements="115" coveredstatements="114" conditionals="88" coveredconditionals="71" methods="33" coveredmethods="33" elements="236" coveredelements="218" complexity="0" loc="115" ncloc="115" packages="1" files="4" classes="4"/>
     <file name="constants.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/constants.js">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <line num="1" count="9" type="stmt"/>
-      <line num="28" count="9" type="stmt"/>
-      <line num="30" count="27" type="stmt"/>
-      <line num="31" count="36" type="stmt"/>
-      <line num="34" count="9" type="stmt"/>
-      <line num="47" count="9" type="stmt"/>
-      <line num="53" count="9" type="stmt"/>
+      <line num="1" count="10" type="stmt"/>
+      <line num="28" count="10" type="stmt"/>
+      <line num="30" count="30" type="stmt"/>
+      <line num="31" count="40" type="stmt"/>
+      <line num="34" count="10" type="stmt"/>
+      <line num="47" count="10" type="stmt"/>
+      <line num="53" count="10" type="stmt"/>
     </file>
     <file name="messageRouter.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/messageRouter.js">
       <metrics statements="29" coveredstatements="29" conditionals="24" coveredconditionals="19" methods="8" coveredmethods="8"/>
-      <line num="4" count="3" type="stmt"/>
-      <line num="8" count="1" type="stmt"/>
+      <line num="4" count="4" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
       <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
       <line num="13" count="1" type="stmt"/>
       <line num="15" count="1" type="stmt"/>

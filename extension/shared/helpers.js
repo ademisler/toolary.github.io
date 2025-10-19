@@ -609,7 +609,7 @@ export function showToast(message, duration = 1500, type = 'info', position = 'b
     position: fixed;
     ${positionStyles[position] || positionStyles.bottom}
     ${typeStyles[type] || typeStyles.info}
-    color: var(--toolary-text, #fff);
+    color: #ffffff !important;
     padding: 12px 20px;
     border-radius: 8px;
     z-index: 2147483647;

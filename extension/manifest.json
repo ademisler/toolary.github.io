@@ -66,13 +66,6 @@
   ],
   "default_locale": "en",
   "commands": {
-    "toggle-popup": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+P",
-        "mac": "Command+Shift+P"
-      },
-      "description": "__MSG_cmdTogglePopup__"
-    },
     "activate-color-picker": {
       "suggested_key": {
         "default": "Alt+Shift+1",
@@ -93,6 +86,13 @@
         "mac": "Alt+Shift+3"
       },
       "description": "__MSG_cmdScreenshotPicker__"
+    },
+    "activate-text-highlighter": {
+      "suggested_key": {
+        "default": "Alt+Shift+7",
+        "mac": "Alt+Shift+7"
+      },
+      "description": "__MSG_cmdTextHighlighter__"
     }
   }
 }

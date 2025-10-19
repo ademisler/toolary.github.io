@@ -179,11 +179,31 @@
       "permissions": ["activeTab", "storage"]
     },
     {
+      "id": "text-highlighter",
+      "name": "Text Highlighter",
+      "category": "enhance",
+      "module": "enhance/textHighlighter.js",
+      "order": 9,
+      "icon": "highlighter",
+      "shortcut": {
+        "default": "Alt+Shift+7",
+        "mac": "Alt+Shift+7"
+      },
+      "i18n": {
+        "label": "highlighter",
+        "title": "textHighlighter",
+        "description": "textHighlighterDescription"
+      },
+      "tags": ["highlight", "text", "annotation", "reading"],
+      "keywords": ["highlight", "mark", "annotate", "reading"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
       "id": "site-info-picker",
       "name": "Site Info",
       "category": "utilities",
       "module": "utilities/siteInfoPicker.js",
-      "order": 9,
+      "order": 10,
       "icon": "info",
       "i18n": {
         "label": "info",
@@ -199,7 +219,7 @@
       "name": "Color Palette Generator",
       "category": "utilities",
       "module": "utilities/colorPaletteGenerator.js",
-      "order": 10,
+      "order": 11,
       "icon": "palette",
       "i18n": {
         "label": "colorPalette",

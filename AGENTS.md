@@ -2,12 +2,12 @@
 
 ## Project Overview
 
-**Toolary** is a Chrome extension (Manifest V3) providing 9+ web productivity tools with architecture to scale to 50+ tools.
+**Toolary** is a Chrome extension (Manifest V3) providing 12+ web productivity tools with architecture to scale to 50+ tools.
 
 - **Version:** 2.0.0
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
-- **Test Coverage:** 98.3% (56 tests passing)
+- **Test Coverage:** 98.3% (62 tests passing)
 
 ## Architecture
 
@@ -46,9 +46,9 @@ extension/
 │   └── ui-components.js      # Tool cards, virtual grid, toasts
 ├── tools/
 │   ├── inspect/              # colorPicker, elementPicker, fontPicker, linkPicker
-│   ├── capture/              # mediaPicker, textPicker, screenshotPicker
-│   ├── enhance/              # stickyNotesPicker
-│   └── utilities/            # siteInfoPicker
+│   ├── capture/              # mediaPicker, textPicker, screenshotPicker, pdfGenerator
+│   ├── enhance/              # stickyNotesPicker, textHighlighter
+│   └── utilities/            # siteInfoPicker, colorPaletteGenerator
 ├── config/
 │   └── tools-manifest.json   # Tool metadata (id, name, category, icon, tags, etc.)
 ├── icons/                    # PNG icons + SVG tool icons
@@ -247,6 +247,31 @@ console.timeEnd('popup-open'); // Should be <100ms
 - **Comments:** JSDoc for public APIs only
 - **Naming:** camelCase for variables, PascalCase for classes
 
+## Text Highlighter Tool
+
+### Overview
+The Text Highlighter tool allows users to highlight text on any webpage with persistent storage. It works with all HTML elements including headings, lists, tables, and complex React/Next.js applications.
+
+### Key Features
+- **5-Color Palette**: Yellow, Green, Blue, Pink, Orange
+- **Site-Based Storage**: Each website has its own highlight collection
+- **HTML Element Support**: Works with h1-h6, ul/ol/li, table elements, div, span, etc.
+- **React/Next.js Compatible**: Uses MutationObserver to restore highlights after DOM changes
+- **Right-Click Context Menu**: Easy highlight removal
+- **Keyboard Shortcut**: Alt+Shift+7 for quick activation
+
+### Technical Implementation
+- **Range API**: For text selection and highlighting
+- **XPath Serialization**: For persistent range storage
+- **MutationObserver**: For DOM change detection and highlight restoration
+- **Complex HTML Handling**: Special logic for multi-element selections
+- **CSS Override System**: `!important` styles to ensure visibility
+
+### Files
+- `tools/enhance/textHighlighter.js` - Main implementation
+- `icons/tools/highlighter.svg` - Tool icon
+- `_locales/*/messages.json` - i18n strings
+
 ## Deployment
 
 1. `npm run lint && npm test` (must pass)
@@ -257,4 +282,4 @@ console.timeEnd('popup-open'); // Should be <100ms
 
 ---
 
-**Last updated:** 2025-10-18 for Toolary v2.0.0
+**Last updated:** 2025-01-27 for Toolary v2.0.0

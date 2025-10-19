@@ -567,13 +567,28 @@ async function saveToolUsage() {
 
 function matchesSearch(tool, term) {
   if (!term) return true;
+  
+  // Get localized name and description
+  const nameKey = tool.i18n?.label || tool.i18n?.title || tool.id;
+  const descriptionKey = tool.i18n?.description || `${tool.id.replace(/-/g, '')}Description`;
+  const localizedName = state.langMap[nameKey]?.message || tool.name;
+  const localizedDescription = state.langMap[descriptionKey]?.message || tool.description || '';
+  
+  // Get localized category name
+  const categoryKey = CATEGORY_KEYS[tool.category];
+  const localizedCategory = state.langMap[categoryKey]?.message || tool.category;
+  
   const haystack = [
-    tool.name,
-    tool.description,
-    tool.category,
+    tool.name,                    // Original English name
+    tool.description,             // Original English description
+    localizedName,               // Localized name (e.g., "Renk" for "Color")
+    localizedDescription,        // Localized description
+    tool.category,               // Original English category
+    localizedCategory,           // Localized category
     ...(tool.tags || []),
     ...(tool.keywords || [])
   ].join(' ').toLowerCase();
+  
   return haystack.includes(term);
 }
 

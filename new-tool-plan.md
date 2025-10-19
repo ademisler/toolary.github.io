@@ -4,8 +4,8 @@
 
 ## 📊 General Status
 
-- **Current Tools:** 9
-- **Planned Tools:** 10
+- **Current Tools:** 12
+- **Planned Tools:** 7
 - **Total Target:** 19+ tools
 - **Last Updated:** 2025-01-27
 
@@ -66,14 +66,17 @@
 
 #### 5. **Text Highlighter** 🖍️
 - **Category:** Enhance
-- **Status:** Planning
-- **Description:** Highlights text and adds notes
+- **Status:** Completed
+- **Description:** Highlights text with colors and persistent storage
 - **Features:**
-  - Colorful categories
-  - Note-taking system
-  - Export/import feature
-  - Persistent storage
-- **Technical Requirements:** Range API, localStorage
+  - 5-color palette (Yellow, Green, Blue, Pink, Orange)
+  - Site-based persistent storage
+  - Right-click context menu for removal
+  - Works with all HTML elements (headings, lists, tables, etc.)
+  - React/Next.js compatibility with DOM watching
+  - Keyboard shortcut (Alt+Shift+7)
+- **Technical Requirements:** Range API, XPath serialization, MutationObserver, chrome.storage.local
+- **Completed:** 2025-01-27
 
 #### 6. **AI Code Explainer** 💻
 - **Category:** AI
@@ -173,8 +176,8 @@
 | AI Text Summarizer | Planning | - | - | - | - |
 | Reading Mode | Planning | - | - | - | - |
 | Color Palette Generator | Completed | 2025-01-27 | 2025-01-27 | AI Assistant | Full implementation with WCAG scores |
-| PDF Generator | Planning | - | - | - | - |
-| Text Highlighter | Planning | - | - | - | - |
+| PDF Generator | Completed | 2025-01-27 | 2025-01-27 | AI Assistant | Full-page PDF with metadata |
+| Text Highlighter | Completed | 2025-01-27 | 2025-01-27 | AI Assistant | All HTML elements, React/Next.js compatible |
 | AI Code Explainer | Planning | - | - | - | - |
 | AI SEO Optimizer | Planning | - | - | - | - |
 | Video Recorder | Planning | - | - | - | - |
