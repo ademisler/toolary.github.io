@@ -22,6 +22,12 @@ export const TOOL_CATEGORIES = Object.freeze({
     label: 'Utilities',
     description: 'General purpose site utilities.',
     order: 4
+  }),
+  ai: Object.freeze({
+    id: 'ai',
+    label: 'AI',
+    description: 'AI-powered tools for content analysis.',
+    order: 5
   })
 });
 

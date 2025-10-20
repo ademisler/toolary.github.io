@@ -952,5 +952,269 @@
   },
   "noApiKeys": {
     "message": "No API keys added yet"
+  },
+  "ai": {
+    "message": "AI"
+  },
+  "aiTextSummarizer": {
+    "message": "AI Summarizer"
+  },
+  "aiTextSummarizerTitle": {
+    "message": "AI Summarizer"
+  },
+  "aiTextSummarizerDescription": {
+    "message": "Summarize page content using AI"
+  },
+  "summarizeAuto": {
+    "message": "Page Content"
+  },
+  "summarizeManual": {
+    "message": "Select Text"
+  },
+  "summaryLengthShort": {
+    "message": "Short (~50 words)"
+  },
+  "summaryLengthMedium": {
+    "message": "Medium (~150 words)"
+  },
+  "summaryLengthLong": {
+    "message": "Long (~300 words)"
+  },
+  "generateSummary": {
+    "message": "Generate Summary"
+  },
+  "summaryGenerated": {
+    "message": "Summary generated!"
+  },
+  "copySummary": {
+    "message": "Copy Summary"
+  },
+  "extractedKeywords": {
+    "message": "Keywords"
+  },
+  "noContentToSummarize": {
+    "message": "No content found to summarize"
+  },
+  "selectTextFirst": {
+    "message": "Please select text on the page first"
+  },
+  "aiSummarizerActivated": {
+    "message": "AI Summarizer activated"
+  },
+  "failedToGenerateSummary": {
+    "message": "Failed to generate summary. Please try again."
+  },
+  "mode": {
+    "message": "Mode"
+  },
+  "length": {
+    "message": "Length"
+  },
+  "summary": {
+    "message": "Summary"
+  },
+  "generating": {
+    "message": "Generating summary..."
+  },
+  "selectTextOnPage": {
+    "message": "Please select text on the page to summarize"
+  },
+  "clickToSelectText": {
+    "message": "Click outside this panel and select text on the page, then click Generate Summary."
+  },
+  "source": {
+    "message": "Content Source"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "copied": {
+    "message": "Copied!"
+  },
+  "failedToCopy": {
+    "message": "Failed to copy"
+  },
+  "failedToActivate": {
+    "message": "Failed to activate"
+  },
+  "aiTextTranslator": {
+    "message": "AI Translator"
+  },
+  "aiTextTranslatorTitle": {
+    "message": "AI Text Translator"
+  },
+  "aiTextTranslatorDescription": {
+    "message": "Translate text and pages to 40+ languages"
+  },
+  "translatorActivated": {
+    "message": "AI Translator activated"
+  },
+  "translationCompleted": {
+    "message": "Translation completed!"
+  },
+  "failedToTranslate": {
+    "message": "Failed to translate text"
+  },
+  "sourceLanguage": {
+    "message": "Source Language"
+  },
+  "targetLanguage": {
+    "message": "Target Language"
+  },
+  "autoDetect": {
+    "message": "Auto Detect"
+  },
+  "translateInput": {
+    "message": "Enter Text"
+  },
+  "translateSelection": {
+    "message": "Select Text"
+  },
+  "translatePage": {
+    "message": "Page Content"
+  },
+  "originalText": {
+    "message": "Original"
+  },
+  "translatedText": {
+    "message": "Translation"
+  },
+  "copyTranslation": {
+    "message": "Copy Translation"
+  },
+  "translationCopied": {
+    "message": "Translation copied!"
+  },
+  "translate": {
+    "message": "Translate"
+  },
+  "translating": {
+    "message": "Translating..."
+  },
+  "selectTextToTranslate": {
+    "message": "Select text on the page to translate"
+  },
+  "enterTextToTranslate": {
+    "message": "Enter text to translate"
+  },
+  "typeOrPasteText": {
+    "message": "Type or paste text here..."
+  },
+  "pleaseEnterText": {
+    "message": "Please enter text to translate"
+  },
+  "pleaseSelectText": {
+    "message": "Please select text on the page"
+  },
+  "noContentFound": {
+    "message": "No content found on this page"
+  },
+  "textTruncated": {
+    "message": "Text was truncated to 5000 characters for translation"
+  },
+  "pageTranslated": {
+    "message": "Page translated successfully!"
+  },
+  "restoreOriginal": {
+    "message": "Restore Original"
+  },
+  "pageRestored": {
+    "message": "Original page restored"
+  },
+  "failedToRestore": {
+    "message": "Failed to restore original page"
+  },
+  "noTranslationToRestore": {
+    "message": "No translation to restore"
+  },
+  "noTextToTranslate": {
+    "message": "No text found to translate on this page"
+  },
+  "translatingProgress": {
+    "message": "Translating... {current}/{total}"
+  },
+  "aiContentDetector": {
+    "message": "AI Content Detector"
+  },
+  "aiContentDetectorTitle": {
+    "message": "AI Content Detector"
+  },
+  "aiContentDetectorDescription": {
+    "message": "Detect AI-generated content with multi-metric analysis"
+  },
+  "analyzeInput": {
+    "message": "Enter Text"
+  },
+  "analyzeSelection": {
+    "message": "Select Text"
+  },
+  "analyzePage": {
+    "message": "Page Content"
+  },
+  "aiProbability": {
+    "message": "AI Probability"
+  },
+  "confidenceLevel": {
+    "message": "Confidence"
+  },
+  "writingStyle": {
+    "message": "Writing Style"
+  },
+  "wordChoice": {
+    "message": "Word Choice"
+  },
+  "structureAnalysis": {
+    "message": "Structure"
+  },
+  "suspiciousSections": {
+    "message": "Suspicious Sections"
+  },
+  "showHighlights": {
+    "message": "Show Highlights"
+  },
+  "hideHighlights": {
+    "message": "Hide Highlights"
+  },
+  "analyzing": {
+    "message": "Analyzing content..."
+  },
+  "analysisComplete": {
+    "message": "Analysis complete!"
+  },
+  "highConfidence": {
+    "message": "High Confidence"
+  },
+  "mediumConfidence": {
+    "message": "Medium Confidence"
+  },
+  "lowConfidence": {
+    "message": "Low Confidence"
+  },
+  "detailedMetrics": {
+    "message": "Detailed Analysis"
+  },
+  "copyResults": {
+    "message": "Copy Results"
+  },
+  "resultsCopied": {
+    "message": "Results copied to clipboard!"
+  },
+  "detectorActivated": {
+    "message": "AI Content Detector activated"
+  },
+  "failedToAnalyze": {
+    "message": "Failed to analyze content"
+  },
+  "selectTextToAnalyze": {
+    "message": "Select text on the page to analyze"
+  },
+  "enterTextToAnalyze": {
+    "message": "Enter text to analyze"
+  },
+  "noContentToAnalyze": {
+    "message": "No content found to analyze"
+  },
+  "analyze": {
+    "message": "Analyze Content"
   }
 }

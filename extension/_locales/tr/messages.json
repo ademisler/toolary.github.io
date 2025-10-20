@@ -952,5 +952,269 @@
   },
   "noApiKeys": {
     "message": "Henüz API anahtarı eklenmedi"
+  },
+  "ai": {
+    "message": "Yapay Zeka"
+  },
+  "aiTextSummarizer": {
+    "message": "AI Özetleyici"
+  },
+  "aiTextSummarizerTitle": {
+    "message": "AI Özetleyici"
+  },
+  "aiTextSummarizerDescription": {
+    "message": "Sayfa içeriğini yapay zeka ile özetle"
+  },
+  "summarizeAuto": {
+    "message": "Sayfa İçeriği"
+  },
+  "summarizeManual": {
+    "message": "Metin Seç"
+  },
+  "summaryLengthShort": {
+    "message": "Kısa (~50 kelime)"
+  },
+  "summaryLengthMedium": {
+    "message": "Orta (~150 kelime)"
+  },
+  "summaryLengthLong": {
+    "message": "Uzun (~300 kelime)"
+  },
+  "generateSummary": {
+    "message": "Özet Oluştur"
+  },
+  "summaryGenerated": {
+    "message": "Özet oluşturuldu!"
+  },
+  "copySummary": {
+    "message": "Özeti Kopyala"
+  },
+  "extractedKeywords": {
+    "message": "Anahtar Kelimeler"
+  },
+  "noContentToSummarize": {
+    "message": "Özetlenecek içerik bulunamadı"
+  },
+  "selectTextFirst": {
+    "message": "Lütfen önce sayfadan metin seçin"
+  },
+  "aiSummarizerActivated": {
+    "message": "AI Özetleyici etkinleştirildi"
+  },
+  "failedToGenerateSummary": {
+    "message": "Özet oluşturulamadı. Lütfen tekrar deneyin."
+  },
+  "mode": {
+    "message": "Mod"
+  },
+  "length": {
+    "message": "Uzunluk"
+  },
+  "summary": {
+    "message": "Özet"
+  },
+  "generating": {
+    "message": "Özet oluşturuluyor..."
+  },
+  "selectTextOnPage": {
+    "message": "Özetlemek için sayfadan metin seçin"
+  },
+  "clickToSelectText": {
+    "message": "Bu panelin dışına tıklayın ve sayfadan metin seçin, sonra Özet Oluştur'a tıklayın."
+  },
+  "source": {
+    "message": "İçerik Kaynağı"
+  },
+  "cancel": {
+    "message": "İptal"
+  },
+  "copied": {
+    "message": "Kopyalandı!"
+  },
+  "failedToCopy": {
+    "message": "Kopyalama başarısız"
+  },
+  "failedToActivate": {
+    "message": "Etkinleştirme başarısız"
+  },
+  "aiTextTranslator": {
+    "message": "Yapay Zeka Çevirici"
+  },
+  "aiTextTranslatorTitle": {
+    "message": "Yapay Zeka Metin Çevirici"
+  },
+  "aiTextTranslatorDescription": {
+    "message": "Metinleri ve sayfaları 40+ dile çevirin"
+  },
+  "translatorActivated": {
+    "message": "Yapay Zeka Çevirici etkinleştirildi"
+  },
+  "translationCompleted": {
+    "message": "Çeviri tamamlandı!"
+  },
+  "failedToTranslate": {
+    "message": "Metin çevrilemedi"
+  },
+  "sourceLanguage": {
+    "message": "Kaynak Dil"
+  },
+  "targetLanguage": {
+    "message": "Hedef Dil"
+  },
+  "autoDetect": {
+    "message": "Otomatik Algıla"
+  },
+  "translateInput": {
+    "message": "Metin Gir"
+  },
+  "translateSelection": {
+    "message": "Metin Seç"
+  },
+  "translatePage": {
+    "message": "Sayfa İçeriği"
+  },
+  "originalText": {
+    "message": "Orijinal"
+  },
+  "translatedText": {
+    "message": "Çeviri"
+  },
+  "copyTranslation": {
+    "message": "Çeviriyi Kopyala"
+  },
+  "translationCopied": {
+    "message": "Çeviri kopyalandı!"
+  },
+  "translate": {
+    "message": "Çevir"
+  },
+  "translating": {
+    "message": "Çevriliyor..."
+  },
+  "selectTextToTranslate": {
+    "message": "Çevirmek için sayfadaki metni seçin"
+  },
+  "enterTextToTranslate": {
+    "message": "Çevirmek için metin girin"
+  },
+  "typeOrPasteText": {
+    "message": "Metni buraya yazın veya yapıştırın..."
+  },
+  "pleaseEnterText": {
+    "message": "Lütfen çevirmek için metin girin"
+  },
+  "pleaseSelectText": {
+    "message": "Lütfen sayfadaki metni seçin"
+  },
+  "noContentFound": {
+    "message": "Bu sayfada içerik bulunamadı"
+  },
+  "textTruncated": {
+    "message": "Metin çeviri için 5000 karaktere kısaltıldı"
+  },
+  "pageTranslated": {
+    "message": "Sayfa başarıyla çevrildi!"
+  },
+  "restoreOriginal": {
+    "message": "Orijinali Geri Yükle"
+  },
+  "pageRestored": {
+    "message": "Orijinal sayfa geri yüklendi"
+  },
+  "failedToRestore": {
+    "message": "Orijinal sayfa geri yüklenemedi"
+  },
+  "noTranslationToRestore": {
+    "message": "Geri yüklenecek çeviri yok"
+  },
+  "noTextToTranslate": {
+    "message": "Bu sayfada çevrilecek metin bulunamadı"
+  },
+  "translatingProgress": {
+    "message": "Çevriliyor... {current}/{total}"
+  },
+  "aiContentDetector": {
+    "message": "AI İçerik Dedektörü"
+  },
+  "aiContentDetectorTitle": {
+    "message": "AI İçerik Dedektörü"
+  },
+  "aiContentDetectorDescription": {
+    "message": "Çok metrikli analiz ile AI tarafından üretilen içeriği tespit edin"
+  },
+  "analyzeInput": {
+    "message": "Metin Girin"
+  },
+  "analyzeSelection": {
+    "message": "Metin Seçin"
+  },
+  "analyzePage": {
+    "message": "Sayfa İçeriği"
+  },
+  "aiProbability": {
+    "message": "AI Olasılığı"
+  },
+  "confidenceLevel": {
+    "message": "Güven Seviyesi"
+  },
+  "writingStyle": {
+    "message": "Yazım Stili"
+  },
+  "wordChoice": {
+    "message": "Kelime Seçimi"
+  },
+  "structureAnalysis": {
+    "message": "Yapı"
+  },
+  "suspiciousSections": {
+    "message": "Şüpheli Bölümler"
+  },
+  "showHighlights": {
+    "message": "Vurguları Göster"
+  },
+  "hideHighlights": {
+    "message": "Vurguları Gizle"
+  },
+  "analyzing": {
+    "message": "İçerik analiz ediliyor..."
+  },
+  "analysisComplete": {
+    "message": "Analiz tamamlandı!"
+  },
+  "highConfidence": {
+    "message": "Yüksek Güven"
+  },
+  "mediumConfidence": {
+    "message": "Orta Güven"
+  },
+  "lowConfidence": {
+    "message": "Düşük Güven"
+  },
+  "detailedMetrics": {
+    "message": "Detaylı Analiz"
+  },
+  "copyResults": {
+    "message": "Sonuçları Kopyala"
+  },
+  "resultsCopied": {
+    "message": "Sonuçlar panoya kopyalandı!"
+  },
+  "detectorActivated": {
+    "message": "AI İçerik Dedektörü etkinleştirildi"
+  },
+  "failedToAnalyze": {
+    "message": "İçerik analiz edilemedi"
+  },
+  "selectTextToAnalyze": {
+    "message": "Analiz etmek için sayfadan metin seçin"
+  },
+  "enterTextToAnalyze": {
+    "message": "Analiz edilecek metni girin"
+  },
+  "noContentToAnalyze": {
+    "message": "Analiz edilecek içerik bulunamadı"
+  },
+  "analyze": {
+    "message": "İçeriği Analiz Et"
   }
 }

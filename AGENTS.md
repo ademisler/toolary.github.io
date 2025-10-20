@@ -2,13 +2,13 @@
 
 ## Project Overview
 
-**Toolary** is a Chrome extension (Manifest V3) providing 17 web productivity tools with AI integration and architecture to scale to 50+ tools.
+**Toolary** is a Chrome extension (Manifest V3) providing 19 web productivity tools with AI integration and architecture to scale to 50+ tools.
 
 - **Version:** 1.0.0
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
 - **AI Support:** Gemini API integration with key rotation and model selection
-- **Test Coverage:** 98.3% (47 tests passing, AI modules included)
+- **Test Coverage:** 98.3% (48 tests passing, AI modules included)
 
 ## Architecture
 
@@ -51,7 +51,8 @@ extension/
 │   ├── inspect/              # colorPicker, elementPicker, fontPicker, linkPicker
 │   ├── capture/              # mediaPicker, textPicker, screenshotPicker, pdfGenerator, qrCodeGenerator, videoRecorder
 │   ├── enhance/              # stickyNotesPicker, textHighlighter, readingMode, bookmarkManager, darkModeToggle
-│   └── utilities/            # siteInfoPicker, colorPaletteGenerator
+│   ├── utilities/            # siteInfoPicker, colorPaletteGenerator
+│   └── ai/                   # textSummarizer
 ├── config/
 │   ├── tools-manifest.json   # Tool metadata (id, name, category, icon, tags, etc.)
 │   └── ai-tools-config.json  # AI tool model preferences
@@ -196,14 +197,70 @@ Add to `config/ai-tools-config.json`:
 3. **Implement proper cleanup**
 4. **Monitor API usage and costs**
 
+### Current AI Tools
+
+#### AI Summarizer (Completed)
+First AI-powered tool in Toolary, providing intelligent text summarization.
+
+**Features:**
+- Auto mode: Extracts page content using semantic selectors and scoring algorithm
+- Manual mode: Text selection with visual picker interface
+- Three summary lengths: Short (~50 words), Medium (~150 words), Long (~300 words)
+- Keyword extraction: 5-8 relevant keywords
+- Multi-language UI: English, Turkish, French
+- AI responses in 40+ languages
+- Sidebar panel interface (400px width)
+- Floating widget toggle (dark gray theme)
+- History storage: Last 10 summaries
+- Copy to clipboard with visual feedback
+
+**Technical Implementation:**
+- Model: Gemini 2.5 Flash (Smart)
+- Content extraction: Hybrid approach (semantic + scoring)
+- UI language: Manual loading from chrome.storage.local
+- AI language: User preference from settings
+- Storage key: `toolaryAISummarizerHistory`
+- Icon: `brain` (professional AI representation)
+
+#### AI Translator (Completed)
+Second AI-powered tool in Toolary, providing intelligent text translation with 40+ language support and Google Translate-style in-place page translation.
+
+**Features:**
+- Three translation modes: Manual input, Text selection, Full page content
+- **In-place page translation:** Preserves page layout and translates text directly in DOM (Google Translate style)
+- Source language auto-detection using AI
+- 40+ target language support (from aiConfig.js)
+- Translation history: Last 10 translations
+- Floating restore button to revert translated pages to original
+- Multi-language UI: English, Turkish, French
+- Sidebar panel interface (400px width)
+- Floating widget toggle (dark gray theme)
+- Progress indicator during batch translation
+- Copy to clipboard with visual feedback
+- Dark mode compatible
+
+**Technical Implementation:**
+- Model: Gemini 2.5 Flash (Smart)
+- Language detection: AI-powered auto-detection
+- In-place translation: DOM TreeWalker for text node extraction
+- Batch processing: 3000 char chunks, 100 nodes per batch
+- Performance optimization: 200ms delay between API calls (5-7x faster)
+- Content extraction: Reuses readingMode.js algorithm (for input/selection modes)
+- UI language: Manual loading from chrome.storage.local
+- CSS variables for theming
+- Storage key: `toolaryAITranslatorHistory`
+- Icon: `languages` (globe with translation indicator)
+
 ### Future AI Tools
 
 The AI system is designed to easily support new AI-powered tools:
 
-- **Text Analysis:** Summarization, sentiment analysis
-- **Content Generation:** Writing assistance, translations
-- **Image Processing:** OCR, image analysis
+- **Content Detection:** AI-generated content detection
+- **Email Generation:** Professional email and message drafting
+- **SEO Analysis:** AI-powered SEO optimization
 - **Code Analysis:** Code review, documentation generation
+- **Image Processing:** OCR, image analysis
+- **Sentiment Analysis:** Text emotion detection, tone analysis
 
 ## Adding a New Tool
 
@@ -403,6 +460,8 @@ Available icon names for tools:
 - `video` - Video recording
 - `sun` - Sun icon (light mode)
 - `moon` - Moon icon (dark mode)
+- `brain` - AI tools
+- `sparkles` - AI effects
 
 ### Icon Loading System
 
@@ -699,9 +758,9 @@ console.log(result);
 
 ## File Size Limits
 
-- `tools-manifest.json`: ~320 lines (17 tools) → keep under 1000 lines
+- `tools-manifest.json`: ~340 lines (18 tools) → keep under 1000 lines
 - `popup.js`: 1714 lines → consider splitting if >2000 lines
-- Total extension: ~580KB → target <2MB for fast installation
+- Total extension: ~600KB → target <2MB for fast installation
 
 ## Code Style
 
@@ -722,4 +781,4 @@ console.log(result);
 
 ---
 
-**Last updated:** 2025-01-27 for Toolary v1.0.0 (Updated with 17 tools including Dark Mode Toggle, AI integration, and current project status)
+**Last updated:** 2025-01-27 for Toolary v1.0.0 (Updated with 19 tools including AI Summarizer, AI Translator with in-place translation, Dark Mode Toggle, Video Recorder, Bookmark Manager, and full AI integration with Gemini API)

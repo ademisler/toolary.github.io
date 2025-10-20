@@ -19,6 +19,11 @@
       "name": "Utilities",
       "description": "General purpose site utilities.",
       "order": 4
+    },
+    "ai": {
+      "name": "AI",
+      "description": "AI-powered tools for content analysis.",
+      "order": 5
     }
   },
   "tools": [
@@ -308,6 +313,54 @@
       },
       "tags": ["dark", "theme", "mode", "night"],
       "keywords": ["dark mode", "night mode", "theme", "contrast"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "ai-text-summarizer",
+      "name": "AI Summarizer",
+      "category": "ai",
+      "module": "ai/textSummarizer.js",
+      "order": 18,
+      "icon": "brain",
+      "i18n": {
+        "label": "aiTextSummarizer",
+        "title": "aiTextSummarizerTitle",
+        "description": "aiTextSummarizerDescription"
+      },
+      "tags": ["ai", "summary", "analysis", "text"],
+      "keywords": ["summarize", "summary", "ai", "keywords", "extract"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "ai-text-translator",
+      "name": "AI Translator",
+      "category": "ai",
+      "module": "ai/textTranslator.js",
+      "order": 19,
+      "icon": "languages",
+      "i18n": {
+        "label": "aiTextTranslator",
+        "title": "aiTextTranslatorTitle",
+        "description": "aiTextTranslatorDescription"
+      },
+      "tags": ["ai", "translation", "language", "text"],
+      "keywords": ["translate", "translation", "language", "multilingual"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "ai-content-detector",
+      "name": "AI Content Detector",
+      "category": "ai",
+      "module": "ai/contentDetector.js",
+      "order": 20,
+      "icon": "sparkles",
+      "i18n": {
+        "label": "aiContentDetector",
+        "title": "aiContentDetectorTitle",
+        "description": "aiContentDetectorDescription"
+      },
+      "tags": ["ai", "detection", "analysis", "verification"],
+      "keywords": ["ai detection", "ai generated", "content analysis", "verification", "authenticity"],
       "permissions": ["activeTab", "storage"]
     }
   ]

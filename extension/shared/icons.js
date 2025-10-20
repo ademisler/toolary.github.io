@@ -327,6 +327,39 @@ const ICON_DEFINITIONS = {
       { tag: 'path', attrs: { d: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20' } },
       { tag: 'path', attrs: { d: 'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z' } }
     ]
+  },
+  sparkles: {
+    title: 'AI Sparkles',
+    elements: [
+      { tag: 'path', attrs: { d: 'M12 3v4' } },
+      { tag: 'path', attrs: { d: 'M16 7l-4-4-4 4' } },
+      { tag: 'path', attrs: { d: 'M12 21v-4' } },
+      { tag: 'path', attrs: { d: 'M8 17l4 4 4-4' } },
+      { tag: 'path', attrs: { d: 'M3 12h4' } },
+      { tag: 'path', attrs: { d: 'M21 12h-4' } }
+    ]
+  },
+  brain: {
+    title: 'AI Brain',
+    elements: [
+      { tag: 'path', attrs: { d: 'M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z' } },
+      { tag: 'path', attrs: { d: 'M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z' } },
+      { tag: 'path', attrs: { d: 'M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4' } },
+      { tag: 'path', attrs: { d: 'M17.599 6.5a3 3 0 0 0 .399-1.375' } },
+      { tag: 'path', attrs: { d: 'M6.003 5.125A3 3 0 0 0 6.401 6.5' } },
+      { tag: 'path', attrs: { d: 'M3.477 10.896a4 4 0 0 1 .585-.396' } },
+      { tag: 'path', attrs: { d: 'M19.938 10.5a4 4 0 0 1 .585.396' } },
+      { tag: 'path', attrs: { d: 'M6 18a4 4 0 0 1-1.967-.516' } },
+      { tag: 'path', attrs: { d: 'M19.967 17.484A4 4 0 0 1 18 18' } }
+    ]
+  },
+  languages: {
+    title: 'Languages',
+    elements: [
+      { tag: 'circle', attrs: { cx: 12, cy: 12, r: 10 } },
+      { tag: 'path', attrs: { d: 'M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z' } },
+      { tag: 'path', attrs: { d: 'M2 12h20' } }
+    ]
   }
 };
 

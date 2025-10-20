@@ -952,5 +952,269 @@
   },
   "noApiKeys": {
     "message": "Aucune clé API ajoutée pour le moment"
+  },
+  "ai": {
+    "message": "IA"
+  },
+  "aiTextSummarizer": {
+    "message": "Résumeur IA"
+  },
+  "aiTextSummarizerTitle": {
+    "message": "Résumeur IA"
+  },
+  "aiTextSummarizerDescription": {
+    "message": "Résumer le contenu de la page avec l'IA"
+  },
+  "summarizeAuto": {
+    "message": "Contenu de Page"
+  },
+  "summarizeManual": {
+    "message": "Sélectionner Texte"
+  },
+  "summaryLengthShort": {
+    "message": "Court (~50 mots)"
+  },
+  "summaryLengthMedium": {
+    "message": "Moyen (~150 mots)"
+  },
+  "summaryLengthLong": {
+    "message": "Long (~300 mots)"
+  },
+  "generateSummary": {
+    "message": "Générer le Résumé"
+  },
+  "summaryGenerated": {
+    "message": "Résumé généré !"
+  },
+  "copySummary": {
+    "message": "Copier le Résumé"
+  },
+  "extractedKeywords": {
+    "message": "Mots-clés"
+  },
+  "noContentToSummarize": {
+    "message": "Aucun contenu trouvé à résumer"
+  },
+  "selectTextFirst": {
+    "message": "Veuillez d'abord sélectionner du texte sur la page"
+  },
+  "aiSummarizerActivated": {
+    "message": "Résumeur IA activé"
+  },
+  "failedToGenerateSummary": {
+    "message": "Échec de la génération du résumé. Veuillez réessayer."
+  },
+  "mode": {
+    "message": "Mode"
+  },
+  "length": {
+    "message": "Longueur"
+  },
+  "summary": {
+    "message": "Résumé"
+  },
+  "generating": {
+    "message": "Génération du résumé..."
+  },
+  "selectTextOnPage": {
+    "message": "Veuillez sélectionner du texte sur la page à résumer"
+  },
+  "clickToSelectText": {
+    "message": "Cliquez en dehors de ce panneau et sélectionnez du texte sur la page, puis cliquez sur Générer le Résumé."
+  },
+  "source": {
+    "message": "Source du Contenu"
+  },
+  "cancel": {
+    "message": "Annuler"
+  },
+  "copied": {
+    "message": "Copié !"
+  },
+  "failedToCopy": {
+    "message": "Échec de la copie"
+  },
+  "failedToActivate": {
+    "message": "Échec de l'activation"
+  },
+  "aiTextTranslator": {
+    "message": "Traducteur IA"
+  },
+  "aiTextTranslatorTitle": {
+    "message": "Traducteur de Texte IA"
+  },
+  "aiTextTranslatorDescription": {
+    "message": "Traduire du texte et des pages en 40+ langues"
+  },
+  "translatorActivated": {
+    "message": "Traducteur IA activé"
+  },
+  "translationCompleted": {
+    "message": "Traduction terminée !"
+  },
+  "failedToTranslate": {
+    "message": "Échec de la traduction du texte"
+  },
+  "sourceLanguage": {
+    "message": "Langue Source"
+  },
+  "targetLanguage": {
+    "message": "Langue Cible"
+  },
+  "autoDetect": {
+    "message": "Détection Automatique"
+  },
+  "translateInput": {
+    "message": "Saisir du Texte"
+  },
+  "translateSelection": {
+    "message": "Sélectionner du Texte"
+  },
+  "translatePage": {
+    "message": "Contenu de la Page"
+  },
+  "originalText": {
+    "message": "Original"
+  },
+  "translatedText": {
+    "message": "Traduction"
+  },
+  "copyTranslation": {
+    "message": "Copier la Traduction"
+  },
+  "translationCopied": {
+    "message": "Traduction copiée !"
+  },
+  "translate": {
+    "message": "Traduire"
+  },
+  "translating": {
+    "message": "Traduction en cours..."
+  },
+  "selectTextToTranslate": {
+    "message": "Sélectionnez du texte sur la page pour traduire"
+  },
+  "enterTextToTranslate": {
+    "message": "Entrez du texte à traduire"
+  },
+  "typeOrPasteText": {
+    "message": "Tapez ou collez du texte ici..."
+  },
+  "pleaseEnterText": {
+    "message": "Veuillez saisir du texte à traduire"
+  },
+  "pleaseSelectText": {
+    "message": "Veuillez sélectionner du texte sur la page"
+  },
+  "noContentFound": {
+    "message": "Aucun contenu trouvé sur cette page"
+  },
+  "textTruncated": {
+    "message": "Le texte a été tronqué à 5000 caractères pour la traduction"
+  },
+  "pageTranslated": {
+    "message": "Page traduite avec succès !"
+  },
+  "restoreOriginal": {
+    "message": "Restaurer l'original"
+  },
+  "pageRestored": {
+    "message": "Page originale restaurée"
+  },
+  "failedToRestore": {
+    "message": "Échec de la restauration de la page originale"
+  },
+  "noTranslationToRestore": {
+    "message": "Aucune traduction à restaurer"
+  },
+  "noTextToTranslate": {
+    "message": "Aucun texte trouvé à traduire sur cette page"
+  },
+  "translatingProgress": {
+    "message": "Traduction en cours... {current}/{total}"
+  },
+  "aiContentDetector": {
+    "message": "Détecteur de Contenu IA"
+  },
+  "aiContentDetectorTitle": {
+    "message": "Détecteur de Contenu IA"
+  },
+  "aiContentDetectorDescription": {
+    "message": "Détectez le contenu généré par l'IA avec une analyse multi-métrique"
+  },
+  "analyzeInput": {
+    "message": "Entrer du Texte"
+  },
+  "analyzeSelection": {
+    "message": "Sélectionner du Texte"
+  },
+  "analyzePage": {
+    "message": "Contenu de la Page"
+  },
+  "aiProbability": {
+    "message": "Probabilité IA"
+  },
+  "confidenceLevel": {
+    "message": "Niveau de Confiance"
+  },
+  "writingStyle": {
+    "message": "Style d'Écriture"
+  },
+  "wordChoice": {
+    "message": "Choix de Mots"
+  },
+  "structureAnalysis": {
+    "message": "Structure"
+  },
+  "suspiciousSections": {
+    "message": "Sections Suspectes"
+  },
+  "showHighlights": {
+    "message": "Afficher les Surbrillances"
+  },
+  "hideHighlights": {
+    "message": "Masquer les Surbrillances"
+  },
+  "analyzing": {
+    "message": "Analyse du contenu..."
+  },
+  "analysisComplete": {
+    "message": "Analyse terminée !"
+  },
+  "highConfidence": {
+    "message": "Haute Confiance"
+  },
+  "mediumConfidence": {
+    "message": "Confiance Moyenne"
+  },
+  "lowConfidence": {
+    "message": "Faible Confiance"
+  },
+  "detailedMetrics": {
+    "message": "Analyse Détaillée"
+  },
+  "copyResults": {
+    "message": "Copier les Résultats"
+  },
+  "resultsCopied": {
+    "message": "Résultats copiés dans le presse-papiers !"
+  },
+  "detectorActivated": {
+    "message": "Détecteur de contenu IA activé"
+  },
+  "failedToAnalyze": {
+    "message": "Échec de l'analyse du contenu"
+  },
+  "selectTextToAnalyze": {
+    "message": "Sélectionnez du texte sur la page pour l'analyser"
+  },
+  "enterTextToAnalyze": {
+    "message": "Entrez le texte à analyser"
+  },
+  "noContentToAnalyze": {
+    "message": "Aucun contenu trouvé à analyser"
+  },
+  "analyze": {
+    "message": "Analyser le Contenu"
   }
 }

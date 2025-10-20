@@ -1,7 +1,9 @@
 {
   "toolModelRequirements": {
-    "ai-text-summarizer": "lite",
-    "ai-code-explainer": "smart"
+    "ai-text-summarizer": "smart",
+    "ai-text-translator": "smart",
+    "ai-code-explainer": "smart",
+    "ai-content-detector": "smart"
   },
   "modelEndpoints": {
     "smart": "gemini-2.5-flash",

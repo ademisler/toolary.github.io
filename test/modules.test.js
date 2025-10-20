@@ -210,4 +210,72 @@ describe('Picker Modules', () => {
       expect(darkModeModule.metadata.category).toBe('enhance');
     });
   });
+
+  describe('AI Text Summarizer', () => {
+    let textSummarizerModule;
+
+    beforeAll(async () => {
+      textSummarizerModule = await import('../extension/tools/ai/textSummarizer.js');
+    });
+
+    test('should activate AI text summarizer', async () => {
+      const mockDeactivate = jest.fn();
+      
+      expect(() => textSummarizerModule.activate(mockDeactivate)).not.toThrow();
+    });
+
+    test('should have correct metadata', () => {
+      expect(textSummarizerModule.metadata).toBeDefined();
+      expect(textSummarizerModule.metadata.id).toBe('ai-text-summarizer');
+      expect(textSummarizerModule.metadata.name).toBe('AI Summarizer');
+      expect(textSummarizerModule.metadata.category).toBe('ai');
+      expect(textSummarizerModule.metadata.icon).toBe('brain');
+    });
+  });
+
+  describe('AI Text Translator', () => {
+    let textTranslatorModule;
+
+    beforeAll(async () => {
+      textTranslatorModule = await import('../extension/tools/ai/textTranslator.js');
+    });
+
+    test('should activate AI text translator', async () => {
+      const mockDeactivate = jest.fn();
+      
+      expect(() => textTranslatorModule.activate(mockDeactivate)).not.toThrow();
+    });
+
+    test('should have correct metadata', () => {
+      expect(textTranslatorModule.metadata).toBeDefined();
+      expect(textTranslatorModule.metadata.id).toBe('ai-text-translator');
+      expect(textTranslatorModule.metadata.name).toBe('AI Translator');
+      expect(textTranslatorModule.metadata.category).toBe('ai');
+      expect(textTranslatorModule.metadata.icon).toBe('languages');
+    });
+
+    test('should deactivate without errors', () => {
+      expect(() => textTranslatorModule.deactivate()).not.toThrow();
+    });
+  });
+
+  describe('AI Content Detector', () => {
+    let contentDetectorModule;
+
+    beforeAll(async () => {
+      contentDetectorModule = await import('../extension/tools/ai/contentDetector.js');
+    });
+
+    test('should have correct metadata', () => {
+      expect(contentDetectorModule.metadata).toBeDefined();
+      expect(contentDetectorModule.metadata.id).toBe('ai-content-detector');
+      expect(contentDetectorModule.metadata.name).toBe('AI Content Detector');
+      expect(contentDetectorModule.metadata.category).toBe('ai');
+      expect(contentDetectorModule.metadata.icon).toBe('sparkles');
+    });
+
+    test('should deactivate without errors', () => {
+      expect(() => contentDetectorModule.deactivate()).not.toThrow();
+    });
+  });
 });
