@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-**Toolary** is a Chrome extension (Manifest V3) providing 19 web productivity tools with AI integration and architecture to scale to 50+ tools.
+**Toolary** is a Chrome extension (Manifest V3) providing 20 web productivity tools with AI integration and architecture to scale to 50+ tools.
 
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
 - **AI Support:** Gemini API integration with key rotation and model selection
@@ -251,11 +251,45 @@ Second AI-powered tool in Toolary, providing intelligent text translation with 4
 - Storage key: `toolaryAITranslatorHistory`
 - Icon: `languages` (globe with translation indicator)
 
+#### AI Content Detector (Completed)
+Third AI-powered tool in Toolary, providing sophisticated multi-metric analysis to detect AI-generated content with inline highlighting and detailed scoring.
+
+**Features:**
+- Three analysis modes: Manual input, Text selection, Page content
+- **Multi-metric analysis:** Writing style, word choice, structure consistency
+- AI probability score (0-100%) with confidence level (High/Medium/Low)
+- **Inline highlighting:** Marks suspicious text segments on page with yellow/orange highlights
+- Suspicious sections identification with explanations
+- Detailed metric breakdown with progress bars
+- Analysis history: Last 10 analyses
+- Multi-language UI: English, Turkish, French
+- Sidebar panel interface (400px width)
+- Floating widget toggle (dark gray theme)
+- Copy results to clipboard
+- Toggle highlights on/off
+- Dark mode compatible
+
+**Technical Implementation:**
+- Model: Gemini 2.5 Flash (Smart)
+- Multi-metric analysis: 4 parallel AI API calls
+  - Writing Style: Consistency, variation, naturalness analysis
+  - Word Choice: Repetition patterns, formal vocabulary detection
+  - Structure: Paragraph flow, topic transitions analysis
+  - Suspicious Sections: Specific text segment identification
+- Performance optimization: 200ms delay between API calls
+- Content extraction: Reuses readingMode.js algorithm with scoring
+- Text limit: Max 5000 characters per analysis
+- Inline highlighting: DOM TreeWalker for text node targeting
+- Highlighting cleanup: Proper removal on deactivation/toggle
+- UI language: Manual loading from chrome.storage.local
+- CSS variables for theming
+- Storage key: `toolaryAIContentDetectorHistory`
+- Icon: `sparkles` (AI detection indicator)
+
 ### Future AI Tools
 
 The AI system is designed to easily support new AI-powered tools:
 
-- **Content Detection:** AI-generated content detection
 - **Email Generation:** Professional email and message drafting
 - **SEO Analysis:** AI-powered SEO optimization
 - **Code Analysis:** Code review, documentation generation
@@ -781,4 +815,4 @@ console.log(result);
 
 ---
 
-**Last updated:** 2025-01-27 for Toolary v1.0.0 (Updated with 19 tools including AI Summarizer, AI Translator with in-place translation, Dark Mode Toggle, Video Recorder, Bookmark Manager, and full AI integration with Gemini API)
+**Last updated:** 2025-01-27 for Toolary v1.0.1 (Updated with 20 tools including AI Summarizer, AI Translator with in-place translation, AI Content Detector with multi-metric analysis, Dark Mode Toggle, Video Recorder, Bookmark Manager, and full AI integration with Gemini API)
