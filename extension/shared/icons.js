@@ -360,6 +360,37 @@ const ICON_DEFINITIONS = {
       { tag: 'path', attrs: { d: 'M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z' } },
       { tag: 'path', attrs: { d: 'M2 12h20' } }
     ]
+  },
+  email: {
+    title: 'Email',
+    elements: [
+      { tag: 'rect', attrs: { x: '2', y: '4', width: '20', height: '16', rx: '2' } },
+      { tag: 'path', attrs: { d: 'M22 7l-10 6L2 7' } }
+    ]
+  },
+  'search-check': {
+    title: 'SEO Analyzer',
+    elements: [
+      { tag: 'circle', attrs: { cx: '11', cy: '11', r: '8' } },
+      { tag: 'path', attrs: { d: 'm21 21-4.35-4.35' } },
+      { tag: 'path', attrs: { d: 'm9 11 2 2 4-4' } }
+    ]
+  },
+  'message': {
+    title: 'Message',
+    elements: [
+      { tag: 'path', attrs: { d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z' } }
+    ]
+  },
+  'clipboard-list': {
+    title: 'Clipboard List',
+    elements: [
+      { tag: 'rect', attrs: { x: 8, y: 2, width: 8, height: 4, rx: 1 } },
+      { tag: 'path', attrs: { d: 'M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2' } },
+      { tag: 'path', attrs: { d: 'M9 12h6' } },
+      { tag: 'path', attrs: { d: 'M9 16h6' } },
+      { tag: 'path', attrs: { d: 'M9 8h6' } }
+    ]
   }
 };
 

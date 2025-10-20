@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>6/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>6/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -200,18 +200,18 @@
 <a name='L135'></a><a href='#L135'>135</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,7 +253,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -297,7 +297,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -305,22 +305,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,18 +334,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// AI Configuration module for Toolary
 // Defines AI model constants and tool-to-model mapping
 &nbsp;
-export const GEMINI_MODELS = <span class="cstat-no" title="statement not covered" >Object.freeze({</span>
+export const GEMINI_MODELS = Object.freeze({
   SMART: 'gemini-2.5-flash',
   LITE: 'gemini-2.5-flash-lite'
 });
 &nbsp;
-export const AI_MODEL_SELECTION = <span class="cstat-no" title="statement not covered" >Object.freeze({</span>
+export const AI_MODEL_SELECTION = Object.freeze({
   AUTO: 'auto',
   SMART: 'smart',
   LITE: 'lite'
 });
 &nbsp;
-export const AI_LANGUAGES = <span class="cstat-no" title="statement not covered" >Object.freeze({</span>
+export const AI_LANGUAGES = Object.freeze({
   AUTO: 'auto',
   ENGLISH: 'en',
   TURKISH: 'tr',
@@ -387,7 +387,7 @@ export const AI_LANGUAGES = <span class="cstat-no" title="statement not covered"
   FILIPINO: 'tl'
 });
 &nbsp;
-export const AI_LANGUAGE_NAMES = <span class="cstat-no" title="statement not covered" >Object.freeze({</span>
+export const AI_LANGUAGE_NAMES = Object.freeze({
   auto: 'Auto (Browser Language)',
   en: 'English',
   tr: 'Türkçe',
@@ -431,7 +431,7 @@ export const AI_LANGUAGE_NAMES = <span class="cstat-no" title="statement not cov
 &nbsp;
 // Tool-to-model mapping configuration
 // Defines which model each tool should use by default
-export const TOOL_MODEL_MAPPING = <span class="cstat-no" title="statement not covered" >Object.freeze({</span>
+export const TOOL_MODEL_MAPPING = Object.freeze({
   'ai-text-summarizer': 'lite',
   'ai-code-explainer': 'smart'
 });
@@ -454,7 +454,7 @@ export function <span class="fstat-no" title="function not covered" >getModelFor
 }
 &nbsp;
 // API configuration
-export const AI_API_CONFIG = <span class="cstat-no" title="statement not covered" >Object.freeze({</span>
+export const AI_API_CONFIG = Object.freeze({
   BASE_URL: 'https://generativelanguage.googleapis.com/v1beta',
   RATE_LIMIT: {
     REQUESTS_PER_MINUTE: 60,
@@ -472,7 +472,7 @@ export const AI_API_CONFIG = <span class="cstat-no" title="statement not covered
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-19T23:24:43.287Z
+                at 2025-10-20T23:03:00.101Z
             </div>
         <script src="prettify.js"></script>
         <script>

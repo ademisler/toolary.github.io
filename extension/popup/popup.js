@@ -1,6 +1,7 @@
 const SUPPORTED_LANGUAGES = ['en', 'tr', 'fr'];
 const HIDDEN_STORAGE_KEY = 'toolaryHiddenTools';
 const USAGE_STORAGE_KEY = 'toolaryToolUsage';
+const FAVORITES_STORAGE_KEY = 'toolaryFavoriteTools';
 const LEGACY_HIDDEN_KEYS = ['pickachuHiddenTools', 'hiddenTools'];
 
 const themeMediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
@@ -43,6 +44,7 @@ const state = {
   toolMap: new Map(),
   hiddenTools: new Set(),
   toolUsage: new Map(),
+  favoriteTools: new Set(),
   searchTerm: '',
   rawSearchInput: '',
   searchTokens: [],
@@ -543,6 +545,29 @@ function createToolCardElement(tool) {
   card.appendChild(icon);
   card.appendChild(content);
   
+  // Add favorite button
+  const favoriteBtn = document.createElement('button');
+  favoriteBtn.className = 'tool-card__favorite';
+  favoriteBtn.setAttribute('aria-label', 'Toggle favorite');
+  favoriteBtn.setAttribute('type', 'button');
+
+  const isFavorite = state.favoriteTools.has(tool.id);
+  if (isFavorite) {
+    favoriteBtn.classList.add('is-favorite');
+  }
+
+  // Create star icon using icons module
+  const starIcon = icons.createIconElement('star', { size: 16, decorative: true });
+  favoriteBtn.appendChild(starIcon);
+
+  // Add click handler
+  favoriteBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent tool activation
+    toggleFavorite(tool.id);
+  });
+
+  card.appendChild(favoriteBtn);
+  
   // Add click handler
   card.addEventListener('click', () => {
     if (card.classList.contains('tool-card--disabled')) return;
@@ -574,6 +599,11 @@ async function loadPreferences() {
   const usageData = localData[USAGE_STORAGE_KEY] || {};
   state.toolUsage = new Map(Object.entries(usageData));
 
+  // Load favorite tools
+  const favData = await chrome.storage.local.get([FAVORITES_STORAGE_KEY]);
+  const favorites = favData[FAVORITES_STORAGE_KEY] || [];
+  state.favoriteTools = new Set(favorites);
+
   // Load AI settings
   await loadAISettings();
 
@@ -591,6 +621,11 @@ async function saveHiddenTools() {
 async function saveToolUsage() {
   const usageData = Object.fromEntries(state.toolUsage);
   await chrome.storage.local.set({ [USAGE_STORAGE_KEY]: usageData });
+}
+
+async function saveFavoriteTools() {
+  const favorites = Array.from(state.favoriteTools);
+  await chrome.storage.local.set({ [FAVORITES_STORAGE_KEY]: favorites });
 }
 
 function matchesSearch(tool, term) {
@@ -653,8 +688,17 @@ function applyFilters() {
   });
 
 
-  // Sort by usage count (most used first)
+  // Sort by favorite status first, then usage count
   filtered.sort((a, b) => {
+    const isFavA = state.favoriteTools.has(a.id);
+    const isFavB = state.favoriteTools.has(b.id);
+    
+    // Favorites always come first
+    if (isFavA !== isFavB) {
+      return isFavB ? 1 : -1;
+    }
+    
+    // Within same favorite status, sort by usage count
     const usageA = state.toolUsage.get(a.id) || 0;
     const usageB = state.toolUsage.get(b.id) || 0;
     return usageB - usageA;
@@ -805,6 +849,19 @@ async function activateTool(toolId) {
   } catch (error) {
     console.error('Toolary popup: failed to activate tool', error);
   }
+}
+
+async function toggleFavorite(toolId) {
+  if (state.favoriteTools.has(toolId)) {
+    state.favoriteTools.delete(toolId);
+  } else {
+    state.favoriteTools.add(toolId);
+  }
+  
+  await saveFavoriteTools();
+  
+  // Re-sort and re-render with animation
+  applyFilters();
 }
 
 function handleToolContainerClick(event) {

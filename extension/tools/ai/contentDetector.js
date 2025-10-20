@@ -854,7 +854,7 @@ function cancelTextSelection() {
 }
 
 // Highlight suspicious sections on page
-function highlightSuspiciousSections(sections, originalText) {
+function highlightSuspiciousSections(sections) {
   // Clear existing highlights
   clearHighlights();
   
@@ -863,22 +863,22 @@ function highlightSuspiciousSections(sections, originalText) {
   // Get all text nodes in the page
   const walker = document.createTreeWalker(
     document.body,
-    NodeFilter.SHOW_TEXT,
+    NodeFilter.SHOW_TEXT, // eslint-disable-line no-undef
     {
       acceptNode: (node) => {
         const parent = node.parentElement;
-        if (!parent) return NodeFilter.FILTER_REJECT;
+        if (!parent) return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         
         const tagName = parent.tagName.toLowerCase();
         if (['script', 'style', 'noscript', 'iframe'].includes(tagName)) {
-          return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         }
         
         if (parent.closest('[id^="toolary-"]')) {
-          return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         }
         
-        return NodeFilter.FILTER_ACCEPT;
+        return NodeFilter.FILTER_ACCEPT; // eslint-disable-line no-undef
       }
     }
   );

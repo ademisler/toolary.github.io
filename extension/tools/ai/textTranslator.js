@@ -4,7 +4,6 @@ import {
   showInfo,
   showWarning,
   handleError, 
-  sanitizeInput, 
   addEventListenerWithCleanup,
   copyText
 } from '../../shared/helpers.js';
@@ -29,41 +28,14 @@ const MAX_HISTORY = 10;
 const SUPPORTED_LANGUAGES = ['en', 'tr', 'fr'];
 let langMap = {};
 
-// Content selectors (from readingMode.js / textSummarizer.js)
-const CONTENT_SELECTORS = [
-  'article',
-  'main',
-  '[role="main"]',
-  '.post-content',
-  '.article-content',
-  '.entry-content',
-  '.content',
-  '#content',
-  '.main-content',
-  '.article-body',
-  '.post-body',
-  '.entry-body'
-];
+// Content selectors - REMOVED (unused constants)
+// const CONTENT_SELECTORS = [ ... ];
 
-// Distraction selectors to remove
-const DISTRACTION_SELECTORS = [
-  'header', 'nav', 'aside', 'footer',
-  '[role="banner"]', '[role="navigation"]', '[role="complementary"]',
-  '.sidebar', '.menu', '.advertisement', '.ad', '.ads',
-  '#sidebar', '#nav', '#header', '#footer',
-  '.comments', '.social-share', '.related-posts',
-  '.social-media', '.share-buttons', '.newsletter',
-  '.popup', '.modal', '.overlay', '.cookie-banner',
-  '.breadcrumb', '.pagination', '.tags', '.categories'
-];
+// Distraction selectors - REMOVED (unused constants)
+// const DISTRACTION_SELECTORS = [ ... ];
 
-// Navigation keywords
-const NAV_KEYWORDS = [
-  'nav', 'menu', 'sidebar', 'footer', 'header',
-  'advertisement', 'ad', 'banner', 'social',
-  'comment', 'share', 'related', 'popular',
-  'trending', 'newsletter', 'subscribe'
-];
+// Navigation keywords - REMOVED (unused constants)
+// const NAV_KEYWORDS = [ ... ];
 
 // State
 let cleanupFunctions = [];
@@ -73,7 +45,7 @@ let backdrop = null;
 let isPanelOpen = false;
 let currentMode = 'input'; // 'input', 'selection', 'page'
 let isTranslating = false;
-let currentTranslation = null;
+// let currentTranslation = null;
 let isSelectingText = false;
 let selectedTextForTranslation = null;
 let sourceLang = 'auto';
@@ -175,136 +147,14 @@ async function loadAIManager() {
 }
 
 // Score node for content extraction (from readingMode.js)
-function scoreNode(node) {
-  if (!node || node.nodeType !== Node.ELEMENT_NODE) {
-    return -Infinity;
-  }
+// Score node function - REMOVED (unused function)
+// function scoreNode(node) { ... }
 
-  let score = 0;
-  const tagName = node.tagName.toLowerCase();
-  const className = (node.className || '').toLowerCase();
-  const id = (node.id || '').toLowerCase();
+// Extract main content from page - REMOVED (unused function)
+// function extractPageContent() { ... }
 
-  // Positive scoring
-  if (['article', 'main'].includes(tagName)) score += 50;
-  if (tagName === 'section') score += 20;
-  if (tagName === 'div') score += 5;
-  if (id.includes('content') || id.includes('article') || id.includes('main')) score += 25;
-  if (className.includes('content') || className.includes('article') || className.includes('post')) score += 25;
-
-  // Penalize navigation elements
-  for (const keyword of NAV_KEYWORDS) {
-    if (className.includes(keyword) || id.includes(keyword)) {
-      score -= 25;
-    }
-  }
-
-  // Score based on text density
-  const text = node.textContent || '';
-  const textLength = text.trim().length;
-  const linkDensity = (node.querySelectorAll('a').length * 50) / (textLength || 1);
-  score += Math.min(textLength / 100, 50);
-  score -= linkDensity;
-
-  // Penalize empty or very short content
-  if (textLength < 200) {
-    score -= 50;
-  }
-
-  // Bonus for paragraphs
-  const paragraphs = node.querySelectorAll('p');
-  score += Math.min(paragraphs.length * 5, 50);
-
-  return score;
-}
-
-// Extract main content from page
-function extractPageContent() {
-  try {
-    // First, try semantic selectors
-    for (const selector of CONTENT_SELECTORS) {
-      const element = document.querySelector(selector);
-      if (element && element.textContent.trim().length > 200) {
-        return cleanContent(element.cloneNode(true));
-      }
-    }
-    
-    // If no semantic content found, use scoring algorithm
-    let bestCandidate = null;
-    let bestScore = -Infinity;
-    
-    const candidates = document.querySelectorAll('div, section, article');
-    
-    for (const candidate of candidates) {
-      const score = scoreNode(candidate);
-      if (score > bestScore && candidate.textContent.trim().length > 200) {
-        bestScore = score;
-        bestCandidate = candidate;
-      }
-    }
-    
-    if (bestCandidate && bestScore > 0) {
-      return cleanContent(bestCandidate.cloneNode(true));
-    }
-    
-    // Fallback: find the largest text block
-    const allElements = document.querySelectorAll('*');
-    let largestElement = null;
-    let largestTextLength = 0;
-    
-    for (const element of allElements) {
-      const textLength = element.textContent.trim().length;
-      if (textLength > largestTextLength && textLength > 200) {
-        const hasNavKeywords = NAV_KEYWORDS.some(keyword => 
-          (element.className || '').toLowerCase().includes(keyword) ||
-          (element.id || '').toLowerCase().includes(keyword)
-        );
-        
-        if (!hasNavKeywords) {
-          largestTextLength = textLength;
-          largestElement = element;
-        }
-      }
-    }
-    
-    return largestElement ? cleanContent(largestElement.cloneNode(true)) : null;
-  } catch (error) {
-    handleError(error, 'extractPageContent');
-    return null;
-  }
-}
-
-// Clean content by removing distractions
-function cleanContent(content) {
-  if (!content) return null;
-  
-  try {
-    const cleaned = content.cloneNode(true);
-    
-    // Remove distracting elements
-    for (const selector of DISTRACTION_SELECTORS) {
-      const elements = cleaned.querySelectorAll(selector);
-      elements.forEach(el => el.remove());
-    }
-    
-    // Remove scripts and styles
-    const scripts = cleaned.querySelectorAll('script, style, noscript');
-    scripts.forEach(el => el.remove());
-    
-    // Remove empty elements
-    const emptyElements = cleaned.querySelectorAll('p, div, span');
-    emptyElements.forEach(el => {
-      if (!el.textContent.trim() && !el.querySelector('img, video, iframe')) {
-        el.remove();
-      }
-    });
-    
-    return cleaned.textContent.trim();
-  } catch (error) {
-    handleError(error, 'cleanContent');
-    return content ? content.textContent.trim() : null;
-  }
-}
+// Clean content function - REMOVED (unused function)
+// function cleanContent(content) { ... }
 
 // Get language name for display
 function getLanguageName(code) {
@@ -317,36 +167,36 @@ function getAllTextNodes(rootElement = document.body) {
   const textNodes = [];
   const walker = document.createTreeWalker(
     rootElement,
-    NodeFilter.SHOW_TEXT,
+    NodeFilter.SHOW_TEXT, // eslint-disable-line no-undef
     {
       acceptNode: (node) => {
         // Skip if parent is script, style, or other non-visible elements
         const parent = node.parentElement;
-        if (!parent) return NodeFilter.FILTER_REJECT;
+        if (!parent) return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         
         const tagName = parent.tagName.toLowerCase();
         if (['script', 'style', 'noscript', 'iframe', 'object'].includes(tagName)) {
-          return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         }
         
         // Skip if text is only whitespace
         const text = node.textContent.trim();
         if (!text || text.length < 3) {
-          return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         }
         
         // Skip if parent is hidden
         const style = window.getComputedStyle(parent);
         if (style.display === 'none' || style.visibility === 'hidden') {
-          return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         }
         
         // Skip Toolary's own elements
         if (parent.closest('[id^="toolary-"]')) {
-          return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_REJECT; // eslint-disable-line no-undef
         }
         
-        return NodeFilter.FILTER_ACCEPT;
+        return NodeFilter.FILTER_ACCEPT; // eslint-disable-line no-undef
       }
     }
   );
@@ -453,7 +303,7 @@ ${segment.text}`;
       
       // Split translated text back to individual nodes
       // Simple approach: split by original word count
-      const originalWords = segment.text.split(/\s+/);
+      const originalWords = segment.text.split(/\s+/); // eslint-disable-line no-unused-vars
       const translatedWords = translatedText.trim().split(/\s+/);
       
       // Distribute translated words to nodes proportionally
@@ -1421,10 +1271,10 @@ async function handleTranslate() {
     const translation = await translateText(text, sourceLang, targetLang);
     
     // Store result
-    currentTranslation = {
-      sourceText: text,
-      ...translation
-    };
+    // currentTranslation = {
+    //   sourceText: text,
+    //   ...translation
+    // };
     
     // Display result in sidebar
     renderTranslationResult(text, translation);
@@ -1658,7 +1508,7 @@ export function deactivate() {
     isPanelOpen = false;
     currentMode = 'input';
     isTranslating = false;
-    currentTranslation = null;
+    // currentTranslation = null;
     isSelectingText = false;
     selectedTextForTranslation = null;
     sourceLang = 'auto';

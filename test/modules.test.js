@@ -278,4 +278,90 @@ describe('Picker Modules', () => {
       expect(() => contentDetectorModule.deactivate()).not.toThrow();
     });
   });
+
+  describe('AI Email Generator', () => {
+    let emailGeneratorModule;
+
+    beforeAll(async () => {
+      emailGeneratorModule = await import('../extension/tools/ai/emailGenerator.js');
+    });
+
+    test('should have correct metadata', () => {
+      expect(emailGeneratorModule.metadata).toBeDefined();
+      expect(emailGeneratorModule.metadata.id).toBe('ai-email-generator');
+      expect(emailGeneratorModule.metadata.name).toBe('AI Email Generator');
+      expect(emailGeneratorModule.metadata.category).toBe('ai');
+      expect(emailGeneratorModule.metadata.icon).toBe('email');
+    });
+
+    test('should deactivate without errors', () => {
+      expect(() => emailGeneratorModule.deactivate()).not.toThrow();
+    });
+  });
+
+  describe('AI SEO Analyzer', () => {
+    let seoAnalyzerModule;
+
+    beforeAll(async () => {
+      seoAnalyzerModule = await import('../extension/tools/ai/seoAnalyzer.js');
+    });
+
+    test('should have correct metadata', () => {
+      expect(seoAnalyzerModule.metadata).toBeDefined();
+      expect(seoAnalyzerModule.metadata.id).toBe('ai-seo-analyzer');
+      expect(seoAnalyzerModule.metadata.name).toBe('AI SEO Analyzer');
+      expect(seoAnalyzerModule.metadata.category).toBe('ai');
+      expect(seoAnalyzerModule.metadata.icon).toBe('search-check');
+    });
+
+    test('should deactivate without errors', () => {
+      expect(() => seoAnalyzerModule.deactivate()).not.toThrow();
+    });
+  });
+
+  describe('AI Chat', () => {
+    let aiChatModule;
+
+    beforeAll(async () => {
+      aiChatModule = await import('../extension/tools/ai/aiChat.js');
+    });
+
+    test('should have correct metadata', () => {
+      expect(aiChatModule.metadata).toBeDefined();
+      expect(aiChatModule.metadata.id).toBe('ai-chat');
+      expect(aiChatModule.metadata.name).toBe('AI Chat');
+      expect(aiChatModule.metadata.category).toBe('ai');
+      expect(aiChatModule.metadata.icon).toBe('message');
+    });
+
+    test('should deactivate without errors', () => {
+      expect(() => aiChatModule.deactivate()).not.toThrow();
+    });
+  });
+
+  describe('Copy History Manager', () => {
+    let copyHistoryManagerModule;
+
+    beforeAll(async () => {
+      copyHistoryManagerModule = await import('../extension/tools/utilities/copyHistoryManager.js');
+    });
+
+    test('should activate copy history manager', async () => {
+      const mockDeactivate = jest.fn();
+      
+      expect(() => copyHistoryManagerModule.activate(mockDeactivate)).not.toThrow();
+    });
+
+    test('should have correct metadata', () => {
+      expect(copyHistoryManagerModule.metadata).toBeDefined();
+      expect(copyHistoryManagerModule.metadata.id).toBe('copy-history-manager');
+      expect(copyHistoryManagerModule.metadata.name).toBe('Copy History Manager');
+      expect(copyHistoryManagerModule.metadata.category).toBe('utilities');
+      expect(copyHistoryManagerModule.metadata.icon).toBe('clipboard-list');
+    });
+
+    test('should deactivate without errors', () => {
+      expect(() => copyHistoryManagerModule.deactivate()).not.toThrow();
+    });
+  });
 });

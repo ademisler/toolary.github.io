@@ -729,7 +729,7 @@
     "message": "Color Palette Generator"
   },
   "colorPaletteGeneratorDescription": {
-    "message": "Extract page colors and generate harmonic palettes with accessibility scores"
+    "message": "Extract page colors and generate harmonic palettes"
   },
   "inspect": {
     "message": "Inspect"
@@ -750,7 +750,7 @@
     "message": "PDF Generator"
   },
   "pdfGeneratorDescription": {
-    "message": "Convert current page to PDF and download instantly"
+    "message": "Convert current page to PDF and download"
   },
   "highlighter": {
     "message": "Highlighter"
@@ -759,7 +759,7 @@
     "message": "Text Highlighter"
   },
   "textHighlighterDescription": {
-    "message": "Highlight text with colors and save highlights per site"
+    "message": "Highlight text with colors and save per site"
   },
   "cmdTextHighlighter": {
     "message": "Activate Text Highlighter"
@@ -783,7 +783,7 @@
     "message": "QR Code Generator"
   },
   "qrCodeGeneratorDescription": {
-    "message": "Generate customizable QR codes for the current page"
+    "message": "Generate customizable QR codes for current page"
   },
   "bookmarkManager": {
     "message": "Bookmark Manager"
@@ -792,7 +792,7 @@
     "message": "Bookmark Manager"
   },
   "bookmarkManagerDescription": {
-    "message": "Save and organize bookmarks with folders, tags, and powerful search"
+    "message": "Save and organize bookmarks with folders and tags"
   },
   "addBookmark": {
     "message": "Add Bookmark"
@@ -852,7 +852,7 @@
     "message": "Record Screen Video"
   },
   "videoRecorderDescription": {
-    "message": "Record your screen activity with audio support and export in multiple formats"
+    "message": "Record screen activity with audio and export formats"
   },
   "darkModeToggle": {
     "message": "Dark Mode"
@@ -1216,5 +1216,326 @@
   },
   "analyze": {
     "message": "Analyze Content"
+  },
+  "aiEmailGenerator": {
+    "message": "AI Email Generator"
+  },
+  "aiEmailGeneratorTitle": {
+    "message": "AI Email Generator"
+  },
+  "aiEmailGeneratorDescription": {
+    "message": "Generate professional emails with AI"
+  },
+  "emailTone": {
+    "message": "Email Tone"
+  },
+  "emailType": {
+    "message": "Email Type"
+  },
+  "emailLength": {
+    "message": "Email Length"
+  },
+  "toneProfessional": {
+    "message": "Professional"
+  },
+  "toneFriendly": {
+    "message": "Friendly"
+  },
+  "toneFormal": {
+    "message": "Formal"
+  },
+  "toneCasual": {
+    "message": "Casual"
+  },
+  "tonePersuasive": {
+    "message": "Persuasive"
+  },
+  "typeFollowUp": {
+    "message": "Follow-up"
+  },
+  "typeThankYou": {
+    "message": "Thank You"
+  },
+  "typeRequest": {
+    "message": "Request"
+  },
+  "typeComplaint": {
+    "message": "Complaint"
+  },
+  "typeIntroduction": {
+    "message": "Introduction"
+  },
+  "typeApology": {
+    "message": "Apology"
+  },
+  "typeReminder": {
+    "message": "Reminder"
+  },
+  "typeInvitation": {
+    "message": "Invitation"
+  },
+  "enterEmailContext": {
+    "message": "Enter email context"
+  },
+  "generateEmail": {
+    "message": "Generate Email"
+  },
+  "generatedEmail": {
+    "message": "Generated Email"
+  },
+  "subjectLine": {
+    "message": "Subject Line"
+  },
+  "emailBody": {
+    "message": "Email Body"
+  },
+  "alternativeVersions": {
+    "message": "Alternative Versions"
+  },
+  "copyEmail": {
+    "message": "Copy Email"
+  },
+  "emailGenerated": {
+    "message": "Email generated successfully!"
+  },
+  "failedToGenerateEmail": {
+    "message": "Failed to generate email"
+  },
+  "emailGeneratorActivated": {
+    "message": "AI Email Generator activated"
+  },
+  "pageContext": {
+    "message": "Page Context"
+  },
+  "emailContextMode": {
+    "message": "Email Context Mode"
+  },
+  "enterContext": {
+    "message": "Enter Context"
+  },
+  "pageContextMode": {
+    "message": "Page Context"
+  },
+  "emailLengthShort": {
+    "message": "Short (~50 words)"
+  },
+  "emailLengthMedium": {
+    "message": "Medium (~150 words)"
+  },
+  "emailLengthLong": {
+    "message": "Long (~300 words)"
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Please enter email context"
+  },
+  "noContentToGenerateEmail": {
+    "message": "No content found to generate email"
+  },
+  "emailCopied": {
+    "message": "Email copied to clipboard!"
+  },
+  "failedToCopyEmail": {
+    "message": "Failed to copy email"
+  },
+  "generatingEmail": {
+    "message": "Generating email..."
+  },
+  "failedToActivateEmailGenerator": {
+    "message": "Failed to activate email generator"
+  },
+  "aiSEOAnalyzer": {
+    "message": "AI SEO Analyzer"
+  },
+  "aiSEOAnalyzerTitle": {
+    "message": "AI SEO Analyzer"
+  },
+  "aiSEOAnalyzerDescription": {
+    "message": "Analyze and optimize page SEO with AI-powered recommendations"
+  },
+  "seoAnalyzing": {
+    "message": "Analyzing SEO..."
+  },
+  "seoCopyReport": {
+    "message": "Copy Report"
+  },
+  "seoReportCopied": {
+    "message": "SEO report copied to clipboard"
+  },
+  "seoCopyFailed": {
+    "message": "Failed to copy report"
+  },
+  "seoOverallScore": {
+    "message": "Overall SEO Score"
+  },
+  "seoMetaTitle": {
+    "message": "Meta & Title"
+  },
+  "seoContentQuality": {
+    "message": "Content Quality"
+  },
+  "seoHeadingStructure": {
+    "message": "Heading Structure"
+  },
+  "seoImageOptimization": {
+    "message": "Image"
+  },
+  "seoLinkStrategy": {
+    "message": "Links"
+  },
+  "seoTechnicalSEO": {
+    "message": "Technical SEO"
+  },
+  "seoPriorityActions": {
+    "message": "Priority Actions"
+  },
+  "seoRecommendations": {
+    "message": "Recommendations"
+  },
+  "seoCopyReport": {
+    "message": "Copy Report"
+  },
+  "seoAnalyzingDescription": {
+    "message": "Analyzing and optimizing page SEO performance..."
+  },
+  "seoAnalysisSteps": {
+    "message": "Analysis Steps"
+  },
+  "seoStep1": {
+    "message": "Checking meta tags and heading structure"
+  },
+  "seoStep2": {
+    "message": "Analyzing content quality and keyword density"
+  },
+  "seoStep3": {
+    "message": "Evaluating image optimization and link strategy"
+  },
+  "seoStep4": {
+    "message": "Calculating technical SEO and performance metrics"
+  },
+  "seoAnalysisComplete": {
+    "message": "SEO analysis complete!"
+  },
+  "seoAnalysisFailed": {
+    "message": "Failed to analyze SEO"
+  },
+  "seoNoContent": {
+    "message": "No analyzable content found"
+  },
+  "seoMetaAndTitle": {
+    "message": "Meta & Title"
+  },
+  "seoContentQuality": {
+    "message": "Content Quality"
+  },
+  "seoHeadingStructure": {
+    "message": "Heading Structure"
+  },
+  "seoImageOptimization": {
+    "message": "Image"
+  },
+  "seoLinkStrategy": {
+    "message": "Links"
+  },
+  "seoTechnicalSEO": {
+    "message": "Technical SEO"
+  },
+  "seoCategoryScores": {
+    "message": "Category Scores"
+  },
+  "seoSummary": {
+    "message": "Summary"
+  },
+  "seoExcellent": {
+    "message": "Excellent SEO performance"
+  },
+  "seoGood": {
+    "message": "Good SEO performance"
+  },
+  "seoFair": {
+    "message": "Fair SEO performance"
+  },
+  "seoNeedsImprovement": {
+    "message": "Needs improvement"
+  },
+  "seoPoor": {
+    "message": "Poor SEO performance"
+  },
+  "language": {
+    "message": "English"
+  },
+  "history": {
+    "message": "History"
+  },
+  "aiChat": {
+    "message": "AI Chat"
+  },
+  "aiChatTitle": {
+    "message": "Chat with AI about this page"
+  },
+  "aiChatDescription": {
+    "message": "Have a conversation with AI about the current webpage"
+  },
+  "analyzing": {
+    "message": "Analyzing page..."
+  },
+  "typeMessage": {
+    "message": "Type your message..."
+  },
+  "send": {
+    "message": "Send"
+  },
+  "chatWelcome": {
+    "message": "Hi! I've analyzed this page. Ask me anything!"
+  },
+  "errorMessage": {
+    "message": "Sorry, I encountered an error. Please try again."
+  },
+  "sendError": {
+    "message": "Failed to send message"
+  },
+  "activationError": {
+    "message": "Failed to activate AI Chat"
+  },
+  "copyHistoryManager": {
+    "message": "Copy History"
+  },
+  "copyHistoryManagerTitle": {
+    "message": "Track Clipboard History"
+  },
+  "copyHistoryManagerDescription": {
+    "message": "Track and manage copied text and URLs"
+  },
+  "itemCopied": {
+    "message": "Item added to history"
+  },
+  "searchHistory": {
+    "message": "Search history..."
+  },
+  "clearAllHistory": {
+    "message": "Clear All History"
+  },
+  "confirmClearAll": {
+    "message": "Are you sure you want to clear all history?"
+  },
+  "noItemsYet": {
+    "message": "No items yet"
+  },
+  "startCopyingHint": {
+    "message": "Start copying text to see it here"
+  },
+  "copyAgain": {
+    "message": "Copy"
+  },
+  "copiedToClipboard": {
+    "message": "Copied to clipboard"
+  },
+  "historyCleared": {
+    "message": "History cleared"
+  },
+  "clearHistoryError": {
+    "message": "Failed to clear history"
+  },
+  "copyHistoryActivationError": {
+    "message": "Failed to activate Copy History Manager"
   }
 }

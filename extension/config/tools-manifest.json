@@ -362,6 +362,70 @@
       "tags": ["ai", "detection", "analysis", "verification"],
       "keywords": ["ai detection", "ai generated", "content analysis", "verification", "authenticity"],
       "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "ai-email-generator",
+      "name": "AI Email Generator",
+      "category": "ai",
+      "module": "ai/emailGenerator.js",
+      "order": 21,
+      "icon": "email",
+      "i18n": {
+        "label": "aiEmailGenerator",
+        "title": "aiEmailGeneratorTitle",
+        "description": "aiEmailGeneratorDescription"
+      },
+      "tags": ["ai", "email", "writing", "productivity"],
+      "keywords": ["email", "mail", "compose", "write", "professional"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "ai-seo-analyzer",
+      "name": "AI SEO Analyzer",
+      "category": "ai",
+      "module": "ai/seoAnalyzer.js",
+      "order": 22,
+      "icon": "search-check",
+      "i18n": {
+        "label": "aiSEOAnalyzer",
+        "title": "aiSEOAnalyzerTitle",
+        "description": "aiSEOAnalyzerDescription"
+      },
+      "tags": ["ai", "seo", "optimization", "analysis"],
+      "keywords": ["seo", "optimization", "meta", "keywords", "ranking", "search"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "ai-chat",
+      "name": "AI Chat",
+      "category": "ai",
+      "module": "ai/aiChat.js",
+      "order": 23,
+      "icon": "message",
+      "i18n": {
+        "label": "aiChat",
+        "title": "aiChatTitle",
+        "description": "aiChatDescription"
+      },
+      "tags": ["ai", "chat", "assistant", "conversation"],
+      "keywords": ["chat", "ai", "assistant", "help", "question"],
+      "permissions": ["activeTab", "storage"]
+    },
+    {
+      "id": "copy-history-manager",
+      "name": "Copy History Manager",
+      "category": "utilities",
+      "module": "utilities/copyHistoryManager.js",
+      "order": 24,
+      "icon": "clipboard-list",
+      "i18n": {
+        "label": "copyHistoryManager",
+        "title": "copyHistoryManagerTitle",
+        "description": "copyHistoryManagerDescription"
+      },
+      "tags": ["clipboard", "copy", "history", "paste"],
+      "keywords": ["copy", "clipboard", "history", "paste", "track"],
+      "permissions": ["activeTab", "storage"]
     }
   ]
 }

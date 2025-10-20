@@ -729,7 +729,7 @@
     "message": "Générateur de Palette"
   },
   "colorPaletteGeneratorDescription": {
-    "message": "Extraire les couleurs de la page et générer des palettes harmoniques avec scores d'accessibilité"
+    "message": "Extraire les couleurs de la page et générer des palettes"
   },
   "inspect": {
     "message": "Inspecter"
@@ -750,7 +750,7 @@
     "message": "Générateur PDF"
   },
   "pdfGeneratorDescription": {
-    "message": "Convertir la page actuelle en PDF et télécharger instantanément"
+    "message": "Convertir la page actuelle en PDF et télécharger"
   },
   "highlighter": {
     "message": "Surligneur"
@@ -759,7 +759,7 @@
     "message": "Surligneur de texte"
   },
   "textHighlighterDescription": {
-    "message": "Surligner du texte avec des couleurs et sauvegarder les surlignages par site"
+    "message": "Surligner du texte avec des couleurs et sauvegarder"
   },
   "cmdTextHighlighter": {
     "message": "Activer le surligneur de texte"
@@ -783,7 +783,7 @@
     "message": "Générateur de Code QR"
   },
   "qrCodeGeneratorDescription": {
-    "message": "Générer des codes QR personnalisables pour la page actuelle"
+    "message": "Générer des codes QR personnalisables pour la page"
   },
   "bookmarkManager": {
     "message": "Gestionnaire de Favoris"
@@ -792,7 +792,7 @@
     "message": "Gestionnaire de Favoris"
   },
   "bookmarkManagerDescription": {
-    "message": "Sauvegarder et organiser les favoris avec des dossiers, étiquettes et recherche puissante"
+    "message": "Sauvegarder et organiser les favoris avec dossiers et étiquettes"
   },
   "addBookmark": {
     "message": "Ajouter un Favori"
@@ -852,7 +852,7 @@
     "message": "Enregistrer Vidéo d'Écran"
   },
   "videoRecorderDescription": {
-    "message": "Enregistrez l'activité de votre écran avec support audio et exportez en plusieurs formats"
+    "message": "Enregistrez l'activité de votre écran avec support audio"
   },
   "darkModeToggle": {
     "message": "Mode Sombre"
@@ -1140,7 +1140,7 @@
     "message": "Détecteur de Contenu IA"
   },
   "aiContentDetectorDescription": {
-    "message": "Détectez le contenu généré par l'IA avec une analyse multi-métrique"
+    "message": "Détectez le contenu généré par l'IA avec analyse multi-métrique"
   },
   "analyzeInput": {
     "message": "Entrer du Texte"
@@ -1216,5 +1216,326 @@
   },
   "analyze": {
     "message": "Analyser le Contenu"
+  },
+  "aiEmailGenerator": {
+    "message": "Générateur d'E-mails IA"
+  },
+  "aiEmailGeneratorTitle": {
+    "message": "Générateur d'E-mails IA"
+  },
+  "aiEmailGeneratorDescription": {
+    "message": "Générez des e-mails professionnels avec l'IA"
+  },
+  "emailTone": {
+    "message": "Ton de l'E-mail"
+  },
+  "emailType": {
+    "message": "Type d'E-mail"
+  },
+  "emailLength": {
+    "message": "Longueur de l'E-mail"
+  },
+  "toneProfessional": {
+    "message": "Professionnel"
+  },
+  "toneFriendly": {
+    "message": "Amical"
+  },
+  "toneFormal": {
+    "message": "Formel"
+  },
+  "toneCasual": {
+    "message": "Décontracté"
+  },
+  "tonePersuasive": {
+    "message": "Persuasif"
+  },
+  "typeFollowUp": {
+    "message": "Suivi"
+  },
+  "typeThankYou": {
+    "message": "Remerciement"
+  },
+  "typeRequest": {
+    "message": "Demande"
+  },
+  "typeComplaint": {
+    "message": "Plainte"
+  },
+  "typeIntroduction": {
+    "message": "Introduction"
+  },
+  "typeApology": {
+    "message": "Excuse"
+  },
+  "typeReminder": {
+    "message": "Rappel"
+  },
+  "typeInvitation": {
+    "message": "Invitation"
+  },
+  "enterEmailContext": {
+    "message": "Entrez le contexte de l'e-mail"
+  },
+  "generateEmail": {
+    "message": "Générer l'E-mail"
+  },
+  "generatedEmail": {
+    "message": "E-mail Généré"
+  },
+  "subjectLine": {
+    "message": "Ligne d'Objet"
+  },
+  "emailBody": {
+    "message": "Corps de l'E-mail"
+  },
+  "alternativeVersions": {
+    "message": "Versions Alternatives"
+  },
+  "copyEmail": {
+    "message": "Copier l'E-mail"
+  },
+  "emailGenerated": {
+    "message": "E-mail généré avec succès !"
+  },
+  "failedToGenerateEmail": {
+    "message": "Échec de génération de l'e-mail"
+  },
+  "emailGeneratorActivated": {
+    "message": "Générateur d'E-mails IA activé"
+  },
+  "pageContext": {
+    "message": "Contexte de la Page"
+  },
+  "emailContextMode": {
+    "message": "Mode Contexte E-mail"
+  },
+  "enterContext": {
+    "message": "Entrer le Contexte"
+  },
+  "pageContextMode": {
+    "message": "Contexte de la Page"
+  },
+  "emailLengthShort": {
+    "message": "Court (~50 mots)"
+  },
+  "emailLengthMedium": {
+    "message": "Moyen (~150 mots)"
+  },
+  "emailLengthLong": {
+    "message": "Long (~300 mots)"
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Veuillez entrer le contexte de l'e-mail"
+  },
+  "noContentToGenerateEmail": {
+    "message": "Aucun contenu trouvé pour générer l'e-mail"
+  },
+  "emailCopied": {
+    "message": "E-mail copié dans le presse-papiers !"
+  },
+  "failedToCopyEmail": {
+    "message": "Échec de copie de l'e-mail"
+  },
+  "generatingEmail": {
+    "message": "Génération de l'e-mail..."
+  },
+  "failedToActivateEmailGenerator": {
+    "message": "Échec d'activation du générateur d'e-mails"
+  },
+  "aiSEOAnalyzer": {
+    "message": "Analyseur SEO IA"
+  },
+  "aiSEOAnalyzerTitle": {
+    "message": "Analyseur SEO IA"
+  },
+  "aiSEOAnalyzerDescription": {
+    "message": "Analyser et optimiser le SEO de la page avec des recommandations alimentées par l'IA"
+  },
+  "seoAnalyzing": {
+    "message": "Analyse SEO en cours..."
+  },
+  "seoCopyReport": {
+    "message": "Copier le Rapport"
+  },
+  "seoReportCopied": {
+    "message": "Rapport SEO copié dans le presse-papiers"
+  },
+  "seoCopyFailed": {
+    "message": "Échec de la copie du rapport"
+  },
+  "seoOverallScore": {
+    "message": "Score SEO Global"
+  },
+  "seoMetaTitle": {
+    "message": "Meta & Titre"
+  },
+  "seoContentQuality": {
+    "message": "Qualité du Contenu"
+  },
+  "seoHeadingStructure": {
+    "message": "Structure des Titres"
+  },
+  "seoImageOptimization": {
+    "message": "Image"
+  },
+  "seoLinkStrategy": {
+    "message": "Stratégie de Liens"
+  },
+  "seoTechnicalSEO": {
+    "message": "SEO Technique"
+  },
+  "seoPriorityActions": {
+    "message": "Actions Prioritaires"
+  },
+  "seoRecommendations": {
+    "message": "Recommandations"
+  },
+  "seoCopyReport": {
+    "message": "Copier le Rapport"
+  },
+  "seoAnalyzingDescription": {
+    "message": "Analyse et optimisation des performances SEO de la page..."
+  },
+  "seoAnalysisSteps": {
+    "message": "Étapes d'Analyse"
+  },
+  "seoStep1": {
+    "message": "Vérification des balises meta et de la structure des titres"
+  },
+  "seoStep2": {
+    "message": "Analyse de la qualité du contenu et de la densité des mots-clés"
+  },
+  "seoStep3": {
+    "message": "Évaluation de l'optimisation des images et de la stratégie des liens"
+  },
+  "seoStep4": {
+    "message": "Calcul des métriques SEO techniques et de performance"
+  },
+  "seoAnalysisComplete": {
+    "message": "Analyse SEO terminée !"
+  },
+  "seoAnalysisFailed": {
+    "message": "Échec de l'analyse SEO"
+  },
+  "seoNoContent": {
+    "message": "Aucun contenu analysable trouvé"
+  },
+  "seoMetaAndTitle": {
+    "message": "Meta & Titre"
+  },
+  "seoContentQuality": {
+    "message": "Qualité du Contenu"
+  },
+  "seoHeadingStructure": {
+    "message": "Structure des Titres"
+  },
+  "seoImageOptimization": {
+    "message": "Image"
+  },
+  "seoLinkStrategy": {
+    "message": "Liens"
+  },
+  "seoTechnicalSEO": {
+    "message": "SEO Technique"
+  },
+  "seoCategoryScores": {
+    "message": "Scores par Catégorie"
+  },
+  "seoSummary": {
+    "message": "Résumé"
+  },
+  "seoExcellent": {
+    "message": "Performance SEO excellente"
+  },
+  "seoGood": {
+    "message": "Bonne performance SEO"
+  },
+  "seoFair": {
+    "message": "Performance SEO correcte"
+  },
+  "seoNeedsImprovement": {
+    "message": "Nécessite des améliorations"
+  },
+  "seoPoor": {
+    "message": "Performance SEO faible"
+  },
+  "language": {
+    "message": "Français"
+  },
+  "history": {
+    "message": "Historique"
+  },
+  "aiChat": {
+    "message": "Chat IA"
+  },
+  "aiChatTitle": {
+    "message": "Discuter avec l'IA à propos de cette page"
+  },
+  "aiChatDescription": {
+    "message": "Avoir une conversation avec l'IA sur la page web actuelle"
+  },
+  "analyzing": {
+    "message": "Analyse de la page..."
+  },
+  "typeMessage": {
+    "message": "Tapez votre message..."
+  },
+  "send": {
+    "message": "Envoyer"
+  },
+  "chatWelcome": {
+    "message": "Salut ! J'ai analysé cette page. Posez-moi n'importe quelle question !"
+  },
+  "errorMessage": {
+    "message": "Désolé, une erreur s'est produite. Veuillez réessayer."
+  },
+  "sendError": {
+    "message": "Échec de l'envoi du message"
+  },
+  "activationError": {
+    "message": "Échec de l'activation du Chat IA"
+  },
+  "copyHistoryManager": {
+    "message": "Historique de Copie"
+  },
+  "copyHistoryManagerTitle": {
+    "message": "Suivre l'Historique du Presse-papiers"
+  },
+  "copyHistoryManagerDescription": {
+    "message": "Suivre et gérer les textes et URLs copiés"
+  },
+  "itemCopied": {
+    "message": "Élément ajouté à l'historique"
+  },
+  "searchHistory": {
+    "message": "Rechercher dans l'historique..."
+  },
+  "clearAllHistory": {
+    "message": "Effacer Tout l'Historique"
+  },
+  "confirmClearAll": {
+    "message": "Êtes-vous sûr de vouloir effacer tout l'historique ?"
+  },
+  "noItemsYet": {
+    "message": "Aucun élément pour le moment"
+  },
+  "startCopyingHint": {
+    "message": "Commencez à copier du texte pour le voir ici"
+  },
+  "copyAgain": {
+    "message": "Copier"
+  },
+  "copiedToClipboard": {
+    "message": "Copié dans le presse-papiers"
+  },
+  "historyCleared": {
+    "message": "Historique effacé"
+  },
+  "clearHistoryError": {
+    "message": "Échec de l'effacement de l'historique"
+  },
+  "copyHistoryActivationError": {
+    "message": "Échec de l'activation du Gestionnaire d'Historique de Copie"
   }
 }

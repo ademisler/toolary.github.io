@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1760916283309" clover="3.2.0">
-  <project timestamp="1760916283310" name="All files">
-    <metrics statements="285" coveredstatements="115" conditionals="190" coveredconditionals="72" methods="56" coveredmethods="33" elements="531" coveredelements="220" complexity="0" loc="285" ncloc="285" packages="1" files="6" classes="6"/>
+<coverage generated="1761001380112" clover="3.2.0">
+  <project timestamp="1761001380112" name="All files">
+    <metrics statements="285" coveredstatements="128" conditionals="190" coveredconditionals="72" methods="56" coveredmethods="34" elements="531" coveredelements="234" complexity="0" loc="285" ncloc="285" packages="1" files="6" classes="6"/>
     <file name="aiConfig.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/aiConfig.js">
-      <metrics statements="12" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <line num="4" count="0" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="15" count="0" type="stmt"/>
-      <line num="57" count="0" type="stmt"/>
-      <line num="101" count="0" type="stmt"/>
+      <metrics statements="12" coveredstatements="6" conditionals="9" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="57" count="1" type="stmt"/>
+      <line num="101" count="1" type="stmt"/>
       <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="110" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="114" count="0" type="stmt"/>
       <line num="115" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="116" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="120" count="0" type="stmt"/>
-      <line num="124" count="0" type="stmt"/>
+      <line num="124" count="1" type="stmt"/>
     </file>
     <file name="aiManager.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/aiManager.js">
-      <metrics statements="157" coveredstatements="0" conditionals="93" coveredconditionals="0" methods="22" coveredmethods="0"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="11" count="0" type="stmt"/>
-      <line num="12" count="0" type="stmt"/>
-      <line num="13" count="0" type="stmt"/>
-      <line num="14" count="0" type="stmt"/>
+      <metrics statements="157" coveredstatements="7" conditionals="93" coveredconditionals="0" methods="22" coveredmethods="1"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
       <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="21" count="0" type="stmt"/>
       <line num="22" count="0" type="stmt"/>
@@ -175,18 +175,18 @@
       <line num="357" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="358" count="0" type="stmt"/>
       <line num="361" count="0" type="stmt"/>
-      <line num="367" count="0" type="stmt"/>
+      <line num="367" count="1" type="stmt"/>
     </file>
     <file name="constants.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/constants.js">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <line num="1" count="10" type="stmt"/>
-      <line num="28" count="10" type="stmt"/>
-      <line num="30" count="30" type="stmt"/>
-      <line num="31" count="40" type="stmt"/>
       <line num="34" count="10" type="stmt"/>
-      <line num="48" count="10" type="stmt"/>
+      <line num="36" count="40" type="stmt"/>
+      <line num="37" count="50" type="stmt"/>
+      <line num="40" count="10" type="stmt"/>
       <line num="54" count="10" type="stmt"/>
-      <line num="56" count="10" type="stmt"/>
+      <line num="60" count="10" type="stmt"/>
+      <line num="62" count="10" type="stmt"/>
     </file>
     <file name="messageRouter.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/messageRouter.js">
       <metrics statements="29" coveredstatements="29" conditionals="24" coveredconditionals="20" methods="8" coveredmethods="8"/>
@@ -293,8 +293,8 @@
       <line num="102" count="3" type="stmt"/>
       <line num="106" count="1" type="stmt"/>
       <line num="107" count="1" type="stmt"/>
-      <line num="108" count="4" type="stmt"/>
-      <line num="112" count="3" type="stmt"/>
+      <line num="108" count="5" type="stmt"/>
+      <line num="112" count="4" type="stmt"/>
       <line num="116" count="8" type="stmt"/>
       <line num="117" count="8" type="cond" truecount="2" falsecount="0"/>
       <line num="118" count="1" type="stmt"/>

@@ -1,7 +1,7 @@
 {
   "name": "toolary",
-  "version": "1.0.1",
-  "description": "Toolary - A comprehensive Chrome extension with 19 web productivity tools including AI Summarizer, AI Translator, color picker, element inspector, screenshot capture, bookmark manager, dark mode toggle, and more. Features AI-powered text summarization and translation with Gemini API, searchable popup, favorites, and recent history.",
+  "version": "1.0.0",
+  "description": "Toolary - A comprehensive Chrome extension with 24 web productivity tools including AI Summarizer, AI Translator, AI Content Detector, AI Email Generator, AI SEO Analyzer, AI Chat, color picker, element inspector, screenshot capture, bookmark manager, dark mode toggle, copy history manager, and more. Features AI-powered text summarization, translation, content detection, email generation, SEO analysis, and chat with Gemini API, searchable popup, favorites system, and recent history.",
   "main": "index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand",

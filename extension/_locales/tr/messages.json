@@ -729,7 +729,7 @@
     "message": "Renk Paleti Oluşturucu"
   },
   "colorPaletteGeneratorDescription": {
-    "message": "Sayfa renklerini çıkar ve erişilebilirlik skorları ile uyumlu paletler oluştur"
+    "message": "Sayfa renklerini çıkar ve uyumlu paletler oluştur"
   },
   "inspect": {
     "message": "İncele"
@@ -750,7 +750,7 @@
     "message": "PDF Oluşturucu"
   },
   "pdfGeneratorDescription": {
-    "message": "Mevcut sayfayı PDF'e çevir ve anında indir"
+    "message": "Mevcut sayfayı PDF'e çevir ve indir"
   },
   "highlighter": {
     "message": "İşaretleyici"
@@ -759,7 +759,7 @@
     "message": "Metin İşaretleyici"
   },
   "textHighlighterDescription": {
-    "message": "Metni renklerle işaretle ve işaretlemeleri site bazında kaydet"
+    "message": "Metni renklerle işaretle ve site bazında kaydet"
   },
   "cmdTextHighlighter": {
     "message": "Metin İşaretleyiciyi Etkinleştir"
@@ -792,7 +792,7 @@
     "message": "Yer İmi Yöneticisi"
   },
   "bookmarkManagerDescription": {
-    "message": "Klasörler, etiketler ve güçlü arama ile yer imlerini kaydet ve düzenle"
+    "message": "Klasörler ve etiketler ile yer imlerini kaydet"
   },
   "addBookmark": {
     "message": "Yer İmi Ekle"
@@ -852,7 +852,7 @@
     "message": "Ekran Video Kaydı"
   },
   "videoRecorderDescription": {
-    "message": "Ses desteği ile ekran aktivitenizi kaydedin ve çoklu formatlarda dışa aktarın"
+    "message": "Ses desteği ile ekran aktivitenizi kaydedin"
   },
   "darkModeToggle": {
     "message": "Karanlık Mod"
@@ -1140,7 +1140,7 @@
     "message": "AI İçerik Dedektörü"
   },
   "aiContentDetectorDescription": {
-    "message": "Çok metrikli analiz ile AI tarafından üretilen içeriği tespit edin"
+    "message": "Çok metrikli analiz ile AI içeriği tespit edin"
   },
   "analyzeInput": {
     "message": "Metin Girin"
@@ -1216,5 +1216,326 @@
   },
   "analyze": {
     "message": "İçeriği Analiz Et"
+  },
+  "aiEmailGenerator": {
+    "message": "AI E-posta Oluşturucu"
+  },
+  "aiEmailGeneratorTitle": {
+    "message": "AI E-posta Oluşturucu"
+  },
+  "aiEmailGeneratorDescription": {
+    "message": "AI ile profesyonel e-postalar oluşturun"
+  },
+  "emailTone": {
+    "message": "E-posta Tonu"
+  },
+  "emailType": {
+    "message": "E-posta Türü"
+  },
+  "emailLength": {
+    "message": "E-posta Uzunluğu"
+  },
+  "toneProfessional": {
+    "message": "Profesyonel"
+  },
+  "toneFriendly": {
+    "message": "Samimi"
+  },
+  "toneFormal": {
+    "message": "Resmi"
+  },
+  "toneCasual": {
+    "message": "Günlük"
+  },
+  "tonePersuasive": {
+    "message": "İkna Edici"
+  },
+  "typeFollowUp": {
+    "message": "Takip"
+  },
+  "typeThankYou": {
+    "message": "Teşekkür"
+  },
+  "typeRequest": {
+    "message": "Talep"
+  },
+  "typeComplaint": {
+    "message": "Şikayet"
+  },
+  "typeIntroduction": {
+    "message": "Tanıtım"
+  },
+  "typeApology": {
+    "message": "Özür"
+  },
+  "typeReminder": {
+    "message": "Hatırlatma"
+  },
+  "typeInvitation": {
+    "message": "Davet"
+  },
+  "enterEmailContext": {
+    "message": "E-posta bağlamını girin"
+  },
+  "generateEmail": {
+    "message": "E-posta Oluştur"
+  },
+  "generatedEmail": {
+    "message": "Oluşturulan E-posta"
+  },
+  "subjectLine": {
+    "message": "Konu Satırı"
+  },
+  "emailBody": {
+    "message": "E-posta İçeriği"
+  },
+  "alternativeVersions": {
+    "message": "Alternatif Versiyonlar"
+  },
+  "copyEmail": {
+    "message": "E-postayı Kopyala"
+  },
+  "emailGenerated": {
+    "message": "E-posta başarıyla oluşturuldu!"
+  },
+  "failedToGenerateEmail": {
+    "message": "E-posta oluşturulamadı"
+  },
+  "emailGeneratorActivated": {
+    "message": "AI E-posta Oluşturucu etkinleştirildi"
+  },
+  "pageContext": {
+    "message": "Sayfa Bağlamı"
+  },
+  "emailContextMode": {
+    "message": "E-posta Bağlam Modu"
+  },
+  "enterContext": {
+    "message": "Bağlam Gir"
+  },
+  "pageContextMode": {
+    "message": "Sayfa Bağlamı"
+  },
+  "emailLengthShort": {
+    "message": "Kısa (~50 kelime)"
+  },
+  "emailLengthMedium": {
+    "message": "Orta (~150 kelime)"
+  },
+  "emailLengthLong": {
+    "message": "Uzun (~300 kelime)"
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Lütfen e-posta bağlamını girin"
+  },
+  "noContentToGenerateEmail": {
+    "message": "E-posta oluşturmak için içerik bulunamadı"
+  },
+  "emailCopied": {
+    "message": "E-posta panoya kopyalandı!"
+  },
+  "failedToCopyEmail": {
+    "message": "E-posta kopyalanamadı"
+  },
+  "generatingEmail": {
+    "message": "E-posta oluşturuluyor..."
+  },
+  "failedToActivateEmailGenerator": {
+    "message": "E-posta oluşturucu etkinleştirilemedi"
+  },
+  "aiSEOAnalyzer": {
+    "message": "AI SEO Analizci"
+  },
+  "aiSEOAnalyzerTitle": {
+    "message": "AI SEO Analizci"
+  },
+  "aiSEOAnalyzerDescription": {
+    "message": "AI destekli önerilerle sayfa SEO'sunu analiz edin ve optimize edin"
+  },
+  "seoAnalyzing": {
+    "message": "SEO analiz ediliyor..."
+  },
+  "seoCopyReport": {
+    "message": "Raporu Kopyala"
+  },
+  "seoReportCopied": {
+    "message": "SEO raporu panoya kopyalandı"
+  },
+  "seoCopyFailed": {
+    "message": "Rapor kopyalanamadı"
+  },
+  "seoOverallScore": {
+    "message": "Genel SEO Skoru"
+  },
+  "seoMetaTitle": {
+    "message": "Meta & Başlık"
+  },
+  "seoContentQuality": {
+    "message": "İçerik Kalitesi"
+  },
+  "seoHeadingStructure": {
+    "message": "Başlık Yapısı"
+  },
+  "seoImageOptimization": {
+    "message": "Görsel"
+  },
+  "seoLinkStrategy": {
+    "message": "Bağlantılar"
+  },
+  "seoTechnicalSEO": {
+    "message": "Teknik SEO"
+  },
+  "seoPriorityActions": {
+    "message": "Öncelikli Eylemler"
+  },
+  "seoRecommendations": {
+    "message": "Öneriler"
+  },
+  "seoCopyReport": {
+    "message": "Raporu Kopyala"
+  },
+  "seoAnalyzingDescription": {
+    "message": "Sayfa SEO performansı analiz ediliyor ve optimize ediliyor..."
+  },
+  "seoAnalysisSteps": {
+    "message": "Analiz Adımları"
+  },
+  "seoStep1": {
+    "message": "Meta etiketleri ve başlık yapısı kontrol ediliyor"
+  },
+  "seoStep2": {
+    "message": "İçerik kalitesi ve anahtar kelime yoğunluğu analiz ediliyor"
+  },
+  "seoStep3": {
+    "message": "Görsel optimizasyonu ve bağlantı stratejisi değerlendiriliyor"
+  },
+  "seoStep4": {
+    "message": "Teknik SEO ve performans metrikleri hesaplanıyor"
+  },
+  "seoAnalysisComplete": {
+    "message": "SEO analizi tamamlandı!"
+  },
+  "seoAnalysisFailed": {
+    "message": "SEO analizi başarısız"
+  },
+  "seoNoContent": {
+    "message": "Analiz edilebilir içerik bulunamadı"
+  },
+  "seoMetaAndTitle": {
+    "message": "Meta & Başlık"
+  },
+  "seoContentQuality": {
+    "message": "İçerik Kalitesi"
+  },
+  "seoHeadingStructure": {
+    "message": "Başlık Yapısı"
+  },
+  "seoImageOptimization": {
+    "message": "Görsel"
+  },
+  "seoLinkStrategy": {
+    "message": "Bağlantılar"
+  },
+  "seoTechnicalSEO": {
+    "message": "Teknik SEO"
+  },
+  "seoCategoryScores": {
+    "message": "Kategori Skorları"
+  },
+  "seoSummary": {
+    "message": "Özet"
+  },
+  "seoExcellent": {
+    "message": "Mükemmel SEO performansı"
+  },
+  "seoGood": {
+    "message": "İyi SEO performansı"
+  },
+  "seoFair": {
+    "message": "Orta SEO performansı"
+  },
+  "seoNeedsImprovement": {
+    "message": "İyileştirme gerekiyor"
+  },
+  "seoPoor": {
+    "message": "Zayıf SEO performansı"
+  },
+  "language": {
+    "message": "Türkçe"
+  },
+  "history": {
+    "message": "Geçmiş"
+  },
+  "aiChat": {
+    "message": "AI Sohbet"
+  },
+  "aiChatTitle": {
+    "message": "Bu sayfa hakkında AI ile sohbet et"
+  },
+  "aiChatDescription": {
+    "message": "Mevcut web sayfası hakkında AI ile konuşun"
+  },
+  "analyzing": {
+    "message": "Sayfa analiz ediliyor..."
+  },
+  "typeMessage": {
+    "message": "Mesajınızı yazın..."
+  },
+  "send": {
+    "message": "Gönder"
+  },
+  "chatWelcome": {
+    "message": "Merhaba! Bu sayfayı analiz ettim. Her şeyi sorabilirsiniz!"
+  },
+  "errorMessage": {
+    "message": "Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "sendError": {
+    "message": "Mesaj gönderilemedi"
+  },
+  "activationError": {
+    "message": "AI Sohbet etkinleştirilemedi"
+  },
+  "copyHistoryManager": {
+    "message": "Kopya Geçmişi"
+  },
+  "copyHistoryManagerTitle": {
+    "message": "Pano Geçmişini İzle"
+  },
+  "copyHistoryManagerDescription": {
+    "message": "Kopyalanan metin ve URL'leri izle ve yönet"
+  },
+  "itemCopied": {
+    "message": "Öğe geçmişe eklendi"
+  },
+  "searchHistory": {
+    "message": "Geçmişi ara..."
+  },
+  "clearAllHistory": {
+    "message": "Tüm Geçmişi Temizle"
+  },
+  "confirmClearAll": {
+    "message": "Tüm geçmişi temizlemek istediğinizden emin misiniz?"
+  },
+  "noItemsYet": {
+    "message": "Henüz öğe yok"
+  },
+  "startCopyingHint": {
+    "message": "Metin kopyalamaya başlayın ve burada görün"
+  },
+  "copyAgain": {
+    "message": "Kopyala"
+  },
+  "copiedToClipboard": {
+    "message": "Panoya kopyalandı"
+  },
+  "historyCleared": {
+    "message": "Geçmiş temizlendi"
+  },
+  "clearHistoryError": {
+    "message": "Geçmiş temizlenemedi"
+  },
+  "copyHistoryActivationError": {
+    "message": "Kopya Geçmişi Yöneticisi etkinleştirilemedi"
   }
 }

@@ -4,7 +4,6 @@ import {
   showInfo,
   showWarning,
   handleError, 
-  sanitizeInput, 
   addEventListenerWithCleanup,
   copyText
 } from '../../shared/helpers.js';

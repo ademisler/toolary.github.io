@@ -1,14 +1,14 @@
-# AGENTS.md – Toolary AI Developer Guide
+# AGENTS.md – Toolary Developer Guide
 
 ## Project Overview
 
-**Toolary** is a Chrome extension (Manifest V3) providing 20 web productivity tools with AI integration and architecture to scale to 50+ tools.
+**Toolary** is a Chrome extension (Manifest V3) providing 24 web productivity tools with AI integration and favorite system.
 
-- **Version:** 1.0.1
+- **Version:** 1.0.0
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
 - **AI Support:** Gemini API integration with key rotation and model selection
-- **Test Coverage:** 98.3% (48 tests passing, AI modules included)
+- **Test Coverage:** 44.21% (86 tests passing)
 
 ## Architecture
 
@@ -51,8 +51,8 @@ extension/
 │   ├── inspect/              # colorPicker, elementPicker, fontPicker, linkPicker
 │   ├── capture/              # mediaPicker, textPicker, screenshotPicker, pdfGenerator, qrCodeGenerator, videoRecorder
 │   ├── enhance/              # stickyNotesPicker, textHighlighter, readingMode, bookmarkManager, darkModeToggle
-│   ├── utilities/            # siteInfoPicker, colorPaletteGenerator
-│   └── ai/                   # textSummarizer
+│   ├── utilities/            # siteInfoPicker, colorPaletteGenerator, copyHistoryManager
+│   └── ai/                   # textSummarizer, textTranslator, contentDetector, emailGenerator, seoAnalyzer, aiChat
 ├── config/
 │   ├── tools-manifest.json   # Tool metadata (id, name, category, icon, tags, etc.)
 │   └── ai-tools-config.json  # AI tool model preferences
@@ -197,104 +197,22 @@ Add to `config/ai-tools-config.json`:
 3. **Implement proper cleanup**
 4. **Monitor API usage and costs**
 
-### Current AI Tools
+## Favorite System
 
-#### AI Summarizer (Completed)
-First AI-powered tool in Toolary, providing intelligent text summarization.
+Toolary includes a comprehensive favorite system that allows users to mark tools as favorites and prioritize them in the tool grid.
 
-**Features:**
-- Auto mode: Extracts page content using semantic selectors and scoring algorithm
-- Manual mode: Text selection with visual picker interface
-- Three summary lengths: Short (~50 words), Medium (~150 words), Long (~300 words)
-- Keyword extraction: 5-8 relevant keywords
-- Multi-language UI: English, Turkish, French
-- AI responses in 40+ languages
-- Sidebar panel interface (400px width)
-- Floating widget toggle (dark gray theme)
-- History storage: Last 10 summaries
-- Copy to clipboard with visual feedback
+### Features
+- **Star Icon:** Each tool card displays a star icon in the top-right corner
+- **Smart Sorting:** Favorite tools always appear at the top, sorted by usage count among themselves
+- **Persistent Storage:** Favorites are stored in `chrome.storage.local` with key `toolaryFavoriteTools`
+- **Real-time Updates:** Clicking the star immediately toggles favorite status and reorders the grid
+- **Smooth Animations:** Grid reordering with CSS transitions for better UX
 
-**Technical Implementation:**
-- Model: Gemini 2.5 Flash (Smart)
-- Content extraction: Hybrid approach (semantic + scoring)
-- UI language: Manual loading from chrome.storage.local
-- AI language: User preference from settings
-- Storage key: `toolaryAISummarizerHistory`
-- Icon: `brain` (professional AI representation)
-
-#### AI Translator (Completed)
-Second AI-powered tool in Toolary, providing intelligent text translation with 40+ language support and Google Translate-style in-place page translation.
-
-**Features:**
-- Three translation modes: Manual input, Text selection, Full page content
-- **In-place page translation:** Preserves page layout and translates text directly in DOM (Google Translate style)
-- Source language auto-detection using AI
-- 40+ target language support (from aiConfig.js)
-- Translation history: Last 10 translations
-- Floating restore button to revert translated pages to original
-- Multi-language UI: English, Turkish, French
-- Sidebar panel interface (400px width)
-- Floating widget toggle (dark gray theme)
-- Progress indicator during batch translation
-- Copy to clipboard with visual feedback
-- Dark mode compatible
-
-**Technical Implementation:**
-- Model: Gemini 2.5 Flash (Smart)
-- Language detection: AI-powered auto-detection
-- In-place translation: DOM TreeWalker for text node extraction
-- Batch processing: 3000 char chunks, 100 nodes per batch
-- Performance optimization: 200ms delay between API calls (5-7x faster)
-- Content extraction: Reuses readingMode.js algorithm (for input/selection modes)
-- UI language: Manual loading from chrome.storage.local
-- CSS variables for theming
-- Storage key: `toolaryAITranslatorHistory`
-- Icon: `languages` (globe with translation indicator)
-
-#### AI Content Detector (Completed)
-Third AI-powered tool in Toolary, providing sophisticated multi-metric analysis to detect AI-generated content with inline highlighting and detailed scoring.
-
-**Features:**
-- Three analysis modes: Manual input, Text selection, Page content
-- **Multi-metric analysis:** Writing style, word choice, structure consistency
-- AI probability score (0-100%) with confidence level (High/Medium/Low)
-- **Inline highlighting:** Marks suspicious text segments on page with yellow/orange highlights
-- Suspicious sections identification with explanations
-- Detailed metric breakdown with progress bars
-- Analysis history: Last 10 analyses
-- Multi-language UI: English, Turkish, French
-- Sidebar panel interface (400px width)
-- Floating widget toggle (dark gray theme)
-- Copy results to clipboard
-- Toggle highlights on/off
-- Dark mode compatible
-
-**Technical Implementation:**
-- Model: Gemini 2.5 Flash (Smart)
-- Multi-metric analysis: 4 parallel AI API calls
-  - Writing Style: Consistency, variation, naturalness analysis
-  - Word Choice: Repetition patterns, formal vocabulary detection
-  - Structure: Paragraph flow, topic transitions analysis
-  - Suspicious Sections: Specific text segment identification
-- Performance optimization: 200ms delay between API calls
-- Content extraction: Reuses readingMode.js algorithm with scoring
-- Text limit: Max 5000 characters per analysis
-- Inline highlighting: DOM TreeWalker for text node targeting
-- Highlighting cleanup: Proper removal on deactivation/toggle
-- UI language: Manual loading from chrome.storage.local
-- CSS variables for theming
-- Storage key: `toolaryAIContentDetectorHistory`
-- Icon: `sparkles` (AI detection indicator)
-
-### Future AI Tools
-
-The AI system is designed to easily support new AI-powered tools:
-
-- **Email Generation:** Professional email and message drafting
-- **SEO Analysis:** AI-powered SEO optimization
-- **Code Analysis:** Code review, documentation generation
-- **Image Processing:** OCR, image analysis
-- **Sentiment Analysis:** Text emotion detection, tone analysis
+### Implementation
+- **Storage:** `chrome.storage.local` with `toolaryFavoriteTools` key
+- **State Management:** `state.favoriteTools` as a `Set` for O(1) lookups
+- **Sorting Logic:** Two-tier sorting (favorite status → usage count)
+- **UI Integration:** Star icon using existing `icons.createIconElement()` system
 
 ## Adding a New Tool
 
@@ -496,85 +414,7 @@ Available icon names for tools:
 - `moon` - Moon icon (dark mode)
 - `brain` - AI tools
 - `sparkles` - AI effects
-
-### Icon Loading System
-
-#### How Icons Work
-1. **Primary:** JavaScript icon definitions in `shared/icons.js`
-2. **Fallback:** SVG files in `icons/tools/` directory
-3. **Default:** Circle icon if neither exists
-
-#### Icon Loading Logic (popup.js)
-```javascript
-// Try icon definition first
-if (icons.createIconElement && icons.getIconDefinition) {
-  const iconDef = icons.getIconDefinition(tool.icon);
-  const defaultDef = icons.getIconDefinition('nonexistent');
-  const isDefaultIcon = iconDef.title === defaultDef.title && iconDef.elements.length === defaultDef.elements.length;
-  
-  if (!isDefaultIcon) {
-    // Use JavaScript definition
-    const iconSvg = icons.createIconElement(tool.icon, { size: 32, decorative: true });
-    icon.appendChild(iconSvg);
-  } else {
-    // Fallback to SVG file
-    const iconImg = document.createElement('img');
-    iconImg.src = chrome.runtime.getURL(`icons/tools/${tool.icon}.svg`);
-    icon.appendChild(iconImg);
-  }
-}
-```
-
-#### Common Icon Issues & Solutions
-
-**Problem:** Icons showing as circles instead of proper icons
-**Causes:**
-1. Icon name not defined in `ICON_DEFINITIONS`
-2. Missing SVG file in `icons/tools/`
-3. Wrong function name (`renderIcon` vs `createIconElement`)
-
-**Solutions:**
-1. **Check icon definition exists:**
-   ```javascript
-   // In icons.js, verify icon is in ICON_DEFINITIONS
-   console.log(icons.getIconDefinition('your-icon-name'));
-   ```
-
-2. **Add missing icon definition:**
-   ```javascript
-   // In icons.js
-   'your-icon': {
-     title: 'Your Icon',
-     elements: [
-       { tag: 'path', attrs: { d: 'M...' } }
-     ]
-   }
-   ```
-
-3. **Create missing SVG file:**
-   ```bash
-   # Create SVG file in icons/tools/
-   touch extension/icons/tools/your-icon.svg
-   ```
-
-4. **Use correct function:**
-   ```javascript
-   // ✅ Correct
-   import { createIconElement } from '../../shared/icons.js';
-   const icon = createIconElement('bookmark', { size: 24, decorative: true });
-   
-   // ❌ Wrong
-   import { renderIcon } from '../../shared/icons.js';
-   const icon = renderIcon('bookmark', { size: 24, decorative: true });
-   ```
-
-#### Icon Debugging Checklist
-- [ ] Icon name exists in `ICON_DEFINITIONS`?
-- [ ] SVG file exists in `icons/tools/`?
-- [ ] Using `createIconElement` function?
-- [ ] Icon name matches exactly (case-sensitive)?
-- [ ] Console shows "Using icon definition" or "Loading icon"?
-- [ ] No JavaScript errors in console?
+- `email` - Email/mail functionality
 
 ## Storage Structure
 
@@ -589,6 +429,8 @@ if (icons.createIconElement && icons.getIconDefinition) {
 - `toolaryAIKeys`: Array of AI API keys with metadata
 - `toolaryAIModel`: User's AI model preference (auto/smart/lite)
 - `toolaryAILanguage`: User's AI language preference
+- `toolaryToolUsage`: Tool usage statistics for sorting
+- `toolaryFavoriteTools`: Array of favorite tool IDs
 
 ### Legacy migration
 Auto-migrates from old Pickachu keys: `pickachuFavorites`, `pickachuHiddenTools`, `pickachuRecentTools`
@@ -629,7 +471,7 @@ Auto-migrates from old Pickachu keys: `pickachuFavorites`, `pickachuHiddenTools`
 ## Testing & Quality
 
 ```bash
-npm test          # Run Jest tests (47 tests, 98.3% coverage)
+npm test          # Run Jest tests (86 tests, 44.21% coverage)
 npm run lint      # ESLint check (must pass)
 ```
 
@@ -792,7 +634,7 @@ console.log(result);
 
 ## File Size Limits
 
-- `tools-manifest.json`: ~340 lines (18 tools) → keep under 1000 lines
+- `tools-manifest.json`: ~360 lines (21 tools) → keep under 1000 lines
 - `popup.js`: 1714 lines → consider splitting if >2000 lines
 - Total extension: ~600KB → target <2MB for fast installation
 
@@ -815,4 +657,4 @@ console.log(result);
 
 ---
 
-**Last updated:** 2025-01-27 for Toolary v1.0.1 (Updated with 20 tools including AI Summarizer, AI Translator with in-place translation, AI Content Detector with multi-metric analysis, Dark Mode Toggle, Video Recorder, Bookmark Manager, and full AI integration with Gemini API)
+**Last updated:** 2025-01-27 for Toolary v1.0.0 (Initial release with 24 tools including AI Summarizer, AI Translator with in-place translation, AI Content Detector with multi-metric analysis, AI Email Generator with customizable tone and type options, AI SEO Analyzer with comprehensive scoring and AI-generated summaries, AI Chat with persistent page context awareness, Copy History Manager with tab-specific monitoring, Dark Mode Toggle, Video Recorder, Bookmark Manager, and comprehensive favorite system with star icons and smart sorting)

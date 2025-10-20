@@ -1,0 +1,194 @@
+# Toolary
+
+A comprehensive Chrome extension with 24 web productivity tools including AI-powered features and a smart favorite system, designed to enhance your browsing experience and productivity.
+
+## 🚀 Features
+
+### AI-Powered Tools
+- **AI Summarizer** - Intelligent text summarization with multiple length options
+- **AI Translator** - Real-time translation with in-place page translation
+- **AI Content Detector** - Detect AI-generated content with detailed analysis
+- **AI Email Generator** - Professional email generation with customizable tone and type
+- **AI SEO Analyzer** - Comprehensive SEO analysis with AI-powered scoring
+- **AI Chat** - Intelligent conversational interface with persistent page context awareness
+
+### Inspection Tools
+- **Color Picker** - Extract colors from any webpage element
+- **Element Picker** - Inspect DOM elements and their properties
+- **Font Picker** - Analyze fonts used on web pages
+- **Link Picker** - Validate and analyze links
+
+### Capture Tools
+- **Screenshot Picker** - Capture full page or selected area screenshots
+- **Text Picker** - Extract text from web pages
+- **Media Picker** - Extract images and media from pages
+- **PDF Generator** - Convert web pages to PDF
+- **QR Code Generator** - Generate QR codes for URLs
+- **Video Recorder** - Record screen activity
+
+### Enhancement Tools
+- **Sticky Notes** - Add persistent notes to web pages
+- **Text Highlighter** - Highlight important text
+- **Reading Mode** - Clean reading experience
+- **Bookmark Manager** - Advanced bookmark management
+- **Dark Mode Toggle** - Toggle dark/light themes
+
+### Utility Tools
+- **Site Info Picker** - Comprehensive website analysis
+- **Color Palette Generator** - Generate color palettes from images
+- **Copy History Manager** - Track and manage clipboard history with tab-specific monitoring
+
+## 🎯 Key Features
+
+- **AI Integration** - Powered by Google Gemini API with key rotation
+- **Multi-language Support** - English, Turkish, French UI with 40+ AI languages
+- **Smart Search** - Find tools quickly with intelligent search
+- **⭐ Favorites System** - Mark frequently used tools as favorites with star icons and smart sorting
+- **Recent History** - Quick access to recently used tools
+- **Keyboard Shortcuts** - Global shortcuts for quick access
+- **Dark/Light Themes** - Automatic theme switching
+- **Responsive Design** - Works on all screen sizes
+
+## 🛠️ Installation
+
+1. Download the extension from Chrome Web Store
+2. Click "Add to Chrome" to install
+3. Pin the extension to your toolbar for easy access
+
+## 🎮 Usage
+
+1. **Open Toolary** - Click the extension icon or use `Ctrl+Shift+P` (Windows) / `Cmd+Shift+P` (Mac)
+2. **Search Tools** - Use the search bar to find specific tools
+3. **Browse Categories** - Click category buttons to filter tools
+4. **Mark Favorites** - Click the star icon on tool cards to mark as favorites
+5. **Activate Tools** - Click on any tool card to activate it
+6. **Use Shortcuts** - Use global keyboard shortcuts for quick access
+
+## ⌨️ Keyboard Shortcuts
+
+- `Ctrl+Shift+P` (Win) / `Cmd+Shift+P` (Mac) - Toggle popup
+- `Alt+Shift+1` - Color Picker
+- `Alt+Shift+3` - Screenshot Picker
+- `Alt+Shift+7` - Text Highlighter
+- `Alt+Shift+8` - Reading Mode
+- `/` - Focus search (when popup is open)
+
+## 🤖 AI Features
+
+### AI Summarizer
+- Extract and summarize page content automatically
+- Three summary lengths: Short, Medium, Long
+- Keyword extraction
+- Multi-language support
+
+### AI Translator
+- Translate text, selections, or entire pages
+- In-place translation (Google Translate style)
+- Auto-detect source language
+- 40+ target languages
+
+### AI Content Detector
+- Detect AI-generated content
+- Multi-metric analysis (writing style, word choice, structure)
+- Inline highlighting of suspicious sections
+- Confidence scoring
+
+### AI Email Generator
+- Generate professional emails
+- 5 tones: Professional, Friendly, Formal, Casual, Urgent
+- 8 types: Inquiry, Follow-up, Thank you, Complaint, Request, Meeting, Introduction, Apology
+- 3 lengths: Short, Medium, Long
+- Auto-generated subject lines
+
+## ⭐ Favorites System
+
+Toolary includes a comprehensive favorite system that enhances your productivity:
+
+### Features
+- **Star Icons** - Each tool card displays a star icon in the top-right corner
+- **Smart Sorting** - Favorite tools always appear at the top of the list
+- **Usage-Based Ordering** - Within favorites, tools are sorted by usage count
+- **Persistent Storage** - Your favorites are saved and restored across sessions
+- **Real-time Updates** - Clicking the star immediately toggles favorite status
+- **Smooth Animations** - Grid reordering with CSS transitions for better UX
+
+### How It Works
+1. **Mark Favorites** - Click the star icon on any tool card
+2. **Automatic Sorting** - Favorites appear first, sorted by usage among themselves
+3. **Visual Feedback** - Empty star for non-favorites, filled white star for favorites
+4. **Hover Effects** - Star grows and becomes more visible on hover
+
+## 🔧 Configuration
+
+### AI Settings
+- Add multiple Gemini API keys for load balancing
+- Choose AI model preference (Auto/Smart/Lite)
+- Select preferred language for AI responses
+- Test API key health
+
+### Tool Management
+- Hide unused tools
+- Mark tools as favorites with star icons
+- Smart sorting: Favorites appear first, sorted by usage
+- View recent tool usage
+
+## 🌐 Internationalization
+
+- **UI Languages**: English, Turkish, French
+- **AI Languages**: 40+ languages supported
+- **Auto-detection**: Automatically detects browser language
+
+## 🧪 Testing
+
+The extension includes comprehensive testing:
+- 86 unit tests with 44.21% coverage
+- ESLint code quality checks
+- Manual testing checklist
+
+## 📁 Project Structure
+
+```
+extension/
+├── manifest.json              # Extension configuration
+├── background.js              # Service worker
+├── popup/                     # Main UI
+├── content/                   # Content scripts
+├── core/                      # Core modules
+├── shared/                    # Shared utilities
+├── tools/                     # Tool implementations
+│   ├── inspect/              # Inspection tools
+│   ├── capture/              # Capture tools
+│   ├── enhance/              # Enhancement tools
+│   ├── utilities/            # Utility tools
+│   └── ai/                   # AI-powered tools
+├── config/                    # Configuration files
+├── icons/                     # Icon assets
+└── _locales/                  # Internationalization
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests: `npm test`
+5. Run linting: `npm run lint`
+6. Submit a pull request
+
+## 📄 License
+
+MIT License - see LICENSE file for details
+
+## 👨‍💻 Author
+
+**Adem İsler**
+- GitHub: [@fulexo](https://github.com/fulexo)
+- Repository: [toolary](https://github.com/fulexo/toolary)
+
+## 🔄 Version History
+
+- **v1.0.0** - Initial release with 24 tools including AI-powered features, favorite system, and comprehensive productivity tools
+
+---
+
+**Toolary** - Enhancing your web productivity with AI-powered tools! 🚀
