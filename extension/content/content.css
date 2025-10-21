@@ -891,8 +891,8 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
               0 0 0 1px rgba(255, 255, 255, 0.05);
   z-index: 2147483650 !important; /* Maximum z-index to appear above all overlays including AI Chat */
-  min-width: 280px;
-  max-width: 420px;
+  min-width: 320px;
+  max-width: 480px;
   width: auto;
   animation: coffee-slide-in 0.4s ease-out;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -960,7 +960,7 @@
   min-width: 0; /* Allow text to shrink */
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); /* Better readability */
   text-align: center;
-  max-width: 180px; /* Limit width to force line breaks after 5 words */
+  max-width: 240px; /* Increased width for better readability */
 }
 
 .toolary-coffee-toast__button {
@@ -1061,24 +1061,24 @@
 
 /* Very long text handling */
 .toolary-coffee-toast--long-text {
-  max-width: 500px;
+  max-width: 580px;
 }
 
 .toolary-coffee-toast--long-text .toolary-coffee-toast__text {
   font-size: 15px;
   line-height: 1.4;
-  max-width: 220px; /* Allow more width for long text */
+  max-width: 300px; /* Increased width for long text readability */
 }
 
 /* Short text handling */
 .toolary-coffee-toast--short-text {
-  min-width: 250px;
+  min-width: 280px;
 }
 
 .toolary-coffee-toast--short-text .toolary-coffee-toast__text {
   font-size: 17px;
   line-height: 1.6;
-  max-width: 160px; /* Less width for short text */
+  max-width: 200px; /* Increased width for short text readability */
 }
 
 /* Dark mode compatibility */
