@@ -1,8 +1,9 @@
 import { createOverlay, removeOverlay, copyText, showModal, showError, showSuccess, showInfo, throttle, getCachedComputedStyle, handleError, safeExecute, sanitizeInput, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'font-picker',
-  name: 'Font Picker',
+  name: 'Font Finder',
   category: 'inspect',
   icon: 'font',
   shortcut: {
@@ -70,6 +71,29 @@ font-size: ${cs.fontSize};`;
     const bodyContent = `Font: ${primaryFamily}\nSize: ${cs.fontSize}`;
 
     showModal(title, bodyContent, 'font', 'font-simple');
+    
+    // Show coffee message when modal is closed
+    setTimeout(() => {
+      const modalOverlay = document.querySelector('#toolary-modal-overlay');
+      if (modalOverlay) {
+        // Override the remove method to show coffee message
+        const originalRemove = modalOverlay.remove;
+        modalOverlay.remove = function() {
+          originalRemove.call(this);
+          showCoffeeMessageForTool('font-picker');
+        };
+        
+        // Also override the dismiss button click
+        const dismissBtn = modalOverlay.querySelector('button[type="button"]');
+        if (dismissBtn) {
+          const originalClick = dismissBtn.onclick;
+          dismissBtn.onclick = function(e) {
+            if (originalClick) originalClick.call(this, e);
+            showCoffeeMessageForTool('font-picker');
+          };
+        }
+      }
+    }, 100);
     deactivateCb();
     
   } catch (error) {

@@ -9,6 +9,7 @@ import {
   debounce,
   generateId
 } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import { createIconElement } from '../../shared/icons.js';
 
 export const metadata = {
@@ -37,6 +38,7 @@ let folders = [];
 let tags = [];
 let cleanupFunctions = [];
 let floatingWidget = null;
+let backdropClickArea = null;
 let searchQuery = '';
 let currentFilter = 'all'; // 'all', 'favorites', 'folder', 'tag'
 let currentFolder = '';
@@ -174,6 +176,9 @@ async function addBookmark(bookmarkData) {
     await saveBookmarks();
     const message = chrome.i18n ? chrome.i18n.getMessage('bookmarkAddedSuccessfully') : 'Bookmark added successfully!';
     showSuccess(message);
+    
+    // Show coffee message
+    showCoffeeMessageForTool('bookmark-manager');
     renderBookmarkList();
     updateFloatingWidget();
     
@@ -534,13 +539,28 @@ function showPanel() {
     background: rgba(0,0,0,0.3);
     z-index: 2147483645;
     animation: toolary-fade-in 0.3s ease-out;
+    pointer-events: none;
   `;
   
-  const cleanupBackdrop = addEventListenerWithCleanup(backdrop, 'click', () => {
+  // Create invisible clickable area for backdrop
+  backdropClickArea = document.createElement('div');
+  backdropClickArea.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483644;
+    pointer-events: auto;
+    background: transparent;
+  `;
+  
+  const cleanupBackdrop = addEventListenerWithCleanup(backdropClickArea, 'click', () => {
     hidePanel();
   });
   
   cleanupFunctions.push(cleanupBackdrop);
+  document.body.appendChild(backdropClickArea);
   document.body.appendChild(backdrop);
 }
 
@@ -550,11 +570,18 @@ function hidePanel() {
   
   isPanelExpanded = false;
   
+  // Remove click area first
+  if (backdropClickArea && backdropClickArea.parentNode) {
+    backdropClickArea.parentNode.removeChild(backdropClickArea);
+  }
+  
   const panel = document.getElementById('toolary-bookmark-panel');
   const backdrop = document.getElementById('toolary-bookmark-backdrop');
   
   if (panel) panel.remove();
   if (backdrop) backdrop.remove();
+  
+  backdropClickArea = null;
 }
 
 // Create bookmark panel
@@ -1745,6 +1772,9 @@ export async function activate(deactivate) {
     // Update widget badge
     updateFloatingWidget();
     
+    // Show panel directly on activation
+    showPanel();
+    
     const message = chrome.i18n ? chrome.i18n.getMessage('bookmarkManagerActivated') : 'Bookmark Manager activated. Click the bookmark icon to manage your bookmarks!';
     showInfo(message);
     
@@ -1790,6 +1820,7 @@ export function deactivate() {
     currentFilter = 'all';
     currentFolder = '';
     currentTag = '';
+    backdropClickArea = null;
     
     console.log('Bookmark Manager: Deactivated');
     

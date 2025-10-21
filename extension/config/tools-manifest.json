@@ -2,27 +2,27 @@
   "categories": {
     "inspect": {
       "name": "Inspect",
-      "description": "Analyze on-page elements and styles.",
+      "description": "analyzeOnPageElementsAndStyles",
       "order": 1
     },
     "capture": {
       "name": "Capture",
-      "description": "Collect and save content from any page.",
+      "description": "collectAndSaveContentFromAnyPage",
       "order": 2
     },
     "enhance": {
       "name": "Enhance",
-      "description": "Augment the browsing experience.",
+      "description": "augmentTheBrowsingExperience",
       "order": 3
     },
     "utilities": {
       "name": "Utilities",
-      "description": "General purpose site utilities.",
+      "description": "generalPurposeSiteUtilities",
       "order": 4
     },
     "ai": {
       "name": "AI",
-      "description": "AI-powered tools for content analysis.",
+      "description": "aiPoweredToolsForContentAnalysis",
       "order": 5
     }
   },
@@ -81,7 +81,7 @@
     },
     {
       "id": "font-picker",
-      "name": "Font Picker",
+      "name": "Font Finder",
       "category": "inspect",
       "module": "inspect/fontPicker.js",
       "order": 4,
@@ -97,7 +97,7 @@
     },
     {
       "id": "media-picker",
-      "name": "Media Picker",
+      "name": "Media Download",
       "category": "capture",
       "module": "capture/mediaPicker.js",
       "order": 5,

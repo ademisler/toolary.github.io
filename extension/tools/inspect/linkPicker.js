@@ -1,4 +1,5 @@
 import { copyText, showModal, showError, showSuccess, showInfo, showWarning, throttle, handleError, safeExecute, sanitizeInput, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'link-picker',
@@ -305,6 +306,29 @@ async function analyzeLinks(links, sourceLabel = 'selected area') {
 
   const title = `${uniqueLinks.length} ${uniqueLinks.length === 1 ? 'Link' : 'Links'}`;
   showModal(title, urlsList, 'link', 'links');
+  
+  // Show coffee message when modal is closed
+  setTimeout(() => {
+    const modalOverlay = document.querySelector('#toolary-modal-overlay');
+    if (modalOverlay) {
+      // Override the remove method to show coffee message
+      const originalRemove = modalOverlay.remove;
+      modalOverlay.remove = function() {
+        originalRemove.call(this);
+        showCoffeeMessageForTool('link-picker');
+      };
+      
+      // Also override the dismiss button click
+      const dismissBtn = modalOverlay.querySelector('button[type="button"]');
+      if (dismissBtn) {
+        const originalClick = dismissBtn.onclick;
+        dismissBtn.onclick = function(e) {
+          if (originalClick) originalClick.call(this, e);
+          showCoffeeMessageForTool('link-picker');
+        };
+      }
+    }
+  }, 100);
   deactivateCb();
   return true;
 }

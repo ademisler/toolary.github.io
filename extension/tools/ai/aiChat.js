@@ -3,6 +3,7 @@ import {
   handleError, 
   addEventListenerWithCleanup
 } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import { createIconElement } from '../../shared/icons.js';
 
 export const metadata = {
@@ -66,6 +67,7 @@ let cleanupFunctions = [];
 let floatingWidget = null;
 let sidebar = null;
 let backdrop = null;
+let backdropClickArea = null;
 let isPanelOpen = false;
 let messages = []; // Array of {role: 'user'|'assistant', content: string, timestamp: number}
 let pageContext = null; // Cached page context snapshot
@@ -1036,9 +1038,23 @@ function showPanel() {
     background: rgba(0,0,0,0.3);
     z-index: 2147483646;
     animation: toolary-fade-in 0.3s ease-out;
+    pointer-events: none;
   `;
   
-  const cleanupBackdrop = addEventListenerWithCleanup(backdrop, 'click', () => {
+  // Create invisible clickable area for backdrop
+  backdropClickArea = document.createElement('div');
+  backdropClickArea.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483645;
+    pointer-events: auto;
+    background: transparent;
+  `;
+  
+  const cleanupBackdrop = addEventListenerWithCleanup(backdropClickArea, 'click', () => {
     hidePanel();
   });
   cleanupFunctions.push(cleanupBackdrop);
@@ -1071,6 +1087,7 @@ function showPanel() {
     document.head.appendChild(style);
   }
   
+  document.body.appendChild(backdropClickArea);
   document.body.appendChild(backdrop);
   document.body.appendChild(sidebar);
   
@@ -1088,6 +1105,11 @@ function hidePanel() {
   
   isPanelOpen = false;
   
+  // Remove click area first
+  if (backdropClickArea && backdropClickArea.parentNode) {
+    backdropClickArea.parentNode.removeChild(backdropClickArea);
+  }
+  
   if (backdrop && backdrop.parentNode) {
     backdrop.parentNode.removeChild(backdrop);
   }
@@ -1096,6 +1118,7 @@ function hidePanel() {
   }
   
   backdrop = null;
+  backdropClickArea = null;
   sidebar = null;
   messagesContainer = null;
   inputTextarea = null;
@@ -1115,6 +1138,9 @@ function togglePanel() {
 export async function activate(deactivate) {
   try {
     console.log('AI Chat activated');
+    
+    // Show coffee message
+    showCoffeeMessageForTool('ai-chat');
     
     // Load language and AI manager
     await loadUserUILanguage();
@@ -1162,6 +1188,7 @@ export function deactivate() {
   floatingWidget = null;
   sidebar = null;
   backdrop = null;
+  backdropClickArea = null;
   messagesContainer = null;
   inputTextarea = null;
   sendButton = null;

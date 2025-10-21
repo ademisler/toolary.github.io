@@ -8,7 +8,7 @@ const themedElements = new Set();
 const HISTORY_LIMIT = 40;
 const STORAGE_KEYS = {
   history: 'toolaryHistory',
-  legacyHistory: 'pickachuHistory'
+  legacyHistory: 'toolaryLegacyHistory'
 };
 const themeMediaQuery = typeof window !== 'undefined' && typeof window.matchMedia === 'function'
   ? window.matchMedia('(prefers-color-scheme: dark)')
@@ -1291,7 +1291,13 @@ export async function showModal(title, content, icon = '', type = '') {
     dismissBtn.style.background = 'transparent';
   });
 
-  dismissBtn.addEventListener('click', () => overlay.remove());
+  // Create a proper close function
+  const closeModal = () => {
+    overlay.remove();
+    document.removeEventListener('keydown', handleKeydown);
+  };
+  
+  dismissBtn.addEventListener('click', closeModal);
 
   header.appendChild(headerContent);
   header.appendChild(dismissBtn);
@@ -1534,7 +1540,7 @@ export async function showModal(title, content, icon = '', type = '') {
   styleActionButton(favoritesBtn, 'secondary');
   
   // Event handlers
-  closeBtn.addEventListener('click', () => overlay.remove());
+  closeBtn.addEventListener('click', closeModal);
   
   copyBtn.addEventListener('click', async () => {
     const textarea = body.querySelector('textarea');
@@ -1591,7 +1597,7 @@ export async function showModal(title, content, icon = '', type = '') {
   });
   
   favoritesBtn.addEventListener('click', () => {
-    overlay.remove();
+    closeModal();
     showFavorites();
   });
   
@@ -1600,6 +1606,21 @@ export async function showModal(title, content, icon = '', type = '') {
   buttons.appendChild(exportBtn);
   buttons.appendChild(favBtn);
   buttons.appendChild(favoritesBtn);
+  
+  // Add ESC key handler
+  const handleKeydown = (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  };
+  document.addEventListener('keydown', handleKeydown);
+  
+  // Add click outside to close
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeModal();
+    }
+  });
   
   modal.appendChild(header);
   modal.appendChild(body);

@@ -1,4 +1,5 @@
 import { showError, showSuccess, showInfo, showModal, handleError, safeExecute, validateUrl } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'site-info-picker',
@@ -832,7 +833,75 @@ Some data could not be processed. Please try again.`;
     
     const successMessage = chrome.i18n ? chrome.i18n.getMessage('siteAnalysisCompleted') : 'Site analysis completed!';
     showSuccess(successMessage);
+    
     showModal('Site Analysis Report', reportText, 'site', 'site-info');
+    
+    // Show coffee message when modal is closed
+    setTimeout(() => {
+      const modalOverlay = document.querySelector('#toolary-modal-overlay');
+      if (modalOverlay) {
+        let coffeeMessageShown = false;
+        
+        // Override the dismiss button click
+        const dismissBtn = modalOverlay.querySelector('button[type="button"]');
+        if (dismissBtn) {
+          const originalClick = dismissBtn.onclick;
+          dismissBtn.onclick = function(e) {
+            if (originalClick) originalClick.call(this, e);
+            if (!coffeeMessageShown) {
+              coffeeMessageShown = true;
+              setTimeout(() => {
+                showCoffeeMessageForTool('site-info-picker');
+              }, 300);
+            }
+          };
+        }
+        
+        // Override the close button click
+        const closeBtn = modalOverlay.querySelector('button[title*="Close"], button[title*="close"]');
+        if (closeBtn) {
+          const originalCloseClick = closeBtn.onclick;
+          closeBtn.onclick = function(e) {
+            if (originalCloseClick) originalCloseClick.call(this, e);
+            if (!coffeeMessageShown) {
+              coffeeMessageShown = true;
+              setTimeout(() => {
+                showCoffeeMessageForTool('site-info-picker');
+              }, 300);
+            }
+          };
+        }
+        
+        // Override ESC key and click outside
+        // const originalKeydown = document.onkeydown;
+        // const originalOverlayClick = modalOverlay.onclick;
+        
+        const handleKeydown = (e) => {
+          if (e.key === 'Escape') {
+            if (!coffeeMessageShown) {
+              coffeeMessageShown = true;
+              setTimeout(() => {
+                showCoffeeMessageForTool('site-info-picker');
+              }, 300);
+            }
+          }
+        };
+        
+        const handleOverlayClick = (e) => {
+          if (e.target === modalOverlay) {
+            if (!coffeeMessageShown) {
+              coffeeMessageShown = true;
+              setTimeout(() => {
+                showCoffeeMessageForTool('site-info-picker');
+              }, 300);
+            }
+          }
+        };
+        
+        document.addEventListener('keydown', handleKeydown);
+        modalOverlay.addEventListener('click', handleOverlayClick);
+      }
+    }, 100);
     
   } catch (error) {
     handleError(error, 'generateSiteReport');
@@ -917,7 +986,7 @@ Page Depth: ${report.structure?.pageDepth || 0}
   }
 }
 
-export async function activate(deactivate) {
+export async function activate() {
   try {
     // Generate and show site report
     await generateSiteReport();
@@ -926,13 +995,8 @@ export async function activate(deactivate) {
     const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateSiteInfoTool') : 'Failed to activate site info tool. Please try again.';
     showError(errorMessage);
   } finally {
-    try {
-      if (typeof deactivate === 'function') {
-        deactivate();
-      }
-    } catch (cleanupError) {
-      handleError(cleanupError, 'siteInfoPicker deactivate callback');
-    }
+    // Site info tool doesn't need immediate deactivation
+    // Modal will handle its own cleanup when closed
   }
 }
 

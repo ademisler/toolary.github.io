@@ -1,12 +1,10 @@
 import { 
   showSuccess, 
   showError, 
-  showInfo,
-  showWarning,
   handleError, 
-  addEventListenerWithCleanup,
   copyText
 } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import { createIconElement } from '../../shared/icons.js';
 
 export const metadata = {
@@ -87,7 +85,7 @@ function t(key, fallback = '') {
 function getCurrentDomain() {
   try {
     return window.location.hostname || 'unknown';
-  } catch (error) {
+  } catch {
     return 'unknown';
   }
 }
@@ -102,7 +100,7 @@ function isUrl(text) {
   try {
     const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/i;
     return urlPattern.test(text.trim());
-  } catch (error) {
+  } catch {
     return false;
   }
 }
@@ -300,7 +298,7 @@ async function handleCopyEvent(event) {
   if (!text) {
     try {
       text = event?.clipboardData?.getData('text/uri-list') || '';
-    } catch (error) {
+    } catch {
       // ignore
     }
   }
@@ -332,6 +330,9 @@ async function handleCopyEvent(event) {
   try {
     await addToHistory(trimmedText, type);
     showSuccess(t('itemCopied', 'Item added to history'));
+    
+    // Show coffee message
+    showCoffeeMessageForTool('copy-history-manager');
   } catch (error) {
     handleError(error, 'handleCopyEvent.process');
   }
@@ -363,7 +364,7 @@ function resolveLinkFromElement(target) {
     if (!value) return null;
     try {
       return new URL(value, document.baseURI).href;
-    } catch (error) {
+    } catch {
       return value;
     }
   };

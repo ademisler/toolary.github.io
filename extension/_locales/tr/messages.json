@@ -6,10 +6,10 @@
     "message": "Toolary"
   },
   "extensionDescription": {
-    "message": "Herhangi bir web sayfasından renk, öğe, bağlantı, yazı tipi, resim ve metin toplamak için hafif bir seçme araç kutusu."
+    "message": "AI destekli özellikler ve akıllı favori sistemi ile 24 web verimlilik aracı içeren kapsamlı Chrome eklentisi"
   },
-  "popupSubtitle": {
-    "message": "Hızlı web seçme araçları"
+  "buyMeACoffee": {
+    "message": "Kahve Ismarla"
   },
   "color": {
     "message": "Renk"
@@ -21,34 +21,16 @@
     "message": "Bağlantı"
   },
   "font": {
-    "message": "Yazı"
+    "message": "Font Bul"
   },
   "media": {
-    "message": "Medya"
+    "message": "Medya İndir"
   },
   "text": {
     "message": "Metin"
   },
   "close": {
     "message": "Kapat"
-  },
-  "copy": {
-    "message": "Kopyala"
-  },
-  "export": {
-    "message": "Dışa Aktar"
-  },
-  "history": {
-    "message": "Geçmiş"
-  },
-  "favorites": {
-    "message": "Favoriler"
-  },
-  "favorite": {
-    "message": "Favori"
-  },
-  "unfavorite": {
-    "message": "Kaldır"
   },
   "colorPicker": {
     "message": "Renk Seçici"
@@ -60,10 +42,10 @@
     "message": "Bağlantı Seçici"
   },
   "fontPicker": {
-    "message": "Yazı Seçici"
+    "message": "Font Bul"
   },
   "mediaPicker": {
-    "message": "Medya Seçici"
+    "message": "Medya İndir"
   },
   "textPicker": {
     "message": "Metin Seçici"
@@ -92,98 +74,8 @@
   "elementInfo": {
     "message": "Öğe Bilgisi"
   },
-  "links": {
-    "message": "Bağlantılar"
-  },
-  "fontInfo": {
-    "message": "Yazı Bilgisi"
-  },
-  "images": {
-    "message": "Resimler"
-  },
   "textTitle": {
     "message": "Metin"
-  },
-  "openShortcut": {
-    "message": "Ctrl+Shift+9"
-  },
-  "openShortcutMac": {
-    "message": "Cmd+Shift+9"
-  },
-  "toggleShortcut": {
-    "message": "Ctrl+Shift+P"
-  },
-  "toggleShortcutMac": {
-    "message": "Cmd+Shift+P"
-  },
-  "shortcuts": {
-    "message": "Kısayollar"
-  },
-  "shortcutsTitle": {
-    "message": "Klavye kısayolları"
-  },
-  "shortcutsDescription": {
-    "message": "Toolary'yu bu kısayollarla daha hızlı kullan."
-  },
-  "shortcutsGlobal": {
-    "message": "Genel"
-  },
-  "shortcutsTools": {
-    "message": "Araçlar (genel)"
-  },
-  "shortcutsPopup": {
-    "message": "Popup içinde"
-  },
-  "shortcutOpen": {
-    "message": "Toolary'yu aç"
-  },
-  "shortcutToggle": {
-    "message": "Popup'u aç/kapat"
-  },
-  "shortcutClose": {
-    "message": "Popup'u kapat"
-  },
-  "shortcutColor": {
-    "message": "Alt+Shift+1"
-  },
-  "shortcutColorMac": {
-    "message": "Option+Shift+1"
-  },
-  "shortcutElement": {
-    "message": "Alt+Shift+2"
-  },
-  "shortcutElementMac": {
-    "message": "Option+Shift+2"
-  },
-  "shortcutScreenshot": {
-    "message": "Alt+Shift+3"
-  },
-  "shortcutScreenshotMac": {
-    "message": "Option+Shift+3"
-  },
-  "createdBy": {
-    "message": "Adem İsler"
-  },
-  "creatorRole": {
-    "message": "Toolary'nun geliştiricisi"
-  },
-  "buyCoffee": {
-    "message": "Bana bir kahve ısmarla"
-  },
-  "cmdTogglePopup": {
-    "message": "Toolary popup'ını aç/kapat"
-  },
-  "cmdColorPicker": {
-    "message": "Renk seçiciyi başlat"
-  },
-  "cmdElementPicker": {
-    "message": "Öğe seçiciyi başlat"
-  },
-  "cmdScreenshotPicker": {
-    "message": "Ekran görüntüsü aracını başlat"
-  },
-  "openToolary": {
-    "message": "Toolary'yu Aç"
   },
   "themeAuto": {
     "message": "Otomatik"
@@ -200,9 +92,6 @@
   "clickToPickColor": {
     "message": "Renk seçmek için herhangi bir yere tıklayın..."
   },
-  "colorCopiedToClipboard": {
-    "message": "Renk {color} panoya kopyalandı!"
-  },
   "colorPickingCancelled": {
     "message": "Renk seçimi iptal edildi"
   },
@@ -211,9 +100,6 @@
   },
   "failedToActivateColorPicker": {
     "message": "Renk seçici etkinleştirilemedi. Lütfen tekrar deneyin."
-  },
-  "elementSelectedAndCopied": {
-    "message": "Element {tagName} seçildi ve kopyalandı!"
   },
   "failedToExtractElementInfo": {
     "message": "Element bilgileri çıkarılamadı. Lütfen tekrar deneyin."
@@ -234,7 +120,7 @@
     "message": "Ekran görüntüsü alınamadı."
   },
   "textCopiedToClipboard": {
-    "message": "Metin panoya kopyalandı! ({wordCount} kelime)"
+    "message": "Metin panoya kopyalandı"
   },
   "failedToAnalyzeText": {
     "message": "Metin analiz edilemedi. Lütfen tekrar deneyin."
@@ -250,9 +136,6 @@
   },
   "failedToStartLinkSelection": {
     "message": "Link seçimi başlatılamadı. Lütfen tekrar deneyin."
-  },
-  "linksExtractedFromSource": {
-    "message": "{sourceLabel} kaynağından {linkCount} link çıkarıldı!"
   },
   "failedToExtractLinks": {
     "message": "Linkler çıkarılamadı. Lütfen tekrar deneyin."
@@ -380,9 +263,6 @@
   "noNotesToDeleteForSite": {
     "message": "Bu site için silinecek not yok."
   },
-  "deletedNotesSuccessfully": {
-    "message": "{count} not başarıyla silindi!"
-  },
   "failedToDeleteAllNotes": {
     "message": "Tüm notlar silinemedi. Lütfen tekrar deneyin."
   },
@@ -409,21 +289,6 @@
   },
   "failedToAnalyzePageColors": {
     "message": "Sayfa renkleri analiz edilemedi. Lütfen tekrar deneyin."
-  },
-  "failedToGeneratePDF": {
-    "message": "PDF oluşturulamadı: {error}"
-  },
-  "failedToActivatePDFGenerator": {
-    "message": "PDF Oluşturucu etkinleştirilemedi: {error}"
-  },
-  "textHighlighterActivated": {
-    "message": "Metin vurgulayıcı etkinleştirildi! Vurgulamak için metin seçin."
-  },
-  "failedToLoadExistingHighlights": {
-    "message": "Mevcut vurgular yüklenemedi. Lütfen tekrar deneyin."
-  },
-  "failedToActivateTextHighlighter": {
-    "message": "Metin vurgulayıcı etkinleştirilemedi. Lütfen tekrar deneyin."
   },
   "failedToGenerateQRCode": {
     "message": "QR kod oluşturulamadı"
@@ -495,34 +360,13 @@
     "message": "Font boyutunu büyüt"
   },
   "toggleTheme": {
-    "message": "Tema değiştir"
+    "message": "Açık, karanlık veya sistem tercihlerini takip etme arasında geçiş yapın."
   },
   "showToolbar": {
     "message": "Araç çubuğunu göster"
   },
   "hideToolbar": {
     "message": "Araç çubuğunu gizle"
-  },
-  "searchTools": {
-    "message": "Araçları ara..."
-  },
-  "filterByCategory": {
-    "message": "Kategoriye göre filtrele"
-  },
-  "webPickerTools": {
-    "message": "Web seçici araçları"
-  },
-  "previousPage": {
-    "message": "Önceki sayfa"
-  },
-  "nextPage": {
-    "message": "Sonraki sayfa"
-  },
-  "settingsSections": {
-    "message": "Ayar bölümleri"
-  },
-  "toolToggles": {
-    "message": "Araç geçişleri"
   },
   "bookmarkAddedSuccessfully": {
     "message": "Yer imi başarıyla eklendi!"
@@ -554,9 +398,6 @@
   "failedToExportBookmarks": {
     "message": "Yer imleri dışa aktarılamadı"
   },
-  "importedBookmarks": {
-    "message": "{count} yer imi içe aktarıldı{skipped}"
-  },
   "failedToImportBookmarks": {
     "message": "Yer imleri içe aktarılamadı. Lütfen dosya formatını kontrol edin."
   },
@@ -584,9 +425,6 @@
   "nothingToCopy": {
     "message": "Kopyalanacak bir şey yok"
   },
-  "textCopiedToClipboard": {
-    "message": "Metin panoya kopyalandı"
-  },
   "failedToCopyText": {
     "message": "Metin kopyalanamadı"
   },
@@ -613,12 +451,6 @@
   },
   "allTools": {
     "message": "Tüm Araçlar"
-  },
-  "exportPrompt": {
-    "message": "txt/json/csv"
-  },
-  "version": {
-    "message": "Sürüm 1.0.0"
   },
   "developer": {
     "message": "Geliştirici"
@@ -666,7 +498,7 @@
     "message": "Hakkında"
   },
   "language": {
-    "message": "Dil"
+    "message": "Türkçe"
   },
   "theme": {
     "message": "Tema"
@@ -686,17 +518,11 @@
   "switchLanguage": {
     "message": "Popup dilini anında değiştirin."
   },
-  "toggleTheme": {
-    "message": "Açık, karanlık veya sistem tercihlerini takip etme arasında geçiş yapın."
-  },
   "reset": {
     "message": "Sıfırla"
   },
   "save": {
     "message": "Kaydet"
-  },
-  "close": {
-    "message": "Kapat"
   },
   "english": {
     "message": "English"
@@ -711,16 +537,10 @@
     "message": "Toolary Hakkında"
   },
   "aboutDescription": {
-    "message": "Anlık yakalama ve inceleme için birleşik web seçici araç takımı."
+    "message": "AI destekli özellikler ve akıllı favori sistemi ile 24 web verimlilik aracı içeren kapsamlı Chrome eklentisi."
   },
   "keyboardShortcuts": {
     "message": "Klavye Kısayolları"
-  },
-  "developer": {
-    "message": "Geliştirici"
-  },
-  "support": {
-    "message": "Destek"
   },
   "colorPalette": {
     "message": "Renk Paleti"
@@ -761,9 +581,6 @@
   "textHighlighterDescription": {
     "message": "Metni renklerle işaretle ve site bazında kaydet"
   },
-  "cmdTextHighlighter": {
-    "message": "Metin İşaretleyiciyi Etkinleştir"
-  },
   "readingMode": {
     "message": "Okuma Modu"
   },
@@ -772,9 +589,6 @@
   },
   "readingModeDescription": {
     "message": "Odaklanmış okuma için temiz sayfa içeriği"
-  },
-  "cmdReadingMode": {
-    "message": "Okuma Modunu Etkinleştir"
   },
   "qrcode": {
     "message": "QR Kod"
@@ -793,57 +607,6 @@
   },
   "bookmarkManagerDescription": {
     "message": "Klasörler ve etiketler ile yer imlerini kaydet"
-  },
-  "addBookmark": {
-    "message": "Yer İmi Ekle"
-  },
-  "editBookmark": {
-    "message": "Yer İmini Düzenle"
-  },
-  "deleteBookmark": {
-    "message": "Yer İmini Sil"
-  },
-  "bookmarkAdded": {
-    "message": "Yer imi başarıyla eklendi!"
-  },
-  "bookmarkUpdated": {
-    "message": "Yer imi güncellendi!"
-  },
-  "bookmarkDeleted": {
-    "message": "Yer imi silindi!"
-  },
-  "searchBookmarks": {
-    "message": "Yer imlerinde ara..."
-  },
-  "noBookmarks": {
-    "message": "Henüz yer imi yok. İlk yer iminizi eklemek için + butonuna tıklayın!"
-  },
-  "bookmarkTitle": {
-    "message": "Başlık"
-  },
-  "bookmarkUrl": {
-    "message": "URL"
-  },
-  "bookmarkFolder": {
-    "message": "Klasör"
-  },
-  "bookmarkTags": {
-    "message": "Etiketler"
-  },
-  "bookmarkNotes": {
-    "message": "Notlar"
-  },
-  "importBookmarks": {
-    "message": "İçe Aktar"
-  },
-  "exportBookmarks": {
-    "message": "Dışa Aktar"
-  },
-  "allBookmarks": {
-    "message": "Tüm Yer İmleri"
-  },
-  "favoriteBookmarks": {
-    "message": "Favoriler"
   },
   "videoRecorder": {
     "message": "Video Kaydedici"
@@ -902,12 +665,6 @@
   "addApiKey": {
     "message": "API Anahtarı Ekle"
   },
-  "removeApiKey": {
-    "message": "Kaldır"
-  },
-  "apiKeyPlaceholder": {
-    "message": "Gemini API anahtarını girin"
-  },
   "aiLanguage": {
     "message": "Yanıt Dili"
   },
@@ -916,42 +673,6 @@
   },
   "aiLanguageAuto": {
     "message": "Otomatik (Tarayıcı Dili)"
-  },
-  "noApiKeys": {
-    "message": "Henüz API anahtarı eklenmedi"
-  },
-  "showApiKey": {
-    "message": "API anahtarını göster"
-  },
-  "hideApiKey": {
-    "message": "API anahtarını gizle"
-  },
-  "removeApiKeyTooltip": {
-    "message": "API anahtarını kaldır"
-  },
-  "testApiKey": {
-    "message": "API anahtarını test et"
-  },
-  "saveApiKey": {
-    "message": "API anahtarını kaydet"
-  },
-  "apiKeySaved": {
-    "message": "API anahtarı kaydedildi"
-  },
-  "apiKeyValid": {
-    "message": "API anahtarı geçerli!"
-  },
-  "apiKeyTestFailed": {
-    "message": "API anahtarı testi başarısız"
-  },
-  "enterApiKeyFirst": {
-    "message": "Lütfen önce bir API anahtarı girin"
-  },
-  "settingsUpdated": {
-    "message": "Ayarlar güncellendi"
-  },
-  "noApiKeys": {
-    "message": "Henüz API anahtarı eklenmedi"
   },
   "ai": {
     "message": "Yapay Zeka"
@@ -965,78 +686,6 @@
   "aiTextSummarizerDescription": {
     "message": "Sayfa içeriğini yapay zeka ile özetle"
   },
-  "summarizeAuto": {
-    "message": "Sayfa İçeriği"
-  },
-  "summarizeManual": {
-    "message": "Metin Seç"
-  },
-  "summaryLengthShort": {
-    "message": "Kısa (~50 kelime)"
-  },
-  "summaryLengthMedium": {
-    "message": "Orta (~150 kelime)"
-  },
-  "summaryLengthLong": {
-    "message": "Uzun (~300 kelime)"
-  },
-  "generateSummary": {
-    "message": "Özet Oluştur"
-  },
-  "summaryGenerated": {
-    "message": "Özet oluşturuldu!"
-  },
-  "copySummary": {
-    "message": "Özeti Kopyala"
-  },
-  "extractedKeywords": {
-    "message": "Anahtar Kelimeler"
-  },
-  "noContentToSummarize": {
-    "message": "Özetlenecek içerik bulunamadı"
-  },
-  "selectTextFirst": {
-    "message": "Lütfen önce sayfadan metin seçin"
-  },
-  "aiSummarizerActivated": {
-    "message": "AI Özetleyici etkinleştirildi"
-  },
-  "failedToGenerateSummary": {
-    "message": "Özet oluşturulamadı. Lütfen tekrar deneyin."
-  },
-  "mode": {
-    "message": "Mod"
-  },
-  "length": {
-    "message": "Uzunluk"
-  },
-  "summary": {
-    "message": "Özet"
-  },
-  "generating": {
-    "message": "Özet oluşturuluyor..."
-  },
-  "selectTextOnPage": {
-    "message": "Özetlemek için sayfadan metin seçin"
-  },
-  "clickToSelectText": {
-    "message": "Bu panelin dışına tıklayın ve sayfadan metin seçin, sonra Özet Oluştur'a tıklayın."
-  },
-  "source": {
-    "message": "İçerik Kaynağı"
-  },
-  "cancel": {
-    "message": "İptal"
-  },
-  "copied": {
-    "message": "Kopyalandı!"
-  },
-  "failedToCopy": {
-    "message": "Kopyalama başarısız"
-  },
-  "failedToActivate": {
-    "message": "Etkinleştirme başarısız"
-  },
   "aiTextTranslator": {
     "message": "Yapay Zeka Çevirici"
   },
@@ -1045,93 +694,6 @@
   },
   "aiTextTranslatorDescription": {
     "message": "Metinleri ve sayfaları 40+ dile çevirin"
-  },
-  "translatorActivated": {
-    "message": "Yapay Zeka Çevirici etkinleştirildi"
-  },
-  "translationCompleted": {
-    "message": "Çeviri tamamlandı!"
-  },
-  "failedToTranslate": {
-    "message": "Metin çevrilemedi"
-  },
-  "sourceLanguage": {
-    "message": "Kaynak Dil"
-  },
-  "targetLanguage": {
-    "message": "Hedef Dil"
-  },
-  "autoDetect": {
-    "message": "Otomatik Algıla"
-  },
-  "translateInput": {
-    "message": "Metin Gir"
-  },
-  "translateSelection": {
-    "message": "Metin Seç"
-  },
-  "translatePage": {
-    "message": "Sayfa İçeriği"
-  },
-  "originalText": {
-    "message": "Orijinal"
-  },
-  "translatedText": {
-    "message": "Çeviri"
-  },
-  "copyTranslation": {
-    "message": "Çeviriyi Kopyala"
-  },
-  "translationCopied": {
-    "message": "Çeviri kopyalandı!"
-  },
-  "translate": {
-    "message": "Çevir"
-  },
-  "translating": {
-    "message": "Çevriliyor..."
-  },
-  "selectTextToTranslate": {
-    "message": "Çevirmek için sayfadaki metni seçin"
-  },
-  "enterTextToTranslate": {
-    "message": "Çevirmek için metin girin"
-  },
-  "typeOrPasteText": {
-    "message": "Metni buraya yazın veya yapıştırın..."
-  },
-  "pleaseEnterText": {
-    "message": "Lütfen çevirmek için metin girin"
-  },
-  "pleaseSelectText": {
-    "message": "Lütfen sayfadaki metni seçin"
-  },
-  "noContentFound": {
-    "message": "Bu sayfada içerik bulunamadı"
-  },
-  "textTruncated": {
-    "message": "Metin çeviri için 5000 karaktere kısaltıldı"
-  },
-  "pageTranslated": {
-    "message": "Sayfa başarıyla çevrildi!"
-  },
-  "restoreOriginal": {
-    "message": "Orijinali Geri Yükle"
-  },
-  "pageRestored": {
-    "message": "Orijinal sayfa geri yüklendi"
-  },
-  "failedToRestore": {
-    "message": "Orijinal sayfa geri yüklenemedi"
-  },
-  "noTranslationToRestore": {
-    "message": "Geri yüklenecek çeviri yok"
-  },
-  "noTextToTranslate": {
-    "message": "Bu sayfada çevrilecek metin bulunamadı"
-  },
-  "translatingProgress": {
-    "message": "Çevriliyor... {current}/{total}"
   },
   "aiContentDetector": {
     "message": "AI İçerik Dedektörü"
@@ -1142,81 +704,6 @@
   "aiContentDetectorDescription": {
     "message": "Çok metrikli analiz ile AI içeriği tespit edin"
   },
-  "analyzeInput": {
-    "message": "Metin Girin"
-  },
-  "analyzeSelection": {
-    "message": "Metin Seçin"
-  },
-  "analyzePage": {
-    "message": "Sayfa İçeriği"
-  },
-  "aiProbability": {
-    "message": "AI Olasılığı"
-  },
-  "confidenceLevel": {
-    "message": "Güven Seviyesi"
-  },
-  "writingStyle": {
-    "message": "Yazım Stili"
-  },
-  "wordChoice": {
-    "message": "Kelime Seçimi"
-  },
-  "structureAnalysis": {
-    "message": "Yapı"
-  },
-  "suspiciousSections": {
-    "message": "Şüpheli Bölümler"
-  },
-  "showHighlights": {
-    "message": "Vurguları Göster"
-  },
-  "hideHighlights": {
-    "message": "Vurguları Gizle"
-  },
-  "analyzing": {
-    "message": "İçerik analiz ediliyor..."
-  },
-  "analysisComplete": {
-    "message": "Analiz tamamlandı!"
-  },
-  "highConfidence": {
-    "message": "Yüksek Güven"
-  },
-  "mediumConfidence": {
-    "message": "Orta Güven"
-  },
-  "lowConfidence": {
-    "message": "Düşük Güven"
-  },
-  "detailedMetrics": {
-    "message": "Detaylı Analiz"
-  },
-  "copyResults": {
-    "message": "Sonuçları Kopyala"
-  },
-  "resultsCopied": {
-    "message": "Sonuçlar panoya kopyalandı!"
-  },
-  "detectorActivated": {
-    "message": "AI İçerik Dedektörü etkinleştirildi"
-  },
-  "failedToAnalyze": {
-    "message": "İçerik analiz edilemedi"
-  },
-  "selectTextToAnalyze": {
-    "message": "Analiz etmek için sayfadan metin seçin"
-  },
-  "enterTextToAnalyze": {
-    "message": "Analiz edilecek metni girin"
-  },
-  "noContentToAnalyze": {
-    "message": "Analiz edilecek içerik bulunamadı"
-  },
-  "analyze": {
-    "message": "İçeriği Analiz Et"
-  },
   "aiEmailGenerator": {
     "message": "AI E-posta Oluşturucu"
   },
@@ -1225,123 +712,6 @@
   },
   "aiEmailGeneratorDescription": {
     "message": "AI ile profesyonel e-postalar oluşturun"
-  },
-  "emailTone": {
-    "message": "E-posta Tonu"
-  },
-  "emailType": {
-    "message": "E-posta Türü"
-  },
-  "emailLength": {
-    "message": "E-posta Uzunluğu"
-  },
-  "toneProfessional": {
-    "message": "Profesyonel"
-  },
-  "toneFriendly": {
-    "message": "Samimi"
-  },
-  "toneFormal": {
-    "message": "Resmi"
-  },
-  "toneCasual": {
-    "message": "Günlük"
-  },
-  "tonePersuasive": {
-    "message": "İkna Edici"
-  },
-  "typeFollowUp": {
-    "message": "Takip"
-  },
-  "typeThankYou": {
-    "message": "Teşekkür"
-  },
-  "typeRequest": {
-    "message": "Talep"
-  },
-  "typeComplaint": {
-    "message": "Şikayet"
-  },
-  "typeIntroduction": {
-    "message": "Tanıtım"
-  },
-  "typeApology": {
-    "message": "Özür"
-  },
-  "typeReminder": {
-    "message": "Hatırlatma"
-  },
-  "typeInvitation": {
-    "message": "Davet"
-  },
-  "enterEmailContext": {
-    "message": "E-posta bağlamını girin"
-  },
-  "generateEmail": {
-    "message": "E-posta Oluştur"
-  },
-  "generatedEmail": {
-    "message": "Oluşturulan E-posta"
-  },
-  "subjectLine": {
-    "message": "Konu Satırı"
-  },
-  "emailBody": {
-    "message": "E-posta İçeriği"
-  },
-  "alternativeVersions": {
-    "message": "Alternatif Versiyonlar"
-  },
-  "copyEmail": {
-    "message": "E-postayı Kopyala"
-  },
-  "emailGenerated": {
-    "message": "E-posta başarıyla oluşturuldu!"
-  },
-  "failedToGenerateEmail": {
-    "message": "E-posta oluşturulamadı"
-  },
-  "emailGeneratorActivated": {
-    "message": "AI E-posta Oluşturucu etkinleştirildi"
-  },
-  "pageContext": {
-    "message": "Sayfa Bağlamı"
-  },
-  "emailContextMode": {
-    "message": "E-posta Bağlam Modu"
-  },
-  "enterContext": {
-    "message": "Bağlam Gir"
-  },
-  "pageContextMode": {
-    "message": "Sayfa Bağlamı"
-  },
-  "emailLengthShort": {
-    "message": "Kısa (~50 kelime)"
-  },
-  "emailLengthMedium": {
-    "message": "Orta (~150 kelime)"
-  },
-  "emailLengthLong": {
-    "message": "Uzun (~300 kelime)"
-  },
-  "pleaseEnterEmailContext": {
-    "message": "Lütfen e-posta bağlamını girin"
-  },
-  "noContentToGenerateEmail": {
-    "message": "E-posta oluşturmak için içerik bulunamadı"
-  },
-  "emailCopied": {
-    "message": "E-posta panoya kopyalandı!"
-  },
-  "failedToCopyEmail": {
-    "message": "E-posta kopyalanamadı"
-  },
-  "generatingEmail": {
-    "message": "E-posta oluşturuluyor..."
-  },
-  "failedToActivateEmailGenerator": {
-    "message": "E-posta oluşturucu etkinleştirilemedi"
   },
   "aiSEOAnalyzer": {
     "message": "AI SEO Analizci"
@@ -1352,120 +722,6 @@
   "aiSEOAnalyzerDescription": {
     "message": "AI destekli önerilerle sayfa SEO'sunu analiz edin ve optimize edin"
   },
-  "seoAnalyzing": {
-    "message": "SEO analiz ediliyor..."
-  },
-  "seoCopyReport": {
-    "message": "Raporu Kopyala"
-  },
-  "seoReportCopied": {
-    "message": "SEO raporu panoya kopyalandı"
-  },
-  "seoCopyFailed": {
-    "message": "Rapor kopyalanamadı"
-  },
-  "seoOverallScore": {
-    "message": "Genel SEO Skoru"
-  },
-  "seoMetaTitle": {
-    "message": "Meta & Başlık"
-  },
-  "seoContentQuality": {
-    "message": "İçerik Kalitesi"
-  },
-  "seoHeadingStructure": {
-    "message": "Başlık Yapısı"
-  },
-  "seoImageOptimization": {
-    "message": "Görsel"
-  },
-  "seoLinkStrategy": {
-    "message": "Bağlantılar"
-  },
-  "seoTechnicalSEO": {
-    "message": "Teknik SEO"
-  },
-  "seoPriorityActions": {
-    "message": "Öncelikli Eylemler"
-  },
-  "seoRecommendations": {
-    "message": "Öneriler"
-  },
-  "seoCopyReport": {
-    "message": "Raporu Kopyala"
-  },
-  "seoAnalyzingDescription": {
-    "message": "Sayfa SEO performansı analiz ediliyor ve optimize ediliyor..."
-  },
-  "seoAnalysisSteps": {
-    "message": "Analiz Adımları"
-  },
-  "seoStep1": {
-    "message": "Meta etiketleri ve başlık yapısı kontrol ediliyor"
-  },
-  "seoStep2": {
-    "message": "İçerik kalitesi ve anahtar kelime yoğunluğu analiz ediliyor"
-  },
-  "seoStep3": {
-    "message": "Görsel optimizasyonu ve bağlantı stratejisi değerlendiriliyor"
-  },
-  "seoStep4": {
-    "message": "Teknik SEO ve performans metrikleri hesaplanıyor"
-  },
-  "seoAnalysisComplete": {
-    "message": "SEO analizi tamamlandı!"
-  },
-  "seoAnalysisFailed": {
-    "message": "SEO analizi başarısız"
-  },
-  "seoNoContent": {
-    "message": "Analiz edilebilir içerik bulunamadı"
-  },
-  "seoMetaAndTitle": {
-    "message": "Meta & Başlık"
-  },
-  "seoContentQuality": {
-    "message": "İçerik Kalitesi"
-  },
-  "seoHeadingStructure": {
-    "message": "Başlık Yapısı"
-  },
-  "seoImageOptimization": {
-    "message": "Görsel"
-  },
-  "seoLinkStrategy": {
-    "message": "Bağlantılar"
-  },
-  "seoTechnicalSEO": {
-    "message": "Teknik SEO"
-  },
-  "seoCategoryScores": {
-    "message": "Kategori Skorları"
-  },
-  "seoSummary": {
-    "message": "Özet"
-  },
-  "seoExcellent": {
-    "message": "Mükemmel SEO performansı"
-  },
-  "seoGood": {
-    "message": "İyi SEO performansı"
-  },
-  "seoFair": {
-    "message": "Orta SEO performansı"
-  },
-  "seoNeedsImprovement": {
-    "message": "İyileştirme gerekiyor"
-  },
-  "seoPoor": {
-    "message": "Zayıf SEO performansı"
-  },
-  "language": {
-    "message": "Türkçe"
-  },
-  "history": {
-    "message": "Geçmiş"
-  },
   "aiChat": {
     "message": "AI Sohbet"
   },
@@ -1474,27 +730,6 @@
   },
   "aiChatDescription": {
     "message": "Mevcut web sayfası hakkında AI ile konuşun"
-  },
-  "analyzing": {
-    "message": "Sayfa analiz ediliyor..."
-  },
-  "typeMessage": {
-    "message": "Mesajınızı yazın..."
-  },
-  "send": {
-    "message": "Gönder"
-  },
-  "chatWelcome": {
-    "message": "Merhaba! Bu sayfayı analiz ettim. Her şeyi sorabilirsiniz!"
-  },
-  "errorMessage": {
-    "message": "Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin."
-  },
-  "sendError": {
-    "message": "Mesaj gönderilemedi"
-  },
-  "activationError": {
-    "message": "AI Sohbet etkinleştirilemedi"
   },
   "copyHistoryManager": {
     "message": "Kopya Geçmişi"
@@ -1505,37 +740,157 @@
   "copyHistoryManagerDescription": {
     "message": "Kopyalanan metin ve URL'leri izle ve yönet"
   },
-  "itemCopied": {
-    "message": "Öğe geçmişe eklendi"
+  "Inspect": {
+    "message": "İncele"
   },
-  "searchHistory": {
-    "message": "Geçmişi ara..."
+  "analyzeOnPageElementsAndStyles": {
+    "message": "Sayfa elementlerini ve stillerini analiz edin."
   },
-  "clearAllHistory": {
-    "message": "Tüm Geçmişi Temizle"
+  "Capture": {
+    "message": "Yakala"
   },
-  "confirmClearAll": {
-    "message": "Tüm geçmişi temizlemek istediğinizden emin misiniz?"
+  "collectAndSaveContentFromAnyPage": {
+    "message": "Herhangi bir sayfadan içerik toplayın ve kaydedin."
   },
-  "noItemsYet": {
-    "message": "Henüz öğe yok"
+  "Enhance": {
+    "message": "Geliştir"
   },
-  "startCopyingHint": {
-    "message": "Metin kopyalamaya başlayın ve burada görün"
+  "augmentTheBrowsingExperience": {
+    "message": "Gezinti deneyimini artırın."
   },
-  "copyAgain": {
-    "message": "Kopyala"
+  "Utilities": {
+    "message": "Araçlar"
   },
-  "copiedToClipboard": {
-    "message": "Panoya kopyalandı"
+  "generalPurposeSiteUtilities": {
+    "message": "Genel amaçlı site araçları."
   },
-  "historyCleared": {
-    "message": "Geçmiş temizlendi"
+  "AI": {
+    "message": "Yapay Zeka"
   },
-  "clearHistoryError": {
-    "message": "Geçmiş temizlenemedi"
+  "aiPoweredToolsForContentAnalysis": {
+    "message": "İçerik analizi için yapay zeka destekli araçlar."
   },
-  "copyHistoryActivationError": {
-    "message": "Kopya Geçmişi Yöneticisi etkinleştirilemedi"
+  "download": {
+    "message": "İndir"
+  },
+  "videoLabel": {
+    "message": "Video"
+  },
+  "imageLabel": {
+    "message": "Resim"
+  },
+  "typeLabel": {
+    "message": "Tür"
+  },
+  "primaryUrlLabel": {
+    "message": "Ana URL"
+  },
+  "streamUrlLabel": {
+    "message": "Akış URL'si"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "unavailableLabel": {
+    "message": "Mevcut değil"
+  },
+  "blobUrlWarning": {
+    "message": "⚠️ Bu video blob URL kullanıyor. İndirme mevcut olmayabilir."
+  },
+  "blobUrlFallbackNote": {
+    "message": "Ana akış blob URL kullanıyor. Kopyalama ve indirme işlemleri için indirilebilir kaynak keşfedildi ve kullanılıyor."
+  },
+  "additionalSources": {
+    "message": "Ek kaynaklar"
+  },
+  "copyUrl": {
+    "message": "URL'yi Kopyala"
+  },
+  "copyUrlUnavailable": {
+    "message": "URL'yi Kopyala (mevcut değil)"
+  },
+  "downloadUnavailable": {
+    "message": "İndir (mevcut değil)"
+  },
+  "noBookmarksFound": {
+    "message": "Aramanızla eşleşen yer imi bulunamadı"
+  },
+  "noFavoriteBookmarks": {
+    "message": "Henüz favori yer imi yok"
+  },
+  "noBookmarksYet": {
+    "message": "Henüz yer imi yok. İlk yer iminizi eklemek için + tıklayın!"
+  },
+  "title": {
+    "message": "Başlık"
+  },
+  "url": {
+    "message": "URL"
+  },
+  "folder": {
+    "message": "Klasör"
+  },
+  "notes": {
+    "message": "Notlar"
+  },
+  "cancel": {
+    "message": "İptal"
+  },
+  "addBookmark": {
+    "message": "Yer İmi Ekle"
+  },
+  "updateBookmark": {
+    "message": "Yer İmini Güncelle"
+  },
+  "stickyNotesManager": {
+    "message": "Yapışkan Notlar Yöneticisi"
+  },
+  "addNewNote": {
+    "message": "Yeni Not Ekle"
+  },
+  "clearAll": {
+    "message": "Tümünü Temizle"
+  },
+  "allNotesFromAllSites": {
+    "message": "Tüm Sitelerden Notlar"
+  },
+  "noStickyNotesYet": {
+    "message": "Henüz yapışkan not yok"
+  },
+  "delete": {
+    "message": "Sil"
+  },
+  "emptyNote": {
+    "message": "Boş not"
+  },
+  "entireScreen": {
+    "message": "Tüm Ekran"
+  },
+  "window": {
+    "message": "Pencere"
+  },
+  "chromeTab": {
+    "message": "Chrome Sekmesi"
+  },
+  "recording": {
+    "message": "Kayıt"
+  },
+  "resume": {
+    "message": "Devam Et"
+  },
+  "pause": {
+    "message": "Duraklat"
+  },
+  "cmdColorPicker": {
+    "message": "Renk Seçiciyi Etkinleştir"
+  },
+  "cmdScreenshotPicker": {
+    "message": "Ekran Görüntüsü Alıcıyı Etkinleştir"
+  },
+  "cmdReadingMode": {
+    "message": "Okuma Modunu Etkinleştir"
+  },
+  "cmdTextHighlighter": {
+    "message": "Metin İşaretleyiciyi Etkinleştir"
   }
 }

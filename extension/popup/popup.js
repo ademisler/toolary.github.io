@@ -2,7 +2,7 @@ const SUPPORTED_LANGUAGES = ['en', 'tr', 'fr'];
 const HIDDEN_STORAGE_KEY = 'toolaryHiddenTools';
 const USAGE_STORAGE_KEY = 'toolaryToolUsage';
 const FAVORITES_STORAGE_KEY = 'toolaryFavoriteTools';
-const LEGACY_HIDDEN_KEYS = ['pickachuHiddenTools', 'hiddenTools'];
+const LEGACY_HIDDEN_KEYS = ['toolaryLegacyHiddenTools', 'hiddenTools'];
 
 const themeMediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
@@ -37,6 +37,74 @@ const CATEGORY_KEYS = Object.freeze({
 
 const VALID_CATEGORIES = new Set(['all', ...Object.keys(CATEGORY_KEYS)]);
 
+const ONBOARDING_STEPS = [
+  {
+    target: '.logo',
+    title: 'Welcome to Toolary!',
+    description: 'Toolary is your unified web toolkit with 24+ productivity tools. Let\'s take a quick tour!',
+    position: 'bottom'
+  },
+  {
+    target: '#tool-search',
+    title: 'Search Tools',
+    description: 'Quickly find any tool by typing its name, category, or function. Try typing "color" or "screenshot".',
+    position: 'bottom'
+  },
+  {
+    target: '#category-menu-btn',
+    title: 'Filter by Category',
+    description: 'Browse tools by category: Inspect, Capture, Enhance, Utilities, and AI-powered tools.',
+    position: 'bottom'
+  },
+  {
+    target: '.tool-card',
+    title: 'Tool Cards',
+    description: 'Click any tool card to activate it. Each tool has a description to help you understand its purpose.',
+    position: 'bottom'
+  },
+  {
+    target: '.tool-card__favorite',
+    title: 'Favorite Tools',
+    description: 'Star your favorite tools to keep them at the top of the list for quick access.',
+    position: 'bottom'
+  },
+  {
+    target: '#pagination',
+    title: 'Navigate Pages',
+    description: 'Use pagination buttons or scroll wheel to browse through all available tools.',
+    position: 'top'
+  },
+  {
+    target: '#settings-btn',
+    title: 'Settings',
+    description: 'Customize your experience: change language, theme, hide tools, and configure AI settings.',
+    position: 'bottom'
+  },
+  {
+    target: '.settings-panel__tabs',
+    title: 'AI Settings',
+    description: 'Go to AI tab to add your Gemini API keys and choose your preferred model and language for AI tools.',
+    position: 'top',
+    action: 'openSettings',
+    tab: 'ai'
+  },
+  {
+    target: '.settings-panel__body',
+    title: 'Customize Tools',
+    description: 'Hide tools you don\'t use to keep your workspace clean and focused.',
+    position: 'top',
+    action: 'switchTab',
+    tab: 'tools'
+  },
+  {
+    target: '#tool-search',
+    title: 'You\'re All Set!',
+    description: 'Press "/" to quickly focus search, or use keyboard shortcuts. Click the info icon anytime to see this guide again!',
+    position: 'bottom',
+    action: 'closeSettings'
+  }
+];
+
 const state = {
   isInitialized: false,
   toolMetadata: [],
@@ -56,7 +124,10 @@ const state = {
   aiLanguage: 'auto',
   loading: true,
   currentPage: 1,
-  toolsPerPage: 6
+  toolsPerPage: 6,
+  onboardingActive: false,
+  onboardingCompleted: false,
+  currentOnboardingStep: 0
 };
 
 const elements = {};
@@ -414,6 +485,7 @@ function cacheElements() {
     toolsSection: document.getElementById('tools-section'),
     toolsGrid: document.querySelector('#tools-section .tools-grid'),
     settingsShortcutsBtn: document.getElementById('settings-shortcuts-btn'),
+    infoBtn: document.getElementById('info-btn'),
     settingsBtn: document.getElementById('settings-btn'),
     settingsPanel: document.getElementById('settings-panel'),
     settingsToolList: document.getElementById('settings-tool-list'),
@@ -1739,6 +1811,258 @@ async function saveAISettings() {
   }
 }
 
+// Onboarding System
+const onboarding = {
+  currentStep: 0,
+  isActive: false,
+  
+  async init() {
+    const { onboardingCompleted } = await chrome.storage.local.get('onboardingCompleted');
+    
+    if (!onboardingCompleted) {
+      // First time user - start onboarding after popup loads
+      setTimeout(() => this.start(), 800);
+    }
+  },
+  
+  start() {
+    this.isActive = true;
+    this.currentStep = 0;
+    const overlay = document.getElementById('onboarding-overlay');
+    overlay.hidden = false;
+    this.showStep(0);
+  },
+  
+  stop() {
+    this.isActive = false;
+    const overlay = document.getElementById('onboarding-overlay');
+    overlay.hidden = true;
+    chrome.storage.local.set({ onboardingCompleted: true });
+    
+    // Close settings if open
+    if (!elements.settingsPanel.hidden) {
+      closeSettingsPanel({ save: false });
+    }
+  },
+  
+  showStep(stepIndex) {
+    if (stepIndex < 0 || stepIndex >= ONBOARDING_STEPS.length) {
+      this.stop();
+      return;
+    }
+    
+    this.currentStep = stepIndex;
+    const step = ONBOARDING_STEPS[stepIndex];
+    
+    // Handle special actions
+    if (step.action === 'openSettings' && elements.settingsPanel.hidden) {
+      openSettingsPanel();
+      setTimeout(() => {
+        if (step.tab) {
+          switchSettingsTab(step.tab);
+        }
+        this.positionTooltip(step);
+      }, 100);
+    } else if (step.action === 'switchTab' && !elements.settingsPanel.hidden) {
+      switchSettingsTab(step.tab);
+      setTimeout(() => {
+        this.positionTooltip(step);
+      }, 100);
+    } else if (step.action === 'closeSettings' && !elements.settingsPanel.hidden) {
+      closeSettingsPanel({ save: false });
+      setTimeout(() => {
+        this.positionTooltip(step);
+      }, 100);
+    } else {
+      this.positionTooltip(step);
+    }
+    
+    // Update tooltip content
+    const tooltip = document.querySelector('.onboarding-tooltip');
+    const stepEl = tooltip.querySelector('.onboarding-tooltip__step');
+    const titleEl = tooltip.querySelector('.onboarding-tooltip__title');
+    const descEl = tooltip.querySelector('.onboarding-tooltip__description');
+    
+    // Get localized step counter
+    const stepText = state.langMap.onboardingStep?.message || 'Step';
+    const ofText = state.langMap.onboardingOf?.message || 'of';
+    stepEl.textContent = `${stepText} ${stepIndex + 1} ${ofText} ${ONBOARDING_STEPS.length}`;
+    
+    // Get localized content
+    const titleKey = `onboarding_step${stepIndex + 1}_title`;
+    const descKey = `onboarding_step${stepIndex + 1}_desc`;
+    titleEl.textContent = state.langMap[titleKey]?.message || step.title;
+    descEl.textContent = state.langMap[descKey]?.message || step.description;
+    
+    // Update buttons with localized text
+    const prevBtn = document.getElementById('onboarding-prev');
+    const nextBtn = document.getElementById('onboarding-next');
+    const skipBtn = document.getElementById('onboarding-skip');
+    
+    prevBtn.disabled = stepIndex === 0;
+    prevBtn.textContent = state.langMap.onboardingPrevious?.message || 'Previous';
+    nextBtn.textContent = stepIndex === ONBOARDING_STEPS.length - 1 
+      ? (state.langMap.onboardingFinish?.message || 'Finish')
+      : (state.langMap.onboardingNext?.message || 'Next');
+    skipBtn.textContent = state.langMap.onboardingSkip?.message || 'Skip';
+  },
+  
+  positionTooltip(step) {
+    const targetEl = document.querySelector(step.target);
+    if (!targetEl) {
+      console.warn('Onboarding target not found:', step.target);
+      return;
+    }
+    
+    const spotlight = document.querySelector('.onboarding-spotlight');
+    const tooltip = document.querySelector('.onboarding-tooltip');
+    const backdrop = document.querySelector('.onboarding-backdrop');
+    const rect = targetEl.getBoundingClientRect();
+    
+    // Position spotlight
+    const padding = 8;
+    spotlight.style.left = `${rect.left - padding}px`;
+    spotlight.style.top = `${rect.top - padding}px`;
+    spotlight.style.width = `${rect.width + padding * 2}px`;
+    spotlight.style.height = `${rect.height + padding * 2}px`;
+    
+    // Update backdrop mask for spotlight effect
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const radius = Math.max(rect.width, rect.height) / 2 + 20;
+    
+    backdrop.style.setProperty('--spotlight-x', `${centerX}px`);
+    backdrop.style.setProperty('--spotlight-y', `${centerY}px`);
+    backdrop.style.setProperty('--spotlight-radius', `${radius}px`);
+    
+    // Position tooltip
+    const tooltipRect = tooltip.getBoundingClientRect();
+    let left, top;
+    
+    switch (step.position) {
+      case 'bottom':
+        left = rect.left + rect.width / 2 - tooltipRect.width / 2;
+        top = rect.bottom + 30; // Increased distance from target
+        break;
+      case 'top':
+        left = rect.left + rect.width / 2 - tooltipRect.width / 2;
+        top = rect.top - tooltipRect.height - 30; // Increased distance from target
+        break;
+      case 'left':
+        left = rect.left - tooltipRect.width - 30; // Increased distance from target
+        top = rect.top + rect.height / 2 - tooltipRect.height / 2;
+        break;
+      case 'right':
+        left = rect.right + 30; // Increased distance from target
+        top = rect.top + rect.height / 2 - tooltipRect.height / 2;
+        break;
+      default:
+        left = rect.left;
+        top = rect.bottom + 30; // Increased distance from target
+    }
+    
+    // Keep tooltip in viewport with better positioning
+    left = Math.max(20, Math.min(left, window.innerWidth - tooltipRect.width - 20));
+    top = Math.max(20, Math.min(top, window.innerHeight - tooltipRect.height - 20));
+    
+    // Special handling for settings panel steps to avoid overlap
+    if (step.target.includes('settings') || step.target.includes('panel')) {
+      const settingsPanel = document.querySelector('.settings-panel');
+      if (settingsPanel && !settingsPanel.hidden) {
+        const panelRect = settingsPanel.getBoundingClientRect();
+        
+        // For settings panel tabs (step 8), position tooltip above the panel
+        if (step.target === '.settings-panel__tabs') {
+          left = panelRect.left + (panelRect.width / 2) - (tooltipRect.width / 2);
+          top = panelRect.top - tooltipRect.height - 20;
+          
+          // If it goes above viewport, position it below
+          if (top < 20) {
+            top = panelRect.bottom + 20;
+          }
+        } else if (step.target === '.settings-panel__body') {
+          // For settings panel body (step 9), position tooltip above the panel
+          left = panelRect.left + (panelRect.width / 2) - (tooltipRect.width / 2);
+          top = panelRect.top - tooltipRect.height - 20;
+          
+          // If it goes above viewport, position it below
+          if (top < 20) {
+            top = panelRect.bottom + 20;
+          }
+        } else if (step.target === '#settings-tab-tools') {
+          // For settings tab buttons, position tooltip above the panel
+          left = panelRect.left + (panelRect.width / 2) - (tooltipRect.width / 2);
+          top = panelRect.top - tooltipRect.height - 20;
+          
+          // If it goes above viewport, position it below
+          if (top < 20) {
+            top = panelRect.bottom + 20;
+          }
+        } else {
+          // For other settings elements, position below the panel
+          left = panelRect.left + (panelRect.width / 2) - (tooltipRect.width / 2);
+          top = panelRect.bottom + 20;
+          
+          // If it goes outside viewport, position it above
+          if (top + tooltipRect.height > window.innerHeight - 20) {
+            top = panelRect.top - tooltipRect.height - 20;
+          }
+          
+          // If still outside, position it to the left
+          if (top < 20) {
+            left = panelRect.left - tooltipRect.width - 20;
+            top = panelRect.top + 50;
+          }
+        }
+        
+        // Final viewport check
+        left = Math.max(20, Math.min(left, window.innerWidth - tooltipRect.width - 20));
+        top = Math.max(20, Math.min(top, window.innerHeight - tooltipRect.height - 20));
+      }
+    }
+    
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  },
+  
+  next() {
+    this.showStep(this.currentStep + 1);
+  },
+  
+  prev() {
+    this.showStep(this.currentStep - 1);
+  }
+};
+
+// Event listeners for onboarding
+function attachOnboardingListeners() {
+  elements.onboardingNext = document.getElementById('onboarding-next');
+  elements.onboardingPrev = document.getElementById('onboarding-prev');
+  elements.onboardingSkip = document.getElementById('onboarding-skip');
+  elements.onboardingClose = document.getElementById('onboarding-close');
+  
+  elements.infoBtn?.addEventListener('click', () => onboarding.start());
+  elements.onboardingNext?.addEventListener('click', () => onboarding.next());
+  elements.onboardingPrev?.addEventListener('click', () => onboarding.prev());
+  elements.onboardingSkip?.addEventListener('click', () => onboarding.stop());
+  elements.onboardingClose?.addEventListener('click', () => onboarding.stop());
+  
+  // Close on backdrop click
+  document.getElementById('onboarding-overlay')?.addEventListener('click', (e) => {
+    if (e.target.classList.contains('onboarding-backdrop')) {
+      onboarding.stop();
+    }
+  });
+  
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && onboarding.isActive) {
+      e.stopPropagation();
+      onboarding.stop();
+    }
+  });
+}
+
 // Make functions globally available for inline event handlers
 window.updateAIKey = updateAIKey;
 window.removeAIKey = removeAIKey;
@@ -1761,6 +2085,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   updateVersionBadge();
   attachContainerListeners();
   attachEventListeners();
+  attachOnboardingListeners();
 
   await initializeLanguageAndTheme();
   await loadPreferences();
@@ -1768,4 +2093,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   updateCategoryIcon(state.activeCategory);
   updateSearchHint();
   renderToolLists();
+  await onboarding.init();
 });

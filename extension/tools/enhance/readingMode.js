@@ -1,4 +1,5 @@
 import { showError, showSuccess, handleError, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'reading-mode',
@@ -862,6 +863,9 @@ export async function activate(deactivate) {
     
     const message = chrome.i18n ? chrome.i18n.getMessage('readingModeActivated') : 'Reading Mode activated';
     showSuccess(message);
+    
+    // Show coffee message
+    showCoffeeMessageForTool('reading-mode');
     
   } catch (error) {
     handleError(error, 'readingMode.activate');

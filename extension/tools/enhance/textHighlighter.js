@@ -1,4 +1,5 @@
 import { showSuccess, showError, handleError, safeExecute, sanitizeInput, normalizeUrlForStorage, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'text-highlighter',
@@ -187,11 +188,15 @@ function createHighlightElement(highlight) {
 // Apply highlight to selected text
 function applyHighlight(selection, color) {
   try {
-    if (selection.rangeCount === 0) {
+    if (!selection || typeof selection.rangeCount !== 'number' || selection.rangeCount === 0) {
       return null;
     }
     
     const range = selection.getRangeAt(0);
+    if (!range) {
+      return null;
+    }
+    
     const text = range.toString().trim();
     
     if (!text) {
@@ -363,10 +368,12 @@ function removeHighlight(highlightId) {
     if (highlightElement) {
       // Unwrap the mark element
       const parent = highlightElement.parentNode;
-      while (highlightElement.firstChild) {
-        parent.insertBefore(highlightElement.firstChild, highlightElement);
+      if (parent) {
+        while (highlightElement.firstChild) {
+          parent.insertBefore(highlightElement.firstChild, highlightElement);
+        }
+        parent.removeChild(highlightElement);
       }
-      parent.removeChild(highlightElement);
     }
     
     // Remove from highlights array
@@ -386,7 +393,7 @@ function removeHighlight(highlightId) {
 }
 
 // Show color palette
-function showColorPalette(selection) {
+function showColorPalette() {
   if (colorPaletteOverlay) {
     colorPaletteOverlay.remove();
   }
@@ -433,7 +440,8 @@ function showColorPalette(selection) {
     colorBtn.title = color.name;
     
     colorBtn.addEventListener('click', () => {
-      const highlight = applyHighlight(selection, color);
+      const currentSelection = window.getSelection();
+      const highlight = applyHighlight(currentSelection, color);
       if (highlight) {
         showSuccess(`Text highlighted with ${color.name}`);
       } else {
@@ -486,6 +494,7 @@ function showContextMenu(event, highlightId) {
   
   if (contextMenuOverlay) {
     contextMenuOverlay.remove();
+    contextMenuOverlay = null;
   }
   
   contextMenuOverlay = document.createElement('div');
@@ -517,8 +526,11 @@ function showContextMenu(event, highlightId) {
   `;
   removeBtn.addEventListener('click', () => {
     removeHighlight(highlightId);
-    contextMenuOverlay.remove();
-    contextMenuOverlay = null;
+    if (contextMenuOverlay) {
+      contextMenuOverlay.remove();
+      contextMenuOverlay = null;
+    }
+    document.removeEventListener('click', closeHandler);
   });
   
   contextMenuOverlay.appendChild(removeBtn);
@@ -526,7 +538,7 @@ function showContextMenu(event, highlightId) {
   
   // Close on outside click
   const closeHandler = (e) => {
-    if (!contextMenuOverlay.contains(e.target)) {
+    if (contextMenuOverlay && !contextMenuOverlay.contains(e.target)) {
       contextMenuOverlay.remove();
       contextMenuOverlay = null;
       document.removeEventListener('click', closeHandler);
@@ -545,16 +557,9 @@ function handleTextSelection() {
     const text = selection.toString().trim();
     
     if (text && text.length > 0) {
-      // Store the selection in a variable to prevent it from being lost
-      const selectionClone = {
-        rangeCount: selection.rangeCount,
-        getRangeAt: (index) => selection.getRangeAt(index),
-        toString: () => selection.toString()
-      };
-      
       // Use setTimeout to ensure the selection is stable
       setTimeout(() => {
-        showColorPalette(selectionClone);
+        showColorPalette();
       }, 10);
     }
   } catch (error) {
@@ -657,6 +662,12 @@ function watchForDOMChanges() {
 // Save highlights to storage
 async function saveHighlights() {
   try {
+    // Check if chrome.storage is available
+    if (typeof chrome === 'undefined' || !chrome.storage || !chrome.storage.local) {
+      console.debug('Chrome storage not available, skipping save');
+      return;
+    }
+
     const rawCurrentUrl = safeExecute(() => window.location.href, 'get current url') || '';
     const normalizedCurrentUrl = normalizeUrlForStorage(rawCurrentUrl);
     if (!normalizedCurrentUrl) {
@@ -765,19 +776,15 @@ export function activate(deactivate) {
       
       cleanupFunctions.push(cleanupMouseUp, cleanupContextMenu);
       
-      const successMessage = chrome.i18n ? chrome.i18n.getMessage('textHighlighterActivated') : 'Text highlighter activated! Select text to highlight.';
-      showSuccess(successMessage);
+      // Show coffee message
+      showCoffeeMessageForTool('text-highlighter');
     }).catch(error => {
       handleError(error, 'textHighlighter activation loadHighlights');
-      const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToLoadExistingHighlights') : 'Failed to load existing highlights. Please try again.';
-      showError(errorMessage);
       deactivate();
     });
     
   } catch (error) {
     handleError(error, 'textHighlighter activation');
-    const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToActivateTextHighlighter') : 'Failed to activate text highlighter. Please try again.';
-    showError(errorMessage);
     deactivate();
   }
 }

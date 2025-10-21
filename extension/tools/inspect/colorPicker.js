@@ -1,4 +1,5 @@
 import { copyText, showModal, showError, showSuccess, showInfo, handleError, safeExecute, sanitizeInput, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'color-picker',
@@ -200,6 +201,9 @@ export function activate(deactivate) {
         // Show success message
         const successMessage = chrome.i18n ? chrome.i18n.getMessage('colorCopiedToClipboard', [color]) : `Color ${color} copied to clipboard!`;
         showSuccess(successMessage);
+        
+        // Show coffee message
+        showCoffeeMessageForTool('color-picker');
         
         // Show modal with all formats
         const title = chrome.i18n ? chrome.i18n.getMessage('colorCopied') : 'Color Picked';

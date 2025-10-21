@@ -4,6 +4,7 @@ import {
   handleError,
   addEventListenerWithCleanup
 } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'qr-code-generator',
@@ -242,7 +243,7 @@ async function updatePreview(options = {}) {
 
     if (announceSuccess) {
       const message = chrome.i18n ? chrome.i18n.getMessage('qrCodeGenerated') : 'QR code generated';
-    showSuccess(message);
+      showSuccess(message);
     }
   } catch (error) {
     if (requestId !== activeRenderToken) {
@@ -357,10 +358,19 @@ function closeModal() {
     activeRenderToken += 1;
     currentQrData = null;
 
+    // Remove click area first
+    const clickArea = document.querySelector('[style*="z-index: 2147483646"]');
+    if (clickArea && clickArea.parentNode) {
+      clickArea.parentNode.removeChild(clickArea);
+    }
+
     if (qrModal && qrModal.parentNode) {
       qrModal.remove();
     }
     qrModal = null;
+    
+    // Show coffee message when modal is closed
+    showCoffeeMessageForTool('qr-code-generator');
   } catch (error) {
     handleError(error, 'closeModal');
   }
@@ -560,6 +570,23 @@ export async function activate(deactivate) {
     if (previewContainer) {
       previewContainer.innerHTML = '<div style="color: var(--toolary-secondary-text, #666); font-size: 14px;">Loading QR code library...</div>';
     }
+    
+    // Create invisible clickable area for backdrop
+    const modalClickArea = document.createElement('div');
+    modalClickArea.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2147483646;
+      pointer-events: auto;
+      background: transparent;
+    `;
+    
+    modalClickArea.addEventListener('click', closeModal);
+    
+    document.body.appendChild(modalClickArea);
     document.body.appendChild(qrModal);
 
     // Try to load QR library first

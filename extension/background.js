@@ -92,17 +92,22 @@ addMessageListener({
     return { success: true, dataUrl };
   },
   [MESSAGE_TYPES.DOWNLOAD_MEDIA]: ({ url, filename }) => new Promise((resolve) => {
+    console.log('Background: Download media request', { url, filename });
+    
     if (!url) {
+      console.error('Background: Missing media URL');
       resolve({ success: false, error: 'Missing media URL.' });
       return;
     }
 
+    console.log('Background: Starting download', { url, filename });
     chrome.downloads.download({ url, filename }, (downloadId) => {
       if (chrome.runtime.lastError) {
-        console.error('Toolary: download failed', chrome.runtime.lastError);
+        console.error('Background: Download failed', chrome.runtime.lastError);
         resolve({ success: false, error: chrome.runtime.lastError.message });
         return;
       }
+      console.log('Background: Download successful', { downloadId });
       resolve({ success: true, downloadId });
     });
   }),

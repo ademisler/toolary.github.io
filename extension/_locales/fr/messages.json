@@ -6,10 +6,10 @@
     "message": "Toolary"
   },
   "extensionDescription": {
-    "message": "Une boîte à outils légère pour collecter les couleurs, éléments, liens, polices, images et textes de n'importe quelle page web."
+    "message": "Une extension Chrome complète avec 24 outils de productivité web incluant des fonctionnalités IA et un système de favoris intelligent"
   },
-  "popupSubtitle": {
-    "message": "Outils de capture rapides"
+  "buyMeACoffee": {
+    "message": "Acheter Café"
   },
   "color": {
     "message": "Couleur"
@@ -21,34 +21,16 @@
     "message": "Lien"
   },
   "font": {
-    "message": "Police"
+    "message": "Trouver Police"
   },
   "media": {
-    "message": "Média"
+    "message": "Télécharger Média"
   },
   "text": {
     "message": "Texte"
   },
   "close": {
     "message": "Fermer"
-  },
-  "copy": {
-    "message": "Copier"
-  },
-  "export": {
-    "message": "Exporter"
-  },
-  "history": {
-    "message": "Historique"
-  },
-  "favorites": {
-    "message": "Favoris"
-  },
-  "favorite": {
-    "message": "Favori"
-  },
-  "unfavorite": {
-    "message": "Retirer"
   },
   "colorPicker": {
     "message": "Pipette"
@@ -60,10 +42,10 @@
     "message": "Sélecteur de lien"
   },
   "fontPicker": {
-    "message": "Sélecteur de police"
+    "message": "Trouver Police"
   },
   "mediaPicker": {
-    "message": "Sélecteur de média"
+    "message": "Télécharger Média"
   },
   "textPicker": {
     "message": "Sélecteur de texte"
@@ -92,98 +74,8 @@
   "elementInfo": {
     "message": "Infos élément"
   },
-  "links": {
-    "message": "Liens"
-  },
-  "fontInfo": {
-    "message": "Infos police"
-  },
-  "images": {
-    "message": "Images"
-  },
   "textTitle": {
     "message": "Texte"
-  },
-  "openShortcut": {
-    "message": "Ctrl+Shift+9"
-  },
-  "openShortcutMac": {
-    "message": "Cmd+Shift+9"
-  },
-  "toggleShortcut": {
-    "message": "Ctrl+Shift+P"
-  },
-  "toggleShortcutMac": {
-    "message": "Cmd+Shift+P"
-  },
-  "shortcuts": {
-    "message": "Raccourcis"
-  },
-  "shortcutsTitle": {
-    "message": "Raccourcis clavier"
-  },
-  "shortcutsDescription": {
-    "message": "Utilisez ces raccourcis pour lancer Toolary plus rapidement."
-  },
-  "shortcutsGlobal": {
-    "message": "Global"
-  },
-  "shortcutsTools": {
-    "message": "Outils (global)"
-  },
-  "shortcutsPopup": {
-    "message": "Dans le popup"
-  },
-  "shortcutOpen": {
-    "message": "Ouvrir Toolary"
-  },
-  "shortcutToggle": {
-    "message": "Afficher/masquer le popup"
-  },
-  "shortcutClose": {
-    "message": "Fermer le popup"
-  },
-  "shortcutColor": {
-    "message": "Alt+Shift+1"
-  },
-  "shortcutColorMac": {
-    "message": "Option+Shift+1"
-  },
-  "shortcutElement": {
-    "message": "Alt+Shift+2"
-  },
-  "shortcutElementMac": {
-    "message": "Option+Shift+2"
-  },
-  "shortcutScreenshot": {
-    "message": "Alt+Shift+3"
-  },
-  "shortcutScreenshotMac": {
-    "message": "Option+Shift+3"
-  },
-  "createdBy": {
-    "message": "Adem İsler"
-  },
-  "creatorRole": {
-    "message": "Créateur de Toolary"
-  },
-  "buyCoffee": {
-    "message": "Offrez-moi un café"
-  },
-  "cmdTogglePopup": {
-    "message": "Afficher/masquer le popup Toolary"
-  },
-  "cmdColorPicker": {
-    "message": "Activer la pipette"
-  },
-  "cmdElementPicker": {
-    "message": "Activer le sélecteur d'élément"
-  },
-  "cmdScreenshotPicker": {
-    "message": "Activer la capture d'écran"
-  },
-  "openToolary": {
-    "message": "Ouvrir Toolary"
   },
   "themeAuto": {
     "message": "Auto"
@@ -200,9 +92,6 @@
   "clickToPickColor": {
     "message": "Cliquez n'importe où pour choisir une couleur..."
   },
-  "colorCopiedToClipboard": {
-    "message": "Couleur {color} copiée dans le presse-papiers !"
-  },
   "colorPickingCancelled": {
     "message": "Sélection de couleur annulée"
   },
@@ -211,9 +100,6 @@
   },
   "failedToActivateColorPicker": {
     "message": "Échec de l'activation du sélecteur de couleur. Veuillez réessayer."
-  },
-  "elementSelectedAndCopied": {
-    "message": "Élément {tagName} sélectionné et copié !"
   },
   "failedToExtractElementInfo": {
     "message": "Échec de l'extraction des informations d'élément. Veuillez réessayer."
@@ -234,7 +120,7 @@
     "message": "Échec de la capture d'écran."
   },
   "textCopiedToClipboard": {
-    "message": "Texte copié dans le presse-papiers ! ({wordCount} mots)"
+    "message": "Texte copié dans le presse-papiers"
   },
   "failedToAnalyzeText": {
     "message": "Échec de l'analyse du texte. Veuillez réessayer."
@@ -250,9 +136,6 @@
   },
   "failedToStartLinkSelection": {
     "message": "Échec du démarrage de la sélection de liens. Veuillez réessayer."
-  },
-  "linksExtractedFromSource": {
-    "message": "{linkCount} liens extraits de {sourceLabel} !"
   },
   "failedToExtractLinks": {
     "message": "Échec de l'extraction des liens. Veuillez réessayer."
@@ -380,9 +263,6 @@
   "noNotesToDeleteForSite": {
     "message": "Aucune note à supprimer pour ce site."
   },
-  "deletedNotesSuccessfully": {
-    "message": "{count} notes supprimées avec succès !"
-  },
   "failedToDeleteAllNotes": {
     "message": "Échec de la suppression de toutes les notes. Veuillez réessayer."
   },
@@ -409,21 +289,6 @@
   },
   "failedToAnalyzePageColors": {
     "message": "Échec de l'analyse des couleurs de la page. Veuillez réessayer."
-  },
-  "failedToGeneratePDF": {
-    "message": "Échec de la génération du PDF : {error}"
-  },
-  "failedToActivatePDFGenerator": {
-    "message": "Échec de l'activation du générateur PDF : {error}"
-  },
-  "textHighlighterActivated": {
-    "message": "Surligneur de texte activé ! Sélectionnez du texte pour le surligner."
-  },
-  "failedToLoadExistingHighlights": {
-    "message": "Échec du chargement des surlignages existants. Veuillez réessayer."
-  },
-  "failedToActivateTextHighlighter": {
-    "message": "Échec de l'activation du surligneur de texte. Veuillez réessayer."
   },
   "failedToGenerateQRCode": {
     "message": "Échec de la génération du code QR"
@@ -495,34 +360,13 @@
     "message": "Augmenter la taille de police"
   },
   "toggleTheme": {
-    "message": "Basculer le thème"
+    "message": "Basculez entre clair, sombre ou suivez les préférences système."
   },
   "showToolbar": {
     "message": "Afficher la barre d'outils"
   },
   "hideToolbar": {
     "message": "Masquer la barre d'outils"
-  },
-  "searchTools": {
-    "message": "Rechercher des outils..."
-  },
-  "filterByCategory": {
-    "message": "Filtrer par catégorie"
-  },
-  "webPickerTools": {
-    "message": "Outils de sélection web"
-  },
-  "previousPage": {
-    "message": "Page précédente"
-  },
-  "nextPage": {
-    "message": "Page suivante"
-  },
-  "settingsSections": {
-    "message": "Sections des paramètres"
-  },
-  "toolToggles": {
-    "message": "Basculements d'outils"
   },
   "bookmarkAddedSuccessfully": {
     "message": "Signet ajouté avec succès !"
@@ -534,13 +378,13 @@
     "message": "Signet introuvable"
   },
   "bookmarkUpdated": {
-    "message": "Signet mis à jour !"
+    "message": "Favori mis à jour !"
   },
   "failedToUpdateBookmark": {
     "message": "Échec de la mise à jour du signet"
   },
   "bookmarkDeleted": {
-    "message": "Signet supprimé !"
+    "message": "Favori supprimé !"
   },
   "failedToDeleteBookmark": {
     "message": "Échec de la suppression du signet"
@@ -553,9 +397,6 @@
   },
   "failedToExportBookmarks": {
     "message": "Échec de l'exportation des signets"
-  },
-  "importedBookmarks": {
-    "message": "{count} signets importés{skipped}"
   },
   "failedToImportBookmarks": {
     "message": "Échec de l'importation des signets. Veuillez vérifier le format du fichier."
@@ -584,9 +425,6 @@
   "nothingToCopy": {
     "message": "Rien à copier"
   },
-  "textCopiedToClipboard": {
-    "message": "Texte copié dans le presse-papiers"
-  },
   "failedToCopyText": {
     "message": "Échec de la copie du texte"
   },
@@ -614,17 +452,11 @@
   "allTools": {
     "message": "Tous les Outils"
   },
-  "exportPrompt": {
-    "message": "txt/json/csv"
-  },
-  "version": {
-    "message": "Version 1.0.0"
-  },
   "developer": {
     "message": "Développeur"
   },
   "support": {
-    "message": "Soutien"
+    "message": "Support"
   },
   "colorPickerDescription": {
     "message": "Cliquez sur les éléments pour obtenir les couleurs"
@@ -666,7 +498,7 @@
     "message": "À propos"
   },
   "language": {
-    "message": "Langue"
+    "message": "Français"
   },
   "theme": {
     "message": "Thème"
@@ -686,17 +518,11 @@
   "switchLanguage": {
     "message": "Changez instantanément la langue du popup."
   },
-  "toggleTheme": {
-    "message": "Basculez entre clair, sombre ou suivez les préférences système."
-  },
   "reset": {
     "message": "Réinitialiser"
   },
   "save": {
     "message": "Enregistrer"
-  },
-  "close": {
-    "message": "Fermer"
   },
   "english": {
     "message": "English"
@@ -711,16 +537,10 @@
     "message": "À propos de Toolary"
   },
   "aboutDescription": {
-    "message": "Boîte à outils de sélection web unifiée pour la capture et l'inspection instantanées."
+    "message": "Une extension Chrome complète avec 24 outils de productivité web incluant des fonctionnalités IA et un système de favoris intelligent."
   },
   "keyboardShortcuts": {
     "message": "Raccourcis Clavier"
-  },
-  "developer": {
-    "message": "Développeur"
-  },
-  "support": {
-    "message": "Support"
   },
   "colorPalette": {
     "message": "Palette de Couleurs"
@@ -761,9 +581,6 @@
   "textHighlighterDescription": {
     "message": "Surligner du texte avec des couleurs et sauvegarder"
   },
-  "cmdTextHighlighter": {
-    "message": "Activer le surligneur de texte"
-  },
   "readingMode": {
     "message": "Mode Lecture"
   },
@@ -772,9 +589,6 @@
   },
   "readingModeDescription": {
     "message": "Contenu de page épuré pour une lecture concentrée"
-  },
-  "cmdReadingMode": {
-    "message": "Activer le Mode Lecture"
   },
   "qrcode": {
     "message": "Code QR"
@@ -793,57 +607,6 @@
   },
   "bookmarkManagerDescription": {
     "message": "Sauvegarder et organiser les favoris avec dossiers et étiquettes"
-  },
-  "addBookmark": {
-    "message": "Ajouter un Favori"
-  },
-  "editBookmark": {
-    "message": "Modifier le Favori"
-  },
-  "deleteBookmark": {
-    "message": "Supprimer le Favori"
-  },
-  "bookmarkAdded": {
-    "message": "Favori ajouté avec succès !"
-  },
-  "bookmarkUpdated": {
-    "message": "Favori mis à jour !"
-  },
-  "bookmarkDeleted": {
-    "message": "Favori supprimé !"
-  },
-  "searchBookmarks": {
-    "message": "Rechercher dans les favoris..."
-  },
-  "noBookmarks": {
-    "message": "Aucun favori pour le moment. Cliquez sur + pour ajouter votre premier favori !"
-  },
-  "bookmarkTitle": {
-    "message": "Titre"
-  },
-  "bookmarkUrl": {
-    "message": "URL"
-  },
-  "bookmarkFolder": {
-    "message": "Dossier"
-  },
-  "bookmarkTags": {
-    "message": "Étiquettes"
-  },
-  "bookmarkNotes": {
-    "message": "Notes"
-  },
-  "importBookmarks": {
-    "message": "Importer"
-  },
-  "exportBookmarks": {
-    "message": "Exporter"
-  },
-  "allBookmarks": {
-    "message": "Tous les Favoris"
-  },
-  "favoriteBookmarks": {
-    "message": "Favoris"
   },
   "videoRecorder": {
     "message": "Enregistreur Vidéo"
@@ -902,12 +665,6 @@
   "addApiKey": {
     "message": "Ajouter une clé API"
   },
-  "removeApiKey": {
-    "message": "Supprimer"
-  },
-  "apiKeyPlaceholder": {
-    "message": "Entrez la clé API Gemini"
-  },
   "aiLanguage": {
     "message": "Langue de Réponse"
   },
@@ -916,42 +673,6 @@
   },
   "aiLanguageAuto": {
     "message": "Auto (Langue du Navigateur)"
-  },
-  "noApiKeys": {
-    "message": "Aucune clé API ajoutée"
-  },
-  "showApiKey": {
-    "message": "Afficher la clé API"
-  },
-  "hideApiKey": {
-    "message": "Masquer la clé API"
-  },
-  "removeApiKeyTooltip": {
-    "message": "Supprimer la clé API"
-  },
-  "testApiKey": {
-    "message": "Tester la clé API"
-  },
-  "saveApiKey": {
-    "message": "Sauvegarder la clé API"
-  },
-  "apiKeySaved": {
-    "message": "Clé API sauvegardée"
-  },
-  "apiKeyValid": {
-    "message": "La clé API est valide !"
-  },
-  "apiKeyTestFailed": {
-    "message": "Test de la clé API échoué"
-  },
-  "enterApiKeyFirst": {
-    "message": "Veuillez d'abord entrer une clé API"
-  },
-  "settingsUpdated": {
-    "message": "Paramètres mis à jour"
-  },
-  "noApiKeys": {
-    "message": "Aucune clé API ajoutée pour le moment"
   },
   "ai": {
     "message": "IA"
@@ -965,78 +686,6 @@
   "aiTextSummarizerDescription": {
     "message": "Résumer le contenu de la page avec l'IA"
   },
-  "summarizeAuto": {
-    "message": "Contenu de Page"
-  },
-  "summarizeManual": {
-    "message": "Sélectionner Texte"
-  },
-  "summaryLengthShort": {
-    "message": "Court (~50 mots)"
-  },
-  "summaryLengthMedium": {
-    "message": "Moyen (~150 mots)"
-  },
-  "summaryLengthLong": {
-    "message": "Long (~300 mots)"
-  },
-  "generateSummary": {
-    "message": "Générer le Résumé"
-  },
-  "summaryGenerated": {
-    "message": "Résumé généré !"
-  },
-  "copySummary": {
-    "message": "Copier le Résumé"
-  },
-  "extractedKeywords": {
-    "message": "Mots-clés"
-  },
-  "noContentToSummarize": {
-    "message": "Aucun contenu trouvé à résumer"
-  },
-  "selectTextFirst": {
-    "message": "Veuillez d'abord sélectionner du texte sur la page"
-  },
-  "aiSummarizerActivated": {
-    "message": "Résumeur IA activé"
-  },
-  "failedToGenerateSummary": {
-    "message": "Échec de la génération du résumé. Veuillez réessayer."
-  },
-  "mode": {
-    "message": "Mode"
-  },
-  "length": {
-    "message": "Longueur"
-  },
-  "summary": {
-    "message": "Résumé"
-  },
-  "generating": {
-    "message": "Génération du résumé..."
-  },
-  "selectTextOnPage": {
-    "message": "Veuillez sélectionner du texte sur la page à résumer"
-  },
-  "clickToSelectText": {
-    "message": "Cliquez en dehors de ce panneau et sélectionnez du texte sur la page, puis cliquez sur Générer le Résumé."
-  },
-  "source": {
-    "message": "Source du Contenu"
-  },
-  "cancel": {
-    "message": "Annuler"
-  },
-  "copied": {
-    "message": "Copié !"
-  },
-  "failedToCopy": {
-    "message": "Échec de la copie"
-  },
-  "failedToActivate": {
-    "message": "Échec de l'activation"
-  },
   "aiTextTranslator": {
     "message": "Traducteur IA"
   },
@@ -1045,93 +694,6 @@
   },
   "aiTextTranslatorDescription": {
     "message": "Traduire du texte et des pages en 40+ langues"
-  },
-  "translatorActivated": {
-    "message": "Traducteur IA activé"
-  },
-  "translationCompleted": {
-    "message": "Traduction terminée !"
-  },
-  "failedToTranslate": {
-    "message": "Échec de la traduction du texte"
-  },
-  "sourceLanguage": {
-    "message": "Langue Source"
-  },
-  "targetLanguage": {
-    "message": "Langue Cible"
-  },
-  "autoDetect": {
-    "message": "Détection Automatique"
-  },
-  "translateInput": {
-    "message": "Saisir du Texte"
-  },
-  "translateSelection": {
-    "message": "Sélectionner du Texte"
-  },
-  "translatePage": {
-    "message": "Contenu de la Page"
-  },
-  "originalText": {
-    "message": "Original"
-  },
-  "translatedText": {
-    "message": "Traduction"
-  },
-  "copyTranslation": {
-    "message": "Copier la Traduction"
-  },
-  "translationCopied": {
-    "message": "Traduction copiée !"
-  },
-  "translate": {
-    "message": "Traduire"
-  },
-  "translating": {
-    "message": "Traduction en cours..."
-  },
-  "selectTextToTranslate": {
-    "message": "Sélectionnez du texte sur la page pour traduire"
-  },
-  "enterTextToTranslate": {
-    "message": "Entrez du texte à traduire"
-  },
-  "typeOrPasteText": {
-    "message": "Tapez ou collez du texte ici..."
-  },
-  "pleaseEnterText": {
-    "message": "Veuillez saisir du texte à traduire"
-  },
-  "pleaseSelectText": {
-    "message": "Veuillez sélectionner du texte sur la page"
-  },
-  "noContentFound": {
-    "message": "Aucun contenu trouvé sur cette page"
-  },
-  "textTruncated": {
-    "message": "Le texte a été tronqué à 5000 caractères pour la traduction"
-  },
-  "pageTranslated": {
-    "message": "Page traduite avec succès !"
-  },
-  "restoreOriginal": {
-    "message": "Restaurer l'original"
-  },
-  "pageRestored": {
-    "message": "Page originale restaurée"
-  },
-  "failedToRestore": {
-    "message": "Échec de la restauration de la page originale"
-  },
-  "noTranslationToRestore": {
-    "message": "Aucune traduction à restaurer"
-  },
-  "noTextToTranslate": {
-    "message": "Aucun texte trouvé à traduire sur cette page"
-  },
-  "translatingProgress": {
-    "message": "Traduction en cours... {current}/{total}"
   },
   "aiContentDetector": {
     "message": "Détecteur de Contenu IA"
@@ -1142,81 +704,6 @@
   "aiContentDetectorDescription": {
     "message": "Détectez le contenu généré par l'IA avec analyse multi-métrique"
   },
-  "analyzeInput": {
-    "message": "Entrer du Texte"
-  },
-  "analyzeSelection": {
-    "message": "Sélectionner du Texte"
-  },
-  "analyzePage": {
-    "message": "Contenu de la Page"
-  },
-  "aiProbability": {
-    "message": "Probabilité IA"
-  },
-  "confidenceLevel": {
-    "message": "Niveau de Confiance"
-  },
-  "writingStyle": {
-    "message": "Style d'Écriture"
-  },
-  "wordChoice": {
-    "message": "Choix de Mots"
-  },
-  "structureAnalysis": {
-    "message": "Structure"
-  },
-  "suspiciousSections": {
-    "message": "Sections Suspectes"
-  },
-  "showHighlights": {
-    "message": "Afficher les Surbrillances"
-  },
-  "hideHighlights": {
-    "message": "Masquer les Surbrillances"
-  },
-  "analyzing": {
-    "message": "Analyse du contenu..."
-  },
-  "analysisComplete": {
-    "message": "Analyse terminée !"
-  },
-  "highConfidence": {
-    "message": "Haute Confiance"
-  },
-  "mediumConfidence": {
-    "message": "Confiance Moyenne"
-  },
-  "lowConfidence": {
-    "message": "Faible Confiance"
-  },
-  "detailedMetrics": {
-    "message": "Analyse Détaillée"
-  },
-  "copyResults": {
-    "message": "Copier les Résultats"
-  },
-  "resultsCopied": {
-    "message": "Résultats copiés dans le presse-papiers !"
-  },
-  "detectorActivated": {
-    "message": "Détecteur de contenu IA activé"
-  },
-  "failedToAnalyze": {
-    "message": "Échec de l'analyse du contenu"
-  },
-  "selectTextToAnalyze": {
-    "message": "Sélectionnez du texte sur la page pour l'analyser"
-  },
-  "enterTextToAnalyze": {
-    "message": "Entrez le texte à analyser"
-  },
-  "noContentToAnalyze": {
-    "message": "Aucun contenu trouvé à analyser"
-  },
-  "analyze": {
-    "message": "Analyser le Contenu"
-  },
   "aiEmailGenerator": {
     "message": "Générateur d'E-mails IA"
   },
@@ -1225,123 +712,6 @@
   },
   "aiEmailGeneratorDescription": {
     "message": "Générez des e-mails professionnels avec l'IA"
-  },
-  "emailTone": {
-    "message": "Ton de l'E-mail"
-  },
-  "emailType": {
-    "message": "Type d'E-mail"
-  },
-  "emailLength": {
-    "message": "Longueur de l'E-mail"
-  },
-  "toneProfessional": {
-    "message": "Professionnel"
-  },
-  "toneFriendly": {
-    "message": "Amical"
-  },
-  "toneFormal": {
-    "message": "Formel"
-  },
-  "toneCasual": {
-    "message": "Décontracté"
-  },
-  "tonePersuasive": {
-    "message": "Persuasif"
-  },
-  "typeFollowUp": {
-    "message": "Suivi"
-  },
-  "typeThankYou": {
-    "message": "Remerciement"
-  },
-  "typeRequest": {
-    "message": "Demande"
-  },
-  "typeComplaint": {
-    "message": "Plainte"
-  },
-  "typeIntroduction": {
-    "message": "Introduction"
-  },
-  "typeApology": {
-    "message": "Excuse"
-  },
-  "typeReminder": {
-    "message": "Rappel"
-  },
-  "typeInvitation": {
-    "message": "Invitation"
-  },
-  "enterEmailContext": {
-    "message": "Entrez le contexte de l'e-mail"
-  },
-  "generateEmail": {
-    "message": "Générer l'E-mail"
-  },
-  "generatedEmail": {
-    "message": "E-mail Généré"
-  },
-  "subjectLine": {
-    "message": "Ligne d'Objet"
-  },
-  "emailBody": {
-    "message": "Corps de l'E-mail"
-  },
-  "alternativeVersions": {
-    "message": "Versions Alternatives"
-  },
-  "copyEmail": {
-    "message": "Copier l'E-mail"
-  },
-  "emailGenerated": {
-    "message": "E-mail généré avec succès !"
-  },
-  "failedToGenerateEmail": {
-    "message": "Échec de génération de l'e-mail"
-  },
-  "emailGeneratorActivated": {
-    "message": "Générateur d'E-mails IA activé"
-  },
-  "pageContext": {
-    "message": "Contexte de la Page"
-  },
-  "emailContextMode": {
-    "message": "Mode Contexte E-mail"
-  },
-  "enterContext": {
-    "message": "Entrer le Contexte"
-  },
-  "pageContextMode": {
-    "message": "Contexte de la Page"
-  },
-  "emailLengthShort": {
-    "message": "Court (~50 mots)"
-  },
-  "emailLengthMedium": {
-    "message": "Moyen (~150 mots)"
-  },
-  "emailLengthLong": {
-    "message": "Long (~300 mots)"
-  },
-  "pleaseEnterEmailContext": {
-    "message": "Veuillez entrer le contexte de l'e-mail"
-  },
-  "noContentToGenerateEmail": {
-    "message": "Aucun contenu trouvé pour générer l'e-mail"
-  },
-  "emailCopied": {
-    "message": "E-mail copié dans le presse-papiers !"
-  },
-  "failedToCopyEmail": {
-    "message": "Échec de copie de l'e-mail"
-  },
-  "generatingEmail": {
-    "message": "Génération de l'e-mail..."
-  },
-  "failedToActivateEmailGenerator": {
-    "message": "Échec d'activation du générateur d'e-mails"
   },
   "aiSEOAnalyzer": {
     "message": "Analyseur SEO IA"
@@ -1352,120 +722,6 @@
   "aiSEOAnalyzerDescription": {
     "message": "Analyser et optimiser le SEO de la page avec des recommandations alimentées par l'IA"
   },
-  "seoAnalyzing": {
-    "message": "Analyse SEO en cours..."
-  },
-  "seoCopyReport": {
-    "message": "Copier le Rapport"
-  },
-  "seoReportCopied": {
-    "message": "Rapport SEO copié dans le presse-papiers"
-  },
-  "seoCopyFailed": {
-    "message": "Échec de la copie du rapport"
-  },
-  "seoOverallScore": {
-    "message": "Score SEO Global"
-  },
-  "seoMetaTitle": {
-    "message": "Meta & Titre"
-  },
-  "seoContentQuality": {
-    "message": "Qualité du Contenu"
-  },
-  "seoHeadingStructure": {
-    "message": "Structure des Titres"
-  },
-  "seoImageOptimization": {
-    "message": "Image"
-  },
-  "seoLinkStrategy": {
-    "message": "Stratégie de Liens"
-  },
-  "seoTechnicalSEO": {
-    "message": "SEO Technique"
-  },
-  "seoPriorityActions": {
-    "message": "Actions Prioritaires"
-  },
-  "seoRecommendations": {
-    "message": "Recommandations"
-  },
-  "seoCopyReport": {
-    "message": "Copier le Rapport"
-  },
-  "seoAnalyzingDescription": {
-    "message": "Analyse et optimisation des performances SEO de la page..."
-  },
-  "seoAnalysisSteps": {
-    "message": "Étapes d'Analyse"
-  },
-  "seoStep1": {
-    "message": "Vérification des balises meta et de la structure des titres"
-  },
-  "seoStep2": {
-    "message": "Analyse de la qualité du contenu et de la densité des mots-clés"
-  },
-  "seoStep3": {
-    "message": "Évaluation de l'optimisation des images et de la stratégie des liens"
-  },
-  "seoStep4": {
-    "message": "Calcul des métriques SEO techniques et de performance"
-  },
-  "seoAnalysisComplete": {
-    "message": "Analyse SEO terminée !"
-  },
-  "seoAnalysisFailed": {
-    "message": "Échec de l'analyse SEO"
-  },
-  "seoNoContent": {
-    "message": "Aucun contenu analysable trouvé"
-  },
-  "seoMetaAndTitle": {
-    "message": "Meta & Titre"
-  },
-  "seoContentQuality": {
-    "message": "Qualité du Contenu"
-  },
-  "seoHeadingStructure": {
-    "message": "Structure des Titres"
-  },
-  "seoImageOptimization": {
-    "message": "Image"
-  },
-  "seoLinkStrategy": {
-    "message": "Liens"
-  },
-  "seoTechnicalSEO": {
-    "message": "SEO Technique"
-  },
-  "seoCategoryScores": {
-    "message": "Scores par Catégorie"
-  },
-  "seoSummary": {
-    "message": "Résumé"
-  },
-  "seoExcellent": {
-    "message": "Performance SEO excellente"
-  },
-  "seoGood": {
-    "message": "Bonne performance SEO"
-  },
-  "seoFair": {
-    "message": "Performance SEO correcte"
-  },
-  "seoNeedsImprovement": {
-    "message": "Nécessite des améliorations"
-  },
-  "seoPoor": {
-    "message": "Performance SEO faible"
-  },
-  "language": {
-    "message": "Français"
-  },
-  "history": {
-    "message": "Historique"
-  },
   "aiChat": {
     "message": "Chat IA"
   },
@@ -1474,27 +730,6 @@
   },
   "aiChatDescription": {
     "message": "Avoir une conversation avec l'IA sur la page web actuelle"
-  },
-  "analyzing": {
-    "message": "Analyse de la page..."
-  },
-  "typeMessage": {
-    "message": "Tapez votre message..."
-  },
-  "send": {
-    "message": "Envoyer"
-  },
-  "chatWelcome": {
-    "message": "Salut ! J'ai analysé cette page. Posez-moi n'importe quelle question !"
-  },
-  "errorMessage": {
-    "message": "Désolé, une erreur s'est produite. Veuillez réessayer."
-  },
-  "sendError": {
-    "message": "Échec de l'envoi du message"
-  },
-  "activationError": {
-    "message": "Échec de l'activation du Chat IA"
   },
   "copyHistoryManager": {
     "message": "Historique de Copie"
@@ -1505,37 +740,157 @@
   "copyHistoryManagerDescription": {
     "message": "Suivre et gérer les textes et URLs copiés"
   },
-  "itemCopied": {
-    "message": "Élément ajouté à l'historique"
+  "Inspect": {
+    "message": "Inspecter"
   },
-  "searchHistory": {
-    "message": "Rechercher dans l'historique..."
+  "analyzeOnPageElementsAndStyles": {
+    "message": "Analyser les éléments et styles de la page."
   },
-  "clearAllHistory": {
-    "message": "Effacer Tout l'Historique"
+  "Capture": {
+    "message": "Capturer"
   },
-  "confirmClearAll": {
-    "message": "Êtes-vous sûr de vouloir effacer tout l'historique ?"
+  "collectAndSaveContentFromAnyPage": {
+    "message": "Collecter et sauvegarder le contenu de n'importe quelle page."
   },
-  "noItemsYet": {
-    "message": "Aucun élément pour le moment"
+  "Enhance": {
+    "message": "Améliorer"
   },
-  "startCopyingHint": {
-    "message": "Commencez à copier du texte pour le voir ici"
+  "augmentTheBrowsingExperience": {
+    "message": "Améliorer l'expérience de navigation."
   },
-  "copyAgain": {
-    "message": "Copier"
+  "Utilities": {
+    "message": "Utilitaires"
   },
-  "copiedToClipboard": {
-    "message": "Copié dans le presse-papiers"
+  "generalPurposeSiteUtilities": {
+    "message": "Utilitaires de site à usage général."
   },
-  "historyCleared": {
-    "message": "Historique effacé"
+  "AI": {
+    "message": "IA"
   },
-  "clearHistoryError": {
-    "message": "Échec de l'effacement de l'historique"
+  "aiPoweredToolsForContentAnalysis": {
+    "message": "Outils alimentés par l'IA pour l'analyse de contenu."
   },
-  "copyHistoryActivationError": {
-    "message": "Échec de l'activation du Gestionnaire d'Historique de Copie"
+  "download": {
+    "message": "Télécharger"
+  },
+  "videoLabel": {
+    "message": "Vidéo"
+  },
+  "imageLabel": {
+    "message": "Image"
+  },
+  "typeLabel": {
+    "message": "Type"
+  },
+  "primaryUrlLabel": {
+    "message": "URL principale"
+  },
+  "streamUrlLabel": {
+    "message": "URL de flux"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "unavailableLabel": {
+    "message": "Indisponible"
+  },
+  "blobUrlWarning": {
+    "message": "⚠️ Cette vidéo utilise une URL blob. Le téléchargement peut ne pas être disponible."
+  },
+  "blobUrlFallbackNote": {
+    "message": "Le flux principal utilise une URL blob. Une source téléchargeable a été découverte et est utilisée pour les actions de copie et de téléchargement."
+  },
+  "additionalSources": {
+    "message": "Sources supplémentaires"
+  },
+  "copyUrl": {
+    "message": "Copier l'URL"
+  },
+  "copyUrlUnavailable": {
+    "message": "Copier l'URL (indisponible)"
+  },
+  "downloadUnavailable": {
+    "message": "Télécharger (indisponible)"
+  },
+  "noBookmarksFound": {
+    "message": "Aucun signet trouvé correspondant à votre recherche"
+  },
+  "noFavoriteBookmarks": {
+    "message": "Aucun signet favori pour le moment"
+  },
+  "noBookmarksYet": {
+    "message": "Aucun signet pour le moment. Cliquez sur + pour ajouter votre premier signet !"
+  },
+  "title": {
+    "message": "Titre"
+  },
+  "url": {
+    "message": "URL"
+  },
+  "folder": {
+    "message": "Dossier"
+  },
+  "notes": {
+    "message": "Notes"
+  },
+  "cancel": {
+    "message": "Annuler"
+  },
+  "addBookmark": {
+    "message": "Ajouter un Signet"
+  },
+  "updateBookmark": {
+    "message": "Mettre à jour le Signet"
+  },
+  "stickyNotesManager": {
+    "message": "Gestionnaire de Notes Adhésives"
+  },
+  "addNewNote": {
+    "message": "Ajouter une Nouvelle Note"
+  },
+  "clearAll": {
+    "message": "Tout Effacer"
+  },
+  "allNotesFromAllSites": {
+    "message": "Toutes les Notes de Tous les Sites"
+  },
+  "noStickyNotesYet": {
+    "message": "Aucune note adhésive pour le moment"
+  },
+  "delete": {
+    "message": "Supprimer"
+  },
+  "emptyNote": {
+    "message": "Note vide"
+  },
+  "entireScreen": {
+    "message": "Écran Entier"
+  },
+  "window": {
+    "message": "Fenêtre"
+  },
+  "chromeTab": {
+    "message": "Onglet Chrome"
+  },
+  "recording": {
+    "message": "Enregistrement"
+  },
+  "resume": {
+    "message": "Reprendre"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "cmdColorPicker": {
+    "message": "Activer le Sélecteur de Couleur"
+  },
+  "cmdScreenshotPicker": {
+    "message": "Activer la Capture d'Écran"
+  },
+  "cmdReadingMode": {
+    "message": "Activer le Mode Lecture"
+  },
+  "cmdTextHighlighter": {
+    "message": "Activer le Surligneur de Texte"
   }
 }

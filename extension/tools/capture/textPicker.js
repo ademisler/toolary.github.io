@@ -1,4 +1,5 @@
 import { createOverlay, removeOverlay, copyText, showModal, showError, showSuccess, showInfo, showWarning, throttle, handleError, safeExecute, sanitizeInput, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'text-picker',
@@ -152,6 +153,29 @@ function onClick(e) {
     const content = `Text:\n${text}\n\nStatistics:\n- Words: ${textAnalysis.wordCount}\n- Characters: ${textAnalysis.characterCount}\n- Sentences: ${textAnalysis.statistics.sentences}`;
     
     showModal(title, content, 'text', 'text');
+    
+    // Show coffee message when modal is closed
+    setTimeout(() => {
+      const modalOverlay = document.querySelector('#toolary-modal-overlay');
+      if (modalOverlay) {
+        // Override the remove method to show coffee message
+        const originalRemove = modalOverlay.remove;
+        modalOverlay.remove = function() {
+          originalRemove.call(this);
+          showCoffeeMessageForTool('text-picker');
+        };
+        
+        // Also override the dismiss button click
+        const dismissBtn = modalOverlay.querySelector('button[type="button"]');
+        if (dismissBtn) {
+          const originalClick = dismissBtn.onclick;
+          dismissBtn.onclick = function(e) {
+            if (originalClick) originalClick.call(this, e);
+            showCoffeeMessageForTool('text-picker');
+          };
+        }
+      }
+    }, 100);
     deactivateCb();
     
   } catch (error) {

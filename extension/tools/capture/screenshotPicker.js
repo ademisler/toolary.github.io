@@ -1,4 +1,5 @@
 import { showError, handleError } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'screenshot-picker',
@@ -230,6 +231,9 @@ async function stitchCaptures(segments, totalHeight, devicePixelRatio) {
 
   const stitchedDataUrl = canvas.toDataURL('image/png');
   downloadScreenshot(stitchedDataUrl, getFilename(window.location.href));
+  
+  // Show coffee message
+  showCoffeeMessageForTool('screenshot-picker');
 }
 
 async function captureFullPage() {

@@ -1,4 +1,5 @@
 import { showError, showSuccess, handleError, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import { createIconElement } from '../../shared/icons.js';
 
 export const metadata = {
@@ -182,10 +183,16 @@ function handleToggleClick() {
     applyDarkMode();
     const message = chrome.i18n ? chrome.i18n.getMessage('darkModeEnabled') : 'Dark mode enabled';
     showSuccess(message);
+    
+    // Show coffee message
+    showCoffeeMessageForTool('dark-mode-toggle');
   } else {
     removeDarkMode();
     const message = chrome.i18n ? chrome.i18n.getMessage('darkModeDisabled') : 'Dark mode disabled';
     showSuccess(message);
+    
+    // Show coffee message
+    showCoffeeMessageForTool('dark-mode-toggle');
   }
   
   updateButtonAppearance();

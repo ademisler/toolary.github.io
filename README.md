@@ -48,12 +48,14 @@ A comprehensive Chrome extension with 24 web productivity tools including AI-pow
 - **Keyboard Shortcuts** - Global shortcuts for quick access
 - **Dark/Light Themes** - Automatic theme switching
 - **Responsive Design** - Works on all screen sizes
+- **☕ Coffee Toast System** - Modern glassmorphism notifications with developer support
 
 ## 🛠️ Installation
 
 1. Download the extension from Chrome Web Store
 2. Click "Add to Chrome" to install
 3. Pin the extension to your toolbar for easy access
+4. Configure AI settings (optional) for AI-powered tools
 
 ## 🎮 Usage
 
@@ -63,6 +65,7 @@ A comprehensive Chrome extension with 24 web productivity tools including AI-pow
 4. **Mark Favorites** - Click the star icon on tool cards to mark as favorites
 5. **Activate Tools** - Click on any tool card to activate it
 6. **Use Shortcuts** - Use global keyboard shortcuts for quick access
+7. **Configure AI** - Add API keys in settings for AI-powered tools
 
 ## ⌨️ Keyboard Shortcuts
 
@@ -100,6 +103,12 @@ A comprehensive Chrome extension with 24 web productivity tools including AI-pow
 - 3 lengths: Short, Medium, Long
 - Auto-generated subject lines
 
+### AI Chat
+- Intelligent conversational interface
+- Persistent page context awareness
+- Multi-turn conversations
+- Context-aware responses
+
 ## ⭐ Favorites System
 
 Toolary includes a comprehensive favorite system that enhances your productivity:
@@ -117,6 +126,19 @@ Toolary includes a comprehensive favorite system that enhances your productivity
 2. **Automatic Sorting** - Favorites appear first, sorted by usage among themselves
 3. **Visual Feedback** - Empty star for non-favorites, filled white star for favorites
 4. **Hover Effects** - Star grows and becomes more visible on hover
+
+## ☕ Coffee Toast System
+
+Toolary includes a modern glassmorphism coffee toast system that displays humorous coffee-themed messages after successful tool operations:
+
+### Features
+- **Modern Glassmorphism Design** - Translucent glass effect with backdrop blur
+- **Coffee-Themed Messages** - Humorous messages in Turkish, English, and French
+- **Responsive Layout** - Horizontal layout with coffee emoji, centered text, and compact button
+- **Smart Text Wrapping** - 5 words per line for optimal readability
+- **Auto-Dismiss** - Messages automatically disappear after 6 seconds
+- **Language Detection** - Automatically detects user's browser language
+- **Buy Me a Coffee Integration** - Direct link to support the developer
 
 ## 🔧 Configuration
 
@@ -141,7 +163,7 @@ Toolary includes a comprehensive favorite system that enhances your productivity
 ## 🧪 Testing
 
 The extension includes comprehensive testing:
-- 86 unit tests with 44.21% coverage
+- 7 test files with 44.93% coverage
 - ESLint code quality checks
 - Manual testing checklist
 
@@ -173,7 +195,8 @@ extension/
 3. Make your changes
 4. Run tests: `npm test`
 5. Run linting: `npm run lint`
-6. Submit a pull request
+6. Ensure all tests pass and coverage is maintained
+7. Submit a pull request
 
 ## 📄 License
 
@@ -187,8 +210,8 @@ MIT License - see LICENSE file for details
 
 ## 🔄 Version History
 
-- **v1.0.0** - Initial release with 24 tools including AI-powered features, favorite system, and comprehensive productivity tools
+- **v1.0.0** - Initial release with 24 tools including AI-powered features, favorite system, modern glassmorphism coffee toast system, and comprehensive productivity tools
 
 ---
 
-**Toolary** - Enhancing your web productivity with AI-powered tools! 🚀
+**Toolary** - Enhancing your web productivity with AI-powered tools and modern design! 🚀☕

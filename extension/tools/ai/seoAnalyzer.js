@@ -1,5 +1,6 @@
 import { aiManager } from '../../core/aiManager.js';
-import { showError, showSuccess, handleError, addEventListenerWithCleanup, showInfo } from '../../shared/helpers.js';
+import { showError, showSuccess, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'ai-seo-analyzer',
@@ -474,43 +475,6 @@ Write 2-3 sentences summarizing the overall SEO performance. Focus on strengths 
 }
 
 // UI Functions
-function createFloatingWidget() {
-  const widget = document.createElement('div');
-  widget.id = 'toolary-seo-widget';
-  widget.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 48px;
-    height: 48px;
-    background: #2a2a2a;
-    border: 1px solid #3a3a3a;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 2147483646;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: all 0.2s ease;
-  `;
-  
-  widget.innerHTML = `
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="11" cy="11" r="8"></circle>
-      <path d="m21 21-4.35-4.35"></path>
-      <path d="m9 11 2 2 4-4"></path>
-    </svg>
-  `;
-  
-  const cleanup = addEventListenerWithCleanup(widget, 'click', () => {
-    showPanel();
-    startAnalysis();
-  });
-  state.cleanupFunctions.push(cleanup);
-  
-  return widget;
-}
 
 function showPanel() {
   if (state.sidebar) return;
@@ -755,63 +719,8 @@ function renderAnalysisResult(results) {
   }
 }
 
-function createCategoryCard(title, data, i18nKey) {
-  const isExpanded = false;
-  
-  return `
-    <div style="background: #2a2a2a; border-radius: 8px; margin-bottom: 12px; overflow: hidden;">
-      <div class="category-header" style="padding: 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;" onclick="this.parentElement.querySelector('.category-details').style.display = this.parentElement.querySelector('.category-details').style.display === 'none' ? 'block' : 'none'">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="font-size: 24px; font-weight: 700; color: ${getScoreColor(data.score)};">${data.score}</div>
-          <div>
-            <div style="font-weight: 600; font-size: 14px;">${t(i18nKey)}</div>
-            <div style="color: #b0b0b0; font-size: 12px;">${data.summary}</div>
-          </div>
-        </div>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(${isExpanded ? 180 : 0}deg); transition: transform 0.2s;">
-          <path d="M6 9l6 6 6-6"></path>
-        </svg>
-      </div>
-      <div class="category-details" style="display: none; padding: 0 16px 16px 16px; border-top: 1px solid #3a3a3a;">
-        ${data.issues.length > 0 ? `
-          <div style="margin-bottom: 12px;">
-            <div style="font-weight: 600; margin-bottom: 8px; color: #ff6b6b;">Issues:</div>
-            <ul style="margin: 0; padding-left: 20px; color: #e0e0e0;">
-              ${data.issues.map(issue => `<li style="margin-bottom: 4px;">${issue}</li>`).join('')}
-            </ul>
-          </div>
-        ` : ''}
-        ${data.recommendations.length > 0 ? `
-          <div style="margin-bottom: 12px;">
-            <div style="font-weight: 600; margin-bottom: 8px; color: #51cf66;">Recommendations:</div>
-            <ul style="margin: 0; padding-left: 20px; color: #e0e0e0;">
-              ${data.recommendations.map(rec => `<li style="margin-bottom: 4px;">${rec}</li>`).join('')}
-            </ul>
-          </div>
-        ` : ''}
-        <div style="color: #b0b0b0; font-size: 13px; line-height: 1.5;">${data.details}</div>
-      </div>
-    </div>
-  `;
-}
 
-function getScoreColor(score) {
-  if (score >= 80) return '#51cf66'; // Green
-  if (score >= 60) return '#ffd43b'; // Yellow
-  if (score >= 40) return '#ff8c00'; // Orange
-  return '#ff6b6b'; // Red
-}
 
-async function handleCopyResults(results) {
-  const report = generateReportText(results);
-  try {
-    await navigator.clipboard.writeText(report);
-    showSuccess(t('seoCopyReport'));
-  } catch (error) {
-    handleError(error, 'handleCopyResults');
-    showError('Failed to copy report');
-  }
-}
 
 function generateReportText(results) {
   return `
@@ -937,6 +846,9 @@ async function startAnalysis() {
     renderAnalysisResult(state.analysisResults);
     
     showSuccess(t('seoAnalysisComplete'));
+    
+    // Show coffee message
+    showCoffeeMessageForTool('seo-analyzer');
     
   } catch (error) {
     console.debug('Analysis failed:', error);

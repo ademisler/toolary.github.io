@@ -1,4 +1,5 @@
 import { showError, handleError, showSuccess } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import * as messageRouter from '../../core/messageRouter.js';
 
 export const metadata = {
@@ -95,9 +96,17 @@ async function generatePDF() {
     if (response.method === 'window.print') {
       // No UI messages for window.print - direct print for clean PDF
       console.log('PDF Generator: Print dialog opened');
+      
+      // Show coffee message after a delay to ensure it appears above print dialog
+      setTimeout(() => {
+        showCoffeeMessageForTool('pdf-generator');
+      }, 1000); // 1 second delay to ensure print dialog is fully loaded
     } else {
       const message = chrome.i18n ? chrome.i18n.getMessage('pdfGeneratedAndDownloadedSuccessfully') : 'PDF generated and downloaded successfully!';
       showSuccess(message);
+      
+      // Show coffee message
+      showCoffeeMessageForTool('pdf-generator');
     }
     
   } catch (error) {

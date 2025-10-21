@@ -6,10 +6,10 @@
     "message": "Toolary"
   },
   "extensionDescription": {
-    "message": "A lightweight picker toolbox to collect colors, elements, links, fonts, images, and text from any webpage."
+    "message": "A comprehensive Chrome extension with 24 web productivity tools including AI-powered features and a smart favorite system"
   },
-  "popupSubtitle": {
-    "message": "Quick web picker tools"
+  "buyMeACoffee": {
+    "message": "Buy Coffee"
   },
   "color": {
     "message": "Color"
@@ -21,34 +21,16 @@
     "message": "Link"
   },
   "font": {
-    "message": "Font"
+    "message": "Font Finder"
   },
   "media": {
-    "message": "Media"
+    "message": "Media Download"
   },
   "text": {
     "message": "Text"
   },
   "close": {
     "message": "Close"
-  },
-  "copy": {
-    "message": "Copy"
-  },
-  "export": {
-    "message": "Export"
-  },
-  "history": {
-    "message": "History"
-  },
-  "favorites": {
-    "message": "Favorites"
-  },
-  "favorite": {
-    "message": "Favorite"
-  },
-  "unfavorite": {
-    "message": "Unfavorite"
   },
   "colorPicker": {
     "message": "Color Picker"
@@ -60,10 +42,10 @@
     "message": "Link Picker"
   },
   "fontPicker": {
-    "message": "Font Picker"
+    "message": "Font Finder"
   },
   "mediaPicker": {
-    "message": "Media Picker"
+    "message": "Media Download"
   },
   "textPicker": {
     "message": "Text Picker"
@@ -92,98 +74,8 @@
   "elementInfo": {
     "message": "Element Info"
   },
-  "links": {
-    "message": "Links"
-  },
-  "fontInfo": {
-    "message": "Font Info"
-  },
-  "images": {
-    "message": "Images"
-  },
   "textTitle": {
     "message": "Text"
-  },
-  "openShortcut": {
-    "message": "Ctrl+Shift+9"
-  },
-  "openShortcutMac": {
-    "message": "Cmd+Shift+9"
-  },
-  "toggleShortcut": {
-    "message": "Ctrl+Shift+P"
-  },
-  "toggleShortcutMac": {
-    "message": "Cmd+Shift+P"
-  },
-  "shortcuts": {
-    "message": "Shortcuts"
-  },
-  "shortcutsTitle": {
-    "message": "Keyboard shortcuts"
-  },
-  "shortcutsDescription": {
-    "message": "Trigger Toolary faster with these shortcuts."
-  },
-  "shortcutsGlobal": {
-    "message": "Global"
-  },
-  "shortcutsTools": {
-    "message": "Tools (global)"
-  },
-  "shortcutsPopup": {
-    "message": "Inside the popup"
-  },
-  "shortcutOpen": {
-    "message": "Open Toolary"
-  },
-  "shortcutToggle": {
-    "message": "Toggle popup"
-  },
-  "shortcutClose": {
-    "message": "Close popup"
-  },
-  "shortcutColor": {
-    "message": "Alt+Shift+1"
-  },
-  "shortcutColorMac": {
-    "message": "Option+Shift+1"
-  },
-  "shortcutElement": {
-    "message": "Alt+Shift+2"
-  },
-  "shortcutElementMac": {
-    "message": "Option+Shift+2"
-  },
-  "shortcutScreenshot": {
-    "message": "Alt+Shift+3"
-  },
-  "shortcutScreenshotMac": {
-    "message": "Option+Shift+3"
-  },
-  "createdBy": {
-    "message": "Adem İsler"
-  },
-  "creatorRole": {
-    "message": "Creator of Toolary"
-  },
-  "buyCoffee": {
-    "message": "Buy me a coffee"
-  },
-  "cmdTogglePopup": {
-    "message": "Toggle the Toolary popup"
-  },
-  "cmdColorPicker": {
-    "message": "Activate Color Picker"
-  },
-  "cmdElementPicker": {
-    "message": "Activate Element Picker"
-  },
-  "cmdScreenshotPicker": {
-    "message": "Activate Screenshot Picker"
-  },
-  "openToolary": {
-    "message": "Open Toolary"
   },
   "themeAuto": {
     "message": "Auto"
@@ -200,9 +92,6 @@
   "clickToPickColor": {
     "message": "Click anywhere to pick a color..."
   },
-  "colorCopiedToClipboard": {
-    "message": "Color {color} copied to clipboard!"
-  },
   "colorPickingCancelled": {
     "message": "Color picking cancelled"
   },
@@ -211,9 +100,6 @@
   },
   "failedToActivateColorPicker": {
     "message": "Failed to activate color picker. Please try again."
-  },
-  "elementSelectedAndCopied": {
-    "message": "Element {tagName} selected and copied!"
   },
   "failedToExtractElementInfo": {
     "message": "Failed to extract element information. Please try again."
@@ -234,7 +120,7 @@
     "message": "Failed to capture screenshot."
   },
   "textCopiedToClipboard": {
-    "message": "Text copied to clipboard! ({wordCount} words)"
+    "message": "Text copied to clipboard"
   },
   "failedToAnalyzeText": {
     "message": "Failed to analyze text. Please try again."
@@ -250,9 +136,6 @@
   },
   "failedToStartLinkSelection": {
     "message": "Failed to start link selection. Please try again."
-  },
-  "linksExtractedFromSource": {
-    "message": "{linkCount} links extracted from {sourceLabel}!"
   },
   "failedToExtractLinks": {
     "message": "Failed to extract links. Please try again."
@@ -380,9 +263,6 @@
   "noNotesToDeleteForSite": {
     "message": "No notes to delete for this site."
   },
-  "deletedNotesSuccessfully": {
-    "message": "Deleted {count} notes successfully!"
-  },
   "failedToDeleteAllNotes": {
     "message": "Failed to delete all notes. Please try again."
   },
@@ -409,21 +289,6 @@
   },
   "failedToAnalyzePageColors": {
     "message": "Failed to analyze page colors. Please try again."
-  },
-  "failedToGeneratePDF": {
-    "message": "Failed to generate PDF: {error}"
-  },
-  "failedToActivatePDFGenerator": {
-    "message": "Failed to activate PDF Generator: {error}"
-  },
-  "textHighlighterActivated": {
-    "message": "Text highlighter activated! Select text to highlight."
-  },
-  "failedToLoadExistingHighlights": {
-    "message": "Failed to load existing highlights. Please try again."
-  },
-  "failedToActivateTextHighlighter": {
-    "message": "Failed to activate text highlighter. Please try again."
   },
   "failedToGenerateQRCode": {
     "message": "Failed to generate QR code"
@@ -495,34 +360,13 @@
     "message": "Increase font size"
   },
   "toggleTheme": {
-    "message": "Toggle theme"
+    "message": "Toggle between light, dark, or follow system preferences."
   },
   "showToolbar": {
     "message": "Show toolbar"
   },
   "hideToolbar": {
     "message": "Hide toolbar"
-  },
-  "searchTools": {
-    "message": "Search tools..."
-  },
-  "filterByCategory": {
-    "message": "Filter by category"
-  },
-  "webPickerTools": {
-    "message": "Web picker tools"
-  },
-  "previousPage": {
-    "message": "Previous page"
-  },
-  "nextPage": {
-    "message": "Next page"
-  },
-  "settingsSections": {
-    "message": "Settings sections"
-  },
-  "toolToggles": {
-    "message": "Tool toggles"
   },
   "bookmarkAddedSuccessfully": {
     "message": "Bookmark added successfully!"
@@ -554,9 +398,6 @@
   "failedToExportBookmarks": {
     "message": "Failed to export bookmarks"
   },
-  "importedBookmarks": {
-    "message": "Imported {count} bookmarks{skipped}"
-  },
   "failedToImportBookmarks": {
     "message": "Failed to import bookmarks. Please check the file format."
   },
@@ -584,9 +425,6 @@
   "nothingToCopy": {
     "message": "Nothing to copy"
   },
-  "textCopiedToClipboard": {
-    "message": "Text copied to clipboard"
-  },
   "failedToCopyText": {
     "message": "Failed to copy text"
   },
@@ -613,12 +451,6 @@
   },
   "allTools": {
     "message": "All Tools"
-  },
-  "exportPrompt": {
-    "message": "txt/json/csv"
-  },
-  "version": {
-    "message": "Version 1.0.0"
   },
   "developer": {
     "message": "Developer"
@@ -666,7 +498,7 @@
     "message": "About"
   },
   "language": {
-    "message": "Language"
+    "message": "English"
   },
   "theme": {
     "message": "Theme"
@@ -686,17 +518,11 @@
   "switchLanguage": {
     "message": "Switch the popup language instantly."
   },
-  "toggleTheme": {
-    "message": "Toggle between light, dark, or follow system preferences."
-  },
   "reset": {
     "message": "Reset"
   },
   "save": {
     "message": "Save"
-  },
-  "close": {
-    "message": "Close"
   },
   "english": {
     "message": "English"
@@ -711,16 +537,10 @@
     "message": "About Toolary"
   },
   "aboutDescription": {
-    "message": "Unified web picker toolkit for instant capture and inspection."
+    "message": "A comprehensive Chrome extension with 24 web productivity tools including AI-powered features and a smart favorite system."
   },
   "keyboardShortcuts": {
     "message": "Keyboard Shortcuts"
-  },
-  "developer": {
-    "message": "Developer"
-  },
-  "support": {
-    "message": "Support"
   },
   "colorPalette": {
     "message": "Color Palette"
@@ -761,9 +581,6 @@
   "textHighlighterDescription": {
     "message": "Highlight text with colors and save per site"
   },
-  "cmdTextHighlighter": {
-    "message": "Activate Text Highlighter"
-  },
   "readingMode": {
     "message": "Reading Mode"
   },
@@ -772,9 +589,6 @@
   },
   "readingModeDescription": {
     "message": "Clean page content for focused reading"
-  },
-  "cmdReadingMode": {
-    "message": "Activate Reading Mode"
   },
   "qrcode": {
     "message": "QR Code"
@@ -793,57 +607,6 @@
   },
   "bookmarkManagerDescription": {
     "message": "Save and organize bookmarks with folders and tags"
-  },
-  "addBookmark": {
-    "message": "Add Bookmark"
-  },
-  "editBookmark": {
-    "message": "Edit Bookmark"
-  },
-  "deleteBookmark": {
-    "message": "Delete Bookmark"
-  },
-  "bookmarkAdded": {
-    "message": "Bookmark added successfully!"
-  },
-  "bookmarkUpdated": {
-    "message": "Bookmark updated!"
-  },
-  "bookmarkDeleted": {
-    "message": "Bookmark deleted!"
-  },
-  "searchBookmarks": {
-    "message": "Search bookmarks..."
-  },
-  "noBookmarks": {
-    "message": "No bookmarks yet. Click + to add your first bookmark!"
-  },
-  "bookmarkTitle": {
-    "message": "Title"
-  },
-  "bookmarkUrl": {
-    "message": "URL"
-  },
-  "bookmarkFolder": {
-    "message": "Folder"
-  },
-  "bookmarkTags": {
-    "message": "Tags"
-  },
-  "bookmarkNotes": {
-    "message": "Notes"
-  },
-  "importBookmarks": {
-    "message": "Import"
-  },
-  "exportBookmarks": {
-    "message": "Export"
-  },
-  "allBookmarks": {
-    "message": "All Bookmarks"
-  },
-  "favoriteBookmarks": {
-    "message": "Favorites"
   },
   "videoRecorder": {
     "message": "Video Recorder"
@@ -902,12 +665,6 @@
   "addApiKey": {
     "message": "Add API Key"
   },
-  "removeApiKey": {
-    "message": "Remove"
-  },
-  "apiKeyPlaceholder": {
-    "message": "Enter Gemini API key"
-  },
   "aiLanguage": {
     "message": "Response Language"
   },
@@ -916,42 +673,6 @@
   },
   "aiLanguageAuto": {
     "message": "Auto (Browser Language)"
-  },
-  "noApiKeys": {
-    "message": "No API keys added yet"
-  },
-  "showApiKey": {
-    "message": "Show API key"
-  },
-  "hideApiKey": {
-    "message": "Hide API key"
-  },
-  "removeApiKeyTooltip": {
-    "message": "Remove API key"
-  },
-  "testApiKey": {
-    "message": "Test API key"
-  },
-  "saveApiKey": {
-    "message": "Save API key"
-  },
-  "apiKeySaved": {
-    "message": "API key saved"
-  },
-  "apiKeyValid": {
-    "message": "API key is valid!"
-  },
-  "apiKeyTestFailed": {
-    "message": "API key test failed"
-  },
-  "enterApiKeyFirst": {
-    "message": "Please enter an API key first"
-  },
-  "settingsUpdated": {
-    "message": "Settings updated"
-  },
-  "noApiKeys": {
-    "message": "No API keys added yet"
   },
   "ai": {
     "message": "AI"
@@ -965,78 +686,6 @@
   "aiTextSummarizerDescription": {
     "message": "Summarize page content using AI"
   },
-  "summarizeAuto": {
-    "message": "Page Content"
-  },
-  "summarizeManual": {
-    "message": "Select Text"
-  },
-  "summaryLengthShort": {
-    "message": "Short (~50 words)"
-  },
-  "summaryLengthMedium": {
-    "message": "Medium (~150 words)"
-  },
-  "summaryLengthLong": {
-    "message": "Long (~300 words)"
-  },
-  "generateSummary": {
-    "message": "Generate Summary"
-  },
-  "summaryGenerated": {
-    "message": "Summary generated!"
-  },
-  "copySummary": {
-    "message": "Copy Summary"
-  },
-  "extractedKeywords": {
-    "message": "Keywords"
-  },
-  "noContentToSummarize": {
-    "message": "No content found to summarize"
-  },
-  "selectTextFirst": {
-    "message": "Please select text on the page first"
-  },
-  "aiSummarizerActivated": {
-    "message": "AI Summarizer activated"
-  },
-  "failedToGenerateSummary": {
-    "message": "Failed to generate summary. Please try again."
-  },
-  "mode": {
-    "message": "Mode"
-  },
-  "length": {
-    "message": "Length"
-  },
-  "summary": {
-    "message": "Summary"
-  },
-  "generating": {
-    "message": "Generating summary..."
-  },
-  "selectTextOnPage": {
-    "message": "Please select text on the page to summarize"
-  },
-  "clickToSelectText": {
-    "message": "Click outside this panel and select text on the page, then click Generate Summary."
-  },
-  "source": {
-    "message": "Content Source"
-  },
-  "cancel": {
-    "message": "Cancel"
-  },
-  "copied": {
-    "message": "Copied!"
-  },
-  "failedToCopy": {
-    "message": "Failed to copy"
-  },
-  "failedToActivate": {
-    "message": "Failed to activate"
-  },
   "aiTextTranslator": {
     "message": "AI Translator"
   },
@@ -1045,93 +694,6 @@
   },
   "aiTextTranslatorDescription": {
     "message": "Translate text and pages to 40+ languages"
-  },
-  "translatorActivated": {
-    "message": "AI Translator activated"
-  },
-  "translationCompleted": {
-    "message": "Translation completed!"
-  },
-  "failedToTranslate": {
-    "message": "Failed to translate text"
-  },
-  "sourceLanguage": {
-    "message": "Source Language"
-  },
-  "targetLanguage": {
-    "message": "Target Language"
-  },
-  "autoDetect": {
-    "message": "Auto Detect"
-  },
-  "translateInput": {
-    "message": "Enter Text"
-  },
-  "translateSelection": {
-    "message": "Select Text"
-  },
-  "translatePage": {
-    "message": "Page Content"
-  },
-  "originalText": {
-    "message": "Original"
-  },
-  "translatedText": {
-    "message": "Translation"
-  },
-  "copyTranslation": {
-    "message": "Copy Translation"
-  },
-  "translationCopied": {
-    "message": "Translation copied!"
-  },
-  "translate": {
-    "message": "Translate"
-  },
-  "translating": {
-    "message": "Translating..."
-  },
-  "selectTextToTranslate": {
-    "message": "Select text on the page to translate"
-  },
-  "enterTextToTranslate": {
-    "message": "Enter text to translate"
-  },
-  "typeOrPasteText": {
-    "message": "Type or paste text here..."
-  },
-  "pleaseEnterText": {
-    "message": "Please enter text to translate"
-  },
-  "pleaseSelectText": {
-    "message": "Please select text on the page"
-  },
-  "noContentFound": {
-    "message": "No content found on this page"
-  },
-  "textTruncated": {
-    "message": "Text was truncated to 5000 characters for translation"
-  },
-  "pageTranslated": {
-    "message": "Page translated successfully!"
-  },
-  "restoreOriginal": {
-    "message": "Restore Original"
-  },
-  "pageRestored": {
-    "message": "Original page restored"
-  },
-  "failedToRestore": {
-    "message": "Failed to restore original page"
-  },
-  "noTranslationToRestore": {
-    "message": "No translation to restore"
-  },
-  "noTextToTranslate": {
-    "message": "No text found to translate on this page"
-  },
-  "translatingProgress": {
-    "message": "Translating... {current}/{total}"
   },
   "aiContentDetector": {
     "message": "AI Content Detector"
@@ -1142,81 +704,6 @@
   "aiContentDetectorDescription": {
     "message": "Detect AI-generated content with multi-metric analysis"
   },
-  "analyzeInput": {
-    "message": "Enter Text"
-  },
-  "analyzeSelection": {
-    "message": "Select Text"
-  },
-  "analyzePage": {
-    "message": "Page Content"
-  },
-  "aiProbability": {
-    "message": "AI Probability"
-  },
-  "confidenceLevel": {
-    "message": "Confidence"
-  },
-  "writingStyle": {
-    "message": "Writing Style"
-  },
-  "wordChoice": {
-    "message": "Word Choice"
-  },
-  "structureAnalysis": {
-    "message": "Structure"
-  },
-  "suspiciousSections": {
-    "message": "Suspicious Sections"
-  },
-  "showHighlights": {
-    "message": "Show Highlights"
-  },
-  "hideHighlights": {
-    "message": "Hide Highlights"
-  },
-  "analyzing": {
-    "message": "Analyzing content..."
-  },
-  "analysisComplete": {
-    "message": "Analysis complete!"
-  },
-  "highConfidence": {
-    "message": "High Confidence"
-  },
-  "mediumConfidence": {
-    "message": "Medium Confidence"
-  },
-  "lowConfidence": {
-    "message": "Low Confidence"
-  },
-  "detailedMetrics": {
-    "message": "Detailed Analysis"
-  },
-  "copyResults": {
-    "message": "Copy Results"
-  },
-  "resultsCopied": {
-    "message": "Results copied to clipboard!"
-  },
-  "detectorActivated": {
-    "message": "AI Content Detector activated"
-  },
-  "failedToAnalyze": {
-    "message": "Failed to analyze content"
-  },
-  "selectTextToAnalyze": {
-    "message": "Select text on the page to analyze"
-  },
-  "enterTextToAnalyze": {
-    "message": "Enter text to analyze"
-  },
-  "noContentToAnalyze": {
-    "message": "No content found to analyze"
-  },
-  "analyze": {
-    "message": "Analyze Content"
-  },
   "aiEmailGenerator": {
     "message": "AI Email Generator"
   },
@@ -1225,123 +712,6 @@
   },
   "aiEmailGeneratorDescription": {
     "message": "Generate professional emails with AI"
-  },
-  "emailTone": {
-    "message": "Email Tone"
-  },
-  "emailType": {
-    "message": "Email Type"
-  },
-  "emailLength": {
-    "message": "Email Length"
-  },
-  "toneProfessional": {
-    "message": "Professional"
-  },
-  "toneFriendly": {
-    "message": "Friendly"
-  },
-  "toneFormal": {
-    "message": "Formal"
-  },
-  "toneCasual": {
-    "message": "Casual"
-  },
-  "tonePersuasive": {
-    "message": "Persuasive"
-  },
-  "typeFollowUp": {
-    "message": "Follow-up"
-  },
-  "typeThankYou": {
-    "message": "Thank You"
-  },
-  "typeRequest": {
-    "message": "Request"
-  },
-  "typeComplaint": {
-    "message": "Complaint"
-  },
-  "typeIntroduction": {
-    "message": "Introduction"
-  },
-  "typeApology": {
-    "message": "Apology"
-  },
-  "typeReminder": {
-    "message": "Reminder"
-  },
-  "typeInvitation": {
-    "message": "Invitation"
-  },
-  "enterEmailContext": {
-    "message": "Enter email context"
-  },
-  "generateEmail": {
-    "message": "Generate Email"
-  },
-  "generatedEmail": {
-    "message": "Generated Email"
-  },
-  "subjectLine": {
-    "message": "Subject Line"
-  },
-  "emailBody": {
-    "message": "Email Body"
-  },
-  "alternativeVersions": {
-    "message": "Alternative Versions"
-  },
-  "copyEmail": {
-    "message": "Copy Email"
-  },
-  "emailGenerated": {
-    "message": "Email generated successfully!"
-  },
-  "failedToGenerateEmail": {
-    "message": "Failed to generate email"
-  },
-  "emailGeneratorActivated": {
-    "message": "AI Email Generator activated"
-  },
-  "pageContext": {
-    "message": "Page Context"
-  },
-  "emailContextMode": {
-    "message": "Email Context Mode"
-  },
-  "enterContext": {
-    "message": "Enter Context"
-  },
-  "pageContextMode": {
-    "message": "Page Context"
-  },
-  "emailLengthShort": {
-    "message": "Short (~50 words)"
-  },
-  "emailLengthMedium": {
-    "message": "Medium (~150 words)"
-  },
-  "emailLengthLong": {
-    "message": "Long (~300 words)"
-  },
-  "pleaseEnterEmailContext": {
-    "message": "Please enter email context"
-  },
-  "noContentToGenerateEmail": {
-    "message": "No content found to generate email"
-  },
-  "emailCopied": {
-    "message": "Email copied to clipboard!"
-  },
-  "failedToCopyEmail": {
-    "message": "Failed to copy email"
-  },
-  "generatingEmail": {
-    "message": "Generating email..."
-  },
-  "failedToActivateEmailGenerator": {
-    "message": "Failed to activate email generator"
   },
   "aiSEOAnalyzer": {
     "message": "AI SEO Analyzer"
@@ -1352,120 +722,6 @@
   "aiSEOAnalyzerDescription": {
     "message": "Analyze and optimize page SEO with AI-powered recommendations"
   },
-  "seoAnalyzing": {
-    "message": "Analyzing SEO..."
-  },
-  "seoCopyReport": {
-    "message": "Copy Report"
-  },
-  "seoReportCopied": {
-    "message": "SEO report copied to clipboard"
-  },
-  "seoCopyFailed": {
-    "message": "Failed to copy report"
-  },
-  "seoOverallScore": {
-    "message": "Overall SEO Score"
-  },
-  "seoMetaTitle": {
-    "message": "Meta & Title"
-  },
-  "seoContentQuality": {
-    "message": "Content Quality"
-  },
-  "seoHeadingStructure": {
-    "message": "Heading Structure"
-  },
-  "seoImageOptimization": {
-    "message": "Image"
-  },
-  "seoLinkStrategy": {
-    "message": "Links"
-  },
-  "seoTechnicalSEO": {
-    "message": "Technical SEO"
-  },
-  "seoPriorityActions": {
-    "message": "Priority Actions"
-  },
-  "seoRecommendations": {
-    "message": "Recommendations"
-  },
-  "seoCopyReport": {
-    "message": "Copy Report"
-  },
-  "seoAnalyzingDescription": {
-    "message": "Analyzing and optimizing page SEO performance..."
-  },
-  "seoAnalysisSteps": {
-    "message": "Analysis Steps"
-  },
-  "seoStep1": {
-    "message": "Checking meta tags and heading structure"
-  },
-  "seoStep2": {
-    "message": "Analyzing content quality and keyword density"
-  },
-  "seoStep3": {
-    "message": "Evaluating image optimization and link strategy"
-  },
-  "seoStep4": {
-    "message": "Calculating technical SEO and performance metrics"
-  },
-  "seoAnalysisComplete": {
-    "message": "SEO analysis complete!"
-  },
-  "seoAnalysisFailed": {
-    "message": "Failed to analyze SEO"
-  },
-  "seoNoContent": {
-    "message": "No analyzable content found"
-  },
-  "seoMetaAndTitle": {
-    "message": "Meta & Title"
-  },
-  "seoContentQuality": {
-    "message": "Content Quality"
-  },
-  "seoHeadingStructure": {
-    "message": "Heading Structure"
-  },
-  "seoImageOptimization": {
-    "message": "Image"
-  },
-  "seoLinkStrategy": {
-    "message": "Links"
-  },
-  "seoTechnicalSEO": {
-    "message": "Technical SEO"
-  },
-  "seoCategoryScores": {
-    "message": "Category Scores"
-  },
-  "seoSummary": {
-    "message": "Summary"
-  },
-  "seoExcellent": {
-    "message": "Excellent SEO performance"
-  },
-  "seoGood": {
-    "message": "Good SEO performance"
-  },
-  "seoFair": {
-    "message": "Fair SEO performance"
-  },
-  "seoNeedsImprovement": {
-    "message": "Needs improvement"
-  },
-  "seoPoor": {
-    "message": "Poor SEO performance"
-  },
-  "language": {
-    "message": "English"
-  },
-  "history": {
-    "message": "History"
-  },
   "aiChat": {
     "message": "AI Chat"
   },
@@ -1474,27 +730,6 @@
   },
   "aiChatDescription": {
     "message": "Have a conversation with AI about the current webpage"
-  },
-  "analyzing": {
-    "message": "Analyzing page..."
-  },
-  "typeMessage": {
-    "message": "Type your message..."
-  },
-  "send": {
-    "message": "Send"
-  },
-  "chatWelcome": {
-    "message": "Hi! I've analyzed this page. Ask me anything!"
-  },
-  "errorMessage": {
-    "message": "Sorry, I encountered an error. Please try again."
-  },
-  "sendError": {
-    "message": "Failed to send message"
-  },
-  "activationError": {
-    "message": "Failed to activate AI Chat"
   },
   "copyHistoryManager": {
     "message": "Copy History"
@@ -1505,37 +740,157 @@
   "copyHistoryManagerDescription": {
     "message": "Track and manage copied text and URLs"
   },
-  "itemCopied": {
-    "message": "Item added to history"
+  "Inspect": {
+    "message": "Inspect"
   },
-  "searchHistory": {
-    "message": "Search history..."
+  "analyzeOnPageElementsAndStyles": {
+    "message": "Analyze on-page elements and styles."
   },
-  "clearAllHistory": {
-    "message": "Clear All History"
+  "Capture": {
+    "message": "Capture"
   },
-  "confirmClearAll": {
-    "message": "Are you sure you want to clear all history?"
+  "collectAndSaveContentFromAnyPage": {
+    "message": "Collect and save content from any page."
   },
-  "noItemsYet": {
-    "message": "No items yet"
+  "Enhance": {
+    "message": "Enhance"
   },
-  "startCopyingHint": {
-    "message": "Start copying text to see it here"
+  "augmentTheBrowsingExperience": {
+    "message": "Augment the browsing experience."
   },
-  "copyAgain": {
-    "message": "Copy"
+  "Utilities": {
+    "message": "Utilities"
   },
-  "copiedToClipboard": {
-    "message": "Copied to clipboard"
+  "generalPurposeSiteUtilities": {
+    "message": "General purpose site utilities."
   },
-  "historyCleared": {
-    "message": "History cleared"
+  "AI": {
+    "message": "AI"
   },
-  "clearHistoryError": {
-    "message": "Failed to clear history"
+  "aiPoweredToolsForContentAnalysis": {
+    "message": "AI-powered tools for content analysis."
   },
-  "copyHistoryActivationError": {
-    "message": "Failed to activate Copy History Manager"
+  "download": {
+    "message": "Download"
+  },
+  "videoLabel": {
+    "message": "Video"
+  },
+  "imageLabel": {
+    "message": "Image"
+  },
+  "typeLabel": {
+    "message": "Type"
+  },
+  "primaryUrlLabel": {
+    "message": "Primary URL"
+  },
+  "streamUrlLabel": {
+    "message": "Stream URL"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "unavailableLabel": {
+    "message": "Unavailable"
+  },
+  "blobUrlWarning": {
+    "message": "⚠️ This video uses a blob URL. Download may not be available."
+  },
+  "blobUrlFallbackNote": {
+    "message": "Primary stream uses a blob URL. A downloadable source was discovered and is used for copy & download actions."
+  },
+  "additionalSources": {
+    "message": "Additional sources"
+  },
+  "copyUrl": {
+    "message": "Copy URL"
+  },
+  "copyUrlUnavailable": {
+    "message": "Copy URL (unavailable)"
+  },
+  "downloadUnavailable": {
+    "message": "Download (unavailable)"
+  },
+  "noBookmarksFound": {
+    "message": "No bookmarks found matching your search"
+  },
+  "noFavoriteBookmarks": {
+    "message": "No favorite bookmarks yet"
+  },
+  "noBookmarksYet": {
+    "message": "No bookmarks yet. Click + to add your first bookmark!"
+  },
+  "title": {
+    "message": "Title"
+  },
+  "url": {
+    "message": "URL"
+  },
+  "folder": {
+    "message": "Folder"
+  },
+  "notes": {
+    "message": "Notes"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "addBookmark": {
+    "message": "Add Bookmark"
+  },
+  "updateBookmark": {
+    "message": "Update Bookmark"
+  },
+  "stickyNotesManager": {
+    "message": "Sticky Notes Manager"
+  },
+  "addNewNote": {
+    "message": "Add New Note"
+  },
+  "clearAll": {
+    "message": "Clear All"
+  },
+  "allNotesFromAllSites": {
+    "message": "All Notes from All Sites"
+  },
+  "noStickyNotesYet": {
+    "message": "No sticky notes yet"
+  },
+  "delete": {
+    "message": "Delete"
+  },
+  "emptyNote": {
+    "message": "Empty note"
+  },
+  "entireScreen": {
+    "message": "Entire Screen"
+  },
+  "window": {
+    "message": "Window"
+  },
+  "chromeTab": {
+    "message": "Chrome Tab"
+  },
+  "recording": {
+    "message": "Recording"
+  },
+  "resume": {
+    "message": "Resume"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "cmdColorPicker": {
+    "message": "Activate Color Picker"
+  },
+  "cmdScreenshotPicker": {
+    "message": "Activate Screenshot Picker"
+  },
+  "cmdReadingMode": {
+    "message": "Activate Reading Mode"
+  },
+  "cmdTextHighlighter": {
+    "message": "Activate Text Highlighter"
   }
 }

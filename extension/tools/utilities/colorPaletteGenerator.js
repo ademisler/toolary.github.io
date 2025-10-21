@@ -1,4 +1,5 @@
 import { showError, showSuccess, showInfo, showModal, handleError, safeExecute } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'color-palette-generator',
@@ -264,14 +265,16 @@ function generateHarmonies(colors) {
 function generateAccessibilityScores(colors) {
   const scores = [];
   const commonTextColors = [
-    { hex: '#000000', name: 'Black' },
-    { hex: '#333333', name: 'Dark Gray' },
-    { hex: '#666666', name: 'Medium Gray' },
-    { hex: '#999999', name: 'Light Gray' },
-    { hex: '#ffffff', name: 'White' }
+    { hex: '#000000', name: 'Black', rgb: { r: 0, g: 0, b: 0 } },
+    { hex: '#333333', name: 'Dark Gray', rgb: { r: 51, g: 51, b: 51 } },
+    { hex: '#666666', name: 'Medium Gray', rgb: { r: 102, g: 102, b: 102 } },
+    { hex: '#999999', name: 'Light Gray', rgb: { r: 153, g: 153, b: 153 } },
+    { hex: '#ffffff', name: 'White', rgb: { r: 255, g: 255, b: 255 } }
   ];
   
   colors.slice(0, 5).forEach(bgColor => {
+    if (!bgColor.rgb) return; // Skip if no RGB data
+    
     commonTextColors.forEach(textColor => {
       const contrastRatio = getContrastRatio(bgColor.rgb, textColor.rgb);
       const accessibility = getAccessibilityLevel(contrastRatio);
@@ -561,6 +564,29 @@ export async function activate(deactivate) {
     // Show modal with results (type 'color-palette' will show color swatches)
     showModal('Color Palette Analysis', reportText, 'palette', 'color-palette');
     
+    // Show coffee message when modal is closed
+    setTimeout(() => {
+      const modalOverlay = document.querySelector('#toolary-modal-overlay');
+      if (modalOverlay) {
+        // Override the remove method to show coffee message
+        const originalRemove = modalOverlay.remove;
+        modalOverlay.remove = function() {
+          originalRemove.call(this);
+          showCoffeeMessageForTool('color-palette-generator');
+        };
+        
+        // Also override the dismiss button click
+        const dismissBtn = modalOverlay.querySelector('button[type="button"]');
+        if (dismissBtn) {
+          const originalClick = dismissBtn.onclick;
+          dismissBtn.onclick = function(e) {
+            if (originalClick) originalClick.call(this, e);
+            showCoffeeMessageForTool('color-palette-generator');
+          };
+        }
+      }
+    }, 100);
+    
     // Store exports for download functionality
     window.toolaryColorPaletteExports = {
       css: cssExport,
@@ -575,7 +601,8 @@ export async function activate(deactivate) {
     const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToAnalyzePageColors') : 'Failed to analyze page colors. Please try again.';
     showError(errorMessage);
   } finally {
-    deactivate();
+    // Color palette tool doesn't need immediate deactivation
+    // Modal will handle its own cleanup when closed
   }
 }
 

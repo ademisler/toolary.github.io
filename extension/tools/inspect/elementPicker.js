@@ -1,4 +1,5 @@
 import { createOverlay, removeOverlay, createTooltip, removeTooltip, copyText, getCssSelector, getXPath, showModal, showError, showSuccess, showInfo, throttle, getCachedComputedStyle, handleError, safeExecute, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'element-picker',
@@ -150,6 +151,29 @@ function onClick(e) {
     
     const title = chrome.i18n ? chrome.i18n.getMessage('elementInfo') : 'Element Information';
     showModal(title, text, 'element', 'element');
+    
+    // Show coffee message when modal is closed
+    setTimeout(() => {
+      const modalOverlay = document.querySelector('#toolary-modal-overlay');
+      if (modalOverlay) {
+        // Override the remove method to show coffee message
+        const originalRemove = modalOverlay.remove;
+        modalOverlay.remove = function() {
+          originalRemove.call(this);
+          showCoffeeMessageForTool('element-picker');
+        };
+        
+        // Also override the dismiss button click
+        const dismissBtn = modalOverlay.querySelector('button[type="button"]');
+        if (dismissBtn) {
+          const originalClick = dismissBtn.onclick;
+          dismissBtn.onclick = function(e) {
+            if (originalClick) originalClick.call(this, e);
+            showCoffeeMessageForTool('element-picker');
+          };
+        }
+      }
+    }, 100);
     deactivateCb();
     
   } catch (error) {

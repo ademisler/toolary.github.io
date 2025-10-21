@@ -1,4 +1,5 @@
 import { showSuccess, showError, handleError, safeExecute, sanitizeInput, renderIcon, normalizeUrlForStorage } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'sticky-notes-picker',
@@ -153,7 +154,7 @@ function createStickyNote(x, y, color = NOTE_COLORS[0].value) {
     
     notes.push(note);
     renderStickyNote(note);
-    saveNotes();
+    saveNotes(); // No notification for creating notes
     
     return note;
   } catch (error) {
@@ -589,6 +590,9 @@ function showNotesManager() {
     existingManager.remove();
   }
   
+  // Show coffee message when manager opens
+  showCoffeeMessageForTool('sticky-notes-picker');
+  
   const manager = document.createElement('div');
   manager.id = 'toolary-notes-manager';
   manager.style.cssText = `
@@ -835,7 +839,7 @@ export async function loadExistingNotesForCurrentSite() {
 }
 
 // Save notes to storage (site-specific) with enhanced error handling
-async function saveNotes() {
+async function saveNotes(showNotification = false) {
   try {
     const rawCurrentUrl = safeExecute(() => window.location.href, 'get current url') || '';
     const normalizedCurrentUrl = normalizeUrlForStorage(rawCurrentUrl);
@@ -856,8 +860,14 @@ async function saveNotes() {
     await safeExecute(async () =>
       await chrome.storage.local.set({ [siteKey]: normalizedNotes }), 'save notes to storage');
 
-    const successMessage = chrome.i18n ? chrome.i18n.getMessage('notesSavedSuccessfully') : 'Notes saved successfully!';
-    showSuccess(successMessage);
+    // Only show notifications when explicitly requested
+    if (showNotification) {
+      const successMessage = chrome.i18n ? chrome.i18n.getMessage('notesSavedSuccessfully') : 'Notes saved successfully!';
+      showSuccess(successMessage);
+      
+      // Show coffee message
+      showCoffeeMessageForTool('sticky-notes-picker');
+    }
   } catch (error) {
     handleError(error, 'saveNotes');
     const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToSaveNotes') : 'Failed to save notes';
@@ -1027,7 +1037,7 @@ function importNotes() {
                 }));
 
                 hydrateNotesFromStorage(normalizedImports);
-                await saveNotes();
+                await saveNotes(true); // Show notification for import
                 await loadExistingNotesForCurrentSite();
                 await refreshNotesManagerListIfPresent();
                 const successMessage = chrome.i18n ? chrome.i18n.getMessage('notesImportedSuccessfully') : 'Notes imported successfully!';
@@ -1084,7 +1094,7 @@ function deleteNote(noteId) {
       const noteIndex = notes.findIndex(note => note.id === sanitizedNoteId);
       if (noteIndex !== -1) {
         notes.splice(noteIndex, 1);
-        saveNotes();
+        saveNotes(true); // Show notification for delete
         const successMessage = chrome.i18n ? chrome.i18n.getMessage('noteDeletedSuccessfully') : 'Note deleted successfully';
         showSuccess(successMessage);
       }
@@ -1341,7 +1351,7 @@ function deleteAllNotes() {
     });
 
     // Save changes
-    saveNotes();
+    saveNotes(true); // Show notification for bulk delete
 
     const successMessage = chrome.i18n ? chrome.i18n.getMessage('deletedNotesSuccessfully', [currentSiteNotes.length]) : `Deleted ${currentSiteNotes.length} notes successfully!`;
     showSuccess(successMessage);

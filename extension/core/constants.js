@@ -2,31 +2,31 @@ export const TOOL_CATEGORIES = Object.freeze({
   inspect: Object.freeze({
     id: 'inspect',
     label: 'Inspect',
-    description: 'Analyze on-page elements and styles.',
+    description: 'analyzeOnPageElementsAndStyles',
     order: 1
   }),
   capture: Object.freeze({
     id: 'capture',
     label: 'Capture',
-    description: 'Collect and save page content.',
+    description: 'collectAndSaveContentFromAnyPage',
     order: 2
   }),
   enhance: Object.freeze({
     id: 'enhance',
     label: 'Enhance',
-    description: 'Enhance the browsing experience.',
+    description: 'augmentTheBrowsingExperience',
     order: 3
   }),
   utilities: Object.freeze({
     id: 'utilities',
     label: 'Utilities',
-    description: 'General purpose site utilities.',
+    description: 'generalPurposeSiteUtilities',
     order: 4
   }),
   ai: Object.freeze({
     id: 'ai',
     label: 'AI',
-    description: 'AI-powered tools for content analysis.',
+    description: 'aiPoweredToolsForContentAnalysis',
     order: 5
   })
 });

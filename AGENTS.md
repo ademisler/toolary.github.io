@@ -8,7 +8,7 @@
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
 - **AI Support:** Gemini API integration with key rotation and model selection
-- **Test Coverage:** 44.21% (86 tests passing)
+- **Test Coverage:** 44.93% (86 tests passing)
 
 ## Architecture
 
@@ -213,6 +213,73 @@ Toolary includes a comprehensive favorite system that allows users to mark tools
 - **State Management:** `state.favoriteTools` as a `Set` for O(1) lookups
 - **Sorting Logic:** Two-tier sorting (favorite status → usage count)
 - **UI Integration:** Star icon using existing `icons.createIconElement()` system
+
+## Coffee Message System
+
+Toolary includes a modern glassmorphism coffee toast system that displays humorous coffee-themed messages after successful tool operations, encouraging users to support the developer through Buy Me a Coffee donations.
+
+### Features
+- **Modern Glassmorphism Design:** Translucent glass effect with backdrop blur
+- **Coffee-Themed Messages:** Humorous messages in Turkish, English, and French
+- **Responsive Layout:** Horizontal layout with coffee emoji, centered text, and compact button
+- **Smart Text Wrapping:** 5 words per line for optimal readability
+- **Auto-Dismiss:** Messages automatically disappear after 6 seconds
+- **Language Detection:** Automatically detects user's browser language
+- **Buy Me a Coffee Integration:** Direct link to https://buymeacoffee.com/ademisler
+
+### Design Specifications
+
+#### Layout Structure
+```
+[☕] [     Centered Text     ] [Kahve Ismarla]
+```
+- **Coffee Emoji:** Left-aligned, 24px size
+- **Text:** Center-aligned, 16px size, max-width 180px (5 words per line)
+- **Button:** Right-aligned, compact "Kahve Ismarla" text
+
+#### Visual Design
+- **Background:** `rgba(255, 255, 255, 0.25)` with `backdrop-filter: blur(20px)`
+- **Border:** `1px solid rgba(255, 255, 255, 0.18)`
+- **Shadow:** Multi-layer box-shadow for depth
+- **Hover Effect:** Increased opacity and blur on hover
+- **Button:** Yellow gradient (`#FFDE00` to `#FFA500`) with 16px border-radius
+
+#### Responsive Behavior
+- **Desktop:** Horizontal layout with centered text
+- **Mobile:** Vertical layout with left-aligned text
+- **Text Sizing:** Adaptive font sizes based on message length
+- **Button Sizing:** Compact design (90px min-width)
+
+### Implementation
+
+#### Core Components
+- **`core/coffeeMessages.js`:** Message data for all 24 tools in 3 languages
+- **`shared/coffeeToast.js`:** Custom toast component with donation button
+- **`content/content.css`:** Modern glassmorphism styling with animations
+
+#### Message Display
+- **Trigger:** After successful tool operations (color picked, text extracted, etc.)
+- **Position:** Fixed bottom-left corner (20px from edges)
+- **Duration:** 6 seconds with slide-in/out animations
+- **Styling:** Glassmorphism effect with backdrop blur and subtle shadows
+
+#### Language Support
+- **Auto-Detection:** Uses `chrome.i18n.getUILanguage()` with fallback to English
+- **Supported Languages:** Turkish (tr), English (en), French (fr)
+- **Button Text:** Localized compact button text:
+  - Turkish: "Kahve Ismarla"
+  - English: "Buy Coffee"
+  - French: "Acheter Café"
+
+#### Integration
+- **Tool Integration:** All 24 tools call `showCoffeeMessageForTool(toolId)` after success
+- **Error Handling:** Graceful fallback if messages fail to load
+- **Performance:** Minimal impact with efficient toast management
+
+### Message Examples
+- **Color Picker (TR):** "Bu rengi bulana kadar 3 kahve içtim, 2 sinir krizi geçirdim. Bir fincanla moral olur!"
+- **AI Summarizer (EN):** "Even AI doesn't work without coffee. Believe me, I've tested it."
+- **Screenshot Picker (FR):** "En prenant la capture d'écran, ce n'est pas la souris qui tremblait, c'était ma main… faute de café."
 
 ## Adding a New Tool
 
@@ -433,7 +500,7 @@ Available icon names for tools:
 - `toolaryFavoriteTools`: Array of favorite tool IDs
 
 ### Legacy migration
-Auto-migrates from old Pickachu keys: `pickachuFavorites`, `pickachuHiddenTools`, `pickachuRecentTools`
+Auto-migrates from old legacy keys: `toolaryLegacyFavorites`, `toolaryLegacyHiddenTools`, `toolaryLegacyRecentTools`
 
 ## Keyboard Shortcuts
 
@@ -471,7 +538,7 @@ Auto-migrates from old Pickachu keys: `pickachuFavorites`, `pickachuHiddenTools`
 ## Testing & Quality
 
 ```bash
-npm test          # Run Jest tests (86 tests, 44.21% coverage)
+npm test          # Run Jest tests (86 tests, 44.93% coverage)
 npm run lint      # ESLint check (must pass)
 ```
 
@@ -634,9 +701,9 @@ console.log(result);
 
 ## File Size Limits
 
-- `tools-manifest.json`: ~360 lines (21 tools) → keep under 1000 lines
-- `popup.js`: 1714 lines → consider splitting if >2000 lines
-- Total extension: ~600KB → target <2MB for fast installation
+- `tools-manifest.json`: 431 lines (24 tools) → keep under 1000 lines
+- `popup.js`: 2097 lines → consider splitting if >2000 lines
+- Total extension: ~1.3MB → target <2MB for fast installation
 
 ## Code Style
 
@@ -657,4 +724,4 @@ console.log(result);
 
 ---
 
-**Last updated:** 2025-01-27 for Toolary v1.0.0 (Initial release with 24 tools including AI Summarizer, AI Translator with in-place translation, AI Content Detector with multi-metric analysis, AI Email Generator with customizable tone and type options, AI SEO Analyzer with comprehensive scoring and AI-generated summaries, AI Chat with persistent page context awareness, Copy History Manager with tab-specific monitoring, Dark Mode Toggle, Video Recorder, Bookmark Manager, and comprehensive favorite system with star icons and smart sorting)
+**Last updated:** 2025-01-27 for Toolary v1.0.0 (24 productivity tools with AI integration, favorite system, and coffee toast messages)

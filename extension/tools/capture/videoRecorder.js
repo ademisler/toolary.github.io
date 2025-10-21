@@ -1,4 +1,5 @@
 import { showError, showInfo, showSuccess, handleError } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import { MESSAGE_TYPES, sendRuntimeMessage } from '../../core/messageRouter.js';
 
 export const metadata = {
@@ -142,6 +143,9 @@ function registerMessageHandler(deactivate) {
           const savedMessage = chrome.i18n ? chrome.i18n.getMessage('recordingSavedDownloadStarted') : 'Recording saved. Download has started.';
           showSuccess(savedMessage);
         }
+        
+        // Show coffee message
+        showCoffeeMessageForTool('video-recorder');
         resetState();
         safeDeactivate();
         break;

@@ -12,10 +12,11 @@ import {
   addEventListenerWithCleanup,
   renderIcon
 } from '../../shared/helpers.js';
+import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
   id: 'media-picker',
-  name: 'Media Picker',
+  name: 'Media Download',
   category: 'capture',
   icon: 'image',
   shortcut: {
@@ -342,23 +343,32 @@ function formatDuration(seconds) {
 function buildDetails(info) {
   const details = [];
 
-  details.push({ label: 'Type', value: info.type === 'video' ? 'Video' : 'Image' });
+  const typeLabel = chrome.i18n ? chrome.i18n.getMessage('typeLabel') : 'Type';
+  const videoLabel = chrome.i18n ? chrome.i18n.getMessage('videoLabel') : 'Video';
+  const imageLabel = chrome.i18n ? chrome.i18n.getMessage('imageLabel') : 'Image';
+  const primaryUrlLabel = chrome.i18n ? chrome.i18n.getMessage('primaryUrlLabel') : 'Primary URL';
+  const streamUrlLabel = chrome.i18n ? chrome.i18n.getMessage('streamUrlLabel') : 'Stream URL';
+  const urlLabel = chrome.i18n ? chrome.i18n.getMessage('urlLabel') : 'URL';
+  const unavailableLabel = chrome.i18n ? chrome.i18n.getMessage('unavailableLabel') : 'Unavailable';
+  const extraSourcesLabel = chrome.i18n ? chrome.i18n.getMessage('additionalSources') : 'Extra sources';
+
+  details.push({ label: typeLabel, value: info.type === 'video' ? videoLabel : imageLabel });
 
   if (info.type === 'video') {
-    details.push({ label: 'Primary URL', value: info.url ? sanitizeInput(info.url) : 'Unavailable' });
+    details.push({ label: primaryUrlLabel, value: info.url ? sanitizeInput(info.url) : unavailableLabel });
 
     if (info.streamUrl && info.streamUrl !== info.url) {
-      details.push({ label: 'Stream URL', value: sanitizeInput(info.streamUrl) });
+      details.push({ label: streamUrlLabel, value: sanitizeInput(info.streamUrl) });
     }
 
     if (Array.isArray(info.alternateUrls) && info.alternateUrls.length) {
       details.push({
-        label: 'Extra sources',
+        label: extraSourcesLabel,
         value: info.alternateUrls.map((url) => sanitizeInput(url)).join('\n')
       });
     }
   } else {
-    details.push({ label: 'URL', value: info.url ? sanitizeInput(info.url) : 'Unavailable' });
+    details.push({ label: urlLabel, value: info.url ? sanitizeInput(info.url) : unavailableLabel });
   }
 
   if (info.type === 'image') {
@@ -399,6 +409,17 @@ function showMediaModal(info) {
       align-items: center;
       justify-content: center;
       animation: toolary-fade-in 0.25s ease-out;
+      pointer-events: none;
+    `;
+    
+    // Create invisible clickable area for overlay
+    const overlayClickArea = document.createElement('div');
+    overlayClickArea.style.cssText = `
+      position: fixed;
+      inset: 0;
+      z-index: 2147483646;
+      pointer-events: auto;
+      background: transparent;
     `;
 
     const modal = document.createElement('div');
@@ -413,6 +434,7 @@ function showMediaModal(info) {
       flex-direction: column;
       overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      pointer-events: auto;
     `;
 
     const header = document.createElement('div');
@@ -430,7 +452,9 @@ function showMediaModal(info) {
     const titleIcon = renderIcon(info.type === 'video' ? 'media' : 'image', { size: 18, decorative: true });
     title.appendChild(titleIcon);
     const titleText = document.createElement('span');
-    titleText.textContent = info.type === 'video' ? 'Video' : 'Image';
+    const videoLabel = chrome.i18n ? chrome.i18n.getMessage('videoLabel') : 'Video';
+    const imageLabel = chrome.i18n ? chrome.i18n.getMessage('imageLabel') : 'Image';
+    titleText.textContent = info.type === 'video' ? videoLabel : imageLabel;
     title.appendChild(titleText);
 
     const closeButton = document.createElement('button');
@@ -477,7 +501,8 @@ function showMediaModal(info) {
         if (info.poster) video.poster = info.poster;
         if (info.streamUrl?.startsWith('blob:')) {
           const warning = document.createElement('div');
-          warning.textContent = '⚠️ This video uses a blob URL. Download may not be available.';
+          const warningMessage = chrome.i18n ? chrome.i18n.getMessage('blobUrlWarning') : '⚠️ This video uses a blob URL. Download may not be available.';
+          warning.textContent = warningMessage;
           warning.style.cssText = 'font-size: 13px; color: var(--toolary-warning-color, #ffa000);';
           body.appendChild(warning);
         }
@@ -492,7 +517,8 @@ function showMediaModal(info) {
     if (info.fallbackApplied) {
       const fallbackNote = document.createElement('div');
       fallbackNote.style.cssText = 'font-size: 13px; line-height: 1.5; color: var(--toolary-warning-color, #ff9800);';
-      fallbackNote.textContent = 'Primary stream uses a blob URL. A downloadable source was discovered and is used for copy & download actions.';
+      const fallbackMessage = chrome.i18n ? chrome.i18n.getMessage('blobUrlFallbackNote') : 'Primary stream uses a blob URL. A downloadable source was discovered and is used for copy & download actions.';
+      fallbackNote.textContent = fallbackMessage;
       body.appendChild(fallbackNote);
     }
 
@@ -518,7 +544,8 @@ function showMediaModal(info) {
 
       const altTitle = document.createElement('div');
       altTitle.style.cssText = 'font-size: 13px; font-weight: 600; color: var(--toolary-primary-color, #007bff);';
-      altTitle.textContent = 'Additional sources';
+      const additionalSourcesText = chrome.i18n ? chrome.i18n.getMessage('additionalSources') : 'Additional sources';
+      altTitle.textContent = additionalSourcesText;
       altWrapper.appendChild(altTitle);
 
       const truncateUrl = (url) => {
@@ -543,7 +570,8 @@ function showMediaModal(info) {
         const copyAltIcon = renderIcon('copy', { size: 14, decorative: true });
         copyAltIcon.style.color = '#3a2900';
         copyAltBtn.appendChild(copyAltIcon);
-        copyAltBtn.appendChild(Object.assign(document.createElement('span'), { textContent: 'Copy' }));
+        const copyText = chrome.i18n ? chrome.i18n.getMessage('copy') : 'Copy';
+        copyAltBtn.appendChild(Object.assign(document.createElement('span'), { textContent: copyText }));
         copyAltBtn.addEventListener('click', async () => {
           await copyText(altUrl);
           const successMessage = chrome.i18n ? chrome.i18n.getMessage('alternateMediaUrlCopied') : 'Alternate media URL copied.';
@@ -553,7 +581,8 @@ function showMediaModal(info) {
         const downloadAltBtn = document.createElement('button');
         downloadAltBtn.style.cssText = primaryButtonStyle(true);
         downloadAltBtn.appendChild(renderIcon('download', { size: 14, decorative: true }));
-        downloadAltBtn.appendChild(Object.assign(document.createElement('span'), { textContent: 'Download' }));
+        const downloadText = chrome.i18n ? chrome.i18n.getMessage('download') : 'Download';
+        downloadAltBtn.appendChild(Object.assign(document.createElement('span'), { textContent: downloadText }));
         downloadAltBtn.addEventListener('click', () => {
           downloadMedia(info, altUrl);
         });
@@ -574,7 +603,8 @@ function showMediaModal(info) {
     const closeBtn = document.createElement('button');
     closeBtn.style.cssText = buttonStyle();
     closeBtn.appendChild(renderIcon('close', { size: 16, decorative: true }));
-    closeBtn.appendChild(Object.assign(document.createElement('span'), { textContent: 'Close' }));
+    const closeText = chrome.i18n ? chrome.i18n.getMessage('close') : 'Close';
+    closeBtn.appendChild(Object.assign(document.createElement('span'), { textContent: closeText }));
 
     const copyBtn = document.createElement('button');
     copyBtn.disabled = !info.url;
@@ -582,17 +612,35 @@ function showMediaModal(info) {
     const copyIcon = renderIcon('copy', { size: 16, decorative: true });
     copyIcon.style.color = '#ffffff';
     copyBtn.appendChild(copyIcon);
+    const copyUrlText = chrome.i18n ? chrome.i18n.getMessage('copyUrl') : 'Copy URL';
+    const copyUrlUnavailableText = chrome.i18n ? chrome.i18n.getMessage('copyUrlUnavailable') : 'Copy URL (unavailable)';
     copyBtn.appendChild(Object.assign(document.createElement('span'), {
-      textContent: info.url ? 'Copy URL' : 'Copy URL (unavailable)'
+      textContent: info.url ? copyUrlText : copyUrlUnavailableText
     }));
 
     const downloadBtn = document.createElement('button');
     downloadBtn.disabled = !info.url;
     downloadBtn.style.cssText = primaryButtonStyle(info.url);
     downloadBtn.appendChild(renderIcon('download', { size: 16, decorative: true }));
+    const downloadText = chrome.i18n ? chrome.i18n.getMessage('download') : 'Download';
+    const downloadUnavailableText = chrome.i18n ? chrome.i18n.getMessage('downloadUnavailable') : 'Download (unavailable)';
     downloadBtn.appendChild(Object.assign(document.createElement('span'), {
-      textContent: info.url ? 'Download' : 'Download (unavailable)'
+      textContent: info.url ? downloadText : downloadUnavailableText
     }));
+    
+    console.log('Media Picker: Download button created', { 
+      disabled: downloadBtn.disabled, 
+      hasUrl: !!info.url, 
+      url: info.url,
+      buttonElement: downloadBtn
+    });
+    
+    // Force enable button for testing
+    if (info.url) {
+      downloadBtn.disabled = false;
+      downloadBtn.style.cssText = primaryButtonStyle(true);
+      console.log('Media Picker: Button force enabled for testing');
+    }
 
     [closeBtn, copyBtn, downloadBtn].forEach((btn) => {
       if (btn.disabled) return;
@@ -612,11 +660,21 @@ function showMediaModal(info) {
     modal.appendChild(body);
     modal.appendChild(footer);
     overlay.appendChild(modal);
+    document.body.appendChild(overlayClickArea);
     document.body.appendChild(overlay);
 
+    // Add click handler to close modal
+    overlayClickArea.addEventListener('click', destroyModal);
+
     function destroyModal() {
+      overlayClickArea.remove();
       overlay.remove();
       document.removeEventListener('keydown', handleEsc);
+      // Show coffee message after modal is closed
+      setTimeout(() => {
+        console.log('Media Picker: Showing coffee toast after modal close');
+        showCoffeeMessageForTool('media-picker');
+      }, 300);
     }
 
     function handleEsc(event) {
@@ -637,7 +695,12 @@ function showMediaModal(info) {
       showSuccess(successMessage);
     });
 
-    downloadBtn.addEventListener('click', () => downloadMedia(info));
+    downloadBtn.addEventListener('click', (e) => {
+      console.log('Media Picker: Download button clicked via event listener', e);
+      e.preventDefault();
+      e.stopPropagation();
+      downloadMedia(info);
+    });
   } catch (error) {
     handleError(error, 'mediaPicker.modal');
     const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToShowMediaDetails') : 'Failed to show media details.';
@@ -682,9 +745,12 @@ function primaryButtonStyle(enabled = true) {
 }
 
 function downloadMedia(info, overrideUrl = null) {
+  console.log('Media Picker: Download button clicked', { info, overrideUrl });
   const targetUrl = overrideUrl || info.url;
+  console.log('Media Picker: Target URL', targetUrl);
 
   if (!targetUrl) {
+    console.log('Media Picker: No target URL available');
     const errorMessage = chrome.i18n ? chrome.i18n.getMessage('mediaUrlUnavailable') : 'Media URL unavailable.';
     showError(errorMessage);
     return;
@@ -705,12 +771,16 @@ function downloadMedia(info, overrideUrl = null) {
   info.extension = extension;
   info.filename = filename;
 
+  console.log('Media Picker: Sending download message', { targetUrl, filename });
   chrome.runtime.sendMessage({
     type: 'DOWNLOAD_MEDIA',
     url: targetUrl,
     filename
   }, (response) => {
+    console.log('Media Picker: Download response', { response, lastError: chrome.runtime.lastError });
+    
     if (chrome.runtime.lastError) {
+      console.error('Media Picker: Download error', chrome.runtime.lastError);
       handleError(chrome.runtime.lastError, 'mediaPicker.download');
       const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToDownloadMedia') : 'Failed to download media.';
       showError(chrome.runtime.lastError.message || errorMessage);
@@ -718,11 +788,13 @@ function downloadMedia(info, overrideUrl = null) {
     }
 
     if (!response?.success) {
+      console.error('Media Picker: Download failed', response);
       const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToDownloadMedia') : 'Failed to download media.';
       showError(response?.error || errorMessage);
       return;
     }
 
+    console.log('Media Picker: Download successful');
     const successMessage = chrome.i18n ? chrome.i18n.getMessage('downloadStarted') : 'Download started.';
     showSuccess(successMessage);
   });
@@ -730,7 +802,10 @@ function downloadMedia(info, overrideUrl = null) {
 
 function handleSelection(media) {
   const tag = media.tagName.toLowerCase();
+  console.log('Media Picker: Handling selection', { tag, media });
+  
   const info = tag === 'video' ? collectVideoInfo(media) : collectImageInfo(media);
+  console.log('Media Picker: Collected info', { info });
 
   if (info.fallbackApplied) {
     const infoMessage = chrome.i18n ? chrome.i18n.getMessage('blobUrlUsingAlternateSource') : 'Stream uses a blob URL — using alternate source for copy & download.';
@@ -738,14 +813,17 @@ function handleSelection(media) {
   }
 
   if (info.url) {
+    console.log('Media Picker: URL available, copying to clipboard');
     safeExecute(() => copyText(info.url), 'copy media url');
     const successMessage = chrome.i18n ? chrome.i18n.getMessage('mediaUrlCopiedToClipboard') : 'Media URL copied to clipboard!';
     showSuccess(successMessage);
   } else {
+    console.log('Media Picker: No URL available');
     const infoMessage = chrome.i18n ? chrome.i18n.getMessage('mediaDetailsAvailable') : 'Media details available. Review the modal for download options.';
     showInfo(infoMessage, 3000);
   }
   showMediaModal(info);
+  
   deactivateCb();
 }
 

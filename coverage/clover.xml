@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1761001380112" clover="3.2.0">
-  <project timestamp="1761001380112" name="All files">
-    <metrics statements="285" coveredstatements="128" conditionals="190" coveredconditionals="72" methods="56" coveredmethods="34" elements="531" coveredelements="234" complexity="0" loc="285" ncloc="285" packages="1" files="6" classes="6"/>
+<coverage generated="1761067860105" clover="3.2.0">
+  <project timestamp="1761067860105" name="All files">
+    <metrics statements="307" coveredstatements="140" conditionals="199" coveredconditionals="75" methods="59" coveredmethods="36" elements="565" coveredelements="251" complexity="0" loc="307" ncloc="307" packages="1" files="7" classes="7"/>
     <file name="aiConfig.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/aiConfig.js">
       <metrics statements="12" coveredstatements="6" conditionals="9" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <line num="4" count="1" type="stmt"/>
@@ -176,6 +176,31 @@
       <line num="358" count="0" type="stmt"/>
       <line num="361" count="0" type="stmt"/>
       <line num="367" count="1" type="stmt"/>
+    </file>
+    <file name="coffeeMessages.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/coffeeMessages.js">
+      <metrics statements="22" coveredstatements="12" conditionals="9" coveredconditionals="3" methods="3" coveredmethods="2"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="136" count="2" type="stmt"/>
+      <line num="137" count="2" type="stmt"/>
+      <line num="139" count="0" type="stmt"/>
+      <line num="142" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="143" count="0" type="stmt"/>
+      <line num="145" count="0" type="stmt"/>
+      <line num="147" count="2" type="stmt"/>
+      <line num="148" count="2" type="stmt"/>
+      <line num="158" count="2" type="stmt"/>
+      <line num="159" count="2" type="stmt"/>
+      <line num="160" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="161" count="0" type="stmt"/>
+      <line num="162" count="0" type="stmt"/>
+      <line num="165" count="2" type="stmt"/>
+      <line num="166" count="2" type="cond" truecount="1" falsecount="2"/>
+      <line num="168" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="169" count="0" type="stmt"/>
+      <line num="172" count="2" type="stmt"/>
+      <line num="174" count="0" type="stmt"/>
+      <line num="175" count="0" type="stmt"/>
+      <line num="185" count="0" type="stmt"/>
     </file>
     <file name="constants.js" path="/Users/ademisler/Documents/GitHub/toolary/extension/core/constants.js">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
