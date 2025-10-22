@@ -8,13 +8,11 @@ Toolary is built with a privacy-first approach. The extension operates entirely 
 
 | Data Type | Stored? | Location | Purpose |
 |-----------|---------|----------|---------|
-| Favorites & hidden tools | Yes | `chrome.storage.sync` | Synchronize your popup preferences across Chrome profiles |
-| Recent tools | Yes | `chrome.storage.local` | Show the last five tools you activated |
+| Favorites & hidden tools | Yes | `chrome.storage.local` | Store your popup preferences locally |
 | Tool usage statistics | Yes | `chrome.storage.local` | Sort tools by usage frequency |
-| Sticky notes | Yes | `chrome.storage.sync` (per-site keys) | Persist your notes across sessions/devices |
+| Sticky notes | Yes | `chrome.storage.local` (per-site keys) | Persist your notes across sessions |
 | Copy history | Yes | `chrome.storage.local` (per-domain keys) | Track clipboard history for quick access |
 | AI settings & API keys | Yes | `chrome.storage.local` | Store your AI preferences and API keys |
-| AI tool history | Yes | `chrome.storage.local` | Store recent AI interactions (summaries, translations, etc.) |
 | Bookmarks | Yes | `chrome.storage.local` | Store your bookmarks, folders, and tags |
 | Text highlights | Yes | `chrome.storage.local` (per-site keys) | Persist highlighted text across sessions |
 | Dark mode preferences | Yes | `chrome.storage.local` | Remember your theme preference |
@@ -22,16 +20,16 @@ Toolary is built with a privacy-first approach. The extension operates entirely 
 | Diagnostic telemetry | No | N/A | Toolary does not send analytics or crash reports |
 
 ### Sticky Notes
-Notes are stored under keys prefixed with `toolaryStickyNotes_`. Legacy keys (`stickyNotes_`) are migrated in place. You can remove notes via the sticky notes manager or by clearing the associated keys in Chrome storage.
+Notes are stored under keys prefixed with `toolaryStickyNotes_` in `chrome.storage.local`. Legacy keys (`stickyNotes_`) are migrated automatically. You can remove notes via the sticky notes manager or by clearing the associated keys in Chrome storage.
 
 ### AI Features
 Toolary includes AI-powered tools that use Google's Gemini API. When you use AI features:
 
 - **Content Processing**: Selected text or page content is sent to Google's Gemini API for processing
 - **API Keys**: Your Gemini API keys are stored locally in `chrome.storage.local` and never shared
-- **History Storage**: AI interactions (summaries, translations, etc.) are stored locally for your convenience
+- **No History Storage**: AI interactions are not stored locally - each request is processed independently
 - **No Data Mining**: We do not collect, analyze, or monetize your AI interactions
-- **User Control**: You can clear AI history and remove API keys at any time
+- **User Control**: You can remove API keys at any time through the AI settings panel
 - **API Endpoint**: `https://generativelanguage.googleapis.com/v1beta`
 
 ### Copy History Manager
@@ -52,17 +50,63 @@ Toolary displays coffee-themed messages after successful tool operations:
 
 ## Permissions Explained
 
-- **`activeTab`** – Required to inject the content script when you activate a tool
-- **`scripting`** – Needed to inject content scripts into web pages
-- **`clipboardWrite`** – Used for copying content to clipboard
-- **`clipboardRead`** – Used for reading clipboard content in Copy History Manager
-- **`storage`** – Used for favorites, notes, settings, and all local data storage
-- **`tabs`** – Required for tab management and tool activation
-- **`downloads`** – Needed so Screenshot/Media tools can save files locally
-- **`tabCapture`** – Required for Video Recorder tool to capture screen activity
-- **`<all_urls>`** – Required for content script injection on all websites
+Toolary requests the following permissions to provide its full functionality:
 
-Toolary requests only the permissions needed for the current feature set. Future tool additions will revisit permission requirements during review.
+### Core Permissions
+- **`activeTab`** – Required to inject content scripts when you activate tools. This permission allows Toolary to access the current tab's content only when you explicitly activate a tool.
+- **`scripting`** – Needed to inject content scripts into web pages for tool functionality (element inspection, text extraction, etc.).
+- **`storage`** – Used for all local data storage including favorites, settings, notes, and tool preferences.
+
+### Clipboard Permissions
+- **`clipboardWrite`** – Used by multiple tools to copy extracted content (colors, text, links, QR codes) to your clipboard.
+- **`clipboardRead`** – Used by Copy History Manager to track clipboard content for quick access and history management.
+
+### Tab Management
+- **`tabs`** – Required for tab management, tool activation, and accessing tab information (title, URL, favicon) for bookmark management and site analysis.
+
+### Download & Capture Permissions
+- **`downloads`** – Used by capture tools (Screenshot Picker, Media Picker, Video Recorder, QR Code Generator) to save files locally to your device.
+- **`tabCapture`** – Required specifically for Video Recorder tool to capture screen activity and browser tab content.
+
+### Host Permissions
+- **`<all_urls>`** – Required for content script injection on all websites. This allows Toolary to work on any website you visit, but the extension only accesses page content when you explicitly activate a tool.
+
+### Web Accessible Resources
+Toolary exposes the following resources to web pages:
+- **Core modules** (`core/*.js`) – Essential functionality modules
+- **Shared utilities** (`shared/*.js`) – Common helper functions
+- **Tool modules** (`tools/*/*.js`) – Individual tool implementations
+- **Configuration files** (`config/*.json`) – Tool metadata and settings
+- **Icons and assets** (`icons/*.svg`) – UI icons and graphics
+- **Localization files** (`_locales/*/messages.json`) – Multi-language support
+
+### Permission Justification by Tool Category
+
+#### Inspection Tools (Color Picker, Element Picker, Font Picker, Link Picker)
+- **Required:** `activeTab`, `scripting`, `<all_urls>`
+- **Purpose:** Access page DOM elements and CSS properties for analysis
+
+#### Capture Tools (Screenshot, Media Picker, Text Picker, Video Recorder, QR Generator, PDF Generator)
+- **Required:** `activeTab`, `scripting`, `downloads`, `tabCapture` (Video Recorder only), `<all_urls>`
+- **Purpose:** Capture and download page content, media files, and generated content
+
+#### Enhancement Tools (Sticky Notes, Text Highlighter, Reading Mode, Bookmark Manager, Dark Mode)
+- **Required:** `activeTab`, `scripting`, `storage`, `tabs` (Bookmark Manager only), `<all_urls>`
+- **Purpose:** Modify page appearance and manage user preferences
+
+#### Utility Tools (Site Info Picker, Color Palette Generator, Copy History Manager)
+- **Required:** `activeTab`, `scripting`, `clipboardRead`, `clipboardWrite`, `storage`, `<all_urls>`
+- **Purpose:** Analyze site information and manage clipboard history
+
+#### AI Tools (Text Summarizer, Translator, Content Detector, Email Generator, SEO Analyzer, AI Chat)
+- **Required:** `activeTab`, `scripting`, `storage`, `<all_urls>`
+- **Purpose:** Process page content with AI services (requires external API calls to Google Gemini)
+
+### Security Considerations
+- **No Background Access:** Toolary only accesses page content when you explicitly activate a tool
+- **Local Processing:** All data processing happens locally in your browser
+- **No Data Transmission:** Except for AI features (which use your own API keys), no data is sent to external servers
+- **Minimal Permissions:** Each permission is directly tied to specific tool functionality
 
 ## Third Parties
 
@@ -76,13 +120,13 @@ Toolary does **not** rely on external services, trackers, or CDNs for core funct
 
 - **Local Processing**: All data processing happens locally in your browser
 - **Encrypted Storage**: Chrome's built-in storage encryption protects your data
-- **No Cloud Sync**: Except for sync storage (favorites, hidden tools, sticky notes), all data stays on your device
+- **No Cloud Sync**: All data stays on your device - no cloud synchronization
 - **API Key Protection**: Your AI API keys are stored locally and never transmitted to our servers
 
 ## User Controls
 
 - Manage favorites, hidden tools, and notes directly inside the popup UI
-- Clear AI history and remove API keys through the AI settings panel
+- Remove AI API keys through the AI settings panel
 - Clear copy history for specific domains or all domains via the Copy History Manager
 - Clear bookmarks and highlights through their respective managers
 - Clear Toolary data via Chrome's extension storage management (`chrome://settings/siteData` → search "toolary")
@@ -90,11 +134,11 @@ Toolary does **not** rely on external services, trackers, or CDNs for core funct
 
 ## Data Retention
 
-- **Sync Storage**: Favorites, hidden tools, and sticky notes sync across your Chrome profiles
-- **Local Storage**: All other data remains on your device until manually cleared
-- **AI History**: Stored locally until you clear it through settings
+- **Local Storage**: All data remains on your device until manually cleared
+- **No Sync Storage**: Toolary does not use Chrome's sync storage - all data is stored locally
 - **Copy History**: Automatically limited to 50 items per domain
 - **Tool Usage**: Stored locally for sorting purposes
+- **AI Interactions**: Not stored - each request is processed independently
 
 ## Updates
 

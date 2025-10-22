@@ -2,7 +2,6 @@
   "toolModelRequirements": {
     "ai-text-summarizer": "smart",
     "ai-text-translator": "smart",
-    "ai-code-explainer": "smart",
     "ai-content-detector": "smart",
     "ai-email-generator": "smart",
     "ai-seo-analyzer": "smart",

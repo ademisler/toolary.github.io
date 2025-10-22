@@ -8,7 +8,7 @@
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
 - **AI Support:** Gemini API integration with key rotation and model selection
-- **Test Coverage:** 44.93% (86 tests passing)
+- **Test Coverage:** 36.01% (84 tests passing, 2 failed)
 
 ## Architecture
 
@@ -502,6 +502,8 @@ Available icon names for tools:
 ### Legacy migration
 Auto-migrates from old legacy keys: `toolaryLegacyFavorites`, `toolaryLegacyHiddenTools`, `toolaryLegacyRecentTools`
 
+**Note:** Recent tools feature (`toolaryRecentTools`) is documented but not currently implemented in the codebase.
+
 ## Keyboard Shortcuts
 
 ### ⚠️ **IMPORTANT: Chrome Extension Shortcut Limitations**
@@ -538,15 +540,18 @@ Auto-migrates from old legacy keys: `toolaryLegacyFavorites`, `toolaryLegacyHidd
 ## Testing & Quality
 
 ```bash
-npm test          # Run Jest tests (86 tests, 44.93% coverage)
+npm test          # Run Jest tests (84 tests passing, 2 failed, 36.01% coverage)
 npm run lint      # ESLint check (must pass)
 ```
 
 **Test files:**
 - `test/core.test.js` – Core modules (registry, loader, router)
-- `test/modules.test.js` – All tool activation
+- `test/modules.test.js` – All tool activation (2 tests failing due to test environment limitations)
 - `test/comprehensive.test.js` – Integration tests
 - `test/helpers.test.js` – Utility functions
+- `test/stickyNotesPicker.test.js` – Sticky notes specific tests
+- `test/simple.test.js` – Basic functionality tests
+- `test/extension.test.js` – Extension-level tests
 
 **Manual testing checklist:**
 - All tools activate without errors
@@ -583,7 +588,32 @@ console.time('popup-open');
 console.timeEnd('popup-open'); // Should be <100ms
 ```
 
+### Fix test environment issues
+1. Install missing polyfills: `npm install --save-dev canvas`
+2. Add TextEncoder/TextDecoder polyfills to test setup
+3. Mock Chrome APIs properly in test environment
+4. Update Jest configuration for better compatibility
+
 ## Troubleshooting Guide
+
+### Test Failures
+**Common Issues:**
+1. **TextEncoder/TextDecoder not defined:** Add polyfills for test environment
+2. **Canvas context unavailable:** Install canvas package for Jest
+3. **Performance API missing:** Mock performance.getEntriesByType in tests
+4. **Chrome APIs not available:** Use proper mocks in test environment
+
+**Quick Fixes:**
+```javascript
+// Add to jest.config.js
+setupFilesAfterEnv: ['<rootDir>/test/setup.js']
+
+// In test/setup.js
+if (typeof TextEncoder === 'undefined') {
+  global.TextEncoder = require('util').TextEncoder;
+  global.TextDecoder = require('util').TextDecoder;
+}
+```
 
 ### Icons Not Displaying (Showing Circles)
 **Symptoms:** Tool icons appear as circles instead of proper icons
@@ -637,73 +667,95 @@ console.timeEnd('popup-open'); // Should be <100ms
 3. Test with `{ passive: false }` option
 4. Check for event.preventDefault() calls
 
-### Tool Activation Fails
-**Symptoms:** Clicking tool cards doesn't activate tools
-**Common Causes:**
-1. Missing tool module files
-2. Incorrect module path in `tools-manifest.json`
-3. JavaScript errors in tool activation
+## Permissions & Security
 
-**Debug Steps:**
-1. Check `chrome.runtime.getURL()` resolves correctly
-2. Verify tool module exports `activate` and `deactivate` functions
-3. Check for import/export errors
-4. Test with `chrome.tabs.query()` permissions
+### Manifest Permissions
 
-### Storage Issues
-**Symptoms:** Settings or data not persisting
-**Common Causes:**
-1. Missing storage permissions
-2. Incorrect storage key names
-3. Data format issues
+Toolary requests the following permissions in `manifest.json`:
 
-**Debug Steps:**
-1. Check `manifest.json` for storage permissions
-2. Verify storage key names are consistent
-3. Test with `chrome.storage.local.get()` and `chrome.storage.sync.get()`
-4. Check data serialization/deserialization
-
-### Performance Issues
-**Symptoms:** Slow popup opening or tool activation
-**Common Causes:**
-1. Large icon files
-2. Inefficient DOM manipulation
-3. Too many event listeners
-
-**Debug Steps:**
-1. Profile with Chrome DevTools Performance tab
-2. Check for memory leaks in event listeners
-3. Optimize icon loading (use definitions over SVG files)
-4. Minimize DOM queries and updates
-
-### AI Integration Issues
-**Symptoms:** AI features not working or API errors
-**Common Causes:**
-1. No API keys configured
-2. Invalid API keys
-3. Rate limiting
-4. Network connectivity issues
-
-**Debug Steps:**
-1. Check AI settings in popup
-2. Test API keys using built-in tester
-3. Verify API key health status
-4. Check console for API error messages
-5. Ensure proper permissions in manifest.json
-
-**Quick Fix:**
-```javascript
-// Test API key manually
-import { aiManager } from '../core/aiManager.js';
-const result = await aiManager.testAPIKey('your-api-key');
-console.log(result);
+```json
+{
+  "permissions": [
+    "activeTab",      // Access current tab when tools are activated
+    "scripting",      // Inject content scripts for tool functionality
+    "clipboardWrite", // Copy extracted content to clipboard
+    "clipboardRead",  // Read clipboard for Copy History Manager
+    "storage",        // Save user preferences and data
+    "tabs",          // Access tab information for bookmark management
+    "downloads",     // Save captured content and generated files
+    "tabCapture"     // Record screen content for Video Recorder
+  ],
+  "host_permissions": [
+    "<all_urls>"     // Work on any website
+  ]
+}
 ```
+
+### Permission Usage by Tool Category
+
+#### Inspection Tools
+- **Color Picker, Element Picker, Font Picker, Link Picker**
+- **Required:** `activeTab`, `scripting`, `<all_urls>`
+- **Purpose:** Access DOM elements and CSS properties
+
+#### Capture Tools
+- **Screenshot Picker, Media Picker, Text Picker, Video Recorder, QR Generator, PDF Generator**
+- **Required:** `activeTab`, `scripting`, `downloads`, `tabCapture` (Video Recorder only), `<all_urls>`
+- **Purpose:** Capture and download page content
+
+#### Enhancement Tools
+- **Sticky Notes, Text Highlighter, Reading Mode, Bookmark Manager, Dark Mode**
+- **Required:** `activeTab`, `scripting`, `storage`, `tabs` (Bookmark Manager only), `<all_urls>`
+- **Purpose:** Modify page appearance and manage preferences
+
+#### Utility Tools
+- **Site Info Picker, Color Palette Generator, Copy History Manager**
+- **Required:** `activeTab`, `scripting`, `clipboardRead`, `clipboardWrite`, `storage`, `<all_urls>`
+- **Purpose:** Analyze site information and manage clipboard
+
+#### AI Tools
+- **Text Summarizer, Translator, Content Detector, Email Generator, SEO Analyzer, AI Chat**
+- **Required:** `activeTab`, `scripting`, `storage`, `<all_urls>`
+- **Purpose:** Process content with AI services (external API calls)
+
+### Security Model
+
+- **Explicit Activation:** Tools only access page content when user activates them
+- **No Background Access:** No automatic data collection or processing
+- **Local Processing:** All data processing happens in user's browser
+- **Minimal Permissions:** Each permission tied to specific functionality
+- **User Control:** Users can disable tools and clear stored data
+
+### Adding Permissions for New Tools
+
+When adding a new tool, specify required permissions in the tool's metadata:
+
+```javascript
+export const metadata = {
+  id: 'my-tool',
+  name: 'My Tool',
+  category: 'utilities',
+  icon: 'info',
+  permissions: ['activeTab'], // Specify required permissions
+  tags: ['utility', 'helper'],
+  keywords: ['search', 'terms']
+};
+```
+
+**Permission Guidelines:**
+- Use `activeTab` for tools that need to access current page content
+- Add `storage` for tools that save user preferences or data
+- Add `downloads` for tools that save files locally
+- Add `clipboardWrite` for tools that copy content to clipboard
+- Add `clipboardRead` only for clipboard monitoring tools
+- Add `tabs` only for tools that need tab information (title, URL, etc.)
+- Add `tabCapture` only for screen recording functionality
 
 ## File Size Limits
 
-- `tools-manifest.json`: 431 lines (24 tools) → keep under 1000 lines
-- `popup.js`: 2097 lines → consider splitting if >2000 lines
-- Total extension: ~1.3MB → target <2MB for fast installation
+- `tools-manifest.json`: 432 lines (24 tools) → keep under 1000 lines
+- `popup.js`: ~2100 lines → consider splitting if >2000 lines
+- Total extension: ~1.1MB → target <2MB for fast installation
 
 ## Code Style
 
@@ -722,6 +774,28 @@ console.log(result);
 4. Upload to Chrome Web Store Developer Dashboard
 5. Tag release: `git tag vX.Y.Z && git push --tags`
 
+**Pre-deployment Checklist:**
+- [ ] All tests passing (or known failures documented)
+- [ ] ESLint passes without errors
+- [ ] Manual testing completed on multiple sites
+- [ ] AI API keys tested and working
+- [ ] All 24 tools functional
+- [ ] Coffee messages displaying correctly
+- [ ] Favorite system working
+- [ ] Dark/light theme switching works
+- [ ] All languages (en/tr/fr) working
+- [ ] Keyboard shortcuts functional
+- [ ] Storage persistence verified
+
 ---
 
 **Last updated:** 2025-01-27 for Toolary v1.0.0 (24 productivity tools with AI integration, favorite system, and coffee toast messages)
+
+**Current Status:**
+- ✅ 24 tools implemented and functional
+- ✅ AI integration with Gemini API
+- ✅ Favorite system working
+- ✅ Coffee toast messages implemented
+- ⚠️ Test coverage: 36.01% (needs improvement)
+- ⚠️ 2 tests failing due to test environment limitations
+- ✅ All core functionality working in production

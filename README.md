@@ -44,7 +44,7 @@ A comprehensive Chrome extension with 24 web productivity tools including AI-pow
 - **Multi-language Support** - English, Turkish, French UI with 40+ AI languages
 - **Smart Search** - Find tools quickly with intelligent search
 - **⭐ Favorites System** - Mark frequently used tools as favorites with star icons and smart sorting
-- **Recent History** - Quick access to recently used tools
+- **Smart Organization** - Tools organized by usage and favorites
 - **Keyboard Shortcuts** - Global shortcuts for quick access
 - **Dark/Light Themes** - Automatic theme switching
 - **Responsive Design** - Works on all screen sizes
@@ -147,12 +147,13 @@ Toolary includes a modern glassmorphism coffee toast system that displays humoro
 - Choose AI model preference (Auto/Smart/Lite)
 - Select preferred language for AI responses
 - Test API key health
+- **Note**: AI interactions are not stored - each request is processed independently
 
 ### Tool Management
 - Hide unused tools
 - Mark tools as favorites with star icons
 - Smart sorting: Favorites appear first, sorted by usage
-- View recent tool usage
+- View tool usage statistics
 
 ## 🌐 Internationalization
 
@@ -163,9 +164,10 @@ Toolary includes a modern glassmorphism coffee toast system that displays humoro
 ## 🧪 Testing
 
 The extension includes comprehensive testing:
-- 7 test files with 44.93% coverage
+- 7 test files with 36.01% coverage (84 tests passing, 2 failed)
 - ESLint code quality checks
 - Manual testing checklist
+- Test environment limitations noted for some tools
 
 ## 📁 Project Structure
 
@@ -197,6 +199,41 @@ extension/
 5. Run linting: `npm run lint`
 6. Ensure all tests pass and coverage is maintained
 7. Submit a pull request
+
+## 🔒 Permissions & Privacy
+
+Toolary is designed with privacy-first principles. Here's what permissions are required and why:
+
+### Required Permissions
+
+| Permission | Purpose | Used By |
+|------------|---------|---------|
+| `activeTab` | Access current tab content when tools are activated | All tools |
+| `scripting` | Inject content scripts for tool functionality | All tools |
+| `storage` | Save user preferences, favorites, and settings | All tools |
+| `clipboardWrite` | Copy extracted content to clipboard | Color Picker, Text Picker, Link Picker, QR Generator |
+| `clipboardRead` | Track clipboard history for quick access | Copy History Manager |
+| `tabs` | Access tab information for bookmark management | Bookmark Manager |
+| `downloads` | Save captured content and generated files | Screenshot, Media Picker, Video Recorder, QR Generator |
+| `tabCapture` | Record screen and tab content | Video Recorder |
+| `<all_urls>` | Work on any website you visit | All tools |
+
+### Privacy Guarantees
+
+- ✅ **No Background Access** - Tools only activate when you click them
+- ✅ **Local Processing** - All data processing happens in your browser
+- ✅ **No Data Collection** - No analytics, tracking, or data mining
+- ✅ **Your API Keys** - AI features use your own Gemini API keys
+- ✅ **Local Storage Only** - All data stays on your device (no sync storage)
+
+### Security Features
+
+- **Explicit Activation** - Tools only access page content when you activate them
+- **Minimal Permissions** - Each permission is directly tied to specific functionality
+- **No External Dependencies** - All code runs locally, no CDNs or external scripts
+- **Transparent Storage** - Clear documentation of what data is stored and where
+
+For detailed privacy information, see our [Privacy Policy](docs/PRIVACY_POLICY.md).
 
 ## 📄 License
 

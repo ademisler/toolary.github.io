@@ -28,14 +28,21 @@ let langMap = {};
 async function loadLanguage() {
   try {
     const result = await chrome.storage.local.get(['language']);
-    const language = result.language || 'en';
+    let language = result.language;
+    
+    // If no stored preference, detect and default to English for unsupported
+    if (!language) {
+      const browserLang = chrome.i18n?.getUILanguage?.() || navigator.language || 'en';
+      const detected = browserLang.split('-')[0].toLowerCase();
+      language = ['en', 'tr', 'fr'].includes(detected) ? detected : 'en';
+    }
     
     const response = await fetch(chrome.runtime.getURL(`_locales/${language}/messages.json`));
     if (response.ok) {
       langMap = await response.json();
     }
   } catch {
-    console.debug('Failed to load language file, using fallback');
+    console.debug('SEO Analyzer: Language loading failed, using fallback');
     langMap = {};
   }
 }

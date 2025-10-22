@@ -12,15 +12,15 @@ const TOAST_DURATION = 6000; // 6 seconds
  * Show coffee message toast for a specific tool
  * @param {string} toolId - The tool identifier
  */
-export function showCoffeeMessageForTool(toolId) {
+export async function showCoffeeMessageForTool(toolId) {
   try {
-    const message = getCoffeeMessage(toolId);
+    const message = await getCoffeeMessage(toolId);
     if (!message) {
       console.debug(`Coffee Toast: No message available for tool: ${toolId}`);
       return;
     }
     
-    showCoffeeToast(message);
+    await showCoffeeToast(message);
   } catch (error) {
     console.error('Coffee Toast: Error showing message for tool', toolId, error);
   }
@@ -30,7 +30,7 @@ export function showCoffeeMessageForTool(toolId) {
  * Create and display coffee toast with message and donation button
  * @param {string} message - The coffee message to display
  */
-export function showCoffeeToast(message) {
+export async function showCoffeeToast(message) {
   try {
     // Remove any existing coffee toasts
     document.querySelectorAll('.toolary-coffee-toast').forEach(toast => toast.remove());
@@ -69,7 +69,7 @@ export function showCoffeeToast(message) {
     // Buy Me a Coffee button
     const button = document.createElement('button');
     button.className = 'toolary-coffee-toast__button';
-    button.textContent = getButtonText();
+    button.textContent = await getButtonText();
     button.setAttribute('aria-label', 'Support the developer by buying a coffee');
     
     // Button click handler
@@ -146,32 +146,34 @@ function openBuyMeACoffee() {
  * Get localized button text
  * @returns {string} Button text in current language
  */
-function getButtonText() {
+async function getButtonText() {
   try {
-    // Try to get from Chrome i18n
+    // Try Chrome i18n first
     if (chrome.i18n && chrome.i18n.getMessage) {
       const message = chrome.i18n.getMessage('buyMeACoffee');
-      if (message) {
-        return message;
-      }
+      if (message) return message;
     }
     
-    // Fallback based on language
-    const language = chrome.i18n?.getUILanguage?.() || 'en';
-    const langCode = language.split('-')[0].toLowerCase();
+    // Read from user preference storage
+    const stored = await chrome.storage.local.get(['language']);
+    let langCode = stored?.language || 'en';
+    
+    // If no stored preference, detect browser language
+    if (!stored?.language) {
+      const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+      const detected = browserLang.split('-')[0].toLowerCase();
+      // Only use if supported, otherwise English
+      langCode = ['tr', 'fr'].includes(detected) ? detected : 'en';
+    }
     
     switch (langCode) {
-      case 'tr':
-        return 'Bana Bir Kahve Ismarla';
-      case 'fr':
-        return 'Offre-moi un café';
-      case 'en':
-      default:
-        return 'Buy Me a Coffee';
+      case 'tr': return 'Kahve Ismarla';
+      case 'fr': return 'Acheter Café';
+      default: return 'Buy Coffee';
     }
   } catch (error) {
     console.debug('Coffee Toast: Error getting button text, using English', error);
-    return 'Buy Me a Coffee';
+    return 'Buy Coffee';
   }
 }
 

@@ -27,6 +27,11 @@ const iconsPromise = import(chrome.runtime.getURL('shared/icons.js')).catch((err
   throw error;
 });
 
+const secureStorageModulePromise = import(chrome.runtime.getURL('core/secureStorage.js')).catch((error) => {
+  console.error('Toolary popup: failed to load secure storage module', error);
+  return null;
+});
+
 // Category labels will be localized dynamically
 const CATEGORY_KEYS = Object.freeze({
   inspect: 'inspect',
@@ -1385,20 +1390,21 @@ async function initializeLanguageAndTheme() {
     const sources = [
       chrome.i18n?.getUILanguage?.(),
       navigator.language,
-      navigator.languages?.[0],
-      'en'
+      navigator.languages?.[0]
     ];
     
     for (const source of sources) {
       if (source) {
         const detected = resolveLanguage(source);
-        if (detected && detected !== 'en') {
+        // Only accept supported languages (en, tr, fr)
+        if (detected && ['en', 'tr', 'fr'].includes(detected)) {
           lang = detected;
           break;
         }
       }
     }
     
+    // Default to English if no supported language found
     if (!lang) lang = 'en';
     await chrome.storage.local.set({ language: lang });
   }
@@ -1590,6 +1596,57 @@ function attachEventListeners() {
   document.addEventListener('keydown', handleKeyboardNavigation);
 }
 
+async function decryptStoredAIKeys(rawKeys = []) {
+  const secureStorage = await secureStorageModulePromise;
+  if (secureStorage?.decryptAIKeyEntries) {
+    const decryptedEntries = await secureStorage.decryptAIKeyEntries(rawKeys);
+    return decryptedEntries.map((entry, index) => {
+      const original = rawKeys[index];
+      const value = entry.value || '';
+      return {
+        value,
+        status: original?.status || 'active',
+        visible: false,
+        savedValue: value,
+        createdAt: entry.createdAt
+      };
+    });
+  }
+
+  return rawKeys.map((entry) => {
+    const value = typeof entry === 'string'
+      ? entry
+      : typeof entry?.value === 'string'
+        ? entry.value
+        : '';
+
+    return {
+      value,
+      status: entry?.status || 'active',
+      visible: false,
+      savedValue: value,
+      createdAt: entry?.createdAt || Date.now()
+    };
+  });
+}
+
+async function encryptAIKeysForStorage(keys = []) {
+  const secureStorage = await secureStorageModulePromise;
+  const entries = keys.map((key) => ({
+    value: typeof key?.value === 'string' ? key.value : '',
+    createdAt: key?.createdAt || Date.now()
+  }));
+
+  if (secureStorage?.encryptAIKeyEntries) {
+    return secureStorage.encryptAIKeyEntries(entries);
+  }
+
+  return entries.map((entry) => ({
+    value: entry.value,
+    createdAt: entry.createdAt
+  }));
+}
+
 // AI Settings Functions
 async function loadAISettings() {
   try {
@@ -1598,8 +1655,8 @@ async function loadAISettings() {
       'toolaryAIModel',
       'toolaryAILanguage'
     ]);
-    
-    state.aiKeys = toolaryAIKeys || [];
+    const decryptedKeys = await decryptStoredAIKeys(Array.isArray(toolaryAIKeys) ? toolaryAIKeys : []);
+    state.aiKeys = decryptedKeys;
     state.aiModel = toolaryAIModel || 'auto';
     state.aiLanguage = toolaryAILanguage || 'auto';
     
@@ -1618,8 +1675,21 @@ async function loadAISettings() {
 function renderAIKeys() {
   if (!elements.aiKeysContainer) return;
   
+  // Security warning for API keys
+  const securityWarning = `
+    <div class="ai-key-security-warning" style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: #856404;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+        </svg>
+        <strong>Security Notice</strong>
+      </div>
+      <div>API keys are stored locally on your device in plain text. Keep your device secure and don't share screenshots containing API keys.</div>
+    </div>
+  `;
+  
   if (state.aiKeys.length === 0) {
-    elements.aiKeysContainer.innerHTML = `
+    elements.aiKeysContainer.innerHTML = securityWarning + `
       <div class="ai-key-empty-state">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -1631,7 +1701,7 @@ function renderAIKeys() {
     return;
   }
   
-  elements.aiKeysContainer.innerHTML = state.aiKeys.map((key, index) => `
+  elements.aiKeysContainer.innerHTML = securityWarning + state.aiKeys.map((key, index) => `
     <div class="ai-key-item" data-key-index="${index}">
       <div class="ai-key-input-container">
         <input type="${key.visible ? 'text' : 'password'}" 
@@ -1801,8 +1871,9 @@ function removeAIKey(index) {
 
 async function saveAISettings() {
   try {
+    const storageReadyKeys = await encryptAIKeysForStorage(state.aiKeys);
     await chrome.storage.local.set({
-      toolaryAIKeys: state.aiKeys,
+      toolaryAIKeys: storageReadyKeys,
       toolaryAIModel: state.aiModel,
       toolaryAILanguage: state.aiLanguage
     });

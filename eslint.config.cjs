@@ -39,7 +39,11 @@ module.exports = [
         location: 'readonly',
         crypto: 'readonly',
         XMLSerializer: 'readonly',
-        requestAnimationFrame: 'readonly'
+        requestAnimationFrame: 'readonly',
+        TextEncoder: 'readonly',
+        TextDecoder: 'readonly',
+        btoa: 'readonly',
+        atob: 'readonly'
       }
     },
     rules: {

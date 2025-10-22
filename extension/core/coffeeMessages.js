@@ -132,14 +132,20 @@ const MESSAGES = {
  * Get the current language from Chrome's i18n system
  * @returns {string} Language code (tr, en, fr)
  */
-export function getCurrentLanguage() {
+export async function getCurrentLanguage() {
   try {
-    const uiLanguage = chrome.i18n.getUILanguage();
-    // Extract language code (e.g., 'tr-TR' -> 'tr')
-    const langCode = uiLanguage.split('-')[0].toLowerCase();
+    // Read from user preference storage
+    const stored = await chrome.storage.local.get(['language']);
+    if (stored?.language) {
+      return stored.language;
+    }
     
-    // Return supported language or fallback to English
-    if (['tr', 'en', 'fr'].includes(langCode)) {
+    // Fallback: detect browser language
+    const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+    const langCode = browserLang.split('-')[0].toLowerCase();
+    
+    // Return supported language or default to English
+    if (['tr', 'fr'].includes(langCode)) {
       return langCode;
     }
     return 'en';
@@ -154,7 +160,7 @@ export function getCurrentLanguage() {
  * @param {string} toolId - The tool identifier
  * @returns {string|null} The message in current language, or null if not found
  */
-export function getCoffeeMessage(toolId) {
+export async function getCoffeeMessage(toolId) {
   try {
     const messages = MESSAGES[toolId];
     if (!messages) {
@@ -162,7 +168,7 @@ export function getCoffeeMessage(toolId) {
       return null;
     }
     
-    const language = getCurrentLanguage();
+    const language = await getCurrentLanguage();
     const message = messages[language] || messages['en'] || null;
     
     if (!message) {

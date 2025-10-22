@@ -3,6 +3,7 @@
 
 import { GEMINI_MODELS, AI_LANGUAGE_NAMES, getModelForTool, AI_API_CONFIG } from './aiConfig.js';
 import { handleError } from '../shared/helpers.js';
+import { encryptAIKeyEntries, decryptAIKeyEntries } from './secureStorage.js';
 
 class AIManager {
   constructor() {
@@ -32,8 +33,13 @@ class AIManager {
   async loadAPIKeys() {
     try {
       const result = await chrome.storage.local.get(['toolaryAIKeys']);
-      this.apiKeys = result.toolaryAIKeys || [];
-      
+      const storedKeys = Array.isArray(result.toolaryAIKeys) ? result.toolaryAIKeys : [];
+      const decryptedKeys = await decryptAIKeyEntries(storedKeys);
+      this.apiKeys = decryptedKeys.map((entry) => ({
+        value: entry.value || '',
+        createdAt: entry.createdAt || Date.now()
+      }));
+
       // Initialize key status for new keys
       this.apiKeys.forEach((key, index) => {
         if (!this.keyStatus.has(index)) {
@@ -54,9 +60,14 @@ class AIManager {
   // Save API keys to storage
   async saveAPIKeys(keys) {
     try {
-      this.apiKeys = keys;
-      await chrome.storage.local.set({ toolaryAIKeys: keys });
-      
+      this.apiKeys = keys.map((key) => ({
+        value: key.value || '',
+        createdAt: key.createdAt || Date.now()
+      }));
+
+      const storedKeys = await encryptAIKeyEntries(this.apiKeys);
+      await chrome.storage.local.set({ toolaryAIKeys: storedKeys });
+
       // Update key status map
       this.keyStatus.clear();
       keys.forEach((_, index) => {
@@ -124,29 +135,39 @@ class AIManager {
   }
 
   // Select appropriate language for AI responses
-  selectLanguage(userPreference = null) {
+  async selectLanguage(userPreference = null) {
     const preference = userPreference || this.userLanguagePreference;
     
     if (preference === 'auto') {
-      // Auto-detect browser language
-      const browserLang = navigator.language || navigator.languages?.[0] || 'en';
-      const langCode = browserLang.split('-')[0]; // Extract language code (e.g., 'en' from 'en-US')
-      
-      // Check if we support this language
-      if (AI_LANGUAGE_NAMES[langCode]) {
-        return langCode;
+      try {
+        // First, try to read from popup language preference
+        const stored = await chrome.storage.local.get(['language']);
+        if (stored?.language) {
+          return stored.language;
+        }
+        
+        // Fallback: detect browser language
+        const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+        const langCode = browserLang.split('-')[0];
+        
+        // Check if supported, otherwise English
+        if (['en', 'tr', 'fr'].includes(langCode)) {
+          return langCode;
+        }
+        
+        return 'en';
+      } catch (error) {
+        console.error('AI Manager: Error reading language preference:', error);
+        return 'en';
       }
-      
-      // Fallback to English if language not supported
-      return 'en';
     }
     
     return preference;
   }
 
   // Get language instruction for prompt
-  getLanguageInstruction(userPreference = null) {
-    const language = this.selectLanguage(userPreference);
+  async getLanguageInstruction(userPreference = null) {
+    const language = await this.selectLanguage(userPreference);
     
     if (language === 'auto') {
       return '';
@@ -207,7 +228,7 @@ class AIManager {
     }
 
     const model = this.selectModel(toolId, userModelPreference);
-    const languageInstruction = this.getLanguageInstruction(userLanguagePreference);
+    const languageInstruction = await this.getLanguageInstruction(userLanguagePreference);
     const enhancedPrompt = prompt + languageInstruction;
     let lastError;
 

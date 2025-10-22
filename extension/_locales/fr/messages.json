@@ -32,6 +32,9 @@
   "close": {
     "message": "Fermer"
   },
+  "copy": {
+    "message": "Copier"
+  },
   "colorPicker": {
     "message": "Pipette"
   },
@@ -70,6 +73,9 @@
   },
   "colorCopied": {
     "message": "Couleur copiée"
+  },
+  "colorCopiedToClipboard": {
+    "message": "Couleur $1 copiée dans le presse-papiers !"
   },
   "elementInfo": {
     "message": "Infos élément"
@@ -672,7 +678,25 @@
     "message": "Choisissez la langue pour les réponses IA"
   },
   "aiLanguageAuto": {
-    "message": "Auto (Langue du Navigateur)"
+    "message": "Auto (Langue du navigateur)"
+  },
+  "searchTools": {
+    "message": "Rechercher des outils..."
+  },
+  "filterByCategory": {
+    "message": "Filtrer par catégorie"
+  },
+  "webPickerTools": {
+    "message": "Outils de sélection web"
+  },
+  "previousPage": {
+    "message": "Page précédente"
+  },
+  "nextPage": {
+    "message": "Page suivante"
+  },
+  "toolToggles": {
+    "message": "Basculements d'outils"
   },
   "ai": {
     "message": "IA"
@@ -892,5 +916,179 @@
   },
   "cmdTextHighlighter": {
     "message": "Activer le Surligneur de Texte"
+  },
+  "seoAnalyzing": {
+    "message": "Analyse SEO en cours..."
+  },
+  "seoAnalyzingDescription": {
+    "message": "Nous analysons les performances SEO de la page. Cela peut prendre quelques secondes."
+  },
+  "seoAnalysisSteps": {
+    "message": "Étapes d'Analyse"
+  },
+  "seoStep1": {
+    "message": "Analyse des balises meta et du titre"
+  },
+  "seoStep2": {
+    "message": "Évaluation de la qualité du contenu"
+  },
+  "seoStep3": {
+    "message": "Optimisation des images et des liens"
+  },
+  "seoStep4": {
+    "message": "Vérifications SEO techniques"
+  },
+  "seoOverallScore": {
+    "message": "Score SEO Global"
+  },
+  "seoMetaAndTitle": {
+    "message": "Meta & Titre"
+  },
+  "seoContentQuality": {
+    "message": "Qualité du Contenu"
+  },
+  "seoHeadingStructure": {
+    "message": "Structure des Titres"
+  },
+  "seoImageOptimization": {
+    "message": "Optimisation des Images"
+  },
+  "seoLinkStrategy": {
+    "message": "Stratégie de Liens"
+  },
+  "seoTechnicalSEO": {
+    "message": "SEO Technique"
+  },
+  "seoSummary": {
+    "message": "Résumé"
+  },
+  "seoCopyReport": {
+    "message": "Copier le Rapport"
+  },
+  "seoReportCopied": {
+    "message": "Rapport SEO copié dans le presse-papiers !"
+  },
+  "seoCopyFailed": {
+    "message": "Échec de la copie du rapport"
+  },
+  "seoAnalysisComplete": {
+    "message": "Analyse SEO terminée !"
+  },
+  "seoAnalysisFailed": {
+    "message": "L'analyse SEO a échoué"
+  },
+  "seoExcellent": {
+    "message": "Excellente performance SEO !"
+  },
+  "seoGood": {
+    "message": "Bonne performance SEO"
+  },
+  "seoFair": {
+    "message": "Performance SEO correcte"
+  },
+  "seoNeedsImprovement": {
+    "message": "Amélioration SEO nécessaire"
+  },
+  "seoPoor": {
+    "message": "Faible performance SEO"
+  },
+  "elementSelectedAndCopied": {
+    "message": "Élément $1 sélectionné et copié !"
+  },
+  "linksExtractedFromSource": {
+    "message": "$1 liens extraits de $2 !"
+  },
+  "failedToGeneratePDF": {
+    "message": "Échec de la génération du PDF : $1"
+  },
+  "failedToActivatePDFGenerator": {
+    "message": "Échec de l'activation du Générateur PDF : $1"
+  },
+  "deletedNotesSuccessfully": {
+    "message": "$1 notes supprimées avec succès !"
+  },
+  "importedBookmarks": {
+    "message": "$1 signets importés$2"
+  },
+  "enterContext": {
+    "message": "Entrer le Contexte"
+  },
+  "pageContextMode": {
+    "message": "Contexte de Page"
+  },
+  "emailType": {
+    "message": "Type d'E-mail"
+  },
+  "emailTone": {
+    "message": "Ton de l'E-mail"
+  },
+  "emailLength": {
+    "message": "Longueur de l'E-mail"
+  },
+  "enterEmailContext": {
+    "message": "Entrez le contexte de l'e-mail"
+  },
+  "typeOrPasteText": {
+    "message": "Tapez ou collez le texte ici..."
+  },
+  "generateEmail": {
+    "message": "Générer un E-mail"
+  },
+  "generatingEmail": {
+    "message": "Génération de l'e-mail..."
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Veuillez entrer le contexte de l'e-mail"
+  },
+  "noContentToGenerateEmail": {
+    "message": "Aucun contenu trouvé pour générer un e-mail"
+  },
+  "failedToGenerateEmail": {
+    "message": "Échec de la génération de l'e-mail"
+  },
+  "generatedEmail": {
+    "message": "E-mail Généré"
+  },
+  "copyEmail": {
+    "message": "Copier l'E-mail"
+  },
+  "subjectLine": {
+    "message": "Ligne d'Objet"
+  },
+  "emailBody": {
+    "message": "Corps de l'E-mail"
+  },
+  "emailCopied": {
+    "message": "E-mail copié dans le presse-papiers !"
+  },
+  "failedToCopyEmail": {
+    "message": "Échec de la copie de l'e-mail"
+  },
+  "emailGeneratorActivated": {
+    "message": "Générateur d'E-mails IA activé"
+  },
+  "failedToActivateEmailGenerator": {
+    "message": "Échec de l'activation du générateur d'e-mails"
+  },
+  "selectTextOnPage": {
+    "message": "Sélectionnez le texte sur la page pour le résumer"
+  },
+  "summary": {
+    "message": "Résumé"
+  },
+  "copySummary": {
+    "message": "Copier le Résumé"
+  },
+  "extractedKeywords": {
+    "message": "Mots-clés"
+  },
+  "generating": {
+    "message": "Génération du résumé..."
+  },
+  "summarizeAuto": {
+    "message": "Contenu de la Page"
+  },
+  "summarizeManual": {
+    "message": "Sélectionner le Texte"
   }
 }

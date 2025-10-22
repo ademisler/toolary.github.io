@@ -1,4 +1,4 @@
-import { createOverlay, removeOverlay, createTooltip, removeTooltip, copyText, getCssSelector, getXPath, showModal, showError, showSuccess, showInfo, throttle, getCachedComputedStyle, handleError, safeExecute, addEventListenerWithCleanup } from '../../shared/helpers.js';
+﻿import { createOverlay, removeOverlay, createTooltip, removeTooltip, copyText, getCssSelector, getXPath, showModal, showError, showSuccess, showInfo, throttle, getCachedComputedStyle, handleError, safeExecute, addEventListenerWithCleanup, escapeHtml } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
@@ -54,10 +54,16 @@ const throttledOnMove = throttle((e) => {
     
     tooltip.style.top = rect.bottom + window.scrollY + 5 + 'px';
     tooltip.style.left = rect.left + window.scrollX + 'px';
+
+    const selectorSummary = `${tagName}${id}${classes}`;
+    const snippet = `${textContent}${textSuffix}`;
+    const safeSelectorSummary = escapeHtml(selectorSummary);
+    const safeSnippet = escapeHtml(snippet);
+
     tooltip.innerHTML = `
-      <div style="font-weight: bold;">${tagName}${id}${classes}</div>
-      <div style="font-size: 11px; opacity: 0.8;">${textContent}${textSuffix}</div>
-      <div style="font-size: 10px; opacity: 0.6;">Click to select • Arrow keys to navigate</div>
+      <div style="font-weight: bold;">${safeSelectorSummary}</div>
+      <div style="font-size: 11px; opacity: 0.8;">${safeSnippet}</div>
+      <div style="font-size: 10px; opacity: 0.6;">Click to select - Arrow keys to navigate</div>
     `;
   } catch (error) {
     console.debug('Element picker move handler error:', error);
@@ -234,10 +240,20 @@ function navigateElement(direction) {
       
       tooltip.style.top = rect.bottom + window.scrollY + 5 + 'px';
       tooltip.style.left = rect.left + window.scrollX + 'px';
-      tooltip.innerHTML = `
-        <div style="font-weight: bold;">${tagName}${id}${classes}</div>
-        <div style="font-size: 10px; opacity: 0.6;">Arrow keys to navigate • Enter to select • Esc to cancel</div>
-      `;
+      
+      const textContent = currentElement.textContent ? currentElement.textContent.trim().substring(0, 50) : '';
+      const textSuffix = currentElement.textContent && currentElement.textContent.trim().length > 50 ? '...' : '';
+      
+      const selectorSummary = `${tagName}${id}${classes}`;
+      const snippet = `${textContent}${textSuffix}`;
+    const safeSelectorSummary = escapeHtml(selectorSummary);
+    const safeSnippet = escapeHtml(snippet);
+
+    tooltip.innerHTML = `
+      <div style="font-weight: bold;">${safeSelectorSummary}</div>
+      <div style="font-size: 11px; opacity: 0.8;">${safeSnippet}</div>
+      <div style="font-size: 10px; opacity: 0.6;">Click to select - Arrow keys to navigate</div>
+    `;
       
       // Scroll element into view
       currentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -284,7 +300,7 @@ export function activate(deactivate) {
     
     cleanupFunctions.push(cleanupMove, cleanupClick, cleanupKeydown);
     
-    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('hoverToInspectElements') : 'Hover over elements to inspect • Click to select • Use arrow keys to navigate';
+    const infoMessage = chrome.i18n ? chrome.i18n.getMessage('hoverToInspectElements') : 'Hover over elements to inspect â€¢ Click to select â€¢ Use arrow keys to navigate';
     showInfo(infoMessage, 3000);
     
   } catch (error) {
@@ -320,3 +336,4 @@ export function deactivate() {
     handleError(error, 'elementPicker deactivation');
   }
 }
+

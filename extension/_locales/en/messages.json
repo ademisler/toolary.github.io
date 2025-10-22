@@ -32,6 +32,9 @@
   "close": {
     "message": "Close"
   },
+  "copy": {
+    "message": "Copy"
+  },
   "colorPicker": {
     "message": "Color Picker"
   },
@@ -70,6 +73,9 @@
   },
   "colorCopied": {
     "message": "Color copied"
+  },
+  "colorCopiedToClipboard": {
+    "message": "Color $1 copied to clipboard!"
   },
   "elementInfo": {
     "message": "Element Info"
@@ -674,6 +680,24 @@
   "aiLanguageAuto": {
     "message": "Auto (Browser Language)"
   },
+  "searchTools": {
+    "message": "Search tools..."
+  },
+  "filterByCategory": {
+    "message": "Filter by category"
+  },
+  "webPickerTools": {
+    "message": "Web picker tools"
+  },
+  "previousPage": {
+    "message": "Previous page"
+  },
+  "nextPage": {
+    "message": "Next page"
+  },
+  "toolToggles": {
+    "message": "Tool toggles"
+  },
   "ai": {
     "message": "AI"
   },
@@ -892,5 +916,179 @@
   },
   "cmdTextHighlighter": {
     "message": "Activate Text Highlighter"
+  },
+  "seoAnalyzing": {
+    "message": "Analyzing SEO..."
+  },
+  "seoAnalyzingDescription": {
+    "message": "We are analyzing the page's SEO performance. This may take a few seconds."
+  },
+  "seoAnalysisSteps": {
+    "message": "Analysis Steps"
+  },
+  "seoStep1": {
+    "message": "Meta tags and title analysis"
+  },
+  "seoStep2": {
+    "message": "Content quality assessment"
+  },
+  "seoStep3": {
+    "message": "Image and link optimization"
+  },
+  "seoStep4": {
+    "message": "Technical SEO checks"
+  },
+  "seoOverallScore": {
+    "message": "Overall SEO Score"
+  },
+  "seoMetaAndTitle": {
+    "message": "Meta & Title"
+  },
+  "seoContentQuality": {
+    "message": "Content Quality"
+  },
+  "seoHeadingStructure": {
+    "message": "Heading Structure"
+  },
+  "seoImageOptimization": {
+    "message": "Image Optimization"
+  },
+  "seoLinkStrategy": {
+    "message": "Link Strategy"
+  },
+  "seoTechnicalSEO": {
+    "message": "Technical SEO"
+  },
+  "seoSummary": {
+    "message": "Summary"
+  },
+  "seoCopyReport": {
+    "message": "Copy Report"
+  },
+  "seoReportCopied": {
+    "message": "SEO report copied to clipboard!"
+  },
+  "seoCopyFailed": {
+    "message": "Failed to copy report"
+  },
+  "seoAnalysisComplete": {
+    "message": "SEO analysis completed!"
+  },
+  "seoAnalysisFailed": {
+    "message": "SEO analysis failed"
+  },
+  "seoExcellent": {
+    "message": "Excellent SEO performance!"
+  },
+  "seoGood": {
+    "message": "Good SEO performance"
+  },
+  "seoFair": {
+    "message": "Fair SEO performance"
+  },
+  "seoNeedsImprovement": {
+    "message": "Needs SEO improvement"
+  },
+  "seoPoor": {
+    "message": "Poor SEO performance"
+  },
+  "elementSelectedAndCopied": {
+    "message": "$1 element selected and copied!"
+  },
+  "linksExtractedFromSource": {
+    "message": "$1 links extracted from $2!"
+  },
+  "failedToGeneratePDF": {
+    "message": "Failed to generate PDF: $1"
+  },
+  "failedToActivatePDFGenerator": {
+    "message": "Failed to activate PDF Generator: $1"
+  },
+  "deletedNotesSuccessfully": {
+    "message": "Deleted $1 notes successfully!"
+  },
+  "importedBookmarks": {
+    "message": "Imported $1 bookmarks$2"
+  },
+  "enterContext": {
+    "message": "Enter Context"
+  },
+  "pageContextMode": {
+    "message": "Page Context"
+  },
+  "emailType": {
+    "message": "Email Type"
+  },
+  "emailTone": {
+    "message": "Email Tone"
+  },
+  "emailLength": {
+    "message": "Email Length"
+  },
+  "enterEmailContext": {
+    "message": "Enter email context"
+  },
+  "typeOrPasteText": {
+    "message": "Type or paste text here..."
+  },
+  "generateEmail": {
+    "message": "Generate Email"
+  },
+  "generatingEmail": {
+    "message": "Generating email..."
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Please enter email context"
+  },
+  "noContentToGenerateEmail": {
+    "message": "No content found to generate email"
+  },
+  "failedToGenerateEmail": {
+    "message": "Failed to generate email"
+  },
+  "generatedEmail": {
+    "message": "Generated Email"
+  },
+  "copyEmail": {
+    "message": "Copy Email"
+  },
+  "subjectLine": {
+    "message": "Subject Line"
+  },
+  "emailBody": {
+    "message": "Email Body"
+  },
+  "emailCopied": {
+    "message": "Email copied to clipboard!"
+  },
+  "failedToCopyEmail": {
+    "message": "Failed to copy email"
+  },
+  "emailGeneratorActivated": {
+    "message": "AI Email Generator activated"
+  },
+  "failedToActivateEmailGenerator": {
+    "message": "Failed to activate email generator"
+  },
+  "selectTextOnPage": {
+    "message": "Select text on the page to summarize"
+  },
+  "summary": {
+    "message": "Summary"
+  },
+  "copySummary": {
+    "message": "Copy Summary"
+  },
+  "extractedKeywords": {
+    "message": "Keywords"
+  },
+  "generating": {
+    "message": "Generating summary..."
+  },
+  "summarizeAuto": {
+    "message": "Page Content"
+  },
+  "summarizeManual": {
+    "message": "Select Text"
   }
 }

@@ -15,5 +15,7 @@ export default {
       functions: 50,
       branches: 30
     }
-  }
+  },
+  // preset: 'jest-preset-default', // Removed: preset not found
+  transform: {}
 };

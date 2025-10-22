@@ -282,7 +282,9 @@ async function initializePreferences() {
     let language = stored.language;
     if (!language) {
       const browserLang = (chrome.i18n?.getUILanguage?.() || navigator.language || 'en');
-      language = resolveLanguageCode(browserLang);
+      const detected = resolveLanguageCode(browserLang);
+      // Only use detected language if it's supported (en, tr, fr)
+      language = ['en', 'tr', 'fr'].includes(detected) ? detected : 'en';
       await chrome.storage.local.set({ language });
     }
     await loadLanguage(language);

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.54% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/22</span>
+                <span class='fraction'>15/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/9</span>
+                <span class='fraction'>6/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.54% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/22</span>
+                <span class='fraction'>15/25</span>
             </div>
         
             
@@ -249,7 +249,13 @@
 <a name='L184'></a><a href='#L184'>184</a>
 <a name='L185'></a><a href='#L185'>185</a>
 <a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -385,18 +391,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -569,20 +581,26 @@ const MESSAGES = {
  * Get the current language from Chrome's i18n system
  * @returns {string} Language code (tr, en, fr)
  */
-export function getCurrentLanguage() {
+export async function getCurrentLanguage() {
   try {
-    const uiLanguage = chrome.i18n.getUILanguage();
-    // Extract language code (e.g., 'tr-TR' -&gt; 'tr')
-    const langCode = <span class="cstat-no" title="statement not covered" >uiLanguage.split('-')[0].toLowerCase();</span>
+    // Read from user preference storage
+    const stored = await chrome.storage.local.get(['language']);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (stored?.language) {
+<span class="cstat-no" title="statement not covered" >      return stored.language;</span>
+    }
     
-    // Return supported language or fallback to English
-<span class="cstat-no" title="statement not covered" >    if (['tr', 'en', 'fr'].includes(langCode)) {</span>
+    // Fallback: detect browser language
+    const browserLang = navigator.language || <span class="branch-1 cbranch-no" title="branch not covered" >navigator.languages?.[0] </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >'en';</span>
+    const langCode = browserLang.split('-')[0].toLowerCase();
+    
+    // Return supported language or default to English
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (['tr', 'fr'].includes(langCode)) {
 <span class="cstat-no" title="statement not covered" >      return langCode;</span>
     }
-<span class="cstat-no" title="statement not covered" >    return 'en';</span>
-  } catch (error) {
-    console.debug('Coffee Messages: Language detection failed, using English', error);
     return 'en';
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    console.debug('Coffee Messages: Language detection failed, using English', error);</span>
+<span class="cstat-no" title="statement not covered" >    return 'en';</span>
   }
 }
 &nbsp;
@@ -591,7 +609,7 @@ export function getCurrentLanguage() {
  * @param {string} toolId - The tool identifier
  * @returns {string|null} The message in current language, or null if not found
  */
-export function getCoffeeMessage(toolId) {
+export async function getCoffeeMessage(toolId) {
   try {
     const messages = MESSAGES[toolId];
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!messages) {
@@ -599,7 +617,7 @@ export function getCoffeeMessage(toolId) {
 <span class="cstat-no" title="statement not covered" >      return null;</span>
     }
     
-    const language = getCurrentLanguage();
+    const language = await getCurrentLanguage();
     const message = messages[language] || <span class="branch-1 cbranch-no" title="branch not covered" >messages['en'] </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >null;</span>
     
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!message) {
@@ -628,7 +646,7 @@ export function <span class="fstat-no" title="function not covered" >hasCoffeeMe
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-21T17:31:00.089Z
+                at 2025-10-22T15:27:09.288Z
             </div>
         <script src="prettify.js"></script>
         <script>

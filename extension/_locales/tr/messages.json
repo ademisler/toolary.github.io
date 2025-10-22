@@ -32,6 +32,9 @@
   "close": {
     "message": "Kapat"
   },
+  "copy": {
+    "message": "Kopyala"
+  },
   "colorPicker": {
     "message": "Renk Seçici"
   },
@@ -70,6 +73,9 @@
   },
   "colorCopied": {
     "message": "Renk kopyalandı"
+  },
+  "colorCopiedToClipboard": {
+    "message": "Renk $1 panoya kopyalandı!"
   },
   "elementInfo": {
     "message": "Öğe Bilgisi"
@@ -674,6 +680,24 @@
   "aiLanguageAuto": {
     "message": "Otomatik (Tarayıcı Dili)"
   },
+  "searchTools": {
+    "message": "Araçları ara..."
+  },
+  "filterByCategory": {
+    "message": "Kategoriye göre filtrele"
+  },
+  "webPickerTools": {
+    "message": "Web seçici araçları"
+  },
+  "previousPage": {
+    "message": "Önceki sayfa"
+  },
+  "nextPage": {
+    "message": "Sonraki sayfa"
+  },
+  "toolToggles": {
+    "message": "Araç geçişleri"
+  },
   "ai": {
     "message": "Yapay Zeka"
   },
@@ -830,9 +854,6 @@
   "folder": {
     "message": "Klasör"
   },
-  "notes": {
-    "message": "Notlar"
-  },
   "cancel": {
     "message": "İptal"
   },
@@ -892,5 +913,179 @@
   },
   "cmdTextHighlighter": {
     "message": "Metin İşaretleyiciyi Etkinleştir"
+  },
+  "seoAnalyzing": {
+    "message": "SEO analizi yapılıyor..."
+  },
+  "seoAnalyzingDescription": {
+    "message": "Sayfa SEO performansını analiz ediyoruz. Bu işlem birkaç saniye sürebilir."
+  },
+  "seoAnalysisSteps": {
+    "message": "Analiz Adımları"
+  },
+  "seoStep1": {
+    "message": "Meta etiketleri ve başlık analizi"
+  },
+  "seoStep2": {
+    "message": "İçerik kalitesi değerlendirmesi"
+  },
+  "seoStep3": {
+    "message": "Görsel ve bağlantı optimizasyonu"
+  },
+  "seoStep4": {
+    "message": "Teknik SEO kontrolleri"
+  },
+  "seoOverallScore": {
+    "message": "Genel SEO Skoru"
+  },
+  "seoMetaAndTitle": {
+    "message": "Meta & Başlık"
+  },
+  "seoContentQuality": {
+    "message": "İçerik Kalitesi"
+  },
+  "seoHeadingStructure": {
+    "message": "Başlık Yapısı"
+  },
+  "seoImageOptimization": {
+    "message": "Görsel Optimizasyonu"
+  },
+  "seoLinkStrategy": {
+    "message": "Bağlantı Stratejisi"
+  },
+  "seoTechnicalSEO": {
+    "message": "Teknik SEO"
+  },
+  "seoSummary": {
+    "message": "Özet"
+  },
+  "seoCopyReport": {
+    "message": "Raporu Kopyala"
+  },
+  "seoReportCopied": {
+    "message": "SEO raporu panoya kopyalandı!"
+  },
+  "seoCopyFailed": {
+    "message": "Rapor kopyalanamadı"
+  },
+  "seoAnalysisComplete": {
+    "message": "SEO analizi tamamlandı!"
+  },
+  "seoAnalysisFailed": {
+    "message": "SEO analizi başarısız oldu"
+  },
+  "seoExcellent": {
+    "message": "Mükemmel SEO performansı!"
+  },
+  "seoGood": {
+    "message": "İyi SEO performansı"
+  },
+  "seoFair": {
+    "message": "Orta düzeyde SEO performansı"
+  },
+  "seoNeedsImprovement": {
+    "message": "SEO iyileştirme gerekiyor"
+  },
+  "seoPoor": {
+    "message": "Zayıf SEO performansı"
+  },
+  "elementSelectedAndCopied": {
+    "message": "$1 öğesi seçildi ve kopyalandı!"
+  },
+  "linksExtractedFromSource": {
+    "message": "$1 bağlantı $2'den çıkarıldı!"
+  },
+  "failedToGeneratePDF": {
+    "message": "PDF oluşturulamadı: $1"
+  },
+  "failedToActivatePDFGenerator": {
+    "message": "PDF Oluşturucu etkinleştirilemedi: $1"
+  },
+  "deletedNotesSuccessfully": {
+    "message": "$1 not başarıyla silindi!"
+  },
+  "importedBookmarks": {
+    "message": "$1 yer imi içe aktarıldı$2"
+  },
+  "enterContext": {
+    "message": "Bağlam Girin"
+  },
+  "pageContextMode": {
+    "message": "Sayfa Bağlamı"
+  },
+  "emailType": {
+    "message": "E-posta Türü"
+  },
+  "emailTone": {
+    "message": "E-posta Tonu"
+  },
+  "emailLength": {
+    "message": "E-posta Uzunluğu"
+  },
+  "enterEmailContext": {
+    "message": "E-posta bağlamını girin"
+  },
+  "typeOrPasteText": {
+    "message": "Metni buraya yazın veya yapıştırın..."
+  },
+  "generateEmail": {
+    "message": "E-posta Oluştur"
+  },
+  "generatingEmail": {
+    "message": "E-posta oluşturuluyor..."
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Lütfen e-posta bağlamını girin"
+  },
+  "noContentToGenerateEmail": {
+    "message": "E-posta oluşturmak için içerik bulunamadı"
+  },
+  "failedToGenerateEmail": {
+    "message": "E-posta oluşturulamadı"
+  },
+  "generatedEmail": {
+    "message": "Oluşturulan E-posta"
+  },
+  "copyEmail": {
+    "message": "E-postayı Kopyala"
+  },
+  "subjectLine": {
+    "message": "Konu Satırı"
+  },
+  "emailBody": {
+    "message": "E-posta İçeriği"
+  },
+  "emailCopied": {
+    "message": "E-posta panoya kopyalandı!"
+  },
+  "failedToCopyEmail": {
+    "message": "E-posta kopyalanamadı"
+  },
+  "emailGeneratorActivated": {
+    "message": "AI E-posta Oluşturucu etkinleştirildi"
+  },
+  "failedToActivateEmailGenerator": {
+    "message": "E-posta oluşturucu etkinleştirilemedi"
+  },
+  "selectTextOnPage": {
+    "message": "Özetlemek için sayfada metin seçin"
+  },
+  "summary": {
+    "message": "Özet"
+  },
+  "copySummary": {
+    "message": "Özeti Kopyala"
+  },
+  "extractedKeywords": {
+    "message": "Anahtar Kelimeler"
+  },
+  "generating": {
+    "message": "Özet oluşturuluyor..."
+  },
+  "summarizeAuto": {
+    "message": "Sayfa İçeriği"
+  },
+  "summarizeManual": {
+    "message": "Metin Seç"
   }
 }

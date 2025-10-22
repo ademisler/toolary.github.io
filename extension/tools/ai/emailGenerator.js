@@ -334,8 +334,18 @@ async function getUserLanguage() {
     const lang = result.toolaryAILanguage || 'auto';
     
     if (lang === 'auto') {
-      // Use browser language
-      return chrome.i18n.getUILanguage().split('-')[0];
+      // Read from popup language preference first
+      const stored = await chrome.storage.local.get(['language']);
+      if (stored?.language) {
+        return stored.language;
+      }
+      
+      // Fallback: detect browser language
+      const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+      const detected = browserLang.split('-')[0].toLowerCase();
+      
+      // Only use if supported (en, tr, fr), otherwise English
+      return ['en', 'tr', 'fr'].includes(detected) ? detected : 'en';
     }
     
     return lang;
