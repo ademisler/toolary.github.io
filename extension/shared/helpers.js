@@ -395,17 +395,65 @@ if (typeof chrome !== 'undefined') {
   languageReady = true;
 }
 
-export function t(id) {
-  if (langMap[id]) return langMap[id].message;
+// Ensure chrome.i18n.getMessage respects runtime language (fallback to our loaded langMap)
+try {
+  if (typeof chrome !== 'undefined') {
+    const originalGetMessage = chrome.i18n && typeof chrome.i18n.getMessage === 'function'
+      ? chrome.i18n.getMessage.bind(chrome.i18n)
+      : null;
+    chrome.i18n = chrome.i18n || {};
+    chrome.i18n.getMessage = (name, substitutions) => {
+      try {
+        if (langMap && langMap[name] && typeof langMap[name].message === 'string') {
+          return formatMessage(langMap[name].message, substitutions);
+        }
+      } catch {
+        // fall through to original
+      }
+      if (originalGetMessage) {
+        try {
+          return originalGetMessage(name, substitutions);
+        } catch {
+          // ignore
+        }
+      }
+      return typeof name === 'string' ? name : '';
+    };
+  }
+} catch {
+  // Non-fatal if we cannot override
+}
+
+// Format message templates like "$1", "$2" replacements
+function formatMessage(template, substitutions) {
+  if (template == null) return '';
+  if (substitutions == null) return String(template);
+  const values = Array.isArray(substitutions) ? substitutions : [substitutions];
+  let output = String(template);
+  for (let i = 0; i < values.length; i++) {
+    const needle = new RegExp(`\\$${i + 1}`, 'g');
+    output = output.replace(needle, String(values[i]));
+  }
+  return output;
+}
+
+export function t(id, substitutions = undefined) {
+  if (langMap[id] && typeof langMap[id].message === 'string') {
+    return formatMessage(langMap[id].message, substitutions);
+  }
   if (typeof chrome !== 'undefined' && chrome.i18n) {
     try {
-      const msg = chrome.i18n.getMessage(id);
+      const msg = chrome.i18n.getMessage(id, substitutions);
       if (msg) return msg;
     } catch {
-      // Message not found - using fallback
+      // ignore
     }
   }
-  return id;
+  return typeof id === 'string' ? id : '';
+}
+
+export function getCurrentUILanguage() {
+  return (langMap && langMap.__current) || 'en';
 }
 
 export function createOverlay() {
