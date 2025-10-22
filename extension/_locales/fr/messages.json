@@ -680,6 +680,486 @@
   "aiLanguageAuto": {
     "message": "Auto (Langue du navigateur)"
   },
+  "aiLanguageAutoDescription": {
+    "message": "Détecte automatiquement la langue de votre navigateur pour les réponses IA, même si l'interface est en anglais"
+  },
+  "chatWelcome": {
+    "message": "Salut ! Je suis prêt à aider. Demande-moi n'importe quoi !"
+  },
+  "typeMessage": {
+    "message": "Tapez votre message..."
+  },
+  "typeOrPasteText": {
+    "message": "Tapez ou collez le texte ici..."
+  },
+  "aiSEOAnalyzer": {
+    "message": "Analyseur SEO IA"
+  },
+  "seoAnalyzing": {
+    "message": "Analyse SEO en cours..."
+  },
+  "seoAnalyzingDescription": {
+    "message": "Notre IA analyse les performances SEO de votre page selon plusieurs facteurs."
+  },
+  "seoAnalysisSteps": {
+    "message": "Étapes d'analyse"
+  },
+  "seoStep1": {
+    "message": "Extraction du contenu et des métadonnées de la page"
+  },
+  "seoStep2": {
+    "message": "Analyse de la qualité et de la structure du contenu"
+  },
+  "seoStep3": {
+    "message": "Évaluation des facteurs SEO techniques"
+  },
+  "seoStep4": {
+    "message": "Génération d'un rapport complet"
+  },
+  "seoMetaAndTitle": {
+    "message": "Méta & Titre"
+  },
+  "seoContentQuality": {
+    "message": "Qualité du contenu"
+  },
+  "seoHeadingStructure": {
+    "message": "Structure des titres"
+  },
+  "seoImageOptimization": {
+    "message": "Optimisation des images"
+  },
+  "seoLinkStrategy": {
+    "message": "Stratégie de liens"
+  },
+  "seoTechnicalSEO": {
+    "message": "SEO technique"
+  },
+  "seoOverallScore": {
+    "message": "Score SEO global"
+  },
+  "seoSummary": {
+    "message": "Résumé"
+  },
+  "seoCopyReport": {
+    "message": "Copier le rapport"
+  },
+  "seoReportCopied": {
+    "message": "Rapport SEO copié dans le presse-papiers !"
+  },
+  "seoCopyFailed": {
+    "message": "Échec de la copie du rapport SEO"
+  },
+  "seoAnalysisComplete": {
+    "message": "Analyse SEO terminée avec succès !"
+  },
+  "seoAnalysisFailed": {
+    "message": "Échec de l'analyse SEO. Veuillez réessayer."
+  },
+  "seoExcellent": {
+    "message": "Excellent"
+  },
+  "seoGood": {
+    "message": "Bon"
+  },
+  "seoFair": {
+    "message": "Correct"
+  },
+  "seoNeedsImprovement": {
+    "message": "Nécessite des améliorations"
+  },
+  "seoPoor": {
+    "message": "Faible"
+  },
+  "summaryLengthShort": {
+    "message": "Court (~50 mots)"
+  },
+  "summaryLengthMedium": {
+    "message": "Moyen (~150 mots)"
+  },
+  "summaryLengthLong": {
+    "message": "Long (~300 mots)"
+  },
+  "length": {
+    "message": "Longueur"
+  },
+  "summarizeAuto": {
+    "message": "Contenu de la page"
+  },
+  "summarizeManual": {
+    "message": "Sélectionner le texte"
+  },
+  "noContentToSummarize": {
+    "message": "Aucun contenu trouvé à résumer"
+  },
+  "selectTextFirst": {
+    "message": "Veuillez d'abord sélectionner du texte sur la page"
+  },
+  "autoDetect": {
+    "message": "Détection automatique"
+  },
+  "noTextToTranslate": {
+    "message": "Aucun texte trouvé à traduire sur cette page"
+  },
+  "pageTranslated": {
+    "message": "Page traduite avec succès !"
+  },
+  "translating": {
+    "message": "Traduction en cours..."
+  },
+  "noTranslationToRestore": {
+    "message": "Aucune traduction à restaurer"
+  },
+  "pageRestored": {
+    "message": "Page originale restaurée"
+  },
+  "failedToRestore": {
+    "message": "Échec de la restauration de la page originale"
+  },
+  "restoreOriginal": {
+    "message": "Restaurer l'original"
+  },
+  "textTruncated": {
+    "message": "Le texte a été tronqué à 5000 caractères pour la traduction"
+  },
+  "analyzing": {
+    "message": "Analyse en cours..."
+  },
+  "selectTextToAnalyze": {
+    "message": "Sélectionnez du texte sur la page à analyser"
+  },
+  "cancel": {
+    "message": "Annuler"
+  },
+  "analyzeInput": {
+    "message": "Saisir le texte"
+  },
+  "analyzeSelection": {
+    "message": "Sélectionner le texte"
+  },
+  "analyzePage": {
+    "message": "Contenu de la page"
+  },
+  "enterTextToAnalyze": {
+    "message": "Saisissez le texte à analyser"
+  },
+  "aiEmailGeneratorTitle": {
+    "message": "Générateur d'e-mails IA"
+  },
+  "emailType": {
+    "message": "Type d'e-mail"
+  },
+  "emailTone": {
+    "message": "Ton de l'e-mail"
+  },
+  "emailLength": {
+    "message": "Longueur de l'e-mail"
+  },
+  "typeFollowUp": {
+    "message": "Suivi"
+  },
+  "typeThankYou": {
+    "message": "Remerciement"
+  },
+  "typeRequest": {
+    "message": "Demande"
+  },
+  "typeComplaint": {
+    "message": "Plainte"
+  },
+  "typeIntroduction": {
+    "message": "Présentation"
+  },
+  "typeApology": {
+    "message": "Excuse"
+  },
+  "typeReminder": {
+    "message": "Rappel"
+  },
+  "typeInvitation": {
+    "message": "Invitation"
+  },
+  "toneProfessional": {
+    "message": "Professionnel"
+  },
+  "toneFriendly": {
+    "message": "Amical"
+  },
+  "toneFormal": {
+    "message": "Formel"
+  },
+  "toneCasual": {
+    "message": "Décontracté"
+  },
+  "tonePersuasive": {
+    "message": "Persuasif"
+  },
+  "emailLengthShort": {
+    "message": "Court (~50 mots)"
+  },
+  "emailLengthMedium": {
+    "message": "Moyen (~150 mots)"
+  },
+  "emailLengthLong": {
+    "message": "Long (~300 mots)"
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Veuillez saisir le contexte de l'e-mail"
+  },
+  "noContentToGenerateEmail": {
+    "message": "Aucun contenu trouvé pour générer l'e-mail"
+  },
+  "emailGenerated": {
+    "message": "E-mail généré avec succès !"
+  },
+  "analyzeContent": {
+    "message": "Analyser le contenu"
+  },
+  "itemCopied": {
+    "message": "Élément ajouté à l'historique"
+  },
+  "copyHistoryManager": {
+    "message": "Historique de copie"
+  },
+  "searchHistory": {
+    "message": "Rechercher dans l'historique..."
+  },
+  "clearAllHistory": {
+    "message": "Effacer tout l'historique"
+  },
+  "confirmClearAll": {
+    "message": "Êtes-vous sûr de vouloir effacer tout l'historique ?"
+  },
+  "copyAgain": {
+    "message": "Copier"
+  },
+  "copiedToClipboard": {
+    "message": "Copié dans le presse-papiers"
+  },
+  "noItemsYet": {
+    "message": "Aucun élément pour le moment"
+  },
+  "startCopyingHint": {
+    "message": "Commencez à copier du texte pour le voir ici"
+  },
+  "historyCleared": {
+    "message": "Historique effacé"
+  },
+  "clearHistoryError": {
+    "message": "Échec de l'effacement de l'historique"
+  },
+  "activationError": {
+    "message": "Échec de l'activation du Gestionnaire d'historique de copie"
+  },
+  "allNotesFromAllSites": {
+    "message": "Toutes les notes de tous les sites"
+  },
+  "noStickyNotesYet": {
+    "message": "Aucune note autocollante pour le moment"
+  },
+  "createFirstNoteHint": {
+    "message": "Cliquez n'importe où sur la page pour créer votre première note autocollante. Chaque note reste épinglée à son site."
+  },
+  "unknownDate": {
+    "message": "Date inconnue"
+  },
+  "emptyNote": {
+    "message": "Note vide"
+  },
+  "stickyNotesManager": {
+    "message": "Gestionnaire de notes autocollantes"
+  },
+  "addNewNote": {
+    "message": "Ajouter une nouvelle note"
+  },
+  "clearAll": {
+    "message": "Tout effacer"
+  },
+  "delete": {
+    "message": "Supprimer"
+  },
+  "selectTextToTranslate": {
+    "message": "Sélectionnez du texte sur la page à traduire"
+  },
+  "sourceLanguage": {
+    "message": "Langue source"
+  },
+  "targetLanguage": {
+    "message": "Langue cible"
+  },
+  "enterTextToTranslate": {
+    "message": "Saisissez le texte à traduire"
+  },
+  "originalText": {
+    "message": "Original"
+  },
+  "translatedText": {
+    "message": "Traduction"
+  },
+  "copied": {
+    "message": "Copié !"
+  },
+  "showHighlights": {
+    "message": "Afficher les surlignages"
+  },
+  "hideHighlights": {
+    "message": "Masquer les surlignages"
+  },
+  "aiProbability": {
+    "message": "Probabilité IA"
+  },
+  "detailedMetrics": {
+    "message": "Analyse détaillée"
+  },
+  "suspiciousSections": {
+    "message": "Sections suspectes"
+  },
+  "copyResults": {
+    "message": "Copier les résultats"
+  },
+  "selectTextOnPage": {
+    "message": "Sélectionnez du texte sur la page à résumer"
+  },
+  "summary": {
+    "message": "Résumé"
+  },
+  "copySummary": {
+    "message": "Copier"
+  },
+  "extractedKeywords": {
+    "message": "Mots-clés"
+  },
+  "generating": {
+    "message": "Génération du résumé..."
+  },
+  "enterEmailContext": {
+    "message": "Saisissez le contexte de l'e-mail"
+  },
+  "generatingEmail": {
+    "message": "Génération de l'e-mail..."
+  },
+  "generatedEmail": {
+    "message": "E-mail généré"
+  },
+  "copyEmail": {
+    "message": "Copier l'e-mail"
+  },
+  "subjectLine": {
+    "message": "Ligne d'objet"
+  },
+  "emailBody": {
+    "message": "Corps de l'e-mail"
+  },
+  "aiChat": {
+    "message": "Chat IA"
+  },
+  "colorPaletteAnalysis": {
+    "message": "Analyse de la palette de couleurs"
+  },
+  "harmonicPalettes": {
+    "message": "Palettes harmoniques"
+  },
+  "accessibilityScores": {
+    "message": "Scores d'accessibilité"
+  },
+  "exportOptions": {
+    "message": "Options d'exportation"
+  },
+  "copyCSS": {
+    "message": "Copier CSS"
+  },
+  "copyJSON": {
+    "message": "Copier JSON"
+  },
+  "scanningLinks": {
+    "message": "Scan des liens…"
+  },
+  "finalising": {
+    "message": "Finalisation…"
+  },
+  "chooseHighlightColor": {
+    "message": "Choisir la couleur de surlignage"
+  },
+  "removeHighlight": {
+    "message": "Supprimer le surlignage"
+  },
+  "noBookmarksFound": {
+    "message": "Aucun favori trouvé correspondant à votre recherche"
+  },
+  "noFavoriteBookmarksYet": {
+    "message": "Aucun favori pour le moment"
+  },
+  "noBookmarksYet": {
+    "message": "Aucun favori pour le moment. Cliquez sur + pour ajouter votre premier favori !"
+  },
+  "title": {
+    "message": "Titre"
+  },
+  "url": {
+    "message": "URL"
+  },
+  "folder": {
+    "message": "Dossier"
+  },
+  "tagsCommaSeparated": {
+    "message": "Étiquettes (séparées par des virgules)"
+  },
+  "notes": {
+    "message": "Notes"
+  },
+  "addBookmark": {
+    "message": "Ajouter un favori"
+  },
+  "updateBookmark": {
+    "message": "Mettre à jour le favori"
+  },
+  "videoLabel": {
+    "message": "Vidéo"
+  },
+  "imageLabel": {
+    "message": "Image"
+  },
+  "duration": {
+    "message": "00:00"
+  },
+  "resume": {
+    "message": "Reprendre"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "entireScreen": {
+    "message": "Écran entier"
+  },
+  "window": {
+    "message": "Fenêtre"
+  },
+  "chromeTab": {
+    "message": "Onglet Chrome"
+  },
+  "recording": {
+    "message": "Enregistrement"
+  },
+  "recordingInProgress": {
+    "message": "Enregistrement en cours. Gardez cette fenêtre ouverte pour gérer la capture."
+  },
+  "clickToAddNote": {
+    "message": "Cliquez pour ajouter une note..."
+  },
+  "searchBookmarks": {
+    "message": "Rechercher des favoris..."
+  },
+  "folderPlaceholder": {
+    "message": "ex., Travail/Projets"
+  },
+  "tagsPlaceholder": {
+    "message": "ex., javascript, outils, tutoriel"
+  },
+  "notesPlaceholder": {
+    "message": "Notes optionnelles sur ce favori..."
+  },
+  "qrTextPlaceholder": {
+    "message": "Saisissez du texte, une URL ou tout contenu pour générer un code QR..."
+  },
   "searchTools": {
     "message": "Rechercher des outils..."
   },

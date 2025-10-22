@@ -123,6 +123,7 @@ function t(key, defaultValue = '') {
 // Load user's UI language from popup settings
 async function loadUserUILanguage() {
   try {
+    // Use the same language detection as popup (UI language only)
     const stored = await chrome.storage.local.get(['language']);
     let lang = stored?.language ? resolveLanguage(stored.language) : null;
     
@@ -131,8 +132,7 @@ async function loadUserUILanguage() {
       const sources = [
         chrome.i18n?.getUILanguage?.(),
         navigator.language,
-        navigator.languages?.[0],
-        'en'
+        navigator.languages?.[0]
       ];
       
       for (const source of sources) {

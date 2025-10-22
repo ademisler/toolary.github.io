@@ -2,7 +2,9 @@ import {
   showSuccess, 
   showError, 
   handleError, 
-  copyText
+  copyText,
+  ensureLanguageLoaded,
+  t
 } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import { createIconElement } from '../../shared/icons.js';
@@ -23,10 +25,6 @@ const LEGACY_PREFIX = 'toolaryCopyHistoryManager_';
 const MAX_HISTORY_ITEMS = 200;
 const PREVIEW_LENGTH = 100;
 
-// Language support
-const SUPPORTED_LANGUAGES = ['en', 'tr', 'fr'];
-let langMap = {};
-
 // State
 let cleanupFunctions = [];
 let floatingWidget = null;
@@ -39,47 +37,6 @@ let isMonitoring = false;
 let lastContextLink = null;
 let clipboardPollInterval = null;
 let lastClipboardText = '';
-
-
-// Resolve language code
-function resolveLanguage(code = 'en') {
-  const normalized = String(code || 'en').trim().toLowerCase();
-  if (!normalized) return 'en';
-  
-  if (SUPPORTED_LANGUAGES.includes(normalized)) return normalized;
-  
-  const base = normalized.split('-')[0];
-  if (SUPPORTED_LANGUAGES.includes(base)) return base;
-  
-  return 'en';
-}
-
-// Load language file
-async function loadLang(lang) {
-  const resolved = resolveLanguage(lang);
-  const candidates = [...new Set([resolved, resolveLanguage(resolved), 'en'])];
-
-  for (const candidate of candidates) {
-    try {
-      const response = await fetch(chrome.runtime.getURL(`_locales/${candidate}/messages.json`));
-      if (response.ok) {
-        const data = await response.json();
-        langMap = { ...langMap, ...data };
-        langMap.__current = candidate;
-        return candidate;
-      }
-    } catch (error) {
-      console.debug(`Error loading language ${candidate}:`, error);
-    }
-  }
-  
-  return 'en';
-}
-
-// Translation helper
-function t(key, fallback = '') {
-  return langMap[key]?.message || fallback;
-}
 
 // Get current domain
 function getCurrentDomain() {
@@ -1114,8 +1071,8 @@ export async function activate(deactivate) {
   try {
     console.log('Copy History Manager activated');
     
-    // Load language
-    await loadLang('en');
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
     
     // Get current domain
     currentDomain = getCurrentDomain();

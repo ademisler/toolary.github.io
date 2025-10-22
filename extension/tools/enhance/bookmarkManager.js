@@ -7,7 +7,9 @@ import {
   sanitizeInput, 
   addEventListenerWithCleanup,
   debounce,
-  generateId
+  generateId,
+  t,
+  ensureLanguageLoaded
 } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 import { createIconElement } from '../../shared/icons.js';
@@ -677,7 +679,7 @@ function createBookmarkPanel() {
   
   const searchInput = document.createElement('input');
   searchInput.type = 'text';
-  searchInput.placeholder = 'Search bookmarks...';
+  searchInput.placeholder = t('searchBookmarks', 'Search bookmarks...');
   searchInput.value = searchQuery;
   searchInput.style.cssText = `
     width: 100%;
@@ -896,11 +898,11 @@ function renderBookmarkList() {
     `;
     
     if (searchQuery) {
-      emptyState.textContent = 'No bookmarks found matching your search';
+      emptyState.textContent = t('noBookmarksFound', 'No bookmarks found matching your search');
     } else if (currentFilter === 'favorites') {
-      emptyState.textContent = 'No favorite bookmarks yet';
+      emptyState.textContent = t('noFavoriteBookmarksYet', 'No favorite bookmarks yet');
     } else {
-      emptyState.textContent = 'No bookmarks yet. Click + to add your first bookmark!';
+      emptyState.textContent = t('noBookmarksYet', 'No bookmarks yet. Click + to add your first bookmark!');
     }
     
     content.innerHTML = '';
@@ -1248,7 +1250,7 @@ async function showAddModal() {
     titleGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
     
     const titleLabel = document.createElement('label');
-    titleLabel.textContent = 'Title';
+    titleLabel.textContent = t('title', 'Title');
     titleLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
     
     const titleInput = document.createElement('input');
@@ -1272,7 +1274,7 @@ async function showAddModal() {
     urlGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
     
     const urlLabel = document.createElement('label');
-    urlLabel.textContent = 'URL';
+    urlLabel.textContent = t('url', 'URL');
     urlLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
     
     const urlInput = document.createElement('input');
@@ -1296,12 +1298,12 @@ async function showAddModal() {
     folderGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
     
     const folderLabel = document.createElement('label');
-    folderLabel.textContent = 'Folder';
+    folderLabel.textContent = t('folder', 'Folder');
     folderLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
     
     const folderInput = document.createElement('input');
     folderInput.type = 'text';
-    folderInput.placeholder = 'e.g., Work/Projects';
+    folderInput.placeholder = t('folderPlaceholder', 'e.g., Work/Projects');
     folderInput.style.cssText = `
       padding: 8px 12px;
       border: 1px solid var(--toolary-border, #ddd);
@@ -1319,12 +1321,12 @@ async function showAddModal() {
     tagsGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
     
     const tagsLabel = document.createElement('label');
-    tagsLabel.textContent = 'Tags (comma-separated)';
+    tagsLabel.textContent = t('tagsCommaSeparated', 'Tags (comma-separated)');
     tagsLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
     
     const tagsInput = document.createElement('input');
     tagsInput.type = 'text';
-    tagsInput.placeholder = 'e.g., javascript, tools, tutorial';
+    tagsInput.placeholder = t('tagsPlaceholder', 'e.g., javascript, tools, tutorial');
     tagsInput.style.cssText = `
       padding: 8px 12px;
       border: 1px solid var(--toolary-border, #ddd);
@@ -1342,11 +1344,11 @@ async function showAddModal() {
     notesGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
     
     const notesLabel = document.createElement('label');
-    notesLabel.textContent = 'Notes';
+    notesLabel.textContent = t('notes', 'Notes');
     notesLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
     
     const notesInput = document.createElement('textarea');
-    notesInput.placeholder = 'Optional notes about this bookmark...';
+    notesInput.placeholder = t('notesPlaceholder', 'Optional notes about this bookmark...');
     notesInput.rows = 3;
     notesInput.style.cssText = `
       padding: 8px 12px;
@@ -1373,7 +1375,7 @@ async function showAddModal() {
     
     const cancelBtn = document.createElement('button');
     cancelBtn.type = 'button';
-    cancelBtn.textContent = 'Cancel';
+    cancelBtn.textContent = t('cancel', 'Cancel');
     cancelBtn.style.cssText = `
       padding: 10px 20px;
       border: 1px solid var(--toolary-border, #ddd);
@@ -1391,7 +1393,7 @@ async function showAddModal() {
     
     const saveBtn = document.createElement('button');
     saveBtn.type = 'submit';
-    saveBtn.textContent = 'Add Bookmark';
+    saveBtn.textContent = t('addBookmark', 'Add Bookmark');
     saveBtn.style.cssText = `
       padding: 10px 20px;
       border: none;
@@ -1545,7 +1547,7 @@ function showEditModal(bookmark) {
   titleGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
   
   const titleLabel = document.createElement('label');
-  titleLabel.textContent = 'Title';
+  titleLabel.textContent = t('title', 'Title');
   titleLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
   
   const titleInput = document.createElement('input');
@@ -1569,7 +1571,7 @@ function showEditModal(bookmark) {
   urlGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
   
   const urlLabel = document.createElement('label');
-  urlLabel.textContent = 'URL';
+  urlLabel.textContent = t('url', 'URL');
   urlLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
   
   const urlInput = document.createElement('input');
@@ -1593,13 +1595,13 @@ function showEditModal(bookmark) {
   folderGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
   
   const folderLabel = document.createElement('label');
-  folderLabel.textContent = 'Folder';
+  folderLabel.textContent = t('folder', 'Folder');
   folderLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
   
   const folderInput = document.createElement('input');
   folderInput.type = 'text';
   folderInput.value = bookmark.folder;
-  folderInput.placeholder = 'e.g., Work/Projects';
+  folderInput.placeholder = t('folderPlaceholder', 'e.g., Work/Projects');
   folderInput.style.cssText = `
     padding: 8px 12px;
     border: 1px solid var(--toolary-border, #ddd);
@@ -1617,13 +1619,13 @@ function showEditModal(bookmark) {
   tagsGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
   
   const tagsLabel = document.createElement('label');
-  tagsLabel.textContent = 'Tags (comma-separated)';
+  tagsLabel.textContent = t('tagsCommaSeparated', 'Tags (comma-separated)');
   tagsLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
   
   const tagsInput = document.createElement('input');
   tagsInput.type = 'text';
   tagsInput.value = bookmark.tags.join(', ');
-  tagsInput.placeholder = 'e.g., javascript, tools, tutorial';
+  tagsInput.placeholder = t('tagsPlaceholder', 'e.g., javascript, tools, tutorial');
   tagsInput.style.cssText = `
     padding: 8px 12px;
     border: 1px solid var(--toolary-border, #ddd);
@@ -1641,12 +1643,12 @@ function showEditModal(bookmark) {
   notesGroup.style.cssText = `display: flex; flex-direction: column; gap: 6px;`;
   
   const notesLabel = document.createElement('label');
-  notesLabel.textContent = 'Notes';
+  notesLabel.textContent = t('notes', 'Notes');
   notesLabel.style.cssText = `font-weight: 600; color: var(--toolary-text, #333);`;
   
   const notesInput = document.createElement('textarea');
   notesInput.value = bookmark.notes;
-  notesInput.placeholder = 'Optional notes about this bookmark...';
+  notesInput.placeholder = t('notesPlaceholder', 'Optional notes about this bookmark...');
   notesInput.rows = 3;
   notesInput.style.cssText = `
     padding: 8px 12px;
@@ -1673,7 +1675,7 @@ function showEditModal(bookmark) {
   
   const cancelBtn = document.createElement('button');
   cancelBtn.type = 'button';
-  cancelBtn.textContent = 'Cancel';
+  cancelBtn.textContent = t('cancel', 'Cancel');
   cancelBtn.style.cssText = `
     padding: 10px 20px;
     border: 1px solid var(--toolary-border, #ddd);
@@ -1691,7 +1693,7 @@ function showEditModal(bookmark) {
   
   const saveBtn = document.createElement('button');
   saveBtn.type = 'submit';
-  saveBtn.textContent = 'Update Bookmark';
+  saveBtn.textContent = t('updateBookmark', 'Update Bookmark');
   saveBtn.style.cssText = `
     padding: 10px 20px;
     border: none;
@@ -1751,6 +1753,9 @@ function hideEditModal() {
 // Main activation function
 export async function activate(deactivate) {
   try {
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
+    
     // Store deactivate callback for cleanup
     // const deactivateCb = deactivate;
     

@@ -1,4 +1,4 @@
-import { showSuccess, showError, handleError, safeExecute, sanitizeInput, normalizeUrlForStorage, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { showSuccess, showError, handleError, safeExecute, sanitizeInput, normalizeUrlForStorage, addEventListenerWithCleanup, t, ensureLanguageLoaded } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
@@ -418,7 +418,7 @@ function showColorPalette() {
   `;
   
   const title = document.createElement('h3');
-  title.textContent = 'Choose Highlight Color';
+  title.textContent = t('chooseHighlightColor', 'Choose Highlight Color');
   title.style.cssText = 'margin: 0; font-size: 16px; font-weight: 600; color: var(--toolary-text, #333); text-align: center;';
   colorPaletteOverlay.appendChild(title);
   
@@ -468,7 +468,7 @@ function showColorPalette() {
   colorPaletteOverlay.appendChild(colorsGrid);
   
   const cancelBtn = document.createElement('button');
-  cancelBtn.textContent = 'Cancel';
+  cancelBtn.textContent = t('cancel', 'Cancel');
   cancelBtn.style.cssText = `
     padding: 8px 16px;
     background: var(--toolary-button-bg, #f0f0f0);
@@ -512,7 +512,7 @@ function showContextMenu(event, highlightId) {
   `;
   
   const removeBtn = document.createElement('button');
-  removeBtn.textContent = 'Remove Highlight';
+  removeBtn.textContent = t('removeHighlight', 'Remove Highlight');
   removeBtn.style.cssText = `
     width: 100%;
     padding: 8px 12px;
@@ -752,8 +752,11 @@ async function loadHighlights() {
   }
 }
 
-export function activate(deactivate) {
+export async function activate(deactivate) {
   try {
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
+    
     deactivateCb = deactivate;
     
     const currentUrl = safeExecute(() => window.location.href, 'get location href') || '';

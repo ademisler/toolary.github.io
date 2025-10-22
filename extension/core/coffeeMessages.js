@@ -134,17 +134,17 @@ const MESSAGES = {
  */
 export async function getCurrentLanguage() {
   try {
-    // Read from user preference storage
+    // Coffee messages use UI language (en, tr, fr only)
     const stored = await chrome.storage.local.get(['language']);
-    if (stored?.language) {
+    if (stored?.language && ['en', 'tr', 'fr'].includes(stored.language)) {
       return stored.language;
     }
     
-    // Fallback: detect browser language
+    // Fallback: detect UI language (limited to supported)
     const browserLang = navigator.language || navigator.languages?.[0] || 'en';
     const langCode = browserLang.split('-')[0].toLowerCase();
     
-    // Return supported language or default to English
+    // Only return supported UI languages
     if (['tr', 'fr'].includes(langCode)) {
       return langCode;
     }

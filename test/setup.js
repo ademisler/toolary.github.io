@@ -1,6 +1,30 @@
 // Jest setup file
 import { jest } from '@jest/globals';
 
+// Polyfills for test environment
+if (typeof TextEncoder === 'undefined') {
+  // Simple TextEncoder/TextDecoder polyfill for tests
+  global.TextEncoder = class TextEncoder {
+    encode(input) {
+      return new Uint8Array(Buffer.from(input, 'utf8'));
+    }
+  };
+  
+  global.TextDecoder = class TextDecoder {
+    decode(input) {
+      return Buffer.from(input).toString('utf8');
+    }
+  };
+}
+
+if (typeof fetch === 'undefined') {
+  global.fetch = jest.fn(() => Promise.resolve({
+    ok: true,
+    json: () => Promise.resolve({}),
+    text: () => Promise.resolve('')
+  }));
+}
+
 // Mock global objects
 global.jest = jest;
 

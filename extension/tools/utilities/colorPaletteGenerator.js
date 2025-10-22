@@ -1,4 +1,4 @@
-import { showError, showSuccess, showInfo, showModal, handleError, safeExecute } from '../../shared/helpers.js';
+import { showError, showSuccess, showInfo, showModal, handleError, safeExecute, t, ensureLanguageLoaded } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
@@ -367,7 +367,7 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   
   // Title
   const title = document.createElement('h2');
-  title.textContent = 'Color Palette Analysis';
+  title.textContent = t('colorPaletteAnalysis', 'Color Palette Analysis');
   title.style.cssText = 'margin: 0 0 20px 0; font-size: 18px; font-weight: 600; color: var(--toolary-text, #333);';
   html.appendChild(title);
   
@@ -412,7 +412,7 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   harmoniesSection.style.marginBottom = '24px';
   
   const harmoniesTitle = document.createElement('h3');
-  harmoniesTitle.textContent = 'Harmonic Palettes';
+  harmoniesTitle.textContent = t('harmonicPalettes', 'Harmonic Palettes');
   harmoniesTitle.style.cssText = 'margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: var(--toolary-text, #333);';
   harmoniesSection.appendChild(harmoniesTitle);
   
@@ -455,7 +455,7 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   accessibilitySection.style.marginBottom = '24px';
   
   const accessibilityTitle = document.createElement('h3');
-  accessibilityTitle.textContent = 'Accessibility Scores';
+  accessibilityTitle.textContent = t('accessibilityScores', 'Accessibility Scores');
   accessibilityTitle.style.cssText = 'margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: var(--toolary-text, #333);';
   accessibilitySection.appendChild(accessibilityTitle);
   
@@ -487,7 +487,7 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   exportSection.style.cssText = 'margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--toolary-border, #ddd);';
   
   const exportTitle = document.createElement('h3');
-  exportTitle.textContent = 'Export Options';
+  exportTitle.textContent = t('exportOptions', 'Export Options');
   exportTitle.style.cssText = 'margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: var(--toolary-text, #333);';
   exportSection.appendChild(exportTitle);
   
@@ -496,7 +496,7 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   
   // CSS Export Button
   const cssButton = document.createElement('button');
-  cssButton.textContent = 'Copy CSS';
+  cssButton.textContent = t('copyCSS', 'Copy CSS');
   cssButton.style.cssText = 'padding: 8px 16px; background: var(--toolary-primary, #007bff); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;';
   cssButton.addEventListener('click', () => {
     const css = generateCSSVariables(colors, harmonies);
@@ -508,7 +508,7 @@ function generateHTMLContent(colors, harmonies, accessibility) {
   
   // JSON Export Button
   const jsonButton = document.createElement('button');
-  jsonButton.textContent = 'Copy JSON';
+  jsonButton.textContent = t('copyJSON', 'Copy JSON');
   jsonButton.style.cssText = 'padding: 8px 16px; background: var(--toolary-secondary, #6c757d); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;';
   jsonButton.addEventListener('click', () => {
     const json = generateJSON(colors, harmonies, accessibility);
@@ -528,6 +528,9 @@ function generateHTMLContent(colors, harmonies, accessibility) {
 
 export async function activate(deactivate) {
   try {
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
+    
     const infoMessage = chrome.i18n ? chrome.i18n.getMessage('analyzingPageColors') : 'Analyzing page colors...';
     showInfo(infoMessage, 2000);
     

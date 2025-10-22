@@ -680,6 +680,486 @@
   "aiLanguageAuto": {
     "message": "Otomatik (Tarayıcı Dili)"
   },
+  "aiLanguageAutoDescription": {
+    "message": "Arayüz İngilizce olsa bile AI yanıtları için tarayıcı dilinizi otomatik algılar"
+  },
+  "chatWelcome": {
+    "message": "Merhaba! Yardım etmeye hazırım. Bana her şeyi sorabilirsin!"
+  },
+  "typeMessage": {
+    "message": "Mesajınızı yazın..."
+  },
+  "typeOrPasteText": {
+    "message": "Metni buraya yazın veya yapıştırın..."
+  },
+  "aiSEOAnalyzer": {
+    "message": "AI SEO Analiz Aracı"
+  },
+  "seoAnalyzing": {
+    "message": "SEO analiz ediliyor..."
+  },
+  "seoAnalyzingDescription": {
+    "message": "AI'mız sayfanızın SEO performansını birden fazla faktör açısından analiz ediyor."
+  },
+  "seoAnalysisSteps": {
+    "message": "Analiz Adımları"
+  },
+  "seoStep1": {
+    "message": "Sayfa içeriği ve meta verileri çıkarılıyor"
+  },
+  "seoStep2": {
+    "message": "İçerik kalitesi ve yapısı analiz ediliyor"
+  },
+  "seoStep3": {
+    "message": "Teknik SEO faktörleri değerlendiriliyor"
+  },
+  "seoStep4": {
+    "message": "Kapsamlı rapor oluşturuluyor"
+  },
+  "seoMetaAndTitle": {
+    "message": "Meta & Başlık"
+  },
+  "seoContentQuality": {
+    "message": "İçerik Kalitesi"
+  },
+  "seoHeadingStructure": {
+    "message": "Başlık Yapısı"
+  },
+  "seoImageOptimization": {
+    "message": "Görsel Optimizasyonu"
+  },
+  "seoLinkStrategy": {
+    "message": "Link Stratejisi"
+  },
+  "seoTechnicalSEO": {
+    "message": "Teknik SEO"
+  },
+  "seoOverallScore": {
+    "message": "Genel SEO Puanı"
+  },
+  "seoSummary": {
+    "message": "Özet"
+  },
+  "seoCopyReport": {
+    "message": "Raporu Kopyala"
+  },
+  "seoReportCopied": {
+    "message": "SEO raporu panoya kopyalandı!"
+  },
+  "seoCopyFailed": {
+    "message": "SEO raporu kopyalanamadı"
+  },
+  "seoAnalysisComplete": {
+    "message": "SEO analizi başarıyla tamamlandı!"
+  },
+  "seoAnalysisFailed": {
+    "message": "SEO analizi başarısız. Lütfen tekrar deneyin."
+  },
+  "seoExcellent": {
+    "message": "Mükemmel"
+  },
+  "seoGood": {
+    "message": "İyi"
+  },
+  "seoFair": {
+    "message": "Orta"
+  },
+  "seoNeedsImprovement": {
+    "message": "İyileştirme Gerekli"
+  },
+  "seoPoor": {
+    "message": "Zayıf"
+  },
+  "summaryLengthShort": {
+    "message": "Kısa (~50 kelime)"
+  },
+  "summaryLengthMedium": {
+    "message": "Orta (~150 kelime)"
+  },
+  "summaryLengthLong": {
+    "message": "Uzun (~300 kelime)"
+  },
+  "length": {
+    "message": "Uzunluk"
+  },
+  "summarizeAuto": {
+    "message": "Sayfa İçeriği"
+  },
+  "summarizeManual": {
+    "message": "Metin Seç"
+  },
+  "noContentToSummarize": {
+    "message": "Özetlenecek içerik bulunamadı"
+  },
+  "selectTextFirst": {
+    "message": "Lütfen önce sayfada metin seçin"
+  },
+  "autoDetect": {
+    "message": "Otomatik Algıla"
+  },
+  "noTextToTranslate": {
+    "message": "Bu sayfada çevrilecek metin bulunamadı"
+  },
+  "pageTranslated": {
+    "message": "Sayfa başarıyla çevrildi!"
+  },
+  "translating": {
+    "message": "Çevriliyor..."
+  },
+  "noTranslationToRestore": {
+    "message": "Geri yüklenecek çeviri yok"
+  },
+  "pageRestored": {
+    "message": "Orijinal sayfa geri yüklendi"
+  },
+  "failedToRestore": {
+    "message": "Orijinal sayfa geri yüklenemedi"
+  },
+  "restoreOriginal": {
+    "message": "Orijinali Geri Yükle"
+  },
+  "textTruncated": {
+    "message": "Çeviri için metin 5000 karaktere kısaltıldı"
+  },
+  "analyzing": {
+    "message": "Analiz ediliyor..."
+  },
+  "selectTextToAnalyze": {
+    "message": "Analiz etmek için sayfada metin seçin"
+  },
+  "cancel": {
+    "message": "İptal"
+  },
+  "analyzeInput": {
+    "message": "Metin Gir"
+  },
+  "analyzeSelection": {
+    "message": "Metin Seç"
+  },
+  "analyzePage": {
+    "message": "Sayfa İçeriği"
+  },
+  "enterTextToAnalyze": {
+    "message": "Analiz etmek için metin girin"
+  },
+  "aiEmailGeneratorTitle": {
+    "message": "AI E-posta Oluşturucu"
+  },
+  "emailType": {
+    "message": "E-posta Türü"
+  },
+  "emailTone": {
+    "message": "E-posta Tonu"
+  },
+  "emailLength": {
+    "message": "E-posta Uzunluğu"
+  },
+  "typeFollowUp": {
+    "message": "Takip"
+  },
+  "typeThankYou": {
+    "message": "Teşekkür"
+  },
+  "typeRequest": {
+    "message": "Talep"
+  },
+  "typeComplaint": {
+    "message": "Şikayet"
+  },
+  "typeIntroduction": {
+    "message": "Tanıtım"
+  },
+  "typeApology": {
+    "message": "Özür"
+  },
+  "typeReminder": {
+    "message": "Hatırlatma"
+  },
+  "typeInvitation": {
+    "message": "Davet"
+  },
+  "toneProfessional": {
+    "message": "Profesyonel"
+  },
+  "toneFriendly": {
+    "message": "Dostane"
+  },
+  "toneFormal": {
+    "message": "Resmi"
+  },
+  "toneCasual": {
+    "message": "Günlük"
+  },
+  "tonePersuasive": {
+    "message": "İkna Edici"
+  },
+  "emailLengthShort": {
+    "message": "Kısa (~50 kelime)"
+  },
+  "emailLengthMedium": {
+    "message": "Orta (~150 kelime)"
+  },
+  "emailLengthLong": {
+    "message": "Uzun (~300 kelime)"
+  },
+  "pleaseEnterEmailContext": {
+    "message": "Lütfen e-posta bağlamını girin"
+  },
+  "noContentToGenerateEmail": {
+    "message": "E-posta oluşturmak için içerik bulunamadı"
+  },
+  "emailGenerated": {
+    "message": "E-posta başarıyla oluşturuldu!"
+  },
+  "analyzeContent": {
+    "message": "İçeriği Analiz Et"
+  },
+  "itemCopied": {
+    "message": "Öğe geçmişe eklendi"
+  },
+  "copyHistoryManager": {
+    "message": "Kopyalama Geçmişi"
+  },
+  "searchHistory": {
+    "message": "Geçmişi ara..."
+  },
+  "clearAllHistory": {
+    "message": "Tüm Geçmişi Temizle"
+  },
+  "confirmClearAll": {
+    "message": "Tüm geçmişi temizlemek istediğinizden emin misiniz?"
+  },
+  "copyAgain": {
+    "message": "Kopyala"
+  },
+  "copiedToClipboard": {
+    "message": "Panoya kopyalandı"
+  },
+  "noItemsYet": {
+    "message": "Henüz öğe yok"
+  },
+  "startCopyingHint": {
+    "message": "Burada görmek için metin kopyalamaya başlayın"
+  },
+  "historyCleared": {
+    "message": "Geçmiş temizlendi"
+  },
+  "clearHistoryError": {
+    "message": "Geçmiş temizlenemedi"
+  },
+  "activationError": {
+    "message": "Kopyalama Geçmişi Yöneticisi etkinleştirilemedi"
+  },
+  "allNotesFromAllSites": {
+    "message": "Tüm Sitelerden Notlar"
+  },
+  "noStickyNotesYet": {
+    "message": "Henüz yapışkan not yok"
+  },
+  "createFirstNoteHint": {
+    "message": "İlk yapışkan notunuzu oluşturmak için sayfada herhangi bir yere tıklayın. Her not kendi sitesine sabitlenir."
+  },
+  "unknownDate": {
+    "message": "Bilinmeyen tarih"
+  },
+  "emptyNote": {
+    "message": "Boş not"
+  },
+  "stickyNotesManager": {
+    "message": "Yapışkan Notlar Yöneticisi"
+  },
+  "addNewNote": {
+    "message": "Yeni Not Ekle"
+  },
+  "clearAll": {
+    "message": "Tümünü Temizle"
+  },
+  "delete": {
+    "message": "Sil"
+  },
+  "selectTextToTranslate": {
+    "message": "Çevirmek için sayfada metin seçin"
+  },
+  "sourceLanguage": {
+    "message": "Kaynak Dil"
+  },
+  "targetLanguage": {
+    "message": "Hedef Dil"
+  },
+  "enterTextToTranslate": {
+    "message": "Çevirmek için metin girin"
+  },
+  "originalText": {
+    "message": "Orijinal"
+  },
+  "translatedText": {
+    "message": "Çeviri"
+  },
+  "copied": {
+    "message": "Kopyalandı!"
+  },
+  "showHighlights": {
+    "message": "Vurguları Göster"
+  },
+  "hideHighlights": {
+    "message": "Vurguları Gizle"
+  },
+  "aiProbability": {
+    "message": "AI Olasılığı"
+  },
+  "detailedMetrics": {
+    "message": "Detaylı Analiz"
+  },
+  "suspiciousSections": {
+    "message": "Şüpheli Bölümler"
+  },
+  "copyResults": {
+    "message": "Sonuçları Kopyala"
+  },
+  "selectTextOnPage": {
+    "message": "Özetlemek için sayfada metin seçin"
+  },
+  "summary": {
+    "message": "Özet"
+  },
+  "copySummary": {
+    "message": "Kopyala"
+  },
+  "extractedKeywords": {
+    "message": "Anahtar Kelimeler"
+  },
+  "generating": {
+    "message": "Özet oluşturuluyor..."
+  },
+  "enterEmailContext": {
+    "message": "E-posta bağlamını girin"
+  },
+  "generatingEmail": {
+    "message": "E-posta oluşturuluyor..."
+  },
+  "generatedEmail": {
+    "message": "Oluşturulan E-posta"
+  },
+  "copyEmail": {
+    "message": "E-postayı Kopyala"
+  },
+  "subjectLine": {
+    "message": "Konu Satırı"
+  },
+  "emailBody": {
+    "message": "E-posta İçeriği"
+  },
+  "aiChat": {
+    "message": "AI Sohbet"
+  },
+  "colorPaletteAnalysis": {
+    "message": "Renk Paleti Analizi"
+  },
+  "harmonicPalettes": {
+    "message": "Harmonik Paletler"
+  },
+  "accessibilityScores": {
+    "message": "Erişilebilirlik Puanları"
+  },
+  "exportOptions": {
+    "message": "Dışa Aktarma Seçenekleri"
+  },
+  "copyCSS": {
+    "message": "CSS Kopyala"
+  },
+  "copyJSON": {
+    "message": "JSON Kopyala"
+  },
+  "scanningLinks": {
+    "message": "Bağlantılar taranıyor…"
+  },
+  "finalising": {
+    "message": "Sonlandırılıyor…"
+  },
+  "chooseHighlightColor": {
+    "message": "Vurgu Rengini Seçin"
+  },
+  "removeHighlight": {
+    "message": "Vurguyu Kaldır"
+  },
+  "noBookmarksFound": {
+    "message": "Aramanızla eşleşen yer imi bulunamadı"
+  },
+  "noFavoriteBookmarksYet": {
+    "message": "Henüz favori yer imi yok"
+  },
+  "noBookmarksYet": {
+    "message": "Henüz yer imi yok. İlk yer iminizi eklemek için + butonuna tıklayın!"
+  },
+  "title": {
+    "message": "Başlık"
+  },
+  "url": {
+    "message": "URL"
+  },
+  "folder": {
+    "message": "Klasör"
+  },
+  "tagsCommaSeparated": {
+    "message": "Etiketler (virgülle ayrılmış)"
+  },
+  "notes": {
+    "message": "Notlar"
+  },
+  "addBookmark": {
+    "message": "Yer İmi Ekle"
+  },
+  "updateBookmark": {
+    "message": "Yer İmini Güncelle"
+  },
+  "videoLabel": {
+    "message": "Video"
+  },
+  "imageLabel": {
+    "message": "Resim"
+  },
+  "duration": {
+    "message": "00:00"
+  },
+  "resume": {
+    "message": "Devam Et"
+  },
+  "pause": {
+    "message": "Duraklat"
+  },
+  "entireScreen": {
+    "message": "Tüm Ekran"
+  },
+  "window": {
+    "message": "Pencere"
+  },
+  "chromeTab": {
+    "message": "Chrome Sekmesi"
+  },
+  "recording": {
+    "message": "Kayıt"
+  },
+  "recordingInProgress": {
+    "message": "Kayıt devam ediyor. Yakalamayı yönetmek için bu pencereyi açık tutun."
+  },
+  "clickToAddNote": {
+    "message": "Not eklemek için tıklayın..."
+  },
+  "searchBookmarks": {
+    "message": "Yer imlerini ara..."
+  },
+  "folderPlaceholder": {
+    "message": "örn., İş/Projeler"
+  },
+  "tagsPlaceholder": {
+    "message": "örn., javascript, araçlar, eğitim"
+  },
+  "notesPlaceholder": {
+    "message": "Bu yer imi hakkında isteğe bağlı notlar..."
+  },
+  "qrTextPlaceholder": {
+    "message": "QR kod oluşturmak için metin, URL veya herhangi bir içerik girin..."
+  },
   "searchTools": {
     "message": "Araçları ara..."
   },

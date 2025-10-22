@@ -272,6 +272,42 @@ function matchesTokenFilters(tool, tokens = []) {
   });
 }
 
+// Detect browser language (raw, not limited to supported UI languages)
+function detectBrowserLanguage() {
+  try {
+    const sources = [
+      chrome.i18n?.getUILanguage?.(),
+      navigator.language,
+      navigator.languages?.[0]
+    ];
+    
+    for (const source of sources) {
+      if (source) {
+        const normalized = String(source).trim().toLowerCase();
+        const base = normalized.split('-')[0];
+        return base; // Return raw language code (de, es, ja, etc.)
+      }
+    }
+    return 'en';
+  } catch (error) {
+    console.error('Browser language detection failed:', error);
+    return 'en';
+  }
+}
+
+// Detect UI language (limited to en, tr, fr)
+function detectUILanguage() {
+  const browserLang = detectBrowserLanguage();
+  
+  // If browser language is supported for UI, use it
+  if (['en', 'tr', 'fr'].includes(browserLang)) {
+    return browserLang;
+  }
+  
+  // Otherwise, default to English for UI
+  return 'en';
+}
+
 function resolveLanguage(code = 'en') {
   const normalized = String(code || 'en').trim().toLowerCase();
   if (!normalized) return 'en';
@@ -1381,46 +1417,32 @@ function closeShortcutsModal() {
 }
 
 async function initializeLanguageAndTheme() {
-  const stored = await chrome.storage.local.get(['language', 'theme']);
+  const stored = await chrome.storage.local.get(['language', 'theme', 'browserLanguage']);
   
-  // Language detection and initialization
-  let lang = stored?.language ? resolveLanguage(stored.language) : null;
-  if (!lang) {
-    // Try multiple sources for language detection
-    const sources = [
-      chrome.i18n?.getUILanguage?.(),
-      navigator.language,
-      navigator.languages?.[0]
-    ];
-    
-    for (const source of sources) {
-      if (source) {
-        const detected = resolveLanguage(source);
-        // Only accept supported languages (en, tr, fr)
-        if (detected && ['en', 'tr', 'fr'].includes(detected)) {
-          lang = detected;
-          break;
-        }
-      }
-    }
-    
-    // Default to English if no supported language found
-    if (!lang) lang = 'en';
-    await chrome.storage.local.set({ language: lang });
+  // Detect browser language (raw, for AI)
+  let browserLang = stored?.browserLanguage;
+  if (!browserLang) {
+    browserLang = detectBrowserLanguage();
+    await chrome.storage.local.set({ browserLanguage: browserLang });
+  }
+  
+  // Detect UI language (en, tr, fr only)
+  let uiLang = stored?.language ? resolveLanguage(stored.language) : null;
+  if (!uiLang) {
+    uiLang = detectUILanguage();
+    await chrome.storage.local.set({ language: uiLang });
   }
 
-  // Theme detection and initialization
+  // Theme detection (unchanged)
   let theme = stored?.theme;
   if (!['light', 'dark', 'system'].includes(theme)) {
-    // Auto-detect theme preference
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    theme = prefersDark ? 'system' : 'system';
+    theme = 'system';
     await chrome.storage.local.set({ theme });
   }
 
-  // Load language
-  state.langMap = await loadLang(lang);
-  state.langMap.__current = lang;
+  // Load UI language
+  state.langMap = await loadLang(uiLang);
+  state.langMap.__current = uiLang;
   applyLang(state.langMap);
   updateFooterButtons(state.langMap);
 
@@ -1650,15 +1672,32 @@ async function encryptAIKeysForStorage(keys = []) {
 // AI Settings Functions
 async function loadAISettings() {
   try {
-    const { toolaryAIKeys, toolaryAIModel, toolaryAILanguage } = await chrome.storage.local.get([
+    const { 
+      toolaryAIKeys, 
+      toolaryAIModel, 
+      toolaryAILanguage
+    } = await chrome.storage.local.get([
       'toolaryAIKeys', 
       'toolaryAIModel',
       'toolaryAILanguage'
     ]);
+    
     const decryptedKeys = await decryptStoredAIKeys(Array.isArray(toolaryAIKeys) ? toolaryAIKeys : []);
     state.aiKeys = decryptedKeys;
     state.aiModel = toolaryAIModel || 'auto';
-    state.aiLanguage = toolaryAILanguage || 'auto';
+    
+    // AI language initialization logic
+    if (toolaryAILanguage) {
+      // User has manually set AI language
+      state.aiLanguage = toolaryAILanguage;
+    } else {
+      // First time: use browser language or 'auto'
+      // 'auto' will resolve to browserLanguage in AI Manager
+      state.aiLanguage = 'auto';
+      
+      // Save initial setting
+      await chrome.storage.local.set({ toolaryAILanguage: 'auto' });
+    }
     
     renderAIKeys();
     if (elements.settingsAIModelSelect) {

@@ -2,7 +2,9 @@ import {
   showSuccess,
   showError,
   handleError,
-  addEventListenerWithCleanup
+  addEventListenerWithCleanup,
+  t,
+  ensureLanguageLoaded
 } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
@@ -427,7 +429,7 @@ function createModal() {
                 </svg>
                 Text or URL
               </label>
-              <textarea id="toolary-qr-text" rows="4" class="form-input qr-textarea" placeholder="Enter text, URL, or any content to generate QR code..."></textarea>
+              <textarea id="toolary-qr-text" rows="4" class="form-input qr-textarea" placeholder="${t('qrTextPlaceholder', 'Enter text, URL, or any content to generate QR code...')}"></textarea>
             </div>
             
             <div class="qr-quick-actions">
@@ -557,6 +559,9 @@ function createModal() {
 
 export async function activate(deactivate) {
   try {
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
+    
     deactivateCb = deactivate;
     
     // Clean up any existing modal first

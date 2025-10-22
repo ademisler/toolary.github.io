@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">4.06% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/174</span>
+                <span class='fraction'>7/172</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/103</span>
+                <span class='fraction'>0/101</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">4.16% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/24</span>
+                <span class='fraction'>1/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">4.26% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/166</span>
+                <span class='fraction'>7/164</span>
             </div>
         
             
@@ -450,8 +450,7 @@
 <a name='L385'></a><a href='#L385'>385</a>
 <a name='L386'></a><a href='#L386'>386</a>
 <a name='L387'></a><a href='#L387'>387</a>
-<a name='L388'></a><a href='#L388'>388</a>
-<a name='L389'></a><a href='#L389'>389</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L388'></a><a href='#L388'>388</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -460,12 +459,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -595,15 +594,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -615,6 +612,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -838,7 +836,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// AI Manager Service for Toolary
 // Handles API key rotation, model selection, and Gemini API calls
 &nbsp;
@@ -847,13 +845,13 @@ import { handleError } from '../shared/helpers.js';
 import { encryptAIKeyEntries, decryptAIKeyEntries } from './secureStorage.js';
 &nbsp;
 class AIManager {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor() {
-<span class="cstat-no" title="statement not covered" >    this.apiKeys = [];</span>
-<span class="cstat-no" title="statement not covered" >    this.currentKeyIndex = 0;</span>
-<span class="cstat-no" title="statement not covered" >    this.keyStatus = new Map(); </span>// Track key health and rate limits
-<span class="cstat-no" title="statement not covered" >    this.userModelPreference = 'auto';</span>
-<span class="cstat-no" title="statement not covered" >    this.userLanguagePreference = 'auto';</span>
-<span class="cstat-no" title="statement not covered" >    this.isInitialized = false;</span>
+  constructor() {
+    this.apiKeys = [];
+    this.currentKeyIndex = 0;
+    this.keyStatus = new Map(); // Track key health and rate limits
+    this.userModelPreference = 'auto';
+    this.userLanguagePreference = 'auto';
+    this.isInitialized = false;
   }
 &nbsp;
   // Initialize the AI manager
@@ -981,28 +979,27 @@ class AIManager {
     
 <span class="cstat-no" title="statement not covered" >    if (preference === 'auto') {</span>
 <span class="cstat-no" title="statement not covered" >      try {</span>
-        // First, try to read from popup language preference
-        const stored = <span class="cstat-no" title="statement not covered" >await chrome.storage.local.get(['language']);</span>
-<span class="cstat-no" title="statement not covered" >        if (stored?.language) {</span>
-<span class="cstat-no" title="statement not covered" >          return stored.language;</span>
+        // Step 1: Get browser language (raw, not limited to UI languages)
+        const stored = <span class="cstat-no" title="statement not covered" >await chrome.storage.local.get(['browserLanguage', 'language']);</span>
+        
+        // Use raw browser language if available
+<span class="cstat-no" title="statement not covered" >        if (stored?.browserLanguage) {</span>
+<span class="cstat-no" title="statement not covered" >          return stored.browserLanguage; </span>// Can be 'de', 'es', 'ja', etc.
         }
         
         // Fallback: detect browser language
         const browserLang = <span class="cstat-no" title="statement not covered" >navigator.language || navigator.languages?.[0] || 'en';</span>
-        const langCode = <span class="cstat-no" title="statement not covered" >browserLang.split('-')[0];</span>
+        const langCode = <span class="cstat-no" title="statement not covered" >browserLang.split('-')[0].toLowerCase();</span>
         
-        // Check if supported, otherwise English
-<span class="cstat-no" title="statement not covered" >        if (['en', 'tr', 'fr'].includes(langCode)) {</span>
-<span class="cstat-no" title="statement not covered" >          return langCode;</span>
-        }
-        
-<span class="cstat-no" title="statement not covered" >        return 'en';</span>
+        // Return detected language (not limited to en/tr/fr)
+<span class="cstat-no" title="statement not covered" >        return langCode;</span>
       } catch (error) {
 <span class="cstat-no" title="statement not covered" >        console.error('AI Manager: Error reading language preference:', error);</span>
 <span class="cstat-no" title="statement not covered" >        return 'en';</span>
       }
     }
     
+    // User has manually selected a language
 <span class="cstat-no" title="statement not covered" >    return preference;</span>
   }
 &nbsp;
@@ -1226,7 +1223,7 @@ class AIManager {
 }
 &nbsp;
 // Export singleton instance
-export const aiManager = <span class="cstat-no" title="statement not covered" >new AIManager();</span>
+export const aiManager = new AIManager();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -1234,7 +1231,7 @@ export const aiManager = <span class="cstat-no" title="statement not covered" >n
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-22T15:27:09.288Z
+                at 2025-10-22T20:28:31.902Z
             </div>
         <script src="prettify.js"></script>
         <script>

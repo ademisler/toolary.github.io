@@ -140,28 +140,27 @@ class AIManager {
     
     if (preference === 'auto') {
       try {
-        // First, try to read from popup language preference
-        const stored = await chrome.storage.local.get(['language']);
-        if (stored?.language) {
-          return stored.language;
+        // Step 1: Get browser language (raw, not limited to UI languages)
+        const stored = await chrome.storage.local.get(['browserLanguage', 'language']);
+        
+        // Use raw browser language if available
+        if (stored?.browserLanguage) {
+          return stored.browserLanguage; // Can be 'de', 'es', 'ja', etc.
         }
         
         // Fallback: detect browser language
         const browserLang = navigator.language || navigator.languages?.[0] || 'en';
-        const langCode = browserLang.split('-')[0];
+        const langCode = browserLang.split('-')[0].toLowerCase();
         
-        // Check if supported, otherwise English
-        if (['en', 'tr', 'fr'].includes(langCode)) {
-          return langCode;
-        }
-        
-        return 'en';
+        // Return detected language (not limited to en/tr/fr)
+        return langCode;
       } catch (error) {
         console.error('AI Manager: Error reading language preference:', error);
         return 'en';
       }
     }
     
+    // User has manually selected a language
     return preference;
   }
 

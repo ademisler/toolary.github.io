@@ -10,7 +10,9 @@ import {
   safeExecute,
   sanitizeInput,
   addEventListenerWithCleanup,
-  renderIcon
+  renderIcon,
+  t,
+  ensureLanguageLoaded
 } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
@@ -452,9 +454,7 @@ function showMediaModal(info) {
     const titleIcon = renderIcon(info.type === 'video' ? 'media' : 'image', { size: 18, decorative: true });
     title.appendChild(titleIcon);
     const titleText = document.createElement('span');
-    const videoLabel = chrome.i18n ? chrome.i18n.getMessage('videoLabel') : 'Video';
-    const imageLabel = chrome.i18n ? chrome.i18n.getMessage('imageLabel') : 'Image';
-    titleText.textContent = info.type === 'video' ? videoLabel : imageLabel;
+    titleText.textContent = info.type === 'video' ? t('videoLabel', 'Video') : t('imageLabel', 'Image');
     title.appendChild(titleText);
 
     const closeButton = document.createElement('button');
@@ -860,10 +860,13 @@ function onKeyDown(event) {
   }
 }
 
-export function activate(deactivate) {
+export async function activate(deactivate) {
   deactivateCb = deactivate;
 
   try {
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
+    
     overlay = createOverlay();
     overlay.style.cssText = `
       position: absolute;

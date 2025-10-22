@@ -27,6 +27,7 @@ let langMap = {};
 
 async function loadLanguage() {
   try {
+    // Use the same language detection as popup (UI language only)
     const result = await chrome.storage.local.get(['language']);
     let language = result.language;
     

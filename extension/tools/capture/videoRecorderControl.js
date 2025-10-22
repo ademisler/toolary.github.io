@@ -1,4 +1,6 @@
 /* global URLSearchParams, MediaRecorder */
+import { t } from '../../shared/helpers.js';
+
 const params = new URLSearchParams(window.location.search);
 const sessionId = params.get('sessionId') || `toolary-${Date.now()}`;
 const sourceTabId = Number.parseInt(params.get('tabId') || '', 10);
@@ -86,7 +88,7 @@ function clearDurationTimer() {
 
 function showDuration() {
   elements.duration.classList.remove('hidden');
-  elements.duration.textContent = '00:00';
+  elements.duration.textContent = t('duration', '00:00');
   state.durationTimer = setInterval(updateDuration, 1000);
 }
 
@@ -102,11 +104,11 @@ function disableControls() {
 
 function setPauseLabel(isPaused) {
   if (isPaused) {
-    elements.pause.textContent = 'Resume';
+    elements.pause.textContent = t('resume', 'Resume');
     elements.pause.classList.remove('pause');
     elements.pause.classList.add('resume');
   } else {
-    elements.pause.textContent = 'Pause';
+    elements.pause.textContent = t('pause', 'Pause');
     elements.pause.classList.remove('resume');
     elements.pause.classList.add('pause');
   }
@@ -167,19 +169,19 @@ function updateCaptureBadge(surface) {
   const badge = elements.captureMode;
   switch (surface) {
     case 'monitor':
-      badge.textContent = 'Entire Screen';
+      badge.textContent = t('entireScreen', 'Entire Screen');
       badge.classList.remove('danger');
       break;
     case 'window':
-      badge.textContent = 'Window';
+      badge.textContent = t('window', 'Window');
       badge.classList.remove('danger');
       break;
     case 'browser':
-      badge.textContent = 'Chrome Tab';
+      badge.textContent = t('chromeTab', 'Chrome Tab');
       badge.classList.add('danger');
       break;
     default:
-      badge.textContent = 'Recording';
+      badge.textContent = t('recording', 'Recording');
       badge.classList.remove('danger');
       break;
   }
@@ -343,7 +345,7 @@ async function startRecording() {
     showDuration();
     enableControls();
     setPauseLabel(false);
-    elements.configHint.textContent = 'Recording in progress. Keep this window open to manage the capture.';
+    elements.configHint.textContent = t('recordingInProgress', 'Recording in progress. Keep this window open to manage the capture.');
 
     postToOpener('video-recorder:started');
   } catch (error) {

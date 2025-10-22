@@ -1,4 +1,4 @@
-import { copyText, showModal, showError, showSuccess, showInfo, showWarning, throttle, handleError, safeExecute, sanitizeInput, addEventListenerWithCleanup } from '../../shared/helpers.js';
+import { copyText, showModal, showError, showSuccess, showInfo, showWarning, throttle, handleError, safeExecute, sanitizeInput, addEventListenerWithCleanup, t, ensureLanguageLoaded } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
@@ -119,7 +119,7 @@ function showProgressOverlay(total) {
   `;
 
   const title = document.createElement('div');
-  title.textContent = 'Scanning links…';
+  title.textContent = t('scanningLinks', 'Scanning links…');
   title.style.cssText = 'font-size: 16px; font-weight: 600; margin-bottom: 14px;';
 
   const barOuter = document.createElement('div');
@@ -146,7 +146,7 @@ function showProgressOverlay(total) {
       subtitle.textContent = `Processing ${current} of ${total}`;
     },
     complete() {
-      title.textContent = 'Finalising…';
+      title.textContent = t('finalising', 'Finalising…');
     },
     destroy() {
       overlay.remove();
@@ -393,10 +393,13 @@ async function onKeyDown(e) {
   }
 }
 
-export function activate(deactivate) {
+export async function activate(deactivate) {
   deactivateCb = deactivate;
   
   try {
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
+    
     document.body.style.cursor = 'crosshair';
     
     // Add event listeners with cleanup tracking

@@ -1,4 +1,4 @@
-import { showSuccess, showError, handleError, safeExecute, sanitizeInput, renderIcon, normalizeUrlForStorage } from '../../shared/helpers.js';
+import { showSuccess, showError, handleError, safeExecute, sanitizeInput, renderIcon, normalizeUrlForStorage, t, ensureLanguageLoaded } from '../../shared/helpers.js';
 import { showCoffeeMessageForTool } from '../../shared/coffeeToast.js';
 
 export const metadata = {
@@ -53,8 +53,11 @@ function getNormalizedCurrentUrl() {
   return normalizeUrlForStorage(currentUrl);
 }
 
-export function activate(deactivate) {
+export async function activate(deactivate) {
   try {
+    // Ensure language is loaded before creating UI
+    await ensureLanguageLoaded();
+    
     deactivateCb = deactivate;
     
     // Get current site URL (not just origin)
@@ -287,7 +290,7 @@ export function renderStickyNote(note) {
   // Note content
   const content = document.createElement('textarea');
   content.value = note.content;
-  content.placeholder = 'Click to add note...';
+  content.placeholder = t('clickToAddNote', 'Click to add note...');
   content.style.cssText = `
     width: 100%;
     min-height: 100px;
@@ -734,7 +737,7 @@ function showNotesManager() {
 
   const listHeading = document.createElement('div');
   listHeading.style.cssText = 'font-weight: 600; color: var(--toolary-text, #333); text-align: center;';
-  listHeading.textContent = 'All Notes from All Sites';
+  listHeading.textContent = t('allNotesFromAllSites', 'All Notes from All Sites');
 
   const list = document.createElement('div');
   list.id = 'all-notes-list';
@@ -1153,11 +1156,11 @@ function renderAllNotesList(targetElement, allNotes) {
 
       const heading = document.createElement('h3');
       heading.style.cssText = 'margin: 0; color: var(--toolary-text, #333);';
-      heading.textContent = 'No sticky notes yet';
+      heading.textContent = t('noStickyNotesYet', 'No sticky notes yet');
 
       const description = document.createElement('p');
       description.style.cssText = 'margin: 0; line-height: 1.6; font-size: 13px; max-width: 320px;';
-      description.textContent = 'Click anywhere on the page to create your first sticky note. Each note stays pinned to its site.';
+      description.textContent = t('createFirstNoteHint', 'Click anywhere on the page to create your first sticky note. Each note stays pinned to its site.');
 
       emptyState.appendChild(iconWrap);
       emptyState.appendChild(heading);
@@ -1208,7 +1211,7 @@ function renderAllNotesList(targetElement, allNotes) {
 
         const meta = document.createElement('span');
         meta.style.cssText = 'font-size: 12px; color: var(--toolary-secondary-text, #666);';
-        meta.textContent = safeExecute(() => new Date(note.createdAt).toLocaleString(), 'format note timestamp') || 'Unknown date';
+        meta.textContent = safeExecute(() => new Date(note.createdAt).toLocaleString(), 'format note timestamp') || t('unknownDate', 'Unknown date');
 
         siteInfo.appendChild(siteTitle);
         siteInfo.appendChild(meta);
@@ -1256,7 +1259,7 @@ function renderAllNotesList(targetElement, allNotes) {
         const preview = document.createElement('p');
         preview.style.cssText = 'margin: 0; font-size: 13px; line-height: 1.6; color: var(--toolary-text, #333);';
         const summary = (note.content || '').trim();
-        preview.textContent = summary ? `${summary.slice(0, 160)}${summary.length > 160 ? '…' : ''}` : 'Empty note';
+        preview.textContent = summary ? `${summary.slice(0, 160)}${summary.length > 160 ? '…' : ''}` : t('emptyNote', 'Empty note');
         card.appendChild(preview);
 
         card.addEventListener('click', () => {

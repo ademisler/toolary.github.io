@@ -202,7 +202,7 @@ function resolveLanguageCode(preferred = 'en') {
   return 'en';
 }
 
-async function loadLanguage(lang = 'en') {
+export async function loadLanguage(lang = 'en') {
   const resolved = resolveLanguageCode(lang);
   const baseCandidate = resolveLanguageCode(normalizeLanguageCode(resolved).base);
   const candidates = [...new Set([resolved, baseCandidate, 'en'])];
@@ -228,6 +228,67 @@ async function loadLanguage(lang = 'en') {
   }
 
   langMap = {};
+}
+
+// Language loading state management
+let languageLoadPromise = null;
+let languageReady = false;
+
+// Check if language is ready
+export function isLanguageReady() {
+  return languageReady && langMap && Object.keys(langMap).length > 0;
+}
+
+// Ensure language is loaded before proceeding
+export async function ensureLanguageLoaded() {
+  // If already loaded, return immediately
+  if (isLanguageReady()) {
+    return;
+  }
+
+  // If loading is in progress, wait for it
+  if (languageLoadPromise) {
+    return languageLoadPromise;
+  }
+
+  // Start loading language
+  languageLoadPromise = (async () => {
+    try {
+      // First, try to wait for initializePreferences to complete
+      if (typeof chrome !== 'undefined' && chrome.storage) {
+        // Wait a bit for initializePreferences to complete
+        await new Promise(resolve => setTimeout(resolve, 50));
+        
+        // Check if language is already loaded by initializePreferences
+        if (isLanguageReady()) {
+          return true;
+        }
+      }
+
+      // Get current language from storage
+      let language = 'en';
+      if (typeof chrome !== 'undefined' && chrome.storage) {
+        const stored = await chrome.storage.local.get(['language']);
+        language = stored.language || 'en';
+      }
+
+      // Load the language
+      await loadLanguage(language);
+      
+      // Mark as ready
+      languageReady = true;
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to load language:', error);
+      // Fallback to English
+      await loadLanguage('en');
+      languageReady = true;
+      return false;
+    }
+  })();
+
+  return languageLoadPromise;
 }
 
 function getEffectiveTheme() {
@@ -272,6 +333,7 @@ if (themeMediaQuery) {
 async function initializePreferences() {
   if (typeof chrome === 'undefined') {
     await loadLanguage('en');
+    languageReady = true;
     userTheme = 'system';
     return;
   }
@@ -288,6 +350,7 @@ async function initializePreferences() {
       await chrome.storage.local.set({ language });
     }
     await loadLanguage(language);
+    languageReady = true;
 
     const storedTheme = stored.theme;
     if (storedTheme === 'light' || storedTheme === 'dark' || storedTheme === 'system') {
@@ -299,16 +362,22 @@ async function initializePreferences() {
   } catch (error) {
     handleError(error, 'initializePreferences');
     await loadLanguage('en');
+    languageReady = true;
     userTheme = 'system';
   }
 }
 
 if (typeof chrome !== 'undefined') {
+  // Initialize preferences and set up language loading
   initializePreferences();
 
   chrome.storage.onChanged.addListener(async (changes) => {
     if (changes.language) {
+      // Reset language loading state
+      languageLoadPromise = null;
+      languageReady = false;
       await loadLanguage(changes.language.newValue || 'en');
+      languageReady = true;
     }
     if (changes.theme) {
       const next = changes.theme.newValue;
@@ -323,9 +392,10 @@ if (typeof chrome !== 'undefined') {
   });
 } else {
   loadLanguage('en');
+  languageReady = true;
 }
 
-function t(id) {
+export function t(id) {
   if (langMap[id]) return langMap[id].message;
   if (typeof chrome !== 'undefined' && chrome.i18n) {
     try {
