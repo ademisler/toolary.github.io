@@ -9886,8 +9886,6 @@ function initThemeToggle() {
     currentTheme = currentTheme === "light" ? "dark" : "light";
     document.documentElement.className = currentTheme;
     localStorage.setItem("theme", currentTheme);
-    
-    // Update icons
     updateIcons(currentTheme);
   };
 

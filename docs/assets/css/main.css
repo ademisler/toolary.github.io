@@ -140,6 +140,7 @@ body {
 
 .theme-icon {
   transition: var(--toolary-transition);
+  position: absolute;
 }
 
 .theme-icon--sun {
