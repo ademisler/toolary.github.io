@@ -29,6 +29,24 @@ permalink: /tools/color-picker/
     <div style="display: flex; align-items: center; gap: 20px;">
       <a href="{{ site.baseurl }}/#tools" style="color: var(--toolary-text-secondary); text-decoration: none; font-size: 0.95rem;">All Tools</a>
       <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" style="background: var(--toolary-accent); color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 500;">Download Extension</a>
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" type="button" title="Toggle theme" style="background: var(--toolary-button-bg); border: 1px solid var(--toolary-border); border-radius: 8px; padding: 8px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;">
+        <svg class="theme-icon theme-icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2"/>
+          <path d="M12 21v2"/>
+          <path d="m4.22 4.22 1.42 1.42"/>
+          <path d="m18.36 18.36 1.42 1.42"/>
+          <path d="M1 12h2"/>
+          <path d="M21 12h2"/>
+          <path d="m4.22 19.78 1.42-1.42"/>
+          <path d="m18.36 5.64 1.42-1.42"/>
+        </svg>
+        <svg class="theme-icon theme-icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
