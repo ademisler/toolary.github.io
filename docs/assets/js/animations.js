@@ -808,7 +808,11 @@ function createToolCard(tool) {
   // Add click handler
   card.addEventListener('click', () => {
     // Navigate to individual tool page
+<<<<<<< HEAD
     const toolPageUrl = `/toolary.github.io/tools/${tool.id}/`;
+=======
+    const toolPageUrl = `/tools/${tool.id}/`;
+>>>>>>> 65fba21b2ce4fd19b7f34a47ed77ee174d8b70c4
     window.location.href = toolPageUrl;
   });
 
