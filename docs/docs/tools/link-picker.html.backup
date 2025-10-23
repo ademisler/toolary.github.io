@@ -26,7 +26,7 @@
     <span style="margin: 0 8px; color: var(--toolary-text-secondary);">›</span>
     <a href="{{ site.baseurl }}/#tools" style="color: var(--toolary-text-secondary); text-decoration: none;">Tools</a>
     <span style="margin: 0 8px; color: var(--toolary-text-secondary);">›</span>
-    <span style="color: var(--toolary-accent);">Element Picker</span>
+    <span style="color: var(--toolary-accent);">Link Picker</span>
   </div>
 </nav>
 
@@ -38,11 +38,13 @@
       <div style="text-align: center;">
         <div style="width: 120px; height: 120px; background: var(--toolary-button-bg); border: 2px solid var(--toolary-border); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: var(--toolary-shadow-hover);">
           <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--toolary-accent);">
-            <path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"/>
+            <path d="M9 17H7A5 5 0 0 1 7 7h2"/>
+            <path d="M15 7h2a5 5 0 0 1 0 10h-2"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
           </svg>
         </div>
-        <h1 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--toolary-text);">Element Picker</h1>
-        <p style="font-size: 1.2rem; color: var(--toolary-text-secondary); margin-bottom: 20px;">Inspect HTML elements and DOM structure</p>
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--toolary-text);">Link Picker</h1>
+        <p style="font-size: 1.2rem; color: var(--toolary-text-secondary); margin-bottom: 20px;">Inspect and validate links on any website</p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
           <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="btn btn-primary" style="padding: 12px 24px; font-size: 1.1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -55,23 +57,23 @@
 
       <!-- Tool Features -->
       <div>
-        <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--toolary-text);">Why Choose Our Element Picker?</h2>
+        <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--toolary-text);">Why Choose Our Link Picker?</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> Precise Selection</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Click any element to get detailed information and selectors</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> Link Analysis</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Analyze link structure, attributes, and properties</p>
           </div>
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> CSS Selectors</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Get CSS selectors, XPath, and element attributes instantly</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">✅ URL Validation</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Validate URLs and check for broken links</p>
           </div>
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">📋 Copy to Clipboard</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Automatically copy selectors and element information</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">📋 Copy URLs</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Copy link URLs and attributes to clipboard</p>
           </div>
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">⚡ Developer Friendly</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Perfect tool for web developers and designers</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> SEO Analysis</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Perfect tool for SEO analysis and link auditing</p>
           </div>
         </div>
       </div>
@@ -83,26 +85,26 @@
 <section class="tool-description" style="padding: 60px 0;">
   <div class="container">
     <div style="max-width: 800px; margin: 0 auto;">
-      <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--toolary-text); text-align: center;">The Ultimate DOM Inspection Tool</h2>
+      <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--toolary-text); text-align: center;">The Ultimate Link Analysis Tool</h2>
       
       <div style="background: var(--toolary-button-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--toolary-border); margin-bottom: 40px;">
         <p style="font-size: 1.1rem; line-height: 1.8; color: var(--toolary-text-secondary); margin-bottom: 20px;">
-          Our Element Picker Chrome extension is the perfect tool for web developers, designers, and anyone who needs to analyze HTML structure. 
-          Whether you're debugging CSS, writing automation scripts, or learning web development, our element picker makes DOM inspection effortless.
+          Our Link Picker Chrome extension is the perfect tool for developers, SEO specialists, and web analysts. 
+          Whether you're auditing website links, checking for broken links, or analyzing link structure, our link picker makes link analysis effortless.
         </p>
         
         <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">Key Features:</h3>
         <ul style="color: var(--toolary-text-secondary); line-height: 1.8; margin-bottom: 20px; padding-left: 20px;">
-          <li><strong>One-Click Selection:</strong> Click any element to get detailed information instantly</li>
-          <li><strong>CSS Selectors:</strong> Get multiple CSS selector options for any element</li>
-          <li><strong>XPath Generation:</strong> Generate XPath expressions for automation testing</li>
-          <li><strong>Element Attributes:</strong> View all attributes, classes, and properties</li>
-          <li><strong>Auto Copy:</strong> Automatically copy selectors to your clipboard</li>
-          <li><strong>Visual Highlighting:</strong> See exactly which element you're selecting</li>
+          <li><strong>One-Click Link Analysis:</strong> Click any link to get detailed information and validation</li>
+          <li><strong>URL Validation:</strong> Check if links are valid and accessible</li>
+          <li><strong>Link Attributes:</strong> View href, target, rel, and other link attributes</li>
+          <li><strong>SEO Analysis:</strong> Analyze link structure for SEO optimization</li>
+          <li><strong>Broken Link Detection:</strong> Identify and report broken or invalid links</li>
+          <li><strong>Auto Copy:</strong> Automatically copy link URLs and attributes to clipboard</li>
         </ul>
       </div>
 
-      <h3 style="color: var(--toolary-text); margin-bottom: 20px; font-size: 1.5rem;">How to Use the Element Picker:</h3>
+      <h3 style="color: var(--toolary-text); margin-bottom: 20px; font-size: 1.5rem;">How to Use the Link Picker:</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">1</div>
@@ -112,17 +114,17 @@
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">2</div>
           <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Activate Tool</h4>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click on the Element Picker tool in the extension popup</p>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click on the Link Picker tool in the extension popup</p>
         </div>
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">3</div>
-          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Click Elements</h4>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click any element on the webpage to inspect it</p>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Click Links</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click any link to analyze its properties</p>
         </div>
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">4</div>
-          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Copy Selectors</h4>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Copy CSS selectors and element information</p>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Analyze & Copy</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">View link details and copy URLs to clipboard</p>
         </div>
       </div>
     </div>
@@ -132,42 +134,42 @@
 <!-- Use Cases Section -->
 <section class="use-cases" style="padding: 60px 0; background: var(--toolary-button-bg);">
   <div class="container">
-    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Perfect for Every Development Need</h2>
+    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Perfect for Every Analysis Need</h2>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
       <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;"> SEO Specialists</h3>
+        <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
+          Audit website links, check for broken links, and analyze link structure for SEO optimization and ranking improvement.
+        </p>
+        <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+          <li>Link auditing</li>
+          <li>Broken link detection</li>
+          <li>SEO optimization</li>
+        </ul>
+      </div>
+      
+      <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
         <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">💻 Web Developers</h3>
         <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
-          Debug CSS issues, write automation scripts, and analyze DOM structure. Perfect for frontend development and testing.
+          Debug link issues, validate URLs, and ensure proper link structure in web applications and websites.
         </p>
         <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
-          <li>CSS debugging</li>
-          <li>Automation testing</li>
-          <li>DOM analysis</li>
+          <li>Link debugging</li>
+          <li>URL validation</li>
+          <li>Link structure analysis</li>
         </ul>
       </div>
       
       <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
-        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;"> Web Designers</h3>
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">📊 Web Analysts</h3>
         <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
-          Inspect design elements, understand CSS structure, and communicate with developers effectively.
+          Analyze competitor link strategies, study link patterns, and understand link architecture for better web performance.
         </p>
         <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
-          <li>Design element analysis</li>
-          <li>CSS structure understanding</li>
-          <li>Developer communication</li>
-        </ul>
-      </div>
-      
-      <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
-        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">🧪 QA Testers</h3>
-        <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
-          Generate selectors for automated testing, identify elements for test scripts, and debug test failures.
-        </p>
-        <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
-          <li>Test automation</li>
-          <li>Element identification</li>
-          <li>Bug reporting</li>
+          <li>Competitor analysis</li>
+          <li>Link pattern study</li>
+          <li>Performance analysis</li>
         </ul>
       </div>
     </div>
@@ -183,30 +185,30 @@
       <div style="background: var(--toolary-button-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--toolary-border);">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
           <div>
-            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Selector Types</h4>
+            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Link Properties</h4>
             <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
-              <li>CSS selectors</li>
-              <li>XPath expressions</li>
-              <li>Element attributes</li>
-              <li>Class and ID selectors</li>
+              <li>URL (href)</li>
+              <li>Target attribute</li>
+              <li>Rel attribute</li>
+              <li>Title attribute</li>
             </ul>
           </div>
           <div>
-            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Element Info</h4>
+            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Validation</h4>
             <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
-              <li>Tag name</li>
-              <li>Attributes</li>
-              <li>Classes</li>
-              <li>Text content</li>
+              <li>URL format validation</li>
+              <li>Link accessibility check</li>
+              <li>Broken link detection</li>
+              <li>Status code analysis</li>
             </ul>
           </div>
           <div>
             <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Features</h4>
             <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
-              <li>Visual highlighting</li>
+              <li>One-click analysis</li>
               <li>Auto copy to clipboard</li>
-              <li>Multiple selector options</li>
-              <li>Real-time inspection</li>
+              <li>SEO analysis</li>
+              <li>Link highlighting</li>
             </ul>
           </div>
         </div>
@@ -214,8 +216,8 @@
         <div style="background: var(--toolary-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--toolary-border);">
           <h4 style="color: var(--toolary-text); margin-bottom: 15px;">Privacy & Security</h4>
           <p style="color: var(--toolary-text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-            Our Element Picker processes all DOM inspection locally in your browser. No element data is sent to external servers, 
-            ensuring complete privacy and security of your web development work.
+            Our Link Picker processes all link analysis locally in your browser. No link data is sent to external servers, 
+            ensuring complete privacy and security of your link analysis work.
           </p>
         </div>
       </div>
@@ -227,15 +229,15 @@
 <section class="cta-section" style="padding: 60px 0; background: linear-gradient(135deg, var(--toolary-accent) 0%, #0099CC 100%); color: white;">
   <div class="container">
     <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">Ready to Start Inspecting Elements?</h2>
+      <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">Ready to Start Analyzing Links?</h2>
       <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
-        Download the Element Picker extension now and start analyzing DOM structure in seconds.
+        Download the Link Picker extension now and start analyzing links on any website in seconds.
       </p>
       <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="btn" style="background: white; color: var(--toolary-accent); padding: 15px 30px; font-size: 1.2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
-        Download Element Picker Extension
+        Download Link Picker Extension
       </a>
     </div>
   </div>
@@ -247,6 +249,13 @@
     <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Related Inspection Tools</h2>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      <a href="{{ site.baseurl }}/tools/element-picker/" style="text-decoration: none; color: inherit;">
+        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
+          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Element Picker</h3>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Inspect HTML elements and get CSS selectors</p>
+        </div>
+      </a>
+      
       <a href="{{ site.baseurl }}/tools/color-picker/" style="text-decoration: none; color: inherit;">
         <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
           <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Color Picker</h3>
@@ -260,13 +269,6 @@
           <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Identify fonts used in any element</p>
         </div>
       </a>
-      
-      <a href="{{ site.baseurl }}/tools/link-picker/" style="text-decoration: none; color: inherit;">
-        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
-          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Link Picker</h3>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Inspect and validate links on any webpage</p>
-        </div>
-      </a>
     </div>
   </div>
 </section>
@@ -276,9 +278,9 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Element Picker - Toolary Chrome Extension",
-  "description": "Inspect HTML elements, get CSS selectors, and analyze DOM structure. Perfect developer tool for web analysis and debugging.",
-  "url": "{{ site.url }}{{ site.baseurl }}/tools/element-picker/",
+  "name": "Link Picker - Toolary Chrome Extension",
+  "description": "Inspect links, validate URLs, and analyze link structure on any website. Perfect link analysis tool for developers and SEO specialists.",
+  "url": "{{ site.url }}{{ site.baseurl }}/tools/link-picker/",
   "applicationCategory": "BrowserApplication",
   "operatingSystem": "Chrome",
   "offers": {
@@ -299,20 +301,20 @@
   "datePublished": "2024-01-01",
   "dateModified": "2024-12-27",
   "version": "2.0.0",
-  "screenshot": "{{ site.url }}{{ site.baseurl }}/assets/images/element-picker-screenshot.png",
+  "screenshot": "{{ site.url }}{{ site.baseurl }}/assets/images/link-picker-screenshot.png",
   "featureList": [
-    "Inspect HTML elements",
-    "Get CSS selectors",
-    "Generate XPath expressions",
-    "View element attributes",
-    "Auto copy to clipboard",
-    "Visual highlighting"
+    "Inspect links on any website",
+    "Validate URLs and check accessibility",
+    "Analyze link attributes and properties",
+    "Detect broken links",
+    "SEO analysis and optimization",
+    "Auto copy to clipboard"
   ],
-  "keywords": "element picker chrome extension, element picker, html inspector, dom inspector, css selector, web developer tools, chrome extension, toolary, adem isler",
+  "keywords": "link picker chrome extension, link inspector, url validator, link checker, broken link finder, link analysis tool, chrome extension, toolary, adem isler",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.7",
-    "ratingCount": "160"
+    "ratingValue": "4.5",
+    "ratingCount": "120"
   }
 }
 </script>

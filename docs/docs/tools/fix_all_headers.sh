@@ -1,17 +1,15 @@
----
-layout: default
-title: "Color Picker Chrome Extension - Extract Colors from Any Website | Toolary"
-description: "Download the best Color Picker Chrome extension. Extract hex, RGB, HSL color codes from any website with precision. Free color picker tool for designers and developers."
-keywords: "color picker chrome extension, color picker tool, hex color picker, RGB color picker, HSL color picker, eyedropper tool, color extractor, web color picker, design tools, color codes, color palette, color scheme, web development tools, chrome extension, toolary, adem isler"
-canonical: "https://ademisler.github.io/toolary.github.io/tools/color-picker/"
-og_title: "Color Picker Chrome Extension - Extract Colors from Any Website"
-og_description: "Download the best Color Picker Chrome extension. Extract hex, RGB, HSL color codes from any website with precision. Free color picker tool for designers and developers."
-og_image: "/assets/images/toolary-color-picker-og.png"
-twitter_title: "Color Picker Chrome Extension - Extract Colors from Any Website"
-twitter_description: "Download the best Color Picker Chrome extension. Extract hex, RGB, HSL color codes from any website with precision. Free color picker tool for designers and developers."
-twitter_image: "/assets/images/toolary-color-picker-og.png"
-permalink: /tools/color-picker/
----
+#!/bin/bash
+
+for file in *.html; do
+  if [ "$file" != "header_template.html" ] && [ "$file" != "ai-chat.html" ]; then
+    echo "Fixing: $file"
+    
+    # Create clean version with proper front matter
+    head -n 1 "$file" > "${file}.clean"
+    sed -n '2,/^---$/p' "$file" >> "${file}.clean"
+    
+    # Add header after front matter
+    cat >> "${file}.clean" << 'HEADER'
 
 <!-- Simple Header -->
 <header class="simple-header" style="background: var(--toolary-bg); border-bottom: 1px solid var(--toolary-border); padding: 15px 0;">
@@ -32,3 +30,14 @@ permalink: /tools/color-picker/
     </div>
   </div>
 </header>
+HEADER
+    
+    # Add rest of content (skip the header that's inside front matter)
+    sed -n '/^---$/,$p' "$file" | tail -n +2 | sed '/^<!-- Simple Header -->/,/^<\/header>$/d' >> "${file}.clean"
+    
+    # Replace original
+    mv "${file}.clean" "$file"
+  fi
+done
+
+echo "All files fixed!"
