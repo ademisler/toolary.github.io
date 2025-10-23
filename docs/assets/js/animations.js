@@ -1,46 +1,6 @@
 // Toolary GitHub Pages - Interactive Features
 // Extension popup style with full page tools showcase
 
-// Theme Toggle Functionality
-function initThemeToggle() {
-  const themeToggle = document.getElementById('theme-toggle');
-  if (!themeToggle) return;
-
-  // Get current theme from localStorage or default to 'light'
-  let currentTheme = localStorage.getItem('theme') || 'light';
-  document.documentElement.className = currentTheme;
-
-  // Update icon visibility based on current theme
-  const updateIcons = (theme) => {
-    const sunIcon = themeToggle.querySelector('.theme-icon--sun');
-    const moonIcon = themeToggle.querySelector('.theme-icon--moon');
-    
-    if (theme === 'light') {
-      if (sunIcon) sunIcon.style.display = 'none';
-      if (moonIcon) moonIcon.style.display = 'block';
-    } else {
-      if (sunIcon) sunIcon.style.display = 'block';
-      if (moonIcon) moonIcon.style.display = 'none';
-    }
-  };
-
-  // Toggle theme function
-  const toggleTheme = () => {
-    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.className = currentTheme;
-    localStorage.setItem('theme', currentTheme);
-    updateIcons(currentTheme);
-  };
-
-  // Add click event listener
-  themeToggle.addEventListener('click', toggleTheme);
-  
-  // Initialize icons
-  updateIcons(currentTheme);
-}
-
-// Initialize theme toggle when DOM is loaded
-document.addEventListener('DOMContentLoaded', initThemeToggle);
 
 // Icon definitions from extension's icons.js
 const ICON_DEFINITIONS = {

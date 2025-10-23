@@ -3,65 +3,6 @@
 :root {
   --toolary-primary: #FFDE00;
   --toolary-accent: #00BFFF;
-  --toolary-bg: #f8f9fa;
-  --toolary-button-bg: #ffffff;
-  --toolary-button-border: #d1d5db;
-  --toolary-button-hover: #f3f4f6;
-  --toolary-select-bg: #ffffff;
-  --toolary-select-text: #1f2937;
-  --toolary-text: #1f2937;
-  --toolary-text-secondary: #6b7280;
-  --toolary-border: #d1d5db;
-  --toolary-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  --toolary-shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
-  --toolary-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --toolary-border-radius: 12px;
-  --toolary-border-radius-small: 8px;
-  --toolary-border-radius-large: 16px;
-  --toolary-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --toolary-font-size-base: 13px;
-  --toolary-font-size-small: 11px;
-  --toolary-font-size-large: 16px;
-  --toolary-line-height-base: 1.5;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --toolary-bg: #1e1e1e;
-    --toolary-button-bg: #2a2a2a;
-    --toolary-button-border: #3a3a3a;
-    --toolary-button-hover: #333333;
-    --toolary-select-bg: #2a2a2a;
-    --toolary-select-text: #ffffff;
-    --toolary-text: #ffffff;
-    --toolary-text-secondary: #b0b0b0;
-    --toolary-border: #3a3a3a;
-    --toolary-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    --toolary-shadow-hover: 0 4px 16px rgba(0,0,0,0.5);
-    --toolary-warning-color: #ffc107;
-    --toolary-success-color: #28a745;
-    --toolary-error-color: #dc3545;
-  }
-}
-
-.light {
-  --toolary-bg: #f8f9fa;
-  --toolary-button-bg: #ffffff;
-  --toolary-button-border: #d1d5db;
-  --toolary-button-hover: #f3f4f6;
-  --toolary-select-bg: #ffffff;
-  --toolary-select-text: #1f2937;
-  --toolary-text: #1f2937;
-  --toolary-text-secondary: #6b7280;
-  --toolary-border: #d1d5db;
-  --toolary-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  --toolary-shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
-  --toolary-warning-color: #f59e0b;
-  --toolary-success-color: #10b981;
-  --toolary-error-color: #ef4444;
-}
-
-.dark {
   --toolary-bg: #1e1e1e;
   --toolary-button-bg: #2a2a2a;
   --toolary-button-border: #3a3a3a;
@@ -76,6 +17,15 @@
   --toolary-warning-color: #ffc107;
   --toolary-success-color: #28a745;
   --toolary-error-color: #dc3545;
+  --toolary-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --toolary-border-radius: 12px;
+  --toolary-border-radius-small: 8px;
+  --toolary-border-radius-large: 16px;
+  --toolary-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --toolary-font-size-base: 13px;
+  --toolary-font-size-small: 11px;
+  --toolary-font-size-large: 16px;
+  --toolary-line-height-base: 1.5;
 }
 
 /* Reset and Base Styles */
@@ -115,58 +65,6 @@ body {
   top: 6px;
 }
 
-/* Theme Toggle */
-.theme-toggle {
-  background: var(--toolary-button-bg);
-  border: 1px solid var(--toolary-border);
-  border-radius: var(--toolary-border-radius);
-  padding: 12px;
-  cursor: pointer;
-  transition: var(--toolary-transition);
-  box-shadow: var(--toolary-shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-}
-
-.theme-toggle:hover {
-  background: var(--toolary-button-hover);
-  border-color: var(--toolary-accent);
-  transform: translateY(-2px);
-  box-shadow: var(--toolary-shadow-hover);
-}
-
-.theme-icon {
-  transition: var(--toolary-transition);
-  position: absolute;
-}
-
-.theme-icon--sun {
-  display: none;
-}
-
-.theme-icon--moon {
-  display: block;
-}
-
-.light .theme-icon--sun {
-  display: none;
-}
-
-.light .theme-icon--moon {
-  color: #000000;
-  display: block;
-}
-
-.dark .theme-icon--sun {
-  display: block;
-}
-
-.dark .theme-icon--moon {
-  display: none;
-}
 
 /* Main Content */
 .main-content {
