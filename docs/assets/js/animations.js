@@ -1,102 +1,184 @@
 // Toolary GitHub Pages - Interactive Features
 // Extension popup style with full page tools showcase
 
-// ===== NEW HEADER FUNCTIONALITY =====
-document.addEventListener('DOMContentLoaded', function() {
-  // Category menu functionality
+// ================================
+// HEADER FUNCTIONALITY
+// ================================
+
+// Header state
+let currentCategory = 'all';
+let currentSearchQuery = '';
+
+// Initialize header on DOM load
+document.addEventListener('DOMContentLoaded', initHeader);
+
+function initHeader() {
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.body.classList.add(savedTheme);
+  
+  // Initialize search
+  const searchInput = document.getElementById('tool-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', handleSearch);
+  }
+  
+  // Initialize category dropdown
   const categoryBtn = document.getElementById('category-menu-btn');
   const categoryMenu = document.getElementById('category-menu');
   
   if (categoryBtn && categoryMenu) {
-    categoryBtn.addEventListener('click', function(e) {
+    // Toggle dropdown
+    categoryBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isOpen = categoryMenu.classList.contains('show');
-      
-      if (isOpen) {
-        categoryMenu.classList.remove('show');
-        categoryBtn.setAttribute('aria-expanded', 'false');
-      } else {
-        categoryMenu.classList.add('show');
-        categoryBtn.setAttribute('aria-expanded', 'true');
-      }
+      toggleCategoryDropdown();
     });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
+    
+    // Close on outside click
+    document.addEventListener('click', (e) => {
       if (!categoryBtn.contains(e.target) && !categoryMenu.contains(e.target)) {
-        categoryMenu.classList.remove('show');
-        categoryBtn.setAttribute('aria-expanded', 'false');
+        closeCategoryDropdown();
       }
     });
-
-    // Category selection
-    const categoryItems = categoryMenu.querySelectorAll('.category-item');
-    categoryItems.forEach(item => {
-      item.addEventListener('click', function() {
-        const category = this.getAttribute('data-category');
-        const categoryText = this.querySelector('span').textContent;
-        
-        // Update button text
-        const categoryTextSpan = categoryBtn.querySelector('.category-text');
-        if (categoryTextSpan) {
-          categoryTextSpan.textContent = categoryText;
-        }
-        
-        // Close menu
-        categoryMenu.classList.remove('show');
-        categoryBtn.setAttribute('aria-expanded', 'false');
-        
-        // Filter tools (existing functionality)
-        if (typeof filterToolsByCategory === 'function') {
-          filterToolsByCategory(category);
-        } else {
-          // Simple filter implementation
-          filterToolsByCategorySimple(category);
-        }
+    
+    // Handle category selection
+    const categoryOptions = categoryMenu.querySelectorAll('.category-option');
+    categoryOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const category = option.dataset.category;
+        const categoryName = option.querySelector('span').textContent;
+        handleCategorySelect(category, categoryName);
       });
     });
-  }
-
-  // Theme toggle functionality
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function() {
-      const body = document.body;
-      const isDark = body.classList.contains('dark');
-      
-      if (isDark) {
-        body.classList.remove('dark');
-        body.classList.add('light');
-        localStorage.setItem('theme', 'light');
-      } else {
-        body.classList.remove('light');
-        body.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
+    
+    // Keyboard navigation
+    categoryMenu.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCategoryDropdown();
+        categoryBtn.focus();
       }
     });
   }
+  
+  // Initialize theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', handleThemeToggle);
+  }
+}
 
-  // Load saved theme
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.body.classList.add(savedTheme);
-});
+// Search functionality
+function handleSearch(e) {
+  currentSearchQuery = e.target.value.toLowerCase().trim();
+  filterTools();
+  updateSearchResults();
+}
 
-// Simple category filter function
-function filterToolsByCategorySimple(category) {
+// Category dropdown
+function toggleCategoryDropdown() {
+  const categoryBtn = document.getElementById('category-menu-btn');
+  const categoryMenu = document.getElementById('category-menu');
+  const isOpen = categoryMenu.classList.contains('show');
+  
+  if (isOpen) {
+    closeCategoryDropdown();
+  } else {
+    categoryMenu.classList.add('show');
+    categoryBtn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function closeCategoryDropdown() {
+  const categoryBtn = document.getElementById('category-menu-btn');
+  const categoryMenu = document.getElementById('category-menu');
+  categoryMenu.classList.remove('show');
+  categoryBtn.setAttribute('aria-expanded', 'false');
+}
+
+// Category selection
+function handleCategorySelect(category, categoryName) {
+  currentCategory = category;
+  
+  // Update button label
+  const categoryLabel = document.getElementById('category-label');
+  if (categoryLabel) {
+    categoryLabel.textContent = categoryName;
+  }
+  
+  closeCategoryDropdown();
+  filterTools();
+  updateSearchResults();
+}
+
+// Filter tools based on search and category
+function filterTools() {
   const toolCards = document.querySelectorAll('.tool-card');
+  let visibleCount = 0;
   
   toolCards.forEach(card => {
-    const cardCategory = card.getAttribute('data-category') || 'all';
+    const toolName = (card.querySelector('.tool-card__title')?.textContent || '').toLowerCase();
+    const toolDescription = (card.querySelector('.tool-card__description')?.textContent || '').toLowerCase();
+    const toolCategory = card.dataset.category || 'all';
     
-    if (category === 'all' || cardCategory === category) {
-      card.style.display = 'block';
+    // Check category match
+    const categoryMatch = currentCategory === 'all' || toolCategory === currentCategory;
+    
+    // Check search match
+    const searchMatch = !currentSearchQuery || 
+                       toolName.includes(currentSearchQuery) || 
+                       toolDescription.includes(currentSearchQuery);
+    
+    // Show/hide card
+    if (categoryMatch && searchMatch) {
+      card.style.display = '';
+      visibleCount++;
     } else {
       card.style.display = 'none';
     }
   });
+  
+  return visibleCount;
 }
 
-// ===== END NEW HEADER FUNCTIONALITY =====
+// Update search results info
+function updateSearchResults() {
+  const resultsInfo = document.getElementById('search-results-info');
+  if (!resultsInfo) return;
+  
+  const visibleCount = document.querySelectorAll('.tool-card[style=""]').length;
+  const totalCount = document.querySelectorAll('.tool-card').length;
+  
+  if (currentSearchQuery || currentCategory !== 'all') {
+    resultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} tools`;
+  } else {
+    resultsInfo.textContent = '';
+  }
+}
+
+// Theme toggle
+function handleThemeToggle() {
+  const body = document.body;
+  const isDark = body.classList.contains('dark');
+  
+  if (isDark) {
+    body.classList.remove('dark');
+    body.classList.add('light');
+    localStorage.setItem('theme', 'light');
+  } else {
+    body.classList.remove('light');
+    body.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+// Close all dropdowns (utility function)
+function closeAllDropdowns() {
+  closeCategoryDropdown();
+}
+
+// ================================
+// END HEADER FUNCTIONALITY
+// ================================
 
 // Icon definitions from extension's icons.js
 const ICON_DEFINITIONS = {
