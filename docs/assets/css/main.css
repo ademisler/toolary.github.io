@@ -65,23 +65,26 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 2px;
 }
 
 .brand-name {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--toolary-text);
-  line-height: 1;
+  line-height: 1.1;
+  margin: 0;
 }
 
 .version-tag {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--toolary-text-secondary);
   background: var(--toolary-button-bg);
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 1px 4px;
+  border-radius: 3px;
   border: 1px solid var(--toolary-border);
-  margin-top: 2px;
+  margin: 0;
+  font-weight: 500;
 }
 
 /* Search and Filter Section */
@@ -96,8 +99,8 @@
 
 /* Search Container */
 .search-container {
-  flex: 1;
-  max-width: 400px;
+  flex: 0 0 300px;
+  max-width: 300px;
   min-width: 0;
 }
 
@@ -232,6 +235,69 @@
   color: var(--toolary-accent);
 }
 
+/* Theme Toggle */
+.theme-toggle-container {
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--toolary-button-bg);
+  border: 1px solid var(--toolary-border);
+  border-radius: var(--toolary-border-radius);
+  color: var(--toolary-text);
+  cursor: pointer;
+  transition: var(--toolary-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--toolary-button-hover);
+  border-color: var(--toolary-accent);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-icon {
+  position: absolute;
+  transition: var(--toolary-transition);
+  color: var(--toolary-text-secondary);
+}
+
+.theme-icon--sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-icon--moon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+/* Dark theme styles */
+.dark .theme-icon--sun {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.dark .theme-icon--moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Light theme moon icon visibility */
+.light .theme-icon--moon {
+  color: #000000;
+}
+
 /* Search Results Info */
 .search-results-info {
   display: flex;
@@ -284,14 +350,19 @@
     width: 100%;
     max-width: none;
     gap: 15px;
+    justify-content: space-between;
   }
 
   .search-container {
     flex: 1;
-    max-width: none;
+    max-width: 250px;
   }
 
   .category-container {
+    flex-shrink: 0;
+  }
+
+  .theme-toggle-container {
     flex-shrink: 0;
   }
 
@@ -323,12 +394,12 @@
   }
 
   .brand-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .version-tag {
-    font-size: 0.7rem;
-    padding: 1px 4px;
+    font-size: 0.65rem;
+    padding: 1px 3px;
   }
 
   .search-filter-section {
@@ -339,6 +410,7 @@
 
   .search-container {
     width: 100%;
+    max-width: none;
   }
 
   .search-input-wrapper {
@@ -366,6 +438,11 @@
     left: 0;
     width: 100%;
     min-width: auto;
+  }
+
+  .theme-toggle-btn {
+    width: 40px;
+    height: 40px;
   }
 
   .search-results-info {

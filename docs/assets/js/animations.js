@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update button text
         const categoryTextSpan = categoryBtn.querySelector('.category-text');
-        categoryTextSpan.textContent = categoryText;
+        if (categoryTextSpan) {
+          categoryTextSpan.textContent = categoryText;
+        }
         
         // Close menu
         categoryMenu.classList.remove('show');
@@ -47,11 +49,52 @@ document.addEventListener('DOMContentLoaded', function() {
         // Filter tools (existing functionality)
         if (typeof filterToolsByCategory === 'function') {
           filterToolsByCategory(category);
+        } else {
+          // Simple filter implementation
+          filterToolsByCategorySimple(category);
         }
       });
     });
   }
+
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const body = document.body;
+      const isDark = body.classList.contains('dark');
+      
+      if (isDark) {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  }
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.body.classList.add(savedTheme);
 });
+
+// Simple category filter function
+function filterToolsByCategorySimple(category) {
+  const toolCards = document.querySelectorAll('.tool-card');
+  
+  toolCards.forEach(card => {
+    const cardCategory = card.getAttribute('data-category') || 'all';
+    
+    if (category === 'all' || cardCategory === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
 
 // ===== END NEW HEADER FUNCTIONALITY =====
 
