@@ -822,7 +822,7 @@ body {
   }
   
   .search-bar {
-    width: 100%;
+    display: none;
   }
   
   .tools-grid {
