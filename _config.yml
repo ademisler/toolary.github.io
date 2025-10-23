@@ -74,11 +74,11 @@ timezone: Europe/Istanbul
 lang: en
 encoding: utf-8
 
-# Collections
-collections:
-  tools:
-    output: true
-    permalink: /tools/:name/
+# Collections (disabled - using regular pages)
+# collections:
+#   tools:
+#     output: true
+#     permalink: /tools/:name/
 
 # Defaults
 defaults:
