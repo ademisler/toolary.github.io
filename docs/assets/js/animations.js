@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
         categoryBtn.setAttribute('aria-expanded', 'false');
         
         // Filter tools (existing functionality)
-        filterToolsByCategory(category);
+        if (typeof filterToolsByCategory === 'function') {
+          filterToolsByCategory(category);
+        }
       });
     });
   }
