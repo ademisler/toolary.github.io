@@ -1040,3 +1040,523 @@ body {
     --toolary-text-secondary: #ffffff;
   }
 }
+
+/* Tool Pages Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Tool Header Section */
+  .tool-header {
+    padding: 40px 0 !important;
+  }
+  
+  .tool-header .container > div {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center;
+  }
+  
+  .tool-header h1 {
+    font-size: 2rem !important;
+  }
+  
+  .tool-header p {
+    font-size: 1rem !important;
+  }
+  
+  .tool-header .btn {
+    padding: 10px 20px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Tool Icon */
+  .tool-header div[style*="width: 120px"] {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .tool-header svg[width="60"] {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  /* Features Grid */
+  .tool-header div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  
+  .tool-header div[style*="padding: 20px"] {
+    padding: 15px !important;
+  }
+  
+  .tool-header h3 {
+    font-size: 1rem !important;
+  }
+  
+  .tool-header p {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Tool Description Section */
+  .tool-description {
+    padding: 40px 0 !important;
+  }
+  
+  .tool-description h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .tool-description div[style*="padding: 30px"] {
+    padding: 20px !important;
+  }
+  
+  .tool-description p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  .tool-description h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  .tool-description ul {
+    padding-left: 15px !important;
+  }
+  
+  .tool-description li {
+    font-size: 0.95rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Use Cases Grid */
+  .tool-description div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .tool-description div[style*="padding: 30px"][style*="background: var(--toolary-bg)"] {
+    padding: 20px !important;
+  }
+  
+  .tool-description h3[style*="font-size: 1.3rem"] {
+    font-size: 1.1rem !important;
+  }
+  
+  .tool-description p[style*="line-height: 1.6"] {
+    font-size: 0.95rem !important;
+  }
+  
+  /* Container padding */
+  .container {
+    padding: 0 16px !important;
+  }
+  
+  /* Breadcrumb */
+  .breadcrumb {
+    padding: 15px 0 !important;
+  }
+  
+  .breadcrumb span {
+    margin: 0 4px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .tool-header {
+    padding: 30px 0 !important;
+  }
+  
+  .tool-header h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  .tool-header p {
+    font-size: 0.9rem !important;
+  }
+  
+  .tool-header .btn {
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .tool-header div[style*="width: 120px"] {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .tool-header svg[width="60"] {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  .tool-description {
+    padding: 30px 0 !important;
+  }
+  
+  .tool-description h2 {
+    font-size: 1.3rem !important;
+  }
+  
+  .tool-description div[style*="padding: 30px"] {
+    padding: 15px !important;
+  }
+  
+  .tool-description div[style*="padding: 20px"] {
+    padding: 12px !important;
+  }
+  
+  .container {
+    padding: 0 12px !important;
+  }
+}
+
+
+/* Tool Pages Responsive Layout Classes */
+.tool-header-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+@media (min-width: 769px) {
+  .tool-header-grid {
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+  }
+}
+
+.tool-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media (min-width: 769px) {
+  .tool-features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+.tool-use-cases-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 769px) {
+  .tool-use-cases-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+}
+
+.tool-icon-container {
+  width: 80px;
+  height: 80px;
+  background: var(--toolary-button-bg);
+  border: 2px solid var(--toolary-border);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: var(--toolary-shadow-hover);
+}
+
+@media (min-width: 769px) {
+  .tool-icon-container {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.tool-icon-svg {
+  width: 40px;
+  height: 40px;
+  color: var(--toolary-accent);
+}
+
+@media (min-width: 769px) {
+  .tool-icon-svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.tool-title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: var(--toolary-text);
+}
+
+@media (min-width: 769px) {
+  .tool-title {
+    font-size: 2.5rem;
+  }
+}
+
+.tool-subtitle {
+  font-size: 1rem;
+  color: var(--toolary-text-secondary);
+  margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+  .tool-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+.tool-section-title {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: var(--toolary-text);
+}
+
+@media (min-width: 769px) {
+  .tool-section-title {
+    font-size: 1.8rem;
+  }
+}
+
+.tool-feature-card {
+  padding: 15px;
+  background: var(--toolary-button-bg);
+  border-radius: 12px;
+  border: 1px solid var(--toolary-border);
+}
+
+@media (min-width: 769px) {
+  .tool-feature-card {
+    padding: 20px;
+  }
+}
+
+.tool-feature-title {
+  color: var(--toolary-accent);
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+@media (min-width: 769px) {
+  .tool-feature-title {
+    font-size: 1.2rem;
+  }
+}
+
+.tool-feature-text {
+  color: var(--toolary-text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 769px) {
+  .tool-feature-text {
+    font-size: 0.95rem;
+  }
+}
+
+.tool-description-content {
+  padding: 20px;
+  background: var(--toolary-button-bg);
+  border-radius: 16px;
+  border: 1px solid var(--toolary-border);
+  margin-bottom: 40px;
+}
+
+@media (min-width: 769px) {
+  .tool-description-content {
+    padding: 30px;
+  }
+}
+
+.tool-description-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--toolary-text-secondary);
+  margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+  .tool-description-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+}
+
+.tool-use-case-card {
+  padding: 20px;
+  background: var(--toolary-bg);
+  border-radius: 12px;
+  border: 1px solid var(--toolary-border);
+}
+
+@media (min-width: 769px) {
+  .tool-use-case-card {
+    padding: 30px;
+  }
+}
+
+.tool-use-case-title {
+  color: var(--toolary-accent);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 769px) {
+  .tool-use-case-title {
+    font-size: 1.3rem;
+  }
+}
+
+.tool-use-case-text {
+  color: var(--toolary-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 769px) {
+  .tool-use-case-text {
+    font-size: 1rem;
+  }
+}
+
+
+/* Enhanced Mobile Responsive Styles for Tool Pages */
+@media (max-width: 768px) {
+  /* Override inline styles for mobile */
+  .tool-header div[style*="grid-template-columns: 1fr 2fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center;
+  }
+  
+  .tool-header div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  
+  .tool-description div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  /* Make buttons stack vertically on mobile */
+  .tool-header div[style*="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  
+  /* Adjust button sizes for mobile */
+  .tool-header .btn {
+    width: 100% !important;
+    max-width: 280px !important;
+    justify-content: center !important;
+  }
+  
+  /* Improve text readability on mobile */
+  .tool-description ul {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  .tool-description li {
+    margin-bottom: 10px !important;
+  }
+  
+  /* Better spacing for mobile */
+  .tool-header {
+    padding: 30px 0 !important;
+  }
+  
+  .tool-description {
+    padding: 30px 0 !important;
+  }
+  
+  /* Center align everything on mobile */
+  .tool-header > div {
+    text-align: center !important;
+  }
+  
+  .tool-description > div {
+    text-align: center !important;
+  }
+  
+  .tool-description h2 {
+    text-align: center !important;
+  }
+  
+  .tool-description h3 {
+    text-align: left !important;
+  }
+  
+  .tool-description p {
+    text-align: left !important;
+  }
+  
+  .tool-description ul {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small mobile optimizations */
+  .tool-header h1 {
+    font-size: 1.6rem !important;
+  }
+  
+  .tool-header p {
+    font-size: 0.9rem !important;
+  }
+  
+  .tool-description h2 {
+    font-size: 1.2rem !important;
+  }
+  
+  .tool-description h3 {
+    font-size: 1rem !important;
+  }
+  
+  .tool-description p {
+    font-size: 0.9rem !important;
+  }
+  
+  .tool-description ul {
+    font-size: 0.85rem !important;
+  }
+  
+  .tool-description li {
+    font-size: 0.85rem !important;
+  }
+  
+  /* Smaller icon on very small screens */
+  .tool-header div[style*="width: 120px"] {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .tool-header svg[width="60"] {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  /* Tighter spacing */
+  .tool-header {
+    padding: 20px 0 !important;
+  }
+  
+  .tool-description {
+    padding: 20px 0 !important;
+  }
+  
+  .container {
+    padding: 0 10px !important;
+  }
+}
+

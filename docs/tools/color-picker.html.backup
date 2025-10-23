@@ -1,16 +1,16 @@
+permalink: /tools/color-picker/
 ---
 layout: default
-title: "Copy History Manager Chrome Extension - Manage Clipboard History | Toolary"
-description: "Download the best Copy History Manager Chrome extension. Manage and organize your clipboard history efficiently. Free clipboard management tool for better productivity."
-keywords: "copy history manager chrome extension, clipboard manager, copy history, clipboard tool, chrome extension, toolary, adem isler"
-canonical: "https://ademisler.github.io/toolary.github.io/tools/copy-history-manager/"
-og_title: "Copy History Manager Chrome Extension - Manage Clipboard History"
-og_description: "Download the best Copy History Manager Chrome extension. Manage and organize your clipboard history efficiently. Free clipboard management tool for better productivity."
-og_image: "/assets/images/toolary-copy-history-manager-og.png"
-twitter_title: "Copy History Manager Chrome Extension - Manage Clipboard History"
-twitter_description: "Download the best Copy History Manager Chrome extension. Manage and organize your clipboard history efficiently. Free clipboard management tool for better productivity."
-twitter_image: "/assets/images/toolary-copy-history-manager-og.png"
-permalink: /tools/copy-history-manager/
+title: "Color Picker Chrome Extension - Extract Colors from Any Website | Toolary"
+description: "Download the best Color Picker Chrome extension. Extract hex, RGB, HSL color codes from any website with precision. Free color picker tool for designers and developers."
+keywords: "color picker chrome extension, color picker tool, hex color picker, RGB color picker, HSL color picker, eyedropper tool, color extractor, web color picker, design tools, color codes, color palette, color scheme, web development tools, chrome extension, toolary, adem isler"
+canonical: "https://ademisler.github.io/toolary.github.io/tools/color-picker/"
+og_title: "Color Picker Chrome Extension - Extract Colors from Any Website"
+og_description: "Download the best Color Picker Chrome extension. Extract hex, RGB, HSL color codes from any website with precision. Free color picker tool for designers and developers."
+og_image: "/assets/images/toolary-color-picker-og.png"
+twitter_title: "Color Picker Chrome Extension - Extract Colors from Any Website"
+twitter_description: "Download the best Color Picker Chrome extension. Extract hex, RGB, HSL color codes from any website with precision. Free color picker tool for designers and developers."
+twitter_image: "/assets/images/toolary-color-picker-og.png"
 <!-- Header - Extension Popup Style -->
 <header class="header">
   <div class="header-content">
@@ -110,7 +110,7 @@ permalink: /tools/copy-history-manager/
     </div>
   </div>
 </header>
-permalink: /tools/copy-history-manager/
+permalink: /tools/color-picker/
 ---
 
 <!-- Breadcrumb Navigation -->
@@ -120,24 +120,25 @@ permalink: /tools/copy-history-manager/
     <span style="margin: 0 8px; color: var(--toolary-text-secondary);">›</span>
     <a href="{{ site.baseurl }}/#tools" style="color: var(--toolary-text-secondary); text-decoration: none;">Tools</a>
     <span style="margin: 0 8px; color: var(--toolary-text-secondary);">›</span>
-    <span style="color: var(--toolary-accent);">Copy History Manager</span>
+    <span style="color: var(--toolary-accent);">Color Picker</span>
   </div>
 </nav>
 
 <!-- Tool Header Section -->
 <section class="tool-header" style="padding: 60px 0; background: linear-gradient(135deg, var(--toolary-bg) 0%, var(--toolary-button-bg) 100%);">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: 1fr 2fr; }; gap: 40px; align-items: center;">
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center;">
       <!-- Tool Icon and Basic Info -->
       <div style="text-align: center;">
         <div style="width: 120px; height: 120px; background: var(--toolary-button-bg); border: 2px solid var(--toolary-border); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: var(--toolary-shadow-hover);">
           <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--toolary-accent);">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+            <circle cx="12" cy="12" r="3"/>
           </svg>
         </div>
-        <h1 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--toolary-text);">Copy History Manager</h1>
-        <p style="font-size: 1.2rem; color: var(--toolary-text-secondary); margin-bottom: 20px;">Manage and organize your clipboard history</p>
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--toolary-text);">Color Picker</h1>
+        <p style="font-size: 1.2rem; color: var(--toolary-text-secondary); margin-bottom: 20px;">Extract colors from any website with precision</p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
           <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="btn btn-primary" style="padding: 12px 24px; font-size: 1.1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -150,23 +151,23 @@ permalink: /tools/copy-history-manager/
 
       <!-- Tool Features -->
       <div>
-        <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--toolary-text);">Why Choose Our Copy History Manager?</h2>
-        <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }; gap: 20px;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--toolary-text);">Why Choose Our Color Picker?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">📋 History Tracking</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Track and store all your copied content automatically</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> Multiple Color Formats</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Extract colors in HEX, RGB, HSL, and more formats for maximum compatibility</p>
           </div>
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> Smart Search</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Quickly find and access previously copied content</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">⚡ Instant Extraction</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Click anywhere on any website to instantly extract the exact color value</p>
           </div>
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">🏷️ Organization</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Organize clipboard items with tags and categories</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">📋 Auto Copy to Clipboard</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Automatically copies color codes to your clipboard for easy pasting</p>
           </div>
           <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
-            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">⚡ Quick Access</h3>
-            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Access and paste previously copied content instantly</p>
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> Pixel Perfect</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Get the exact color of any pixel with our precision color picker tool</p>
           </div>
         </div>
       </div>
@@ -178,26 +179,26 @@ permalink: /tools/copy-history-manager/
 <section class="tool-description" style="padding: 60px 0;">
   <div class="container">
     <div style="max-width: 800px; margin: 0 auto;">
-      <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--toolary-text); text-align: center;">The Ultimate Clipboard Management Tool</h2>
+      <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--toolary-text); text-align: center;">The Ultimate Color Picker for Web Designers</h2>
       
       <div style="background: var(--toolary-button-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--toolary-border); margin-bottom: 40px;">
         <p style="font-size: 1.1rem; line-height: 1.8; color: var(--toolary-text-secondary); margin-bottom: 20px;">
-          Our Copy History Manager Chrome extension is the perfect tool for anyone who wants to manage and organize their clipboard history efficiently. 
-          Never lose important copied content again with our comprehensive clipboard management solution.
+          Our Color Picker Chrome extension is the perfect tool for designers, developers, and anyone who works with colors on the web. 
+          Whether you're building a website, creating graphics, or just need to match colors from existing designs, our color picker makes it effortless.
         </p>
         
         <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">Key Features:</h3>
         <ul style="color: var(--toolary-text-secondary); line-height: 1.8; margin-bottom: 20px; padding-left: 20px;">
-          <li><strong>History Tracking:</strong> Automatically track and store all your copied content</li>
-          <li><strong>Smart Search:</strong> Quickly find and access previously copied content with powerful search</li>
-          <li><strong>Organization:</strong> Organize clipboard items with tags, categories, and favorites</li>
-          <li><strong>Quick Access:</strong> Access and paste previously copied content with a single click</li>
-          <li><strong>Sync Across Devices:</strong> Keep clipboard history synchronized across all your devices</li>
-          <li><strong>Privacy Protection:</strong> Secure storage with optional encryption for sensitive content</li>
+          <li><strong>Multiple Color Formats:</strong> HEX (#FF5733), RGB (255, 87, 51), HSL (12, 100%, 60%), and more</li>
+          <li><strong>One-Click Extraction:</strong> Simply click anywhere on any website to get the color</li>
+          <li><strong>Auto Clipboard Copy:</strong> Color codes are automatically copied to your clipboard</li>
+          <li><strong>Precision Picking:</strong> Get the exact color of any pixel with pixel-perfect accuracy</li>
+          <li><strong>Works on Any Website:</strong> Compatible with all websites and web applications</li>
+          <li><strong>No Installation Hassle:</strong> Works instantly after installation</li>
         </ul>
       </div>
 
-      <h3 style="color: var(--toolary-text); margin-bottom: 20px; font-size: 1.5rem;">How to Use the Copy History Manager:</h3>
+      <h3 style="color: var(--toolary-text); margin-bottom: 20px; font-size: 1.5rem;">How to Use the Color Picker:</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">1</div>
@@ -207,17 +208,17 @@ permalink: /tools/copy-history-manager/
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">2</div>
           <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Activate Tool</h4>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click on the Copy History Manager tool in the extension popup</p>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click on the Color Picker tool in the extension popup</p>
         </div>
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">3</div>
-          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Manage History</h4>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">View, search, and organize your clipboard history</p>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Pick Colors</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click anywhere on the website to extract colors</p>
         </div>
         <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
           <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">4</div>
-          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Quick Paste</h4>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Quickly access and paste previously copied content</p>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Use Colors</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Paste the copied color codes into your design tools</p>
         </div>
       </div>
     </div>
@@ -227,42 +228,42 @@ permalink: /tools/copy-history-manager/
 <!-- Use Cases Section -->
 <section class="use-cases" style="padding: 60px 0; background: var(--toolary-button-bg);">
   <div class="container">
-    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Perfect for Every Productivity Need</h2>
+    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Perfect for Every Design Need</h2>
     
-    <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }; gap: 30px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
       <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
-        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">👨‍💻 Developers</h3>
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;"> Web Designers</h3>
         <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
-          Manage code snippets, URLs, and configuration values efficiently. Never lose important code or settings again.
+          Extract brand colors from competitor websites, match existing color schemes, and maintain design consistency across projects.
         </p>
         <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
-          <li>Code snippet management</li>
-          <li>Configuration storage</li>
-          <li>URL organization</li>
+          <li>Brand color extraction</li>
+          <li>Color scheme matching</li>
+          <li>Design consistency</li>
         </ul>
       </div>
       
       <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
-        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;"> Content Writers</h3>
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">💻 Web Developers</h3>
         <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
-          Organize quotes, research notes, and reference materials. Keep all your writing resources easily accessible.
+          Quickly get color codes for CSS, JavaScript, and other development tasks. Perfect for debugging and styling.
         </p>
         <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
-          <li>Quote organization</li>
-          <li>Research note storage</li>
-          <li>Reference material management</li>
+          <li>CSS color values</li>
+          <li>JavaScript color codes</li>
+          <li>Debug styling issues</li>
         </ul>
       </div>
       
       <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
-        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">💼 Business Professionals</h3>
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;"> Digital Marketers</h3>
         <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
-          Manage contact information, meeting notes, and important data. Keep all business information organized and accessible.
+          Analyze competitor color strategies, extract colors from successful campaigns, and maintain brand consistency.
         </p>
         <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
-          <li>Contact management</li>
-          <li>Meeting note storage</li>
-          <li>Data organization</li>
+          <li>Competitor analysis</li>
+          <li>Campaign color extraction</li>
+          <li>Brand consistency</li>
         </ul>
       </div>
     </div>
@@ -278,30 +279,30 @@ permalink: /tools/copy-history-manager/
       <div style="background: var(--toolary-button-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--toolary-border);">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
           <div>
-            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">History Management</h4>
+            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Supported Formats</h4>
             <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
-              <li>Automatic tracking</li>
-              <li>Smart filtering</li>
-              <li>Category organization</li>
-              <li>Search functionality</li>
+              <li>HEX (#FF5733)</li>
+              <li>RGB (255, 87, 51)</li>
+              <li>HSL (12, 100%, 60%)</li>
+              <li>HSB (12, 80%, 100%)</li>
             </ul>
           </div>
           <div>
-            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Data Storage</h4>
+            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Browser Support</h4>
             <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
-              <li>Local storage</li>
-              <li>Encrypted storage</li>
-              <li>Sync capabilities</li>
-              <li>Backup options</li>
+              <li>Chrome 88+</li>
+              <li>Edge 88+</li>
+              <li>Opera 74+</li>
+              <li>Brave 1.20+</li>
             </ul>
           </div>
           <div>
             <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Features</h4>
             <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
-              <li>Quick access</li>
-              <li>Tag system</li>
-              <li>Favorites</li>
-              <li>Export options</li>
+              <li>Pixel-perfect accuracy</li>
+              <li>Auto clipboard copy</li>
+              <li>Multiple formats</li>
+              <li>Works on all sites</li>
             </ul>
           </div>
         </div>
@@ -309,8 +310,8 @@ permalink: /tools/copy-history-manager/
         <div style="background: var(--toolary-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--toolary-border);">
           <h4 style="color: var(--toolary-text); margin-bottom: 15px;">Privacy & Security</h4>
           <p style="color: var(--toolary-text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-            Our Copy History Manager stores all clipboard data locally in your browser with optional encryption. No clipboard content 
-            is sent to external servers, ensuring complete privacy and security of your copied information.
+            Our Color Picker extension processes all color extraction locally in your browser. No data is sent to external servers, 
+            ensuring your privacy and the security of the websites you're analyzing. All color processing happens client-side.
           </p>
         </div>
       </div>
@@ -322,15 +323,15 @@ permalink: /tools/copy-history-manager/
 <section class="cta-section" style="padding: 60px 0; background: linear-gradient(135deg, var(--toolary-accent) 0%, #0099CC 100%); color: white;">
   <div class="container">
     <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">Ready to Manage Your Clipboard?</h2>
+      <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">Ready to Start Picking Colors?</h2>
       <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
-        Download the Copy History Manager extension now and never lose important copied content again.
+        Download the Color Picker extension now and start extracting colors from any website in seconds.
       </p>
       <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="btn" style="background: white; color: var(--toolary-accent); padding: 15px 30px; font-size: 1.2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
-        Download Copy History Manager Extension
+        Download Color Picker Extension
       </a>
     </div>
   </div>
@@ -339,27 +340,27 @@ permalink: /tools/copy-history-manager/
 <!-- Related Tools Section -->
 <section class="related-tools" style="padding: 60px 0;">
   <div class="container">
-    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Related Utility Tools</h2>
+    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Related Design Tools</h2>
     
-    <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }; gap: 20px;">
-      <a href="{{ site.baseurl }}/tools/text-picker/" style="text-decoration: none; color: inherit;">
-        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
-          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Text Picker</h3>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Extract and copy text from any website</p>
-        </div>
-      </a>
-      
-      <a href="{{ site.baseurl }}/tools/site-info-picker/" style="text-decoration: none; color: inherit;">
-        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
-          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Site Info Picker</h3>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Analyze website details and performance metrics</p>
-        </div>
-      </a>
-      
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
       <a href="{{ site.baseurl }}/tools/color-palette-generator/" style="text-decoration: none; color: inherit;">
         <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
           <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Color Palette Generator</h3>
-          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Generate beautiful color palettes from any image</p>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Generate harmonious color palettes from a single color</p>
+        </div>
+      </a>
+      
+      <a href="{{ site.baseurl }}/tools/element-picker/" style="text-decoration: none; color: inherit;">
+        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
+          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Element Picker</h3>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Inspect and analyze HTML elements and CSS properties</p>
+        </div>
+      </a>
+      
+      <a href="{{ site.baseurl }}/tools/font-picker/" style="text-decoration: none; color: inherit;">
+        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
+          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Font Finder</h3>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Identify fonts used on any website</p>
         </div>
       </a>
     </div>
@@ -371,9 +372,9 @@ permalink: /tools/copy-history-manager/
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Copy History Manager - Toolary Chrome Extension",
-  "description": "Manage and organize your clipboard history efficiently. Perfect clipboard management tool for better productivity and organization.",
-  "url": "{{ site.url }}{{ site.baseurl }}/tools/copy-history-manager/",
+  "name": "Color Picker - Toolary Chrome Extension",
+  "description": "Extract colors from any website with precision. Get HEX, RGB, HSL color codes instantly with our free Chrome extension.",
+  "url": "{{ site.url }}{{ site.baseurl }}/tools/color-picker/",
   "applicationCategory": "BrowserApplication",
   "operatingSystem": "Chrome",
   "offers": {
@@ -394,20 +395,20 @@ permalink: /tools/copy-history-manager/
   "datePublished": "2024-01-01",
   "dateModified": "2024-12-27",
   "version": "2.0.0",
-  "screenshot": "{{ site.url }}{{ site.baseurl }}/assets/images/copy-history-manager-screenshot.png",
+  "screenshot": "{{ site.url }}{{ site.baseurl }}/assets/images/color-picker-screenshot.png",
   "featureList": [
-    "History tracking",
-    "Smart search",
-    "Organization tools",
-    "Quick access",
-    "Sync across devices",
-    "Privacy protection"
+    "Extract colors from any website",
+    "Multiple color formats (HEX, RGB, HSL)",
+    "Auto clipboard copy",
+    "Pixel-perfect accuracy",
+    "Works on all websites",
+    "One-click color extraction"
   ],
-  "keywords": "copy history manager chrome extension, clipboard manager, copy history, clipboard tool, chrome extension, toolary, adem isler",
+  "keywords": "color picker chrome extension, color picker tool, hex color picker, RGB color picker, HSL color picker, eyedropper tool, color extractor, web color picker, design tools, color codes, color palette, color scheme, web development tools, chrome extension, toolary, adem isler",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.1",
-    "ratingCount": "16"
+    "ratingValue": "4.9",
+    "ratingCount": "250"
   }
 }
 </script>
