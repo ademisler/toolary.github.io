@@ -131,8 +131,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
 }
 
 .theme-toggle:hover {
@@ -206,7 +206,7 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   font-size: 28px;
   font-weight: 700;
   color: var(--toolary-text);
@@ -227,7 +227,7 @@ body {
 .version-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--toolary-text-secondary);
   background: var(--toolary-button-bg);
@@ -241,14 +241,14 @@ body {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Search Bar - Extension Style */
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   max-width: 600px;
   flex: 1;
 }
@@ -261,7 +261,7 @@ body {
   border: 1px solid var(--toolary-border);
   border-radius: var(--toolary-border-radius);
   padding: 12px 16px;
-  gap: 12px;
+  gap: 16px;
   box-shadow: var(--toolary-shadow);
   transition: var(--toolary-transition);
   flex: 1;
@@ -312,7 +312,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -356,7 +356,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   padding: 12px 16px;
   background: none;
   border: none;
@@ -364,7 +364,7 @@ body {
   cursor: pointer;
   transition: var(--toolary-transition);
   text-align: left;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -387,20 +387,22 @@ body {
 
 /* Tools Grid - Extension Style */
 .tools-grid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  padding: 20px 0;
+  gap: 20px;
+  padding: 30px 0;
 }
 
 .tool-card {
   background: var(--toolary-button-bg);
   border: 1px solid var(--toolary-border);
   border-radius: var(--toolary-border-radius);
-  padding: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
   cursor: pointer;
   text-align: center;
@@ -409,7 +411,7 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font: inherit;
   position: relative;
-  min-height: 160px;
+  min-height: 180px;
   justify-content: flex-start;
   overflow: hidden;
 }
@@ -427,8 +429,8 @@ body {
 }
 
 .tool-card__icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   background: transparent;
   border-radius: var(--toolary-border-radius);
   display: flex;
@@ -439,8 +441,8 @@ body {
 }
 
 .tool-card__icon svg {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   color: var(--toolary-text);
 }
 
@@ -456,7 +458,7 @@ body {
 }
 
 .tool-card__title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--toolary-text);
   line-height: 1.2;
@@ -471,7 +473,7 @@ body {
 
 .tool-card__description {
   margin: 0;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--toolary-text-secondary);
   line-height: 1.4;
   text-align: center;
@@ -481,7 +483,7 @@ body {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  min-height: 32px;
+  min-height: 36px;
   opacity: 0.8;
 }
 
@@ -490,7 +492,7 @@ body {
   color: var(--toolary-accent);
   border-radius: 999px;
   padding: 4px 12px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -542,21 +544,21 @@ body {
   justify-content: space-between;
   padding: 24px;
   border-bottom: 1px solid var(--toolary-border);
-  gap: 16px;
+  gap: 20px;
 }
 
 .tool-modal-title {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   font-size: 24px;
   font-weight: 700;
   color: var(--toolary-text);
 }
 
 .tool-modal-icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   color: var(--toolary-accent);
 }
 
@@ -625,7 +627,7 @@ body {
 
 .tool-modal-actions {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   justify-content: flex-end;
 }
 
@@ -636,7 +638,7 @@ body {
   gap: 8px;
   padding: 12px 20px;
   border-radius: var(--toolary-border-radius);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
@@ -678,14 +680,14 @@ body {
   margin-top: 12px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
   min-height: 24px;
   color: var(--toolary-text-secondary);
 }
 
 .search-feedback__count {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--toolary-text-secondary);
 }
@@ -706,7 +708,7 @@ body {
   background: rgba(0, 191, 255, 0.12);
   color: var(--toolary-accent);
   padding: 6px 12px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   border: 1px solid transparent;
   cursor: pointer;
@@ -771,7 +773,7 @@ body {
 
 .social-links {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   margin-top: 16px;
 }
 
@@ -800,7 +802,7 @@ body {
   padding-top: 20px;
   text-align: center;
   color: var(--toolary-text-secondary);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .footer-bottom a {
@@ -812,6 +814,8 @@ body {
 /* Responsive Design */
 @media (max-width: 900px) {
   .tools-grid {
+  max-width: 1400px;
+  margin: 0 auto;
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -819,7 +823,7 @@ body {
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
   
   .search-bar {
@@ -827,13 +831,15 @@ body {
   }
   
   .tools-grid {
+  max-width: 1400px;
+  margin: 0 auto;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 16px;
   }
   
   .tool-card {
     padding: 12px;
-    min-height: 140px;
+    min-height: 160px;
   }
   
   .tool-card__icon {
@@ -847,7 +853,7 @@ body {
   }
   
   .tool-card__title {
-    font-size: 12px;
+    font-size: 13px;
   }
   
   .tool-card__description {
@@ -875,12 +881,39 @@ body {
 }
 
 @media (max-width: 480px) {
-  .container {
+  .tools-grid {
+    gap: 12px;
+    padding: 20px 0;
+  }
+  
+  .tool-card {
+    padding: 16px;
+    min-height: 140px;
+  }
+  
+  .tool-card__icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .tool-card__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .tool-card__title {
+    font-size: 13px;
+  }
+  
+  .tool-card__description {
+    font-size: 11px;
+    min-height: 28px;
+  }  .container {
     padding: 0 16px;
   }
   
   .header {
-    padding: 16px;
+    padding: 20px;
   }
   
   .logo {
@@ -888,8 +921,8 @@ body {
   }
   
   .logo-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
   
   .search-bar__input {
@@ -897,17 +930,17 @@ body {
   }
   
   #tool-search {
-    font-size: 14px;
+    font-size: 15px;
   }
   
   .category-menu-btn {
     padding: 10px 12px;
-    font-size: 12px;
+    font-size: 13px;
   }
   
   .tool-card {
-    padding: 16px;
-    min-height: 160px;
+    padding: 20px;
+    min-height: 180px;
   }
   
   .tool-card__title {
