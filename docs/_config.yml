@@ -1,8 +1,8 @@
 # Site settings
 title: "Toolary - 24 Productivity Tools for Modern Web | Free Chrome Extension"
 description: "Download Toolary - the ultimate Chrome extension with 24 web productivity tools including AI-powered features, color picker, screenshot tool, PDF generator, QR code creator, and more. Free download for Chrome browser."
-url: "https://ademisler.github.io/toolary.github.io/"
-baseurl: "/toolary.github.io"
+url: "https://toolary.ademisler.com"
+baseurl: ""
 
 # SEO settings
 lang: "en"
