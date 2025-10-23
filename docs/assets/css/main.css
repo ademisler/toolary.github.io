@@ -2281,3 +2281,130 @@ p, span, div, a, button,
   }
 }
 
+
+/* Fix Icon Visibility Issues */
+.tool-card__icon svg,
+.tool-header svg,
+.simple-header svg,
+.category-menu-item svg,
+.search-bar__input svg,
+.logo-icon {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: var(--toolary-accent) !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+}
+
+/* Ensure all SVGs are visible */
+svg {
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+/* Fix tool card icons specifically */
+.tool-card__icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.tool-card__icon svg {
+  width: 36px !important;
+  height: 36px !important;
+  color: var(--toolary-accent) !important;
+  display: block !important;
+}
+
+/* Fix header icons */
+.logo-icon {
+  width: 40px !important;
+  height: 40px !important;
+  color: var(--toolary-text-secondary) !important;
+  display: block !important;
+}
+
+/* Fix search bar icons */
+.search-bar__input svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: var(--toolary-text-secondary) !important;
+  display: block !important;
+}
+
+/* Fix category menu icons */
+.category-menu-item svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: var(--toolary-text-secondary) !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Fix simple header icons */
+.simple-header svg {
+  width: 32px !important;
+  height: 32px !important;
+  color: var(--toolary-accent) !important;
+  display: block !important;
+}
+
+/* Mobile icon fixes */
+@media (max-width: 768px) {
+  .tool-card__icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .logo-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  
+  .search-bar__input svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .category-menu-item svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .simple-header svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tool-card__icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .logo-icon {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .search-bar__input svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  
+  .category-menu-item svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  
+  .simple-header svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
