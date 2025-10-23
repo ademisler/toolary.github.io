@@ -1,0 +1,424 @@
+---
+layout: default
+title: "Site Info Picker Chrome Extension - Analyze Website Details | Toolary"
+description: "Download the best Site Info Picker Chrome extension. Analyze website details, performance metrics, and technical information. Free website analysis tool for developers and marketers."
+keywords: "site info picker chrome extension, website analyzer, site analysis, website details, chrome extension, toolary, adem isler"
+canonical: "https://ademisler.github.io/toolary.github.io/tools/site-info-picker/"
+og_title: "Site Info Picker Chrome Extension - Analyze Website Details"
+og_description: "Download the best Site Info Picker Chrome extension. Analyze website details, performance metrics, and technical information. Free website analysis tool for developers and marketers."
+og_image: "/assets/images/toolary-site-info-picker-og.png"
+twitter_title: "Site Info Picker Chrome Extension - Analyze Website Details"
+twitter_description: "Download the best Site Info Picker Chrome extension. Analyze website details, performance metrics, and technical information. Free website analysis tool for developers and marketers."
+twitter_image: "/assets/images/toolary-site-info-picker-og.png"
+permalink: /tools/site-info-picker/
+---
+permalink: /tools/site-info-picker/layout: default
+title: "Site Info Picker Chrome Extension - Analyze Website Details | Toolary"
+description: "Download the best Site Info Picker Chrome extension. Analyze website details, performance metrics, and technical information. Free website analysis tool for developers and marketers."
+keywords: "site info picker chrome extension, website analyzer, site analysis, website details, chrome extension, toolary, adem isler"
+canonical: "https://ademisler.github.io/toolary.github.io/tools/site-info-picker/"
+og_title: "Site Info Picker Chrome Extension - Analyze Website Details"
+og_description: "Download the best Site Info Picker Chrome extension. Analyze website details, performance metrics, and technical information. Free website analysis tool for developers and marketers."
+og_image: "/assets/images/toolary-site-info-picker-og.png"
+twitter_title: "Site Info Picker Chrome Extension - Analyze Website Details"
+twitter_description: "Download the best Site Info Picker Chrome extension. Analyze website details, performance metrics, and technical information. Free website analysis tool for developers and marketers."
+twitter_image: "/assets/images/toolary-site-info-picker-og.png"
+<!-- Header - Extension Popup Style -->
+<header class="header">
+  <div class="header-content">
+    <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="logo" title="Download Toolary Chrome Extension">
+      <svg class="logo-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" fill="currentColor"/>
+        <rect x="14" y="3" width="7" height="7" fill="currentColor"/>
+        <rect x="14" y="14" width="7" height="7" fill="currentColor"/>
+        <rect x="3" y="14" width="7" height="7" fill="currentColor"/>
+      </svg>
+      <span class="logo-text">Toolary</span>
+      <span class="version-badge">v2.0.0</span>
+    </a>
+    
+    <div class="search-bar">
+      <div class="search-bar__input">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input id="tool-search" type="search" placeholder="Search tools..." autocomplete="off" spellcheck="false">
+      </div>
+      
+      <div class="category-menu-container">
+        <button id="category-menu-btn" class="category-menu-btn" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>All Tools</span>
+        </button>
+        
+        <div id="category-menu" class="category-menu">
+          <button type="button" class="category-menu-item" data-category="all">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            <span>All Tools</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="inspect">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <span>Inspect</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="capture">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+              <circle cx="12" cy="13" r="3"/>
+            </svg>
+            <span>Capture</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="enhance">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1-.365-.567L2.5 4.5a.5.5 0 0 1 .567-.365L9.937 5.5A2 2 0 0 0 11.5 6.937l6.135 1.582a.5.5 0 0 1 .365.567L17.5 19.5a.5.5 0 0 1-.567.365L9.937 15.5Z"/>
+              <path d="M12 2v4"/>
+              <path d="M12 18v4"/>
+              <path d="M4.93 4.93l2.83 2.83"/>
+              <path d="M16.24 16.24l2.83 2.83"/>
+              <path d="M2 12h4"/>
+              <path d="M18 12h4"/>
+              <path d="M4.93 19.07l2.83-2.83"/>
+              <path d="M16.24 7.76l2.83-2.83"/>
+            </svg>
+            <span>Enhance</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="utilities">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <span>Utilities</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="ai">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3v4"/>
+              <path d="M16 7l-4-4-4 4"/>
+              <path d="M12 21v-4"/>
+              <path d="M8 17l4 4 4-4"/>
+              <path d="M3 12h4"/>
+              <path d="M21 12h-4"/>
+            </svg>
+            <span>AI</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="search-feedback">
+      <div id="search-chips" class="search-chips"></div>
+      <span id="search-result-count" class="search-feedback__count"></span>
+    </div>
+  </div>
+</header>
+---
+permalink: /tools/site-info-picker/
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumb" style="padding: 20px 0; border-bottom: 1px solid var(--toolary-border);">
+  <div class="container">
+    <a href="{{ site.baseurl }}/" style="color: var(--toolary-text-secondary); text-decoration: none;">Home</a>
+    <span style="margin: 0 8px; color: var(--toolary-text-secondary);">›</span>
+    <a href="{{ site.baseurl }}/#tools" style="color: var(--toolary-text-secondary); text-decoration: none;">Tools</a>
+    <span style="margin: 0 8px; color: var(--toolary-text-secondary);">›</span>
+    <span style="color: var(--toolary-accent);">Site Info Picker</span>
+  </div>
+</nav>
+
+<!-- Tool Header Section -->
+<section class="tool-header" style="padding: 60px 0; background: linear-gradient(135deg, var(--toolary-bg) 0%, var(--toolary-button-bg) 100%);">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: 1fr 2fr; }; gap: 40px; align-items: center;">
+      <!-- Tool Icon and Basic Info -->
+      <div style="text-align: center;">
+        <div style="width: 120px; height: 120px; background: var(--toolary-button-bg); border: 2px solid var(--toolary-border); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: var(--toolary-shadow-hover);">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--toolary-accent);">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--toolary-text);">Site Info Picker</h1>
+        <p style="font-size: 1.2rem; color: var(--toolary-text-secondary); margin-bottom: 20px;">Analyze website details and performance metrics</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="btn btn-primary" style="padding: 12px 24px; font-size: 1.1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Download for Chrome
+          </a>
+        </div>
+      </div>
+
+      <!-- Tool Features -->
+      <div>
+        <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--toolary-text);">Why Choose Our Site Info Picker?</h2>
+        <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }; gap: 20px;">
+          <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">📊 Performance Metrics</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Analyze website performance and loading times</p>
+          </div>
+          <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;"> Technical Details</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Get detailed technical information about any website</p>
+          </div>
+          <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">📈 Analytics Data</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">View website analytics and visitor information</p>
+          </div>
+          <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+            <h3 style="color: var(--toolary-accent); margin-bottom: 10px; font-size: 1.2rem;">Lightning  Quick Analysis</h3>
+            <p style="color: var(--toolary-text-secondary); margin: 0; font-size: 0.95rem;">Get instant website analysis with a single click</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detailed Description Section -->
+<section class="tool-description" style="padding: 60px 0;">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--toolary-text); text-align: center;">The Ultimate Website Analysis Tool</h2>
+      
+      <div style="background: var(--toolary-button-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--toolary-border); margin-bottom: 40px;">
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--toolary-text-secondary); margin-bottom: 20px;">
+          Our Site Info Picker Chrome extension is the perfect tool for developers, marketers, and website owners who want to analyze 
+          website details and performance metrics. Get comprehensive insights about any website with just a single click.
+        </p>
+        
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">Key Features:</h3>
+        <ul style="color: var(--toolary-text-secondary); line-height: 1.8; margin-bottom: 20px; padding-left: 20px;">
+          <li><strong>Performance Metrics:</strong> Analyze website performance, loading times, and speed metrics</li>
+          <li><strong>Technical Details:</strong> Get detailed technical information about website structure and technologies</li>
+          <li><strong>Analytics Data:</strong> View website analytics, visitor information, and traffic data</li>
+          <li><strong>Quick Analysis:</strong> Get instant website analysis with a single click</li>
+          <li><strong>Comprehensive Reports:</strong> Generate detailed reports about website performance and structure</li>
+          <li><strong>Export Data:</strong> Export analysis results for further review and documentation</li>
+        </ul>
+      </div>
+
+      <h3 style="color: var(--toolary-text); margin-bottom: 20px; font-size: 1.5rem;">How to Use the Site Info Picker:</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+          <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">1</div>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Install Extension</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Download and install the Toolary Chrome extension</p>
+        </div>
+        <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+          <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">2</div>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Activate Tool</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Click on the Site Info Picker tool in the extension popup</p>
+        </div>
+        <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+          <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">3</div>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Analyze Website</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Get comprehensive analysis of the current website</p>
+        </div>
+        <div style="text-align: center; padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border);">
+          <div style="width: 60px; height: 60px; background: var(--toolary-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 1.5rem; font-weight: bold;">4</div>
+          <h4 style="color: var(--toolary-text); margin-bottom: 10px;">Review Results</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Review detailed analysis results and export data</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Use Cases Section -->
+<section class="use-cases" style="padding: 60px 0; background: var(--toolary-button-bg);">
+  <div class="container">
+    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Perfect for Every Analysis Need</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }; gap: 30px;">
+      <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">👨‍💻 Developers</h3>
+        <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
+          Analyze website performance, technical details, and structure for debugging, optimization, and development purposes.
+        </p>
+        <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+          <li>Performance debugging</li>
+          <li>Technical analysis</li>
+          <li>Structure optimization</li>
+        </ul>
+      </div>
+      
+      <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;">📈 Digital Marketers</h3>
+        <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
+          Analyze competitor websites, track performance metrics, and gather insights for marketing strategies and campaigns.
+        </p>
+        <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+          <li>Competitor analysis</li>
+          <li>Performance tracking</li>
+          <li>Marketing insights</li>
+        </ul>
+      </div>
+      
+      <div style="padding: 30px; background: var(--toolary-bg); border-radius: 16px; border: 1px solid var(--toolary-border);">
+        <h3 style="color: var(--toolary-accent); margin-bottom: 15px; font-size: 1.3rem;"> SEO Specialists</h3>
+        <p style="color: var(--toolary-text-secondary); line-height: 1.6; margin-bottom: 15px;">
+          Analyze website structure, performance, and technical details for SEO optimization and search engine ranking improvement.
+        </p>
+        <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+          <li>SEO analysis</li>
+          <li>Technical optimization</li>
+          <li>Performance improvement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technical Details Section -->
+<section class="technical-details" style="padding: 60px 0;">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--toolary-text); text-align: center;">Technical Specifications</h2>
+      
+      <div style="background: var(--toolary-button-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--toolary-border);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+          <div>
+            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Analysis Features</h4>
+            <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
+              <li>Performance metrics</li>
+              <li>Technical details</li>
+              <li>Analytics data</li>
+              <li>Structure analysis</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Data Export</h4>
+            <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
+              <li>PDF reports</li>
+              <li>CSV data export</li>
+              <li>JSON format</li>
+              <li>Image screenshots</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color: var(--toolary-accent); margin-bottom: 10px;">Performance</h4>
+            <ul style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0; padding-left: 20px;">
+              <li>Fast analysis</li>
+              <li>Real-time data</li>
+              <li>Efficient processing</li>
+              <li>Low resource usage</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div style="background: var(--toolary-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--toolary-border);">
+          <h4 style="color: var(--toolary-text); margin-bottom: 15px;">Privacy & Security</h4>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Our Site Info Picker analyzes only publicly available website data and performance metrics. No personal information 
+            or sensitive data is collected or stored, ensuring complete privacy and security of your analysis activities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" style="padding: 60px 0; background: linear-gradient(135deg, var(--toolary-accent) 0%, #0099CC 100%); color: white;">
+  <div class="container">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">Ready to Analyze Websites?</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+        Download the Site Info Picker extension now and start analyzing website details and performance metrics.
+      </p>
+      <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="btn" style="background: white; color: var(--toolary-accent); padding: 15px 30px; font-size: 1.2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        Download Site Info Picker Extension
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Related Tools Section -->
+<section class="related-tools" style="padding: 60px 0;">
+  <div class="container">
+    <h2 style="font-size: 2rem; margin-bottom: 40px; color: var(--toolary-text); text-align: center;">Related Utility Tools</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr; @media (min-width: 769px) { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }; gap: 20px;">
+      <a href="{{ site.baseurl }}/tools/color-palette-generator/" style="text-decoration: none; color: inherit;">
+        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
+          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Color Palette Generator</h3>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Generate beautiful color palettes from any image</p>
+        </div>
+      </a>
+      
+      <a href="{{ site.baseurl }}/tools/copy-history-manager/" style="text-decoration: none; color: inherit;">
+        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
+          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Copy History Manager</h3>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Manage and organize your clipboard history</p>
+        </div>
+      </a>
+      
+      <a href="{{ site.baseurl }}/tools/element-picker/" style="text-decoration: none; color: inherit;">
+        <div style="padding: 20px; background: var(--toolary-button-bg); border-radius: 12px; border: 1px solid var(--toolary-border); transition: var(--toolary-transition); hover:box-shadow: var(--toolary-shadow-hover);">
+          <h3 style="color: var(--toolary-accent); margin-bottom: 10px;">Element Picker</h3>
+          <p style="color: var(--toolary-text-secondary); font-size: 0.9rem; margin: 0;">Inspect and analyze DOM elements</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Site Info Picker - Toolary Chrome Extension",
+  "description": "Analyze website details, performance metrics, and technical information. Perfect website analysis tool for developers, marketers, and SEO specialists.",
+  "url": "{{ site.url }}{{ site.baseurl }}/tools/site-info-picker/",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Adem İşler",
+    "url": "https://ademisler.com/en"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Adem İşler",
+    "url": "https://ademisler.com/en"
+  },
+  "datePublished": "2024-01-01",
+  "dateModified": "2024-12-27",
+  "version": "2.0.0",
+  "screenshot": "{{ site.url }}{{ site.baseurl }}/assets/images/site-info-picker-screenshot.png",
+  "featureList": [
+    "Performance metrics analysis",
+    "Technical details extraction",
+    "Analytics data viewing",
+    "Quick website analysis",
+    "Comprehensive reports",
+    "Data export capabilities"
+  ],
+  "keywords": "site info picker chrome extension, website analyzer, site analysis, website details, chrome extension, toolary, adem isler",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.0",
+    "ratingCount": "12"
+  }
+}
+</script>
