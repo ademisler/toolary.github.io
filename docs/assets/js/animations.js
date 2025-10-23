@@ -1,6 +1,58 @@
 // Toolary GitHub Pages - Interactive Features
 // Extension popup style with full page tools showcase
 
+// ===== NEW HEADER FUNCTIONALITY =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Category menu functionality
+  const categoryBtn = document.getElementById('category-menu-btn');
+  const categoryMenu = document.getElementById('category-menu');
+  
+  if (categoryBtn && categoryMenu) {
+    categoryBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = categoryMenu.classList.contains('show');
+      
+      if (isOpen) {
+        categoryMenu.classList.remove('show');
+        categoryBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        categoryMenu.classList.add('show');
+        categoryBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!categoryBtn.contains(e.target) && !categoryMenu.contains(e.target)) {
+        categoryMenu.classList.remove('show');
+        categoryBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Category selection
+    const categoryItems = categoryMenu.querySelectorAll('.category-item');
+    categoryItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        const categoryText = this.querySelector('span').textContent;
+        
+        // Update button text
+        const categoryTextSpan = categoryBtn.querySelector('.category-text');
+        categoryTextSpan.textContent = categoryText;
+        
+        // Close menu
+        categoryMenu.classList.remove('show');
+        categoryBtn.setAttribute('aria-expanded', 'false');
+        
+        // Filter tools (existing functionality)
+        filterToolsByCategory(category);
+      });
+    });
+  }
+});
+
+// ===== END NEW HEADER FUNCTIONALITY =====
+
 // Icon definitions from extension's icons.js
 const ICON_DEFINITIONS = {
   color: {
