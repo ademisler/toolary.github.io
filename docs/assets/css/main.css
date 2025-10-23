@@ -143,11 +143,11 @@ body {
 }
 
 .theme-icon--sun {
-  display: block;
+  display: none;
 }
 
 .theme-icon--moon {
-  display: none;
+  display: block;
 }
 
 .light .theme-icon--sun {
@@ -160,11 +160,11 @@ body {
 }
 
 .dark .theme-icon--sun {
-  display: none;
+  display: block;
 }
 
 .dark .theme-icon--moon {
-  display: block;
+  display: none;
 }
 
 /* Main Content */
