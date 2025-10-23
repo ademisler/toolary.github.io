@@ -379,9 +379,21 @@ body {
 
 /* Main Container */
 .container {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow */
+* {
+  box-sizing: border-box;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Tools Grid - Extension Style */
@@ -836,6 +848,7 @@ body {
   .tools-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    padding: 0 10px;
   }
   
   .tool-card {
@@ -879,6 +892,48 @@ body {
     grid-template-columns: 1fr;
     gap: 24px;
   }
+  
+  /* Tool pages mobile optimization for tablets */
+  .tool-header {
+    padding: 50px 0 !important;
+  }
+  
+  .tool-header .container > div {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  
+  .tool-header h1 {
+    font-size: 2.2rem !important;
+  }
+  
+  .tool-header p {
+    font-size: 1.1rem !important;
+  }
+  
+  .tool-header h2 {
+    font-size: 1.6rem !important;
+  }
+  
+  .tool-header .container > div > div:last-child > div {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .cta-buttons {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -906,6 +961,129 @@ body {
   #tool-search {
     font-size: 14px;
   }
+  
+  /* Tool pages mobile optimization */
+  .tool-header {
+    padding: 40px 0 !important;
+  }
+  
+  .tool-header .container > div {
+    display: block !important;
+    gap: 20px !important;
+  }
+  
+  .tool-header h1 {
+    font-size: 2rem !important;
+  }
+  
+  .tool-header p {
+    font-size: 1rem !important;
+  }
+  
+  .tool-header .btn {
+    padding: 10px 20px !important;
+    font-size: 1rem !important;
+  }
+  
+  .tool-header h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .tool-header .container > div > div:last-child p {
+    font-size: 1rem !important;
+  }
+  
+  .tool-header .container > div > div:last-child > div {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  
+  .tool-header .container > div > div:last-child > div > div {
+    padding: 15px !important;
+  }
+  
+  .tool-header .container > div > div:last-child > div > div h3 {
+    font-size: 1rem !important;
+  }
+  
+  .tool-header .container > div > div:last-child > div > div p {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Features section mobile */
+  .features-section {
+    padding: 40px 0 !important;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .feature-card {
+    padding: 20px !important;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.1rem !important;
+  }
+  
+  .feature-card p {
+    font-size: 0.95rem !important;
+  }
+  
+  /* How to use section mobile */
+  .how-to-use {
+    padding: 40px 0 !important;
+  }
+  
+  .steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .step-card {
+    padding: 20px !important;
+  }
+  
+  .step-card h3 {
+    font-size: 1.1rem !important;
+  }
+  
+  .step-card p {
+    font-size: 0.95rem !important;
+  }
+  
+  /* CTA section mobile */
+  .cta-section {
+    padding: 40px 0 !important;
+  }
+  
+  .cta-content h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  .cta-content p {
+    font-size: 1rem !important;
+  }
+  
+  .cta-buttons {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  
+  .cta-buttons .btn {
+    padding: 12px 24px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Homepage mobile grid */
+  .tools-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+    padding: 0 5px !important;
+  }
+}
   
   .category-menu-btn {
     padding: 10px 12px;
