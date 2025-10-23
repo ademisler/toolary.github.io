@@ -11,6 +11,105 @@ twitter_title: "SEO Analyzer Chrome Extension - AI SEO Analysis"
 twitter_description: "Download the best SEO Analyzer Chrome extension. Analyze SEO performance with AI technology. Free AI SEO analysis tool for better search rankings."
 twitter_image: "/assets/images/toolary-seo-analyzer-og.png"
 permalink: /tools/seo-analyzer/
+<!-- Header - Extension Popup Style -->
+<header class="header">
+  <div class="header-content">
+    <a href="https://chromewebstore.google.com/detail/efecahgaobadfmaecclkfnfdfmincbmm" class="logo" title="Download Toolary Chrome Extension">
+      <svg class="logo-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" fill="currentColor"/>
+        <rect x="14" y="3" width="7" height="7" fill="currentColor"/>
+        <rect x="14" y="14" width="7" height="7" fill="currentColor"/>
+        <rect x="3" y="14" width="7" height="7" fill="currentColor"/>
+      </svg>
+      <span class="logo-text">Toolary</span>
+      <span class="version-badge">v2.0.0</span>
+    </a>
+    
+    <div class="search-bar">
+      <div class="search-bar__input">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input id="tool-search" type="search" placeholder="Search tools..." autocomplete="off" spellcheck="false">
+      </div>
+      
+      <div class="category-menu-container">
+        <button id="category-menu-btn" class="category-menu-btn" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>All Tools</span>
+        </button>
+        
+        <div id="category-menu" class="category-menu">
+          <button type="button" class="category-menu-item" data-category="all">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            <span>All Tools</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="inspect">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <span>Inspect</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="capture">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+              <circle cx="12" cy="13" r="3"/>
+            </svg>
+            <span>Capture</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="enhance">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1-.365-.567L2.5 4.5a.5.5 0 0 1 .567-.365L9.937 5.5A2 2 0 0 0 11.5 6.937l6.135 1.582a.5.5 0 0 1 .365.567L17.5 19.5a.5.5 0 0 1-.567.365L9.937 15.5Z"/>
+              <path d="M12 2v4"/>
+              <path d="M12 18v4"/>
+              <path d="M4.93 4.93l2.83 2.83"/>
+              <path d="M16.24 16.24l2.83 2.83"/>
+              <path d="M2 12h4"/>
+              <path d="M18 12h4"/>
+              <path d="M4.93 19.07l2.83-2.83"/>
+              <path d="M16.24 7.76l2.83-2.83"/>
+            </svg>
+            <span>Enhance</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="utilities">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <span>Utilities</span>
+          </button>
+          <button type="button" class="category-menu-item" data-category="ai">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3v4"/>
+              <path d="M16 7l-4-4-4 4"/>
+              <path d="M12 21v-4"/>
+              <path d="M8 17l4 4 4-4"/>
+              <path d="M3 12h4"/>
+              <path d="M21 12h-4"/>
+            </svg>
+            <span>AI</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="search-feedback">
+      <div id="search-chips" class="search-chips"></div>
+      <span id="search-result-count" class="search-feedback__count"></span>
+    </div>
+  </div>
+</header>
 ---
 
 <!-- Breadcrumb Navigation -->
