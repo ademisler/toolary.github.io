@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Text Picker',
   category: 'capture',
   icon: 'text',
-  shortcut: {
-    default: 'Alt+Shift+6',
-    mac: 'Alt+Shift+6'
-  },
   permissions: ['activeTab'],
   tags: ['text', 'content', 'copy'],
   keywords: ['extract', 'text', 'copy', 'selection']

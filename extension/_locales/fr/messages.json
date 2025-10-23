@@ -1570,5 +1570,191 @@
   },
   "summarizeManual": {
     "message": "Sélectionner le Texte"
+  },
+  "toggleFavorite": {
+    "message": "Basculer le favori"
+  },
+  "favoriteTools": {
+    "message": "Outils Favoris"
+  },
+  "export": {
+    "message": "Exporter"
+  },
+  "favorite": {
+    "message": "Favori"
+  },
+  "favorites": {
+    "message": "Favoris"
+  },
+  "noFavoritesYet": {
+    "message": "Aucun favori pour le moment. Cliquez sur le bouton étoile de n'importe quel outil pour ajouter des favoris !"
+  },
+  "removedFromFavorites": {
+    "message": "Retiré des favoris"
+  },
+  "addToFavorites": {
+    "message": "Ajouter aux favoris"
+  },
+  "removeFromFavorites": {
+    "message": "Retirer des favoris"
+  },
+  "failedToLoadFavorites": {
+    "message": "Échec du chargement des favoris"
+  },
+  "copiedToClipboard": {
+    "message": "Copié dans le presse-papiers !"
+  },
+  "remove": {
+    "message": "Supprimer"
+  },
+  "all": {
+    "message": "Tous"
+  },
+  "folders": {
+    "message": "Dossiers"
+  },
+  "tags": {
+    "message": "Étiquettes"
+  },
+  "editBookmark": {
+    "message": "Modifier le Signet"
+  },
+  "link": {
+    "message": "Lien"
+  },
+  "links": {
+    "message": "Liens"
+  },
+  "onboardingStep": {
+    "message": "Étape"
+  },
+  "onboardingOf": {
+    "message": "de"
+  },
+  "onboardingPrevious": {
+    "message": "Précédent"
+  },
+  "onboardingNext": {
+    "message": "Suivant"
+  },
+  "onboardingFinish": {
+    "message": "Terminer"
+  },
+  "onboardingSkip": {
+    "message": "Ignorer"
+  },
+  "onboarding_step1_title": {
+    "message": "Bienvenue dans Toolary !"
+  },
+  "onboarding_step1_desc": {
+    "message": "Toolary est votre boîte à outils web unifiée avec 24+ outils de productivité. Faisons un tour rapide !"
+  },
+  "onboarding_step2_title": {
+    "message": "Rechercher des Outils"
+  },
+  "onboarding_step2_desc": {
+    "message": "Trouvez rapidement n'importe quel outil en tapant son nom, catégorie ou fonction. Essayez de taper \"couleur\" ou \"capture d'écran\"."
+  },
+  "onboarding_step3_title": {
+    "message": "Filtrer par Catégorie"
+  },
+  "onboarding_step3_desc": {
+    "message": "Parcourez les outils par catégorie : Inspection, Capture, Amélioration, Utilitaires et outils alimentés par l'IA."
+  },
+  "onboarding_step4_title": {
+    "message": "Essayer un Outil"
+  },
+  "onboarding_step4_desc": {
+    "message": "Cliquez sur n'importe quel outil pour l'activer sur la page actuelle. Chaque outil fonctionne sur n'importe quel site web !"
+  },
+  "onboarding_step5_title": {
+    "message": "Paramètres et IA"
+  },
+  "onboarding_step5_desc": {
+    "message": "Configurez les paramètres IA, changez la langue ou personnalisez votre expérience. Prêt à booster votre productivité ?"
+  },
+  "onboarding_step6_title": {
+    "message": "Naviguer dans les Pages"
+  },
+  "onboarding_step6_desc": {
+    "message": "Utilisez les boutons de pagination ou la molette de défilement pour parcourir tous les outils disponibles."
+  },
+  "onboarding_step7_title": {
+    "message": "Paramètres"
+  },
+  "onboarding_step7_desc": {
+    "message": "Personnalisez votre expérience : changez la langue, le thème, masquez les outils et configurez les paramètres IA."
+  },
+  "onboarding_step8_title": {
+    "message": "Paramètres IA"
+  },
+  "onboarding_step8_desc": {
+    "message": "Allez dans l'onglet IA pour ajouter vos clés API Gemini et choisir votre modèle et langue préférés pour les outils IA."
+  },
+  "onboarding_step9_title": {
+    "message": "Personnaliser les Outils"
+  },
+  "onboarding_step9_desc": {
+    "message": "Masquez les outils que vous n'utilisez pas pour garder votre espace de travail propre et focalisé."
+  },
+  "onboarding_step10_title": {
+    "message": "Vous êtes Prêt !"
+  },
+  "onboarding_step10_desc": {
+    "message": "Appuyez sur \"/\" pour focaliser rapidement la recherche, ou utilisez les raccourcis clavier. Cliquez sur l'icône d'information à tout moment pour revoir ce guide !"
+  },
+  "aiApiKeyRequired": {
+    "message": "Clé API IA requise. Ajoutez votre clé API Gemini dans les paramètres."
+  },
+  "aiApiKeyRequiredTitle": {
+    "message": "Clé API IA Requise"
+  },
+  "aiApiKeyRequiredDescription": {
+    "message": "Ajoutez la clé API Gemini pour les outils IA."
+  },
+  "openSettings": {
+    "message": "Ouvrir les Paramètres"
+  },
+  "close": {
+    "message": "Fermer"
+  },
+  "securityNotice": {
+    "message": "Avis de Sécurité"
+  },
+  "apiKeySecurityWarning": {
+    "message": "Les clés API sont stockées localement sur votre appareil en texte brut. Gardez votre appareil sécurisé et ne partagez pas de captures d'écran contenant des clés API"
+  },
+  "noApiKeys": {
+    "message": "Aucune clé API ajoutée pour le moment"
+  },
+  "colorPickerName": {
+    "message": "Sélecteur de Couleur"
+  },
+  "readingModeName": {
+    "message": "Mode Lecture"
+  },
+  "textHighlighterName": {
+    "message": "Surligneur de Texte"
+  },
+  "screenshotPickerName": {
+    "message": "Sélecteur de Capture"
+  },
+  "stickyNotesName": {
+    "message": "Notes Adhésives"
+  },
+  "aiTextSummarizerName": {
+    "message": "Résumé IA"
+  },
+  "aiChatName": {
+    "message": "Chat IA"
+  },
+  "supportTitle": {
+    "message": "Soutenir le Développeur"
+  },
+  "supportDescription": {
+    "message": "Toolary est entièrement gratuit ! Si vous le trouvez utile et souhaitez soutenir le développement futur, envisagez de m'offrir un café. Votre soutien m'aide à ajouter plus d'outils et à maintenir l'extension à jour."
+  },
+  "buyCoffee": {
+    "message": "Offrez-moi un café"
   }
 }

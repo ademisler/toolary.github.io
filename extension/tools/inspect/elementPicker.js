@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Element Picker',
   category: 'inspect',
   icon: 'element',
-  shortcut: {
-    default: 'Alt+Shift+2',
-    mac: 'Alt+Shift+2'
-  },
   permissions: ['activeTab'],
   tags: ['dom', 'css', 'xpath'],
   keywords: ['selector', 'xpath', 'html', 'inspect']

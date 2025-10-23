@@ -22,6 +22,7 @@ const uiComponentsPromise = import(chrome.runtime.getURL('shared/ui-components.j
   throw error;
 });
 
+
 const iconsPromise = import(chrome.runtime.getURL('shared/icons.js')).catch((error) => {
   console.error('Toolary popup: failed to load icons module', error);
   throw error;
@@ -69,7 +70,7 @@ const ONBOARDING_STEPS = [
   },
   {
     target: '.tool-card__favorite',
-    title: 'Favorite Tools',
+    title: chrome.i18n.getMessage('favoriteTools'),
     description: 'Star your favorite tools to keep them at the top of the list for quick access.',
     position: 'bottom'
   },
@@ -104,7 +105,7 @@ const ONBOARDING_STEPS = [
   {
     target: '#tool-search',
     title: 'You\'re All Set!',
-    description: 'Press "/" to quickly focus search, or use keyboard shortcuts. Click the info icon anytime to see this guide again!',
+    description: 'Press "/" to quickly focus search. Click the info icon anytime to see this guide again!',
     position: 'bottom',
     action: 'closeSettings'
   }
@@ -140,9 +141,7 @@ const modules = {};
 const ui = {};
 const icons = {};
 
-let shortcutsOverlay = null;
 let currentThemeSetting = 'system';
-let keyboardShortcuts = {};
 let pendingHidden = new Set();
 
 function dedupeStringList(list = []) {
@@ -525,7 +524,6 @@ function cacheElements() {
     categoryIcon: document.getElementById('category-icon'),
     toolsSection: document.getElementById('tools-section'),
     toolsGrid: document.querySelector('#tools-section .tools-grid'),
-    settingsShortcutsBtn: document.getElementById('settings-shortcuts-btn'),
     infoBtn: document.getElementById('info-btn'),
     settingsBtn: document.getElementById('settings-btn'),
     settingsPanel: document.getElementById('settings-panel'),
@@ -661,7 +659,7 @@ function createToolCardElement(tool) {
   // Add favorite button
   const favoriteBtn = document.createElement('button');
   favoriteBtn.className = 'tool-card__favorite';
-  favoriteBtn.setAttribute('aria-label', 'Toggle favorite');
+  favoriteBtn.setAttribute('aria-label', chrome.i18n.getMessage('toggleFavorite'));
   favoriteBtn.setAttribute('type', 'button');
 
   const isFavorite = state.favoriteTools.has(tool.id);
@@ -768,20 +766,6 @@ function matchesSearch(tool, term) {
   return haystack.includes(term);
 }
 
-function rebuildShortcutMap(tools = []) {
-  keyboardShortcuts = {};
-  tools.forEach((tool) => {
-    const shortcut = typeof tool.shortcut === 'object' && tool.shortcut
-      ? tool.shortcut.default || tool.shortcut.mac || ''
-      : tool.shortcut || '';
-    if (typeof shortcut === 'string') {
-      const match = shortcut.match(/([A-Za-z0-9])$/);
-      if (match) {
-        keyboardShortcuts[match[1]] = tool.id;
-      }
-    }
-  });
-}
 
 function applyFilters() {
   const term = state.searchTerm.trim().toLowerCase();
@@ -819,7 +803,6 @@ function applyFilters() {
 
   state.filteredTools = filtered;
   state.currentPage = 1; // Reset to first page when filters change
-  rebuildShortcutMap(filtered);
   renderMainToolsGrid();
   updatePagination();
 }
@@ -932,21 +915,21 @@ function updateSearchHint() {
   // Search hint UI removed for compact design
 }
 
-function updateFooterButtons(map) {
-  const shortcutsLabel = map?.shortcuts?.message || 'Shortcuts';
-  const shortcutsBtn = elements.shortcutsBtn;
-  if (shortcutsBtn) {
-    shortcutsBtn.setAttribute('aria-label', shortcutsLabel);
-    const textSpan = shortcutsBtn.querySelector('.footer-btn-text');
-    if (textSpan) {
-      textSpan.textContent = shortcutsLabel;
-    }
-  }
+function updateFooterButtons() {
 }
 
 
 async function activateTool(toolId) {
   try {
+    // Check if it's an AI tool and if API keys are available
+    if (isAITool(toolId)) {
+      const hasAPIKeys = await checkAIAPIKeys();
+      if (!hasAPIKeys) {
+        await showAIAPIWarningInPopup(toolId);
+        return;
+      }
+    }
+    
     const { messageRouter } = modules;
     await messageRouter.sendRuntimeMessage(messageRouter.MESSAGE_TYPES.ACTIVATE_TOOL, { toolId });
     
@@ -962,6 +945,171 @@ async function activateTool(toolId) {
   } catch (error) {
     console.error('Toolary popup: failed to activate tool', error);
   }
+}
+
+// Check if a tool is an AI tool
+function isAITool(toolId) {
+  const aiTools = [
+    'ai-chat',
+    'ai-text-summarizer', 
+    'ai-text-translator',
+    'ai-content-detector',
+    'ai-email-generator',
+    'ai-seo-analyzer'
+  ];
+  return aiTools.includes(toolId);
+}
+
+// Check if AI API keys are available
+async function checkAIAPIKeys() {
+  try {
+    const result = await chrome.storage.local.get(['toolaryAIKeys']);
+    const keys = result.toolaryAIKeys || [];
+    return keys.length > 0;
+  } catch (error) {
+    console.error('Failed to check AI API keys:', error);
+    return false;
+  }
+}
+
+// Show AI API warning in popup (onboarding-style)
+function showAIAPIWarningInPopup(toolId) {
+  const toolName = getToolDisplayName(toolId);
+  
+  // Show onboarding-style highlight for settings
+  setTimeout(() => {
+    showAISettingsHighlightInPopup(toolName);
+  }, 1000);
+}
+
+// Get tool display name
+function getToolDisplayName(toolId) {
+  if (!state.tools || !Array.isArray(state.tools)) {
+    return 'AI tool';
+  }
+  const tool = state.tools.find(t => t.id === toolId);
+  return tool ? tool.name : 'AI tool';
+}
+
+// Show onboarding-style highlight for AI settings in popup
+function showAISettingsHighlightInPopup(toolName) {
+  // Create AI warning overlay
+  createAIWarningOverlayInPopup(toolName);
+}
+
+// Create independent AI warning overlay in popup (inspired by onboarding design)
+function createAIWarningOverlayInPopup(toolName) {
+  // Remove existing AI warning if any
+  const existingOverlay = document.getElementById('ai-warning-overlay');
+  if (existingOverlay) {
+    existingOverlay.remove();
+  }
+  
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'ai-warning-overlay';
+  overlay.className = 'ai-warning-overlay';
+  overlay.innerHTML = `
+    <div class="ai-warning-backdrop"></div>
+    <div class="ai-warning-spotlight"></div>
+    <div class="ai-warning-tooltip">
+      <div class="ai-warning-tooltip__header">
+        <div class="ai-warning-tooltip__icon">⚠️</div>
+        <button class="ai-warning-tooltip__close" aria-label="Close">×</button>
+      </div>
+      <div class="ai-warning-tooltip__content">
+        <h3 class="ai-warning-tooltip__title">${state.langMap.aiApiKeyRequiredTitle?.message || 'AI API Key Required'}</h3>
+        <p class="ai-warning-tooltip__description">${state.langMap.aiApiKeyRequiredDescription?.message || `Add your Gemini API key in settings to use ${toolName}.`}</p>
+        <div class="ai-warning-tooltip__actions">
+          <button class="ai-warning-tooltip__btn ai-warning-tooltip__btn--primary" id="ai-warning-open-settings">
+            ${state.langMap.openSettings?.message || 'Open Settings'}
+          </button>
+          <button class="ai-warning-tooltip__btn ai-warning-tooltip__btn--secondary" id="ai-warning-close">
+            ${state.langMap.close?.message || 'Close'}
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(overlay);
+  
+  // Position the highlight
+  positionAIWarningHighlightInPopup();
+  
+  // Add event listeners
+  overlay.querySelector('#ai-warning-open-settings').addEventListener('click', () => {
+    // Open settings panel
+    openSettingsPanel();
+    // Switch to AI tab
+    setTimeout(() => {
+      switchSettingsTab('ai');
+    }, 100);
+    overlay.remove();
+  });
+  
+  overlay.querySelector('#ai-warning-close').addEventListener('click', () => {
+    overlay.remove();
+  });
+  
+  overlay.querySelector('.ai-warning-tooltip__close').addEventListener('click', () => {
+    overlay.remove();
+  });
+  
+  // Close on backdrop click
+  overlay.querySelector('.ai-warning-backdrop').addEventListener('click', () => {
+    overlay.remove();
+  });
+  
+  // Auto-close after 30 seconds
+  setTimeout(() => {
+    if (overlay.parentNode) {
+      overlay.remove();
+    }
+  }, 30000);
+}
+
+// Position AI warning highlight in popup
+function positionAIWarningHighlightInPopup() {
+  const settingsBtn = document.querySelector('#settings-btn');
+  if (!settingsBtn) return;
+  
+  const overlay = document.getElementById('ai-warning-overlay');
+  const spotlight = overlay.querySelector('.ai-warning-spotlight');
+  const tooltip = overlay.querySelector('.ai-warning-tooltip');
+  const backdrop = overlay.querySelector('.ai-warning-backdrop');
+  
+  const rect = settingsBtn.getBoundingClientRect();
+  
+  // Position spotlight
+  const padding = 8;
+  spotlight.style.left = `${rect.left - padding}px`;
+  spotlight.style.top = `${rect.top - padding}px`;
+  spotlight.style.width = `${rect.width + padding * 2}px`;
+  spotlight.style.height = `${rect.height + padding * 2}px`;
+  
+  // Update backdrop mask for spotlight effect
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  const radius = Math.max(rect.width, rect.height) / 2 + 20;
+  
+  backdrop.style.setProperty('--spotlight-x', `${centerX}px`);
+  backdrop.style.setProperty('--spotlight-y', `${centerY}px`);
+  backdrop.style.setProperty('--spotlight-radius', `${radius}px`);
+  
+  // Position tooltip in the center of the popup
+  // Use setTimeout to ensure tooltip is fully rendered
+  setTimeout(() => {
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const popupRect = document.body.getBoundingClientRect();
+    
+    // Center both horizontally and vertically in the popup
+    const left = popupRect.left + (popupRect.width - (tooltipRect.width || 290)) / 2;
+    const top = popupRect.top + (popupRect.height - (tooltipRect.height || 110)) / 2;
+    
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  }, 10);
 }
 
 async function toggleFavorite(toolId) {
@@ -1325,96 +1473,6 @@ function resetSettings() {
 }
 
 
-function showShortcutsModal(map = state.langMap) {
-  closeShortcutsModal();
-
-  const overlay = document.createElement('div');
-  overlay.id = 'popup-shortcuts-overlay';
-  overlay.className = 'modal-overlay';
-
-  const modal = document.createElement('div');
-  modal.className = 'modal';
-
-  const header = document.createElement('div');
-  header.className = 'modal-header';
-
-  const title = document.createElement('div');
-  title.className = 'modal-title';
-  title.textContent = map?.shortcutsTitle?.message || 'Keyboard shortcuts';
-
-  const closeBtn = document.createElement('button');
-  closeBtn.type = 'button';
-  closeBtn.className = 'modal-close';
-  closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>';
-
-  header.appendChild(title);
-  header.appendChild(closeBtn);
-
-  const body = document.createElement('div');
-  body.className = 'modal-body';
-
-  const descriptionText = map?.shortcutsDescription?.message || 'Trigger Toolary faster with these shortcuts.';
-  const description = document.createElement('p');
-  description.className = 'modal-description';
-  description.textContent = descriptionText;
-  body.appendChild(description);
-
-  const shortcutsList = [
-    { label: map?.shortcutToggle?.message || 'Toggle popup', key: 'Ctrl+Shift+P' },
-    { label: map?.shortcutClose?.message || 'Close popup', key: 'Esc' }
-  ];
-
-  state.toolMetadata.forEach((tool) => {
-    const shortcut = typeof tool.shortcut === 'object' && tool.shortcut
-      ? tool.shortcut.default || tool.shortcut.mac || ''
-      : tool.shortcut || '';
-    if (!shortcut) return;
-    shortcutsList.push({ label: tool.name, key: shortcut });
-  });
-
-  const shortcutsSection = document.createElement('div');
-  shortcutsSection.style.cssText = 'display:flex;flex-direction:column;gap:8px;';
-
-  shortcutsList.forEach(({ label, key }) => {
-    const row = document.createElement('div');
-    row.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:rgba(0,0,0,0.03);border-radius:8px;font-size:13px;';
-
-    const labelEl = document.createElement('span');
-    labelEl.textContent = label;
-    labelEl.style.cssText = 'color:var(--toolary-text);font-weight:500;';
-
-    const keyEl = document.createElement('span');
-    keyEl.textContent = key;
-    keyEl.style.cssText = 'background:var(--toolary-button-bg);border:1px solid var(--toolary-border);padding:4px 8px;border-radius:6px;font-size:11px;font-weight:600;color:var(--toolary-text);font-family:monospace;';
-
-    row.append(labelEl, keyEl);
-    shortcutsSection.appendChild(row);
-  });
-
-  body.appendChild(shortcutsSection);
-
-  modal.append(header, body);
-  overlay.appendChild(modal);
-  document.body.appendChild(overlay);
-
-  const handleOverlayClick = (event) => {
-    if (event.target === overlay) {
-      closeShortcutsModal();
-    }
-  };
-
-  closeBtn.addEventListener('click', closeShortcutsModal);
-  overlay.addEventListener('click', handleOverlayClick);
-
-  shortcutsOverlay = overlay;
-}
-
-function closeShortcutsModal() {
-  if (shortcutsOverlay) {
-    shortcutsOverlay.remove();
-    shortcutsOverlay = null;
-  }
-}
 
 async function initializeLanguageAndTheme() {
   const stored = await chrome.storage.local.get(['language', 'theme', 'browserLanguage']);
@@ -1486,7 +1544,6 @@ function attachEventListeners() {
     }
   });
 
-  elements.settingsShortcutsBtn?.addEventListener('click', () => showShortcutsModal());
 
   // Settings tab event listeners
   elements.settingsTabPreferences?.addEventListener('click', () => switchSettingsTab('preferences'));
@@ -1601,11 +1658,6 @@ function attachEventListeners() {
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
-      if (shortcutsOverlay) {
-        event.preventDefault();
-        closeShortcutsModal();
-        return;
-      }
       if (!elements.settingsPanel.hidden) {
         event.preventDefault();
         closeSettingsPanel({ save: false });
@@ -1715,15 +1767,18 @@ function renderAIKeys() {
   if (!elements.aiKeysContainer) return;
   
   // Security warning for API keys
+  const securityNotice = state.langMap.securityNotice?.message || 'Security Notice';
+  const apiKeySecurityWarning = state.langMap.apiKeySecurityWarning?.message || 'API keys are stored locally on your device in plain text. Keep your device secure and don\'t share screenshots containing API keys.';
+  
   const securityWarning = `
     <div class="ai-key-security-warning" style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: #856404;">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
         </svg>
-        <strong>Security Notice</strong>
-      </div>
-      <div>API keys are stored locally on your device in plain text. Keep your device secure and don't share screenshots containing API keys.</div>
+         <strong>${securityNotice}</strong>
+       </div>
+       <div>${apiKeySecurityWarning}</div>
     </div>
   `;
   
@@ -1930,8 +1985,16 @@ const onboarding = {
     const { onboardingCompleted } = await chrome.storage.local.get('onboardingCompleted');
     
     if (!onboardingCompleted) {
-      // First time user - start onboarding after popup loads
-      setTimeout(() => this.start(), 800);
+      // First time user - start onboarding after language is loaded
+      // Wait for langMap to be populated before starting onboarding
+      const checkLangMap = () => {
+        if (state.langMap && Object.keys(state.langMap).length > 0) {
+          setTimeout(() => this.start(), 100);
+        } else {
+          setTimeout(checkLangMap, 50);
+        }
+      };
+      checkLangMap();
     }
   },
   
@@ -2205,3 +2268,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderToolLists();
   await onboarding.init();
 });
+

@@ -60,3 +60,18 @@ export function addMessageListener(handlers = {}) {
 }
 
 export { MESSAGE_TYPES };
+
+// Alias for sendRuntimeMessage for compatibility
+export function sendMessage(type, payload = {}) {
+  return sendRuntimeMessage(type, payload);
+}
+
+// Export messageRouter object for compatibility
+export const messageRouter = {
+  createMessage,
+  sendRuntimeMessage,
+  sendTabMessage,
+  sendMessage,
+  addMessageListener,
+  MESSAGE_TYPES
+};

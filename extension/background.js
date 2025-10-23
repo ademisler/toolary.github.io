@@ -224,43 +224,6 @@ addMessageListener({
   }
 });
 
-const COMMAND_TOOL_MAP = {
-  'activate-color-picker': 'color-picker',
-  'activate-screenshot-picker': 'screenshot-picker',
-  'activate-reading-mode': 'reading-mode',
-  'activate-text-highlighter': 'text-highlighter'
-};
-
-chrome.commands.onCommand.addListener(async (command) => {
-  if (COMMAND_TOOL_MAP[command]) {
-    try {
-      await dispatchToolToActiveTab(COMMAND_TOOL_MAP[command]);
-    } catch (error) {
-      console.error(`Toolary: failed to run command ${command}`, error);
-    }
-    return;
-  }
-
-  if (command === 'open-popup') {
-    try {
-      await chrome.action.openPopup();
-    } catch (error) {
-      console.log('Toolary: popup open failed, falling back to in-page overlay', error);
-      try {
-        const tab = await getActiveTab();
-        if (tab?.id) {
-          const injected = await ensureContentScriptInjected(tab.id);
-          if (injected) {
-            await delay(100);
-            await messageRouter.sendTabMessage(tab.id, messageRouter.MESSAGE_TYPES.SHOW_POPUP, {});
-          }
-        }
-      } catch (fallbackError) {
-        console.error('Toolary: fallback popup method failed', fallbackError);
-      }
-    }
-  }
-});
 
 chrome.tabs.onRemoved.addListener((tabId) => {
   injectedTabs.delete(tabId);

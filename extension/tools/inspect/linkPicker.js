@@ -304,7 +304,7 @@ async function analyzeLinks(links, sourceLabel = 'selected area') {
   const successMessage = chrome.i18n ? chrome.i18n.getMessage('linksExtractedFromSource', [uniqueLinks.length, sourceLabel]) : `${uniqueLinks.length} links extracted from ${sourceLabel}!`;
   showSuccess(successMessage);
 
-  const title = `${uniqueLinks.length} ${uniqueLinks.length === 1 ? 'Link' : 'Links'}`;
+  const title = `${uniqueLinks.length} ${uniqueLinks.length === 1 ? t('link') : t('links')}`;
   showModal(title, urlsList, 'link', 'links');
   
   // Show coffee message when modal is closed

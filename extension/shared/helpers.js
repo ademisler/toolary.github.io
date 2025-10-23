@@ -705,6 +705,147 @@ export function showInfo(message, duration = 2000) {
   showToast(message, duration, 'info');
 }
 
+// Show AI API key warning with onboarding-style highlight
+export function showAIAPIWarning(toolName = 'AI tool') {
+  // Show onboarding-style highlight for settings
+  setTimeout(() => {
+    showAISettingsHighlight(toolName);
+  }, 1000);
+}
+
+// Show onboarding-style highlight for AI settings (independent system)
+function showAISettingsHighlight(toolName) {
+  // Check if we're in popup context
+  if (typeof window === 'undefined' || !document.getElementById('popup')) {
+    // If not in popup, try to open settings
+    if (typeof chrome !== 'undefined' && chrome.runtime) {
+      chrome.runtime.sendMessage({ action: 'openSettings' });
+    }
+    return;
+  }
+  
+  // Create AI warning overlay
+  createAIWarningOverlay(toolName);
+}
+
+// Create independent AI warning overlay (inspired by onboarding design)
+function createAIWarningOverlay(toolName) {
+  // Remove existing AI warning if any
+  const existingOverlay = document.getElementById('ai-warning-overlay');
+  if (existingOverlay) {
+    existingOverlay.remove();
+  }
+  
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'ai-warning-overlay';
+  overlay.className = 'ai-warning-overlay';
+  overlay.innerHTML = `
+    <div class="ai-warning-backdrop"></div>
+    <div class="ai-warning-spotlight"></div>
+    <div class="ai-warning-tooltip">
+      <div class="ai-warning-tooltip__header">
+        <div class="ai-warning-tooltip__icon">⚠️</div>
+        <button class="ai-warning-tooltip__close" aria-label="Close">×</button>
+      </div>
+      <div class="ai-warning-tooltip__content">
+        <h3 class="ai-warning-tooltip__title">${t('aiApiKeyRequiredTitle', 'AI API Key Required')}</h3>
+        <p class="ai-warning-tooltip__description">${t('aiApiKeyRequiredDescription', `To use ${toolName}, you need to add your Gemini API key in the settings. Click the settings button to configure AI settings.`)}</p>
+        <div class="ai-warning-tooltip__actions">
+          <button class="ai-warning-tooltip__btn ai-warning-tooltip__btn--primary" id="ai-warning-open-settings">
+            ${t('openSettings', 'Open Settings')}
+          </button>
+          <button class="ai-warning-tooltip__btn ai-warning-tooltip__btn--secondary" id="ai-warning-close">
+            ${t('close', 'Close')}
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(overlay);
+  
+  // Position the highlight
+  positionAIWarningHighlight();
+  
+  // Add event listeners
+  overlay.querySelector('#ai-warning-open-settings').addEventListener('click', () => {
+    // Open settings panel
+    if (typeof window.openSettingsPanel === 'function') {
+      window.openSettingsPanel();
+      // Switch to AI tab
+      setTimeout(() => {
+        if (typeof window.switchSettingsTab === 'function') {
+          window.switchSettingsTab('ai');
+        }
+      }, 100);
+    }
+    overlay.remove();
+  });
+  
+  overlay.querySelector('#ai-warning-close').addEventListener('click', () => {
+    overlay.remove();
+  });
+  
+  overlay.querySelector('.ai-warning-tooltip__close').addEventListener('click', () => {
+    overlay.remove();
+  });
+  
+  // Close on backdrop click
+  overlay.querySelector('.ai-warning-backdrop').addEventListener('click', () => {
+    overlay.remove();
+  });
+  
+  // Auto-close after 30 seconds
+  setTimeout(() => {
+    if (overlay.parentNode) {
+      overlay.remove();
+    }
+  }, 30000);
+}
+
+// Position AI warning highlight
+function positionAIWarningHighlight() {
+  const settingsBtn = document.querySelector('#settings-btn');
+  if (!settingsBtn) return;
+  
+  const overlay = document.getElementById('ai-warning-overlay');
+  const spotlight = overlay.querySelector('.ai-warning-spotlight');
+  const tooltip = overlay.querySelector('.ai-warning-tooltip');
+  const backdrop = overlay.querySelector('.ai-warning-backdrop');
+  
+  const rect = settingsBtn.getBoundingClientRect();
+  
+  // Position spotlight
+  const padding = 8;
+  spotlight.style.left = `${rect.left - padding}px`;
+  spotlight.style.top = `${rect.top - padding}px`;
+  spotlight.style.width = `${rect.width + padding * 2}px`;
+  spotlight.style.height = `${rect.height + padding * 2}px`;
+  
+  // Update backdrop mask for spotlight effect
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  const radius = Math.max(rect.width, rect.height) / 2 + 20;
+  
+  backdrop.style.setProperty('--spotlight-x', `${centerX}px`);
+  backdrop.style.setProperty('--spotlight-y', `${centerY}px`);
+  backdrop.style.setProperty('--spotlight-radius', `${radius}px`);
+  
+  // Position tooltip in the center of the popup
+  setTimeout(() => {
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const popupRect = document.body.getBoundingClientRect();
+    
+    // Center both horizontally and vertically in the popup
+    const left = popupRect.left + (popupRect.width - (tooltipRect.width || 290)) / 2;
+    const top = popupRect.top + (popupRect.height - (tooltipRect.height || 110)) / 2;
+    
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  }, 10);
+}
+
 export function showToast(message, duration = 1500, type = 'info', position = 'bottom') {
   // Remove existing toasts
   document.querySelectorAll('#toolary-toast').forEach(toast => toast.remove());
@@ -1014,7 +1155,7 @@ export async function showFavorites() {
     const favIcon = renderIcon('favorite', { size: 20, decorative: true });
     headerTitle.appendChild(favIcon);
     const headerText = document.createElement('span');
-    headerText.textContent = 'Favorites';
+    headerText.textContent = t('favorites');
     headerTitle.appendChild(headerText);
 
     const closeFavoritesBtn = document.createElement('button');
@@ -1067,7 +1208,7 @@ export async function showFavorites() {
           padding: 40px 20px;
           color: var(--toolary-secondary-text, #666);
         `;
-        emptyState.textContent = 'No favorites yet. Click the star button in any tool to add favorites!';
+        emptyState.textContent = t('noFavoritesYet');
         list.appendChild(emptyState);
         return;
       }
@@ -1157,14 +1298,14 @@ export async function showFavorites() {
         copyIcon.style.color = '#3a2900';
         copyButton.appendChild(copyIcon);
         const copyTextLabel = document.createElement('span');
-        copyTextLabel.textContent = 'Copy';
+        copyTextLabel.textContent = t('copy');
         copyTextLabel.style.color = '#3a2900';
         copyButton.appendChild(copyTextLabel);
 
         copyButton.addEventListener('click', (event) => {
           event.stopPropagation();
           copyText(item.content);
-          showSuccess('Copied to clipboard!');
+          showSuccess(t('copiedToClipboard'));
         });
 
         const removeButton = document.createElement('button');
@@ -1185,7 +1326,7 @@ export async function showFavorites() {
         `;
         removeButton.appendChild(renderIcon('trash', { size: 14, decorative: true }));
         const removeText = document.createElement('span');
-        removeText.textContent = 'Remove';
+        removeText.textContent = t('remove');
         removeButton.appendChild(removeText);
 
         removeButton.addEventListener('click', async (event) => {
@@ -1196,7 +1337,7 @@ export async function showFavorites() {
             const index = favorites.indexOf(item);
             if (index > -1) favorites.splice(index, 1);
             renderFavorites();
-            showInfo('Removed from favorites');
+            showInfo(t('removedFromFavorites'));
           }
         });
 
@@ -1272,7 +1413,7 @@ export async function showFavorites() {
 
   } catch (error) {
     handleError(error, 'showFavorites');
-    showError('Failed to load favorites');
+    showError(t('failedToLoadFavorites'));
   }
 }
 

@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Text Highlighter',
   category: 'enhance',
   icon: 'highlighter',
-  shortcut: {
-    default: 'Alt+Shift+7',
-    mac: 'Alt+Shift+7'
-  },
   permissions: ['activeTab', 'storage'],
   tags: ['highlight', 'text', 'annotation', 'reading'],
   keywords: ['highlight', 'mark', 'annotate', 'reading']

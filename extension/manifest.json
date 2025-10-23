@@ -69,35 +69,5 @@
       ]
     }
   ],
-  "default_locale": "en",
-  "commands": {
-    "activate-color-picker": {
-      "suggested_key": {
-        "default": "Alt+Shift+1",
-        "mac": "Alt+Shift+1"
-      },
-      "description": "__MSG_cmdColorPicker__"
-    },
-    "activate-screenshot-picker": {
-      "suggested_key": {
-        "default": "Alt+Shift+3",
-        "mac": "Alt+Shift+3"
-      },
-      "description": "__MSG_cmdScreenshotPicker__"
-    },
-    "activate-reading-mode": {
-      "suggested_key": {
-        "default": "Alt+Shift+8",
-        "mac": "Alt+Shift+8"
-      },
-      "description": "__MSG_cmdReadingMode__"
-    },
-    "activate-text-highlighter": {
-      "suggested_key": {
-        "default": "Alt+Shift+7",
-        "mac": "Alt+Shift+7"
-      },
-      "description": "__MSG_cmdTextHighlighter__"
-    }
-  }
+  "default_locale": "en"
 }

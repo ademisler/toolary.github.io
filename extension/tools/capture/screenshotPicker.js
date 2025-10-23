@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Screenshot Picker',
   category: 'capture',
   icon: 'screenshot',
-  shortcut: {
-    default: 'Alt+Shift+3',
-    mac: 'Alt+Shift+3'
-  },
   permissions: ['activeTab'],
   tags: ['screenshot', 'capture'],
   keywords: ['full page', 'capture', 'screenshot', 'image']

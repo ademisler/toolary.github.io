@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Sticky Notes',
   category: 'enhance',
   icon: 'notes',
-  shortcut: {
-    default: 'Alt+Shift+8',
-    mac: 'Alt+Shift+8'
-  },
   permissions: ['activeTab', 'storage'],
   tags: ['notes', 'storage', 'productivity'],
   keywords: ['sticky', 'notes', 'annotate', 'save']

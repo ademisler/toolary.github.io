@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Font Finder',
   category: 'inspect',
   icon: 'font',
-  shortcut: {
-    default: 'Alt+Shift+4',
-    mac: 'Alt+Shift+4'
-  },
   permissions: ['activeTab'],
   tags: ['typography', 'design'],
   keywords: ['font', 'typography', 'weights', 'styles']

@@ -32,16 +32,13 @@
       "name": "Color Picker",
       "category": "inspect",
       "module": "inspect/colorPicker.js",
-      "order": 1,
+      "order": 12,
       "icon": "color",
-      "shortcut": {
-        "default": "Alt+Shift+1",
-        "mac": "Alt+Shift+1"
-      },
       "i18n": {
         "label": "color",
         "title": "colorPicker",
-        "description": "colorPickerDescription"
+        "description": "colorPickerDescription",
+        "name": "colorPickerName"
       },
       "tags": ["color", "design", "palette"],
       "keywords": ["hex", "rgb", "hsl", "eyedropper"],
@@ -52,7 +49,7 @@
       "name": "Element Picker",
       "category": "inspect",
       "module": "inspect/elementPicker.js",
-      "order": 2,
+      "order": 14,
       "icon": "element",
       "i18n": {
         "label": "element",
@@ -68,7 +65,7 @@
       "name": "Link Picker",
       "category": "inspect",
       "module": "inspect/linkPicker.js",
-      "order": 3,
+      "order": 15,
       "icon": "link",
       "i18n": {
         "label": "link",
@@ -84,7 +81,7 @@
       "name": "Font Finder",
       "category": "inspect",
       "module": "inspect/fontPicker.js",
-      "order": 4,
+      "order": 16,
       "icon": "font",
       "i18n": {
         "label": "font",
@@ -100,7 +97,7 @@
       "name": "Media Download",
       "category": "capture",
       "module": "capture/mediaPicker.js",
-      "order": 5,
+      "order": 7,
       "icon": "image",
       "i18n": {
         "label": "media",
@@ -116,7 +113,7 @@
       "name": "Text Picker",
       "category": "capture",
       "module": "capture/textPicker.js",
-      "order": 6,
+      "order": 24,
       "icon": "text",
       "i18n": {
         "label": "text",
@@ -132,16 +129,13 @@
       "name": "Screenshot Picker",
       "category": "capture",
       "module": "capture/screenshotPicker.js",
-      "order": 7,
+      "order": 1,
       "icon": "screenshot",
-      "shortcut": {
-        "default": "Alt+Shift+3",
-        "mac": "Alt+Shift+3"
-      },
       "i18n": {
         "label": "screenshot",
         "title": "screenshotPicker",
-        "description": "screenshotPickerDescription"
+        "description": "screenshotPickerDescription",
+        "name": "screenshotPickerName"
       },
       "tags": ["screenshot", "capture"],
       "keywords": ["full page", "capture", "screenshot"],
@@ -152,7 +146,7 @@
       "name": "PDF Generator",
       "category": "capture",
       "module": "capture/pdfGenerator.js",
-      "order": 8,
+      "order": 17,
       "icon": "pdf",
       "i18n": {
         "label": "pdf",
@@ -168,7 +162,7 @@
       "name": "QR Code Generator",
       "category": "capture",
       "module": "capture/qrCodeGenerator.js",
-      "order": 9,
+      "order": 18,
       "icon": "qrcode",
       "i18n": {
         "label": "qrcode",
@@ -184,12 +178,13 @@
       "name": "Sticky Notes",
       "category": "enhance",
       "module": "enhance/stickyNotesPicker.js",
-      "order": 10,
+      "order": 2,
       "icon": "notes",
       "i18n": {
         "label": "notes",
         "title": "stickyNotesPicker",
-        "description": "stickyNotesPickerDescription"
+        "description": "stickyNotesPickerDescription",
+        "name": "stickyNotesName"
       },
       "tags": ["notes", "storage"],
       "keywords": ["sticky", "notes", "annotate"],
@@ -200,16 +195,13 @@
       "name": "Reading Mode",
       "category": "enhance",
       "module": "enhance/readingMode.js",
-      "order": 11,
+      "order": 13,
       "icon": "book-open",
-      "shortcut": {
-        "default": "Alt+Shift+8",
-        "mac": "Alt+Shift+8"
-      },
       "i18n": {
         "label": "readingMode",
         "title": "readingModeTitle",
-        "description": "readingModeDescription"
+        "description": "readingModeDescription",
+        "name": "readingModeName"
       },
       "tags": ["reading", "focus", "clean"],
       "keywords": ["reader", "article", "focus", "distraction-free"],
@@ -220,16 +212,13 @@
       "name": "Text Highlighter",
       "category": "enhance",
       "module": "enhance/textHighlighter.js",
-      "order": 12,
+      "order": 22,
       "icon": "highlighter",
-      "shortcut": {
-        "default": "Alt+Shift+7",
-        "mac": "Alt+Shift+7"
-      },
       "i18n": {
         "label": "highlighter",
         "title": "textHighlighter",
-        "description": "textHighlighterDescription"
+        "description": "textHighlighterDescription",
+        "name": "textHighlighterName"
       },
       "tags": ["highlight", "text", "annotation", "reading"],
       "keywords": ["highlight", "mark", "annotate", "reading"],
@@ -240,7 +229,7 @@
       "name": "Site Info",
       "category": "utilities",
       "module": "utilities/siteInfoPicker.js",
-      "order": 13,
+      "order": 19,
       "icon": "info",
       "i18n": {
         "label": "info",
@@ -256,7 +245,7 @@
       "name": "Color Palette Generator",
       "category": "utilities",
       "module": "utilities/colorPaletteGenerator.js",
-      "order": 14,
+      "order": 20,
       "icon": "palette",
       "i18n": {
         "label": "colorPalette",
@@ -272,7 +261,7 @@
       "name": "Bookmark Manager",
       "category": "enhance",
       "module": "enhance/bookmarkManager.js",
-      "order": 15,
+      "order": 5,
       "icon": "bookmark",
       "i18n": {
         "label": "bookmarkManager",
@@ -288,7 +277,7 @@
       "name": "Video Recorder",
       "category": "capture",
       "module": "capture/videoRecorder.js",
-      "order": 16,
+      "order": 21,
       "icon": "video",
       "i18n": {
         "label": "videoRecorder",
@@ -304,7 +293,7 @@
       "name": "Dark Mode Toggle",
       "category": "enhance",
       "module": "enhance/darkModeToggle.js",
-      "order": 17,
+      "order": 6,
       "icon": "moon",
       "i18n": {
         "label": "darkModeToggle",
@@ -320,12 +309,13 @@
       "name": "AI Summarizer",
       "category": "ai",
       "module": "ai/textSummarizer.js",
-      "order": 18,
+      "order": 3,
       "icon": "brain",
       "i18n": {
         "label": "aiTextSummarizer",
         "title": "aiTextSummarizerTitle",
-        "description": "aiTextSummarizerDescription"
+        "description": "aiTextSummarizerDescription",
+        "name": "aiTextSummarizerName"
       },
       "tags": ["ai", "summary", "analysis", "text"],
       "keywords": ["summarize", "summary", "ai", "keywords", "extract"],
@@ -336,7 +326,7 @@
       "name": "AI Translator",
       "category": "ai",
       "module": "ai/textTranslator.js",
-      "order": 19,
+      "order": 8,
       "icon": "languages",
       "i18n": {
         "label": "aiTextTranslator",
@@ -352,7 +342,7 @@
       "name": "AI Content Detector",
       "category": "ai",
       "module": "ai/contentDetector.js",
-      "order": 20,
+      "order": 9,
       "icon": "sparkles",
       "i18n": {
         "label": "aiContentDetector",
@@ -368,7 +358,7 @@
       "name": "AI Email Generator",
       "category": "ai",
       "module": "ai/emailGenerator.js",
-      "order": 21,
+      "order": 10,
       "icon": "email",
       "i18n": {
         "label": "aiEmailGenerator",
@@ -384,7 +374,7 @@
       "name": "AI SEO Analyzer",
       "category": "ai",
       "module": "ai/seoAnalyzer.js",
-      "order": 22,
+      "order": 11,
       "icon": "search-check",
       "i18n": {
         "label": "aiSEOAnalyzer",
@@ -400,12 +390,13 @@
       "name": "AI Chat",
       "category": "ai",
       "module": "ai/aiChat.js",
-      "order": 23,
+      "order": 4,
       "icon": "message",
       "i18n": {
         "label": "aiChat",
         "title": "aiChatTitle",
-        "description": "aiChatDescription"
+        "description": "aiChatDescription",
+        "name": "aiChatName"
       },
       "tags": ["ai", "chat", "assistant", "conversation"],
       "keywords": ["chat", "ai", "assistant", "help", "question"],
@@ -416,7 +407,7 @@
       "name": "Copy History Manager",
       "category": "utilities",
       "module": "utilities/copyHistoryManager.js",
-      "order": 24,
+      "order": 23,
       "icon": "clipboard-list",
       "i18n": {
         "label": "copyHistoryManager",

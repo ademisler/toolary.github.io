@@ -21,10 +21,6 @@ export const metadata = {
   name: 'Media Download',
   category: 'capture',
   icon: 'image',
-  shortcut: {
-    default: 'Alt+Shift+5',
-    mac: 'Alt+Shift+5'
-  },
   permissions: ['activeTab', 'downloads'],
   tags: ['media', 'image', 'video'],
   keywords: ['images', 'videos', 'download', 'assets']

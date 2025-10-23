@@ -459,3 +459,12 @@ export function getIconSvg(name, options = {}) {
 }
 
 export const ICON_NAMES = Object.keys(ICON_DEFINITIONS);
+
+// Export icons object for compatibility
+export const icons = {
+  createIconElement,
+  renderIcon,
+  getIconSvg,
+  getIconDefinition,
+  ICON_NAMES
+};

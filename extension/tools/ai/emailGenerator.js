@@ -1401,6 +1401,9 @@ export async function activate(deactivate) {
     // Load UI language first
     await loadUserUILanguage();
     
+    // Load AI manager
+    await loadAIManager();
+    
     // Create floating widget
     floatingWidget = createFloatingWidget();
     document.body.appendChild(floatingWidget);

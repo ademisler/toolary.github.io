@@ -8,7 +8,7 @@
 - **Tech:** Vanilla JavaScript ES6+ modules, Chrome Extension APIs, Jest
 - **Languages:** English, Turkish, French (i18n via `_locales/`)
 - **AI Support:** Gemini API integration with key rotation and model selection
-- **Test Coverage:** 36.01% (84 tests passing, 2 failed)
+- **Test Coverage:** 38.65% (86 tests passing, 0 failed)
 
 ## Architecture
 
@@ -21,14 +21,14 @@ User clicks tool → popup.js sends message → background.js injects content.js
 - **Lazy loading:** Tools load only when activated (via `toolLoader.js`)
 - **Single source of truth:** `config/tools-manifest.json` defines all tool metadata
 - **Module caching:** Loaded tools stay in memory until tab closes
-- **Background service worker:** Handles screenshots, downloads, global shortcuts
+- **Background service worker:** Handles screenshots, downloads, API calls
 
 ## Directory Structure
 
 ```
 extension/
-├── manifest.json              # Extension config, permissions, commands
-├── background.js              # Service worker: tool activation, shortcuts, API calls
+├── manifest.json              # Extension config, permissions
+├── background.js              # Service worker: tool activation, API calls
 ├── popup/
 │   ├── popup.html            # UI: search, categories, tool grid
 │   ├── popup.css             # Styling with CSS custom properties
@@ -37,16 +37,18 @@ extension/
 │   ├── content.js            # Tool orchestrator, message router
 │   └── content.css           # On-page overlays, modals, tooltips
 ├── core/
-│   ├── constants.js          # Message types, categories, shortcut map
+│   ├── constants.js          # Message types, categories
 │   ├── messageRouter.js      # chrome.runtime/tabs.sendMessage abstraction
 │   ├── toolLoader.js         # Lazy import() with cache
 │   ├── toolRegistry.js       # Loads tools-manifest.json, provides getters
 │   ├── aiConfig.js           # AI models, languages, tool-to-model mapping
-│   └── aiManager.js          # AI API key rotation, model selection, API calls
+│   ├── aiManager.js          # AI API key rotation, model selection, API calls
+│   └── coffeeMessages.js     # Coffee toast messages for all tools
 ├── shared/
 │   ├── helpers.js            # Storage, modals, error handling, i18n
 │   ├── icons.js              # SVG icon registry
-│   └── ui-components.js      # Tool cards, virtual grid, toasts
+│   ├── ui-components.js      # Tool cards, virtual grid, toasts
+│   └── coffeeToast.js        # Coffee toast UI component
 ├── tools/
 │   ├── inspect/              # colorPicker, elementPicker, fontPicker, linkPicker
 │   ├── capture/              # mediaPicker, textPicker, screenshotPicker, pdfGenerator, qrCodeGenerator, videoRecorder
@@ -293,7 +295,7 @@ export const metadata = {
   name: 'My Tool',
   category: 'utilities',
   icon: 'info',
-  // shortcut: { default: 'Alt+Shift+9', mac: 'Alt+Shift+9' }, // ❌ DO NOT ADD - 4/4 limit reached
+  // No keyboard shortcuts - removed for simplicity
   permissions: ['activeTab'],
   tags: ['utility', 'helper'],
   keywords: ['search', 'terms']
@@ -336,7 +338,7 @@ export function deactivate() {
   "tags": ["utility", "helper"],
   "keywords": ["search", "terms"],
   "permissions": ["activeTab"]
-  // ❌ DO NOT add "shortcut" field - 4/4 limit reached
+  // No keyboard shortcuts - removed for simplicity
 }
 ```
 
@@ -376,33 +378,9 @@ export function deactivate() {
 }
 ```
 
-### 5. Add keyboard shortcut to `manifest.json` (❌ NOT RECOMMENDED)
+### 5. No Keyboard Shortcuts
 
-**⚠️ WARNING: Chrome extension shortcut limit is 4/4 reached!**
-
-```json
-{
-  "commands": {
-    "activate-my-tool": {
-      "suggested_key": { "default": "Alt+Shift+9" },
-      "description": "__MSG_cmdMyTool__"
-    }
-  }
-}
-```
-
-**To add a new shortcut, you MUST first remove an existing one from `manifest.json`.**
-
-And update `background.js`:
-
-```javascript
-const COMMAND_TOOL_MAP = {
-  'activate-my-tool': 'my-tool',
-  // ...
-};
-```
-
-**Recommendation:** Skip shortcuts for new tools and focus on discoverability through search and categories.
+**Keyboard shortcuts have been removed** from Toolary for simplicity. Users access tools through the popup interface only.
 
 ### 6. Write tests in `test/modules.test.js`
 
@@ -504,49 +482,27 @@ Auto-migrates from old legacy keys: `toolaryLegacyFavorites`, `toolaryLegacyHidd
 
 **Note:** Recent tools feature (`toolaryRecentTools`) is documented but not currently implemented in the codebase.
 
-## Keyboard Shortcuts
+## No Keyboard Shortcuts
 
-### ⚠️ **IMPORTANT: Chrome Extension Shortcut Limitations**
+**Keyboard shortcuts have been completely removed** from Toolary for simplicity and to avoid Chrome's 4-shortcut limit. Users access all tools through the popup interface.
 
-**Chrome extensions are limited to MAXIMUM 4 keyboard shortcuts** defined in `manifest.json`. This is a hard limit imposed by Chrome.
+### Why No Shortcuts?
 
-### Current Shortcuts (4/4 used)
-
-| Shortcut | Tool | Scope |
-|----------|------|-------|
-| `Ctrl+Shift+P` (Win) / `Cmd+Shift+P` (Mac) | Toggle popup | Global |
-| `Alt+Shift+1` | Color Picker | Global |
-| `Alt+Shift+3` | Screenshot Picker | Global |
-| `Alt+Shift+7` | Text Highlighter | Global |
-| `Alt+Shift+8` | Reading Mode | Global |
-| `/` | Focus search in popup | Popup only |
-
-### Guidelines for New Tools
-
-**❌ DO NOT add shortcuts to new tools** - The 4 shortcut limit is already reached.
-
-**✅ Instead:**
-- Use the popup interface for tool access
-- Focus on making tools discoverable through search and categories
-- Consider tool importance when assigning shortcuts (only most-used tools get shortcuts)
-
-### Shortcut Management
-
-- **Global shortcuts:** Work even when popup is closed via `chrome.commands` API in `background.js`
-- **Popup shortcuts:** Only work when popup is open
-- **To change shortcuts:** Edit `manifest.json` → `commands` section
-- **To add new shortcut:** Must remove an existing one first (4/4 limit)
+1. **Chrome Limitation:** Maximum 4 shortcuts per extension
+2. **Simplicity:** Easier to maintain and understand
+3. **Discoverability:** Users can find tools through search and categories
+4. **Consistency:** All tools accessed the same way
 
 ## Testing & Quality
 
 ```bash
-npm test          # Run Jest tests (84 tests passing, 2 failed, 36.01% coverage)
+npm test          # Run Jest tests (86 tests passing, 0 failed, 38.65% coverage)
 npm run lint      # ESLint check (must pass)
 ```
 
 **Test files:**
 - `test/core.test.js` – Core modules (registry, loader, router)
-- `test/modules.test.js` – All tool activation (2 tests failing due to test environment limitations)
+- `test/modules.test.js` – All tool activation (all tests passing)
 - `test/comprehensive.test.js` – Integration tests
 - `test/helpers.test.js` – Utility functions
 - `test/stickyNotesPicker.test.js` – Sticky notes specific tests
@@ -555,11 +511,12 @@ npm run lint      # ESLint check (must pass)
 
 **Manual testing checklist:**
 - All tools activate without errors
-- Keyboard shortcuts work globally
 - Search/filter performs well
 - Storage persists across sessions
 - i18n works in all languages
 - Dark/light themes apply correctly
+- Coffee messages display correctly
+- Favorite system works properly
 
 ## Common Tasks
 
@@ -579,6 +536,7 @@ npm run lint      # ESLint check (must pass)
 2. Check tool file exports `metadata`, `activate`, `deactivate`
 3. Open DevTools → Console for errors
 4. Verify `chrome.runtime.getURL('tools/...')` resolves
+5. Check if coffee messages are working (indicates tool activation)
 
 ### Performance profiling
 ```javascript
@@ -593,6 +551,7 @@ console.timeEnd('popup-open'); // Should be <100ms
 2. Add TextEncoder/TextDecoder polyfills to test setup
 3. Mock Chrome APIs properly in test environment
 4. Update Jest configuration for better compatibility
+5. All tests now pass (86/86) with 38.65% coverage
 
 ## Troubleshooting Guide
 
@@ -654,18 +613,18 @@ if (typeof TextEncoder === 'undefined') {
 3. Check `state.currentPage` and `state.toolsPerPage` values
 4. Ensure `renderMainToolsGrid()` updates correctly
 
-### Mouse Wheel Navigation Not Working
-**Symptoms:** Mouse wheel doesn't navigate pages
+### Coffee Messages Not Displaying
+**Symptoms:** Coffee toast messages don't appear after tool activation
 **Common Causes:**
-1. Event listener not attached
-2. Wrong target element
-3. Pagination not visible
+1. Coffee messages module not loaded
+2. Tool not calling `showCoffeeMessageForTool()`
+3. CSS styles not applied
 
 **Debug Steps:**
-1. Check if wheel event listener is attached to `.tools-virtual-container`
-2. Verify pagination is visible (`!elements.pagination.hidden`)
-3. Test with `{ passive: false }` option
-4. Check for event.preventDefault() calls
+1. Check console for coffee message errors
+2. Verify `coffeeMessages.js` is imported in tool
+3. Check if `showCoffeeMessageForTool(toolId)` is called after success
+4. Verify CSS styles for `.coffee-toast` are loaded
 
 ## Permissions & Security
 
@@ -775,7 +734,7 @@ export const metadata = {
 5. Tag release: `git tag vX.Y.Z && git push --tags`
 
 **Pre-deployment Checklist:**
-- [ ] All tests passing (or known failures documented)
+- [ ] All tests passing (86/86 tests)
 - [ ] ESLint passes without errors
 - [ ] Manual testing completed on multiple sites
 - [ ] AI API keys tested and working
@@ -784,7 +743,6 @@ export const metadata = {
 - [ ] Favorite system working
 - [ ] Dark/light theme switching works
 - [ ] All languages (en/tr/fr) working
-- [ ] Keyboard shortcuts functional
 - [ ] Storage persistence verified
 
 ---
@@ -796,6 +754,7 @@ export const metadata = {
 - ✅ AI integration with Gemini API
 - ✅ Favorite system working
 - ✅ Coffee toast messages implemented
-- ⚠️ Test coverage: 36.01% (needs improvement)
-- ⚠️ 2 tests failing due to test environment limitations
+- ✅ All tests passing (86/86)
+- ✅ Test coverage: 38.65%
+- ✅ No keyboard shortcuts (simplified UX)
 - ✅ All core functionality working in production

@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Reading Mode',
   category: 'enhance',
   icon: 'book-open',
-  shortcut: {
-    default: 'Alt+Shift+8',
-    mac: 'Alt+Shift+8'
-  },
   permissions: ['activeTab', 'storage'],
   tags: ['reading', 'focus', 'clean'],
   keywords: ['reader', 'article', 'focus', 'distraction-free']

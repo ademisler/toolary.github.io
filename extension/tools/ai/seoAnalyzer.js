@@ -902,6 +902,9 @@ export async function activate(deactivate) {
     // Load language
     await loadLanguage();
     
+    // Load AI manager
+    await import('../../core/aiManager.js');
+    
     // Create sidebar directly (no toggle)
     console.log('Creating sidebar...');
     showPanel();

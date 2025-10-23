@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Color Picker',
   category: 'inspect',
   icon: 'color',
-  shortcut: {
-    default: 'Alt+Shift+1',
-    mac: 'Alt+Shift+1'
-  },
   permissions: ['activeTab'],
   tags: ['color', 'design', 'palette'],
   keywords: ['hex', 'rgb', 'hsl', 'eyedropper']
@@ -170,10 +166,18 @@ export function activate(deactivate) {
         e.preventDefault();
         e.stopPropagation();
         
+        // Check if EyeDropper is supported
+        if (!window.EyeDropper) {
+          throw new Error('EyeDropper API not supported in this browser');
+        }
+        
         const ed = safeExecute(() => new EyeDropper(), 'create EyeDropper');
         if (!ed) {
           throw new Error('Failed to create EyeDropper instance');
         }
+        
+        // Add a small delay to ensure the click event is fully processed
+        await new Promise(resolve => setTimeout(resolve, 50));
         
         const res = await safeExecute(async () => await ed.open(), 'open EyeDropper');
         if (!res) {
@@ -215,10 +219,17 @@ export function activate(deactivate) {
         deactivate();
         
       } catch (error) {
-        handleError(error, 'colorPicker handleClick');
+        // Don't log AbortError as it's user cancellation
+        if (error.name !== 'AbortError') {
+          console.debug('Color picker error:', error.message);
+        }
+        
         if (error.name === 'AbortError') {
           const cancelMessage = chrome.i18n ? chrome.i18n.getMessage('colorPickingCancelled') : 'Color picking cancelled';
           showInfo(cancelMessage);
+        } else if (error.message.includes('EyeDropper API not supported')) {
+          const notSupportedMessage = chrome.i18n ? chrome.i18n.getMessage('eyeDropperNotSupported') : 'EyeDropper API not supported in this browser. Please use Chrome 95+ or try a different tool.';
+          showError(notSupportedMessage);
         } else {
           const errorMessage = chrome.i18n ? chrome.i18n.getMessage('failedToProcessColor') : 'Failed to process color. Please try again.';
           showError(errorMessage);

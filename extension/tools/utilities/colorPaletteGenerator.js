@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Color Palette Generator',
   category: 'utilities',
   icon: 'palette',
-  shortcut: {
-    default: 'Alt+Shift+4',
-    mac: 'Alt+Shift+4'
-  },
   permissions: ['activeTab'],
   tags: ['color', 'design', 'palette', 'harmony'],
   keywords: ['color scheme', 'palette', 'harmony', 'contrast', 'accessibility', 'wcag']

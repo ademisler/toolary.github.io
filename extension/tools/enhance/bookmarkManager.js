@@ -100,20 +100,27 @@ function generateBookmarkId() {
 // Get current page info
 async function getCurrentPageInfo() {
   try {
-    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-    const tab = tabs[0];
-    
-    if (!tab) {
-      throw new Error('No active tab found');
+    // Check if we're in a content script context
+    if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
+      const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+      const tab = tabs[0];
+      
+      if (!tab) {
+        throw new Error('No active tab found');
+      }
+      
+      return {
+        title: tab.title || 'Untitled',
+        url: tab.url,
+        favicon: tab.favIconUrl || null
+      };
+    } else {
+      // Fallback for content script context
+      throw new Error('Chrome tabs API not available in content script');
     }
-    
-    return {
-      title: tab.title || 'Untitled',
-      url: tab.url,
-      favicon: tab.favIconUrl || null
-    };
   } catch (error) {
-    handleError(error, 'getCurrentPageInfo');
+    // Use document fallback when chrome.tabs API is not available
+    console.debug('getCurrentPageInfo: Using document fallback', error.message);
     return {
       title: document.title || 'Untitled',
       url: window.location.href,
@@ -646,7 +653,7 @@ function createBookmarkPanel() {
   
   const titleIcon = createIconElement('bookmark', { size: 18, decorative: true });
   title.appendChild(titleIcon);
-  title.appendChild(document.createTextNode('Bookmark Manager'));
+  title.appendChild(document.createTextNode(t('bookmarkManager')));
   
   const closeBtn = document.createElement('button');
   closeBtn.style.cssText = `
@@ -714,10 +721,10 @@ function createBookmarkPanel() {
   `;
   
   const filterButtons = [
-    { id: 'all', label: 'All', icon: 'list' },
-    { id: 'favorites', label: 'Favorites', icon: 'star' },
-    { id: 'folder', label: 'Folders', icon: 'folder' },
-    { id: 'tag', label: 'Tags', icon: 'tag' }
+    { id: 'all', label: t('all'), icon: 'list' },
+    { id: 'favorites', label: t('favorites'), icon: 'star' },
+    { id: 'folder', label: t('folders'), icon: 'folder' },
+    { id: 'tag', label: t('tags'), icon: 'tag' }
   ];
   
   filterButtons.forEach(filter => {
@@ -789,7 +796,7 @@ function createBookmarkPanel() {
     transition: all 0.2s ease;
   `;
   addBtn.appendChild(createIconElement('plus', { size: 16, decorative: true }));
-  addBtn.appendChild(document.createTextNode('Add Bookmark'));
+  addBtn.appendChild(document.createTextNode(t('addBookmark')));
   
   const cleanupAdd = addEventListenerWithCleanup(addBtn, 'click', () => {
     showAddModal();
@@ -1216,7 +1223,7 @@ async function showAddModal() {
       gap: 8px;
     `;
     title.appendChild(createIconElement('bookmark', { size: 20, decorative: true }));
-    title.appendChild(document.createTextNode('Add Bookmark'));
+    title.appendChild(document.createTextNode(t('addBookmark')));
     
     const closeBtn = document.createElement('button');
     closeBtn.style.cssText = `
@@ -1513,7 +1520,7 @@ function showEditModal(bookmark) {
     gap: 8px;
   `;
   title.appendChild(createIconElement('edit', { size: 20, decorative: true }));
-  title.appendChild(document.createTextNode('Edit Bookmark'));
+  title.appendChild(document.createTextNode(t('editBookmark')));
   
   const closeBtn = document.createElement('button');
   closeBtn.style.cssText = `

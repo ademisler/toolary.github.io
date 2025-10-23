@@ -116,7 +116,6 @@ describe('Toolary Extension - Comprehensive Tests', () => {
       
       // Basic syntax checks
       expect(content).toMatch(/addMessageListener/);
-      expect(content).toMatch(/chrome\.commands\.onCommand/);
       expect(content).toMatch(/sendTabMessage/);
       expect(content).toMatch(/chrome\.scripting\.executeScript/);
     });

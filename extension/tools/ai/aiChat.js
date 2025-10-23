@@ -1139,12 +1139,12 @@ export async function activate(deactivate) {
   try {
     console.log('AI Chat activated');
     
-    // Show coffee message
-    showCoffeeMessageForTool('ai-chat');
-    
-    // Load language and AI manager
+    // Load language and AI manager first
     await loadUserUILanguage();
     await loadAIManager();
+    
+    // Show coffee message
+    showCoffeeMessageForTool('ai-chat');
     
     // Reset state
     messages = [];

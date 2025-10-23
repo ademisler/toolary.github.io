@@ -6,10 +6,6 @@ export const metadata = {
   name: 'Site Info',
   category: 'utilities',
   icon: 'info',
-  shortcut: {
-    default: 'Alt+Shift+9',
-    mac: 'Alt+Shift+9'
-  },
   permissions: ['activeTab'],
   tags: ['analysis', 'seo', 'performance'],
   keywords: ['tech stack', 'seo', 'accessibility', 'performance']

@@ -223,7 +223,9 @@ class AIManager {
     }
 
     if (this.apiKeys.length === 0) {
-      throw new Error('No API keys configured. Please add at least one Gemini API key in settings.');
+      const error = new Error('No API keys configured. Please add at least one Gemini API key in settings.');
+      error.code = 'NO_API_KEYS';
+      throw error;
     }
 
     const model = this.selectModel(toolId, userModelPreference);

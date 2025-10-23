@@ -1567,5 +1567,191 @@
   },
   "summarizeManual": {
     "message": "Metin Seç"
+  },
+  "toggleFavorite": {
+    "message": "Favoriyi değiştir"
+  },
+  "favoriteTools": {
+    "message": "Favori Araçlar"
+  },
+  "export": {
+    "message": "Dışa Aktar"
+  },
+  "favorite": {
+    "message": "Favori"
+  },
+  "favorites": {
+    "message": "Favoriler"
+  },
+  "noFavoritesYet": {
+    "message": "Henüz favori yok. Favori eklemek için herhangi bir araçtaki yıldız butonuna tıklayın!"
+  },
+  "removedFromFavorites": {
+    "message": "Favorilerden kaldırıldı"
+  },
+  "addToFavorites": {
+    "message": "Favorilere ekle"
+  },
+  "removeFromFavorites": {
+    "message": "Favorilerden kaldır"
+  },
+  "failedToLoadFavorites": {
+    "message": "Favoriler yüklenemedi"
+  },
+  "copiedToClipboard": {
+    "message": "Panoya kopyalandı!"
+  },
+  "remove": {
+    "message": "Kaldır"
+  },
+  "all": {
+    "message": "Tümü"
+  },
+  "folders": {
+    "message": "Klasörler"
+  },
+  "tags": {
+    "message": "Etiketler"
+  },
+  "editBookmark": {
+    "message": "Yer İmini Düzenle"
+  },
+  "link": {
+    "message": "Bağlantı"
+  },
+  "links": {
+    "message": "Bağlantılar"
+  },
+  "onboardingStep": {
+    "message": "Adım"
+  },
+  "onboardingOf": {
+    "message": "/"
+  },
+  "onboardingPrevious": {
+    "message": "Önceki"
+  },
+  "onboardingNext": {
+    "message": "Sonraki"
+  },
+  "onboardingFinish": {
+    "message": "Bitir"
+  },
+  "onboardingSkip": {
+    "message": "Atla"
+  },
+  "onboarding_step1_title": {
+    "message": "Toolary'ye Hoş Geldiniz!"
+  },
+  "onboarding_step1_desc": {
+    "message": "Toolary, 24+ verimlilik aracı ile birleşik web araç setinizdir. Hızlı bir tur atalım!"
+  },
+  "onboarding_step2_title": {
+    "message": "Araçları Ara"
+  },
+  "onboarding_step2_desc": {
+    "message": "Araç adını, kategorisini veya işlevini yazarak hızlıca bulun. \"renk\" veya \"ekran görüntüsü\" yazmayı deneyin."
+  },
+  "onboarding_step3_title": {
+    "message": "Kategoriye Göre Filtrele"
+  },
+  "onboarding_step3_desc": {
+    "message": "Araçları kategoriye göre göz atın: İnceleme, Yakalama, Geliştirme, Yardımcılar ve AI destekli araçlar."
+  },
+  "onboarding_step4_title": {
+    "message": "Bir Araç Deneyin"
+  },
+  "onboarding_step4_desc": {
+    "message": "Mevcut sayfada etkinleştirmek için herhangi bir araca tıklayın. Her araç her web sitesinde çalışır!"
+  },
+  "onboarding_step5_title": {
+    "message": "Ayarlar ve AI"
+  },
+  "onboarding_step5_desc": {
+    "message": "AI ayarlarını yapılandırın, dili değiştirin veya deneyiminizi özelleştirin. Verimliliğinizi artırmaya hazır mısınız?"
+  },
+  "onboarding_step6_title": {
+    "message": "Sayfaları Gezin"
+  },
+  "onboarding_step6_desc": {
+    "message": "Tüm mevcut araçları göz atmak için sayfalama butonlarını veya kaydırma tekerleğini kullanın."
+  },
+  "onboarding_step7_title": {
+    "message": "Ayarlar"
+  },
+  "onboarding_step7_desc": {
+    "message": "Deneyiminizi özelleştirin: dili değiştirin, temayı ayarlayın, araçları gizleyin ve AI ayarlarını yapılandırın."
+  },
+  "onboarding_step8_title": {
+    "message": "AI Ayarları"
+  },
+  "onboarding_step8_desc": {
+    "message": "Gemini API anahtarlarınızı eklemek ve AI araçları için tercih ettiğiniz model ve dili seçmek için AI sekmesine gidin."
+  },
+  "onboarding_step9_title": {
+    "message": "Araçları Özelleştir"
+  },
+  "onboarding_step9_desc": {
+    "message": "Çalışma alanınızı temiz ve odaklı tutmak için kullanmadığınız araçları gizleyin."
+  },
+  "onboarding_step10_title": {
+    "message": "Hazırsınız!"
+  },
+  "onboarding_step10_desc": {
+    "message": "Aramayı hızlıca odaklamak için \"/\" tuşuna basın veya klavye kısayollarını kullanın. Bu rehberi tekrar görmek için istediğiniz zaman bilgi simgesine tıklayın!"
+  },
+  "aiApiKeyRequired": {
+    "message": "AI API anahtarı gerekli. Ayarlardan Gemini API anahtarınızı ekleyin."
+  },
+  "aiApiKeyRequiredTitle": {
+    "message": "AI API Anahtarı Gerekli"
+  },
+  "aiApiKeyRequiredDescription": {
+    "message": "AI araçları için Gemini API anahtarı ekleyin."
+  },
+  "openSettings": {
+    "message": "Ayarları Aç"
+  },
+  "close": {
+    "message": "Kapat"
+  },
+  "securityNotice": {
+    "message": "Güvenlik Uyarısı"
+  },
+  "apiKeySecurityWarning": {
+    "message": "API anahtarları cihazınızda düz metin olarak yerel olarak saklanır. Cihazınızı güvende tutun ve API anahtarlarını içeren ekran görüntülerini paylaşmayın"
+  },
+  "noApiKeys": {
+    "message": "Henüz API anahtarı eklenmedi"
+  },
+  "colorPickerName": {
+    "message": "Renk Seçici"
+  },
+  "readingModeName": {
+    "message": "Okuma Modu"
+  },
+  "textHighlighterName": {
+    "message": "Metin Vurgulayıcı"
+  },
+  "screenshotPickerName": {
+    "message": "Ekran Görüntüsü Alıcı"
+  },
+  "stickyNotesName": {
+    "message": "Yapışkan Notlar"
+  },
+  "aiTextSummarizerName": {
+    "message": "AI Özetleyici"
+  },
+  "aiChatName": {
+    "message": "AI Sohbet"
+  },
+  "supportTitle": {
+    "message": "Geliştiriciyi Destekle"
+  },
+  "supportDescription": {
+    "message": "Toolary tamamen ücretsiz! Eğer faydalı buluyorsanız ve gelecekteki geliştirmeleri desteklemek istiyorsanız, bana bir kahve ısmarlayabilirsiniz. Desteğiniz sayesinde daha fazla araç ekleyebilir ve eklentiyi güncel tutabilirim."
+  },
+  "buyCoffee": {
+    "message": "Bana kahve ısmarla"
   }
 }

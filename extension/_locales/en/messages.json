@@ -1570,5 +1570,191 @@
   },
   "summarizeManual": {
     "message": "Select Text"
+  },
+  "toggleFavorite": {
+    "message": "Toggle favorite"
+  },
+  "favoriteTools": {
+    "message": "Favorite Tools"
+  },
+  "export": {
+    "message": "Export"
+  },
+  "favorite": {
+    "message": "Favorite"
+  },
+  "favorites": {
+    "message": "Favorites"
+  },
+  "noFavoritesYet": {
+    "message": "No favorites yet. Click the star button in any tool to add favorites!"
+  },
+  "removedFromFavorites": {
+    "message": "Removed from favorites"
+  },
+  "addToFavorites": {
+    "message": "Add to favorites"
+  },
+  "removeFromFavorites": {
+    "message": "Remove from favorites"
+  },
+  "failedToLoadFavorites": {
+    "message": "Failed to load favorites"
+  },
+  "copiedToClipboard": {
+    "message": "Copied to clipboard!"
+  },
+  "remove": {
+    "message": "Remove"
+  },
+  "all": {
+    "message": "All"
+  },
+  "folders": {
+    "message": "Folders"
+  },
+  "tags": {
+    "message": "Tags"
+  },
+  "editBookmark": {
+    "message": "Edit Bookmark"
+  },
+  "link": {
+    "message": "Link"
+  },
+  "links": {
+    "message": "Links"
+  },
+  "onboardingStep": {
+    "message": "Step"
+  },
+  "onboardingOf": {
+    "message": "of"
+  },
+  "onboardingPrevious": {
+    "message": "Previous"
+  },
+  "onboardingNext": {
+    "message": "Next"
+  },
+  "onboardingFinish": {
+    "message": "Finish"
+  },
+  "onboardingSkip": {
+    "message": "Skip"
+  },
+  "onboarding_step1_title": {
+    "message": "Welcome to Toolary!"
+  },
+  "onboarding_step1_desc": {
+    "message": "Toolary is your unified web toolkit with 24+ productivity tools. Let's take a quick tour!"
+  },
+  "onboarding_step2_title": {
+    "message": "Search Tools"
+  },
+  "onboarding_step2_desc": {
+    "message": "Quickly find any tool by typing its name, category, or function. Try typing \"color\" or \"screenshot\"."
+  },
+  "onboarding_step3_title": {
+    "message": "Filter by Category"
+  },
+  "onboarding_step3_desc": {
+    "message": "Browse tools by category: Inspect, Capture, Enhance, Utilities, and AI-powered tools."
+  },
+  "onboarding_step4_title": {
+    "message": "Try a Tool"
+  },
+  "onboarding_step4_desc": {
+    "message": "Click any tool to activate it on the current page. Each tool works on any website!"
+  },
+  "onboarding_step5_title": {
+    "message": "Settings & AI"
+  },
+  "onboarding_step5_desc": {
+    "message": "Configure AI settings, change language, or customize your experience. Ready to boost your productivity?"
+  },
+  "onboarding_step6_title": {
+    "message": "Navigate Pages"
+  },
+  "onboarding_step6_desc": {
+    "message": "Use pagination buttons or scroll wheel to browse through all available tools."
+  },
+  "onboarding_step7_title": {
+    "message": "Settings"
+  },
+  "onboarding_step7_desc": {
+    "message": "Customize your experience: change language, theme, hide tools, and configure AI settings."
+  },
+  "onboarding_step8_title": {
+    "message": "AI Settings"
+  },
+  "onboarding_step8_desc": {
+    "message": "Go to AI tab to add your Gemini API keys and choose your preferred model and language for AI tools."
+  },
+  "onboarding_step9_title": {
+    "message": "Customize Tools"
+  },
+  "onboarding_step9_desc": {
+    "message": "Hide tools you don't use to keep your workspace clean and focused."
+  },
+  "onboarding_step10_title": {
+    "message": "You're All Set!"
+  },
+  "onboarding_step10_desc": {
+    "message": "Press \"/\" to quickly focus search, or use keyboard shortcuts. Click the info icon anytime to see this guide again!"
+  },
+  "aiApiKeyRequired": {
+    "message": "AI API key required. Add your Gemini API key in settings."
+  },
+  "aiApiKeyRequiredTitle": {
+    "message": "AI API Key Required"
+  },
+  "aiApiKeyRequiredDescription": {
+    "message": "Add Gemini API key for AI tools."
+  },
+  "openSettings": {
+    "message": "Open Settings"
+  },
+  "close": {
+    "message": "Close"
+  },
+  "securityNotice": {
+    "message": "Security Notice"
+  },
+  "apiKeySecurityWarning": {
+    "message": "API keys are stored locally on your device in plain text. Keep your device secure and don't share screenshots containing API keys"
+  },
+  "noApiKeys": {
+    "message": "No API keys added yet"
+  },
+  "colorPickerName": {
+    "message": "Color Picker"
+  },
+  "readingModeName": {
+    "message": "Reading Mode"
+  },
+  "textHighlighterName": {
+    "message": "Text Highlighter"
+  },
+  "screenshotPickerName": {
+    "message": "Screenshot Picker"
+  },
+  "stickyNotesName": {
+    "message": "Sticky Notes"
+  },
+  "aiTextSummarizerName": {
+    "message": "AI Summarizer"
+  },
+  "aiChatName": {
+    "message": "AI Chat"
+  },
+  "supportTitle": {
+    "message": "Support the Developer"
+  },
+  "supportDescription": {
+    "message": "Toolary is completely free! If you find it helpful and want to support future development, consider buying me a coffee. Your support helps me add more tools and keep the extension updated."
+  },
+  "buyCoffee": {
+    "message": "Buy me a coffee"
   }
 }

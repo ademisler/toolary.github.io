@@ -1,6 +1,6 @@
 # Toolary
 
-A comprehensive Chrome extension with 24 web productivity tools including AI-powered features and a smart favorite system, designed to enhance your browsing experience and productivity.
+A comprehensive Chrome extension with 24 web productivity tools including AI-powered features, a smart favorite system, and coffee toast messages, designed to enhance your browsing experience and productivity.
 
 ## 🚀 Features
 
@@ -59,22 +59,20 @@ A comprehensive Chrome extension with 24 web productivity tools including AI-pow
 
 ## 🎮 Usage
 
-1. **Open Toolary** - Click the extension icon or use `Ctrl+Shift+P` (Windows) / `Cmd+Shift+P` (Mac)
+1. **Open Toolary** - Click the extension icon in your browser toolbar
 2. **Search Tools** - Use the search bar to find specific tools
 3. **Browse Categories** - Click category buttons to filter tools
 4. **Mark Favorites** - Click the star icon on tool cards to mark as favorites
 5. **Activate Tools** - Click on any tool card to activate it
-6. **Use Shortcuts** - Use global keyboard shortcuts for quick access
-7. **Configure AI** - Add API keys in settings for AI-powered tools
+6. **Configure AI** - Add API keys in settings for AI-powered tools
 
-## ⌨️ Keyboard Shortcuts
+## 🎯 Simple Interface
 
-- `Ctrl+Shift+P` (Win) / `Cmd+Shift+P` (Mac) - Toggle popup
-- `Alt+Shift+1` - Color Picker
-- `Alt+Shift+3` - Screenshot Picker
-- `Alt+Shift+7` - Text Highlighter
-- `Alt+Shift+8` - Reading Mode
-- `/` - Focus search (when popup is open)
+**No Keyboard Shortcuts** - Toolary uses a clean, simple interface where all tools are accessed through the popup. This eliminates complexity and makes the extension easier to use.
+
+- **Click to Access** - Simply click the extension icon and select your tool
+- **Search & Filter** - Find tools quickly using the search bar and category filters
+- **Favorites** - Mark frequently used tools as favorites for quick access
 
 ## 🤖 AI Features
 
@@ -247,7 +245,7 @@ MIT License - see LICENSE file for details
 
 ## 🔄 Version History
 
-- **v1.0.0** - Initial release with 24 tools including AI-powered features, favorite system, modern glassmorphism coffee toast system, and comprehensive productivity tools
+- **v1.0.0** - Initial release with 24 tools including AI-powered features, favorite system, modern glassmorphism coffee toast system, simplified interface (no keyboard shortcuts), and comprehensive productivity tools
 
 ---
 
