@@ -1,6 +1,6 @@
 # Toolary Privacy Policy
 
-_Effective date: Toolary v1.0.0_
+_Effective date: Toolary v2.0.0_
 
 Toolary is built with a privacy-first approach. The extension operates entirely within your browser and never sends page data, notes, or usage information to external servers (except for AI features which require API calls to Google's Gemini service).
 
@@ -16,6 +16,7 @@ Toolary is built with a privacy-first approach. The extension operates entirely 
 | Bookmarks | Yes | `chrome.storage.local` | Store your bookmarks, folders, and tags |
 | Text highlights | Yes | `chrome.storage.local` (per-site keys) | Persist highlighted text across sessions |
 | Dark mode preferences | Yes | `chrome.storage.local` | Remember your theme preference |
+| Onboarding completion status | Yes | `chrome.storage.local` | Track if user has completed the onboarding tour |
 | Page content, colors, fonts, links | No (in-memory only) | N/A | Processed on demand, never persisted or transmitted |
 | Diagnostic telemetry | No | N/A | Toolary does not send analytics or crash reports |
 
@@ -26,7 +27,8 @@ Notes are stored under keys prefixed with `toolaryStickyNotes_` in `chrome.stora
 Toolary includes AI-powered tools that use Google's Gemini API. When you use AI features:
 
 - **Content Processing**: Selected text or page content is sent to Google's Gemini API for processing
-- **API Keys**: Your Gemini API keys are stored locally in `chrome.storage.local` and never shared
+- **API Keys**: Your Gemini API keys are encrypted using AES-GCM encryption and stored locally in `chrome.storage.local` - never shared
+- **Secure Storage**: API keys are protected with industry-standard encryption before storage
 - **No History Storage**: AI interactions are not stored locally - each request is processed independently
 - **No Data Mining**: We do not collect, analyze, or monetize your AI interactions
 - **User Control**: You can remove API keys at any time through the AI settings panel
@@ -47,6 +49,14 @@ Toolary displays coffee-themed messages after successful tool operations:
 - **Language Detection**: Your browser language is automatically detected
 - **Button Interaction**: "Buy Me a Coffee" button redirects to https://buymeacoffee.com/ademisler
 - **No Data Collection**: Toast interactions are not tracked or stored
+
+### Onboarding System
+Toolary includes an interactive onboarding system for new users:
+
+- **Completion Status**: Whether you've completed the onboarding tour is stored locally
+- **No Personal Data**: The onboarding system only tracks completion status, not personal information
+- **User Control**: You can restart the onboarding tour anytime through the settings
+- **Local Storage**: Onboarding data stays on your device and is never transmitted
 
 ## Permissions Explained
 
@@ -120,6 +130,7 @@ Toolary does **not** rely on external services, trackers, or CDNs for core funct
 
 - **Local Processing**: All data processing happens locally in your browser
 - **Encrypted Storage**: Chrome's built-in storage encryption protects your data
+- **Secure API Key Storage**: AI API keys are encrypted using AES-GCM encryption before storage
 - **No Cloud Sync**: All data stays on your device - no cloud synchronization
 - **API Key Protection**: Your AI API keys are stored locally and never transmitted to our servers
 
