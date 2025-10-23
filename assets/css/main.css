@@ -825,6 +825,10 @@ body {
     display: none;
   }
   
+  .theme-toggle {
+    display: none;
+  }
+  
   .tools-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
