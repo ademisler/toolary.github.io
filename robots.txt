@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://ademisler.github.io/toolary.github.io/sitemap.xml
+Sitemap: https://toolary.ademisler.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
